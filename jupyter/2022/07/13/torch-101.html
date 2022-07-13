@@ -4,21 +4,23 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Title | fastpages</title>
+<title>PyTorch 101 | fastpages</title>
 <meta name="generator" content="Jekyll v4.1.1" />
-<meta property="og:title" content="Title" />
+<meta property="og:title" content="PyTorch 101" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="An easy to use blogging platform with support for Jupyter Notebooks." />
-<meta property="og:description" content="An easy to use blogging platform with support for Jupyter Notebooks." />
-<link rel="canonical" href="https://4923.github.io/archive/2022/07/13/torch-101.html" />
-<meta property="og:url" content="https://4923.github.io/archive/2022/07/13/torch-101.html" />
+<meta name="description" content="공식 한국 사용자 모임 의 tutorial 정리" />
+<meta property="og:description" content="공식 한국 사용자 모임 의 tutorial 정리" />
+<link rel="canonical" href="https://4923.github.io/archive/jupyter/2022/07/13/torch-101.html" />
+<meta property="og:url" content="https://4923.github.io/archive/jupyter/2022/07/13/torch-101.html" />
 <meta property="og:site_name" content="fastpages" />
+<meta property="og:image" content="https://4923.github.io/archive/images/chart-preview.png" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2022-07-13T00:00:00-05:00" />
-<meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Title" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://4923.github.io/archive/images/chart-preview.png" />
+<meta property="twitter:title" content="PyTorch 101" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-07-13T00:00:00-05:00","datePublished":"2022-07-13T00:00:00-05:00","description":"An easy to use blogging platform with support for Jupyter Notebooks.","headline":"Title","mainEntityOfPage":{"@type":"WebPage","@id":"https://4923.github.io/archive/2022/07/13/torch-101.html"},"url":"https://4923.github.io/archive/2022/07/13/torch-101.html"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-07-13T00:00:00-05:00","datePublished":"2022-07-13T00:00:00-05:00","description":"공식 한국 사용자 모임 의 tutorial 정리","headline":"PyTorch 101","image":"https://4923.github.io/archive/images/chart-preview.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://4923.github.io/archive/jupyter/2022/07/13/torch-101.html"},"url":"https://4923.github.io/archive/jupyter/2022/07/13/torch-101.html"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/archive/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://4923.github.io/archive/feed.xml" title="fastpages" /><link rel="shortcut icon" type="image/x-icon" href="/archive/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
@@ -73,7 +75,7 @@ window.onload = wrap_img;
         <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">Title</h1><p class="post-meta post-meta-title"><time class="dt-published" datetime="2022-07-13T00:00:00-05:00" itemprop="datePublished">
+    <h1 class="post-title p-name" itemprop="name headline">PyTorch 101</h1><p class="page-description"><a href='https://pytorch.kr/?_gl=1*lm4zb1*_ga*NTAzNjE1NTg0LjE2NTcwODI5NTU.*_ga_LZRD6GXDLF*MTY1NzY4ODU2OS41LjAuMTY1NzY4ODU2OS42MA..'>공식 한국 사용자 모임</a> 의 tutorial 정리</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2022-07-13T00:00:00-05:00" itemprop="datePublished">
         Jul 13, 2022
       </time>
        • <span class="read-time" title="Estimated read time">
@@ -83,6 +85,13 @@ window.onload = wrap_img;
     
 </span></p>
 
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/archive/categories/#jupyter">jupyter</a>
+        
+      
+      </p>
     
 
     
@@ -116,7 +125,10 @@ window.onload = wrap_img;
       </header>
 
   <div class="post-content e-content" itemprop="articleBody">
-    <!--
+    <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h3"><a href="#Tensor">Tensor </a></li>
+<li class="toc-entry toc-h3"><a href="#Dataset">Dataset </a></li>
+</ul><!--
 #################################################
 ### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
 #################################################
@@ -125,27 +137,13 @@ window.onload = wrap_img;
 
 <div class="container" id="notebook-container">
         
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<!-- front matter -->
-<!-- https://fastpages.fast.ai/jupyter/2020/02/20/test.html -->
-
-<h1 id="PyTorch-101">PyTorch 101<a class="anchor-link" href="#PyTorch-101"> </a></h1><blockquote><p><a href="https://pytorch.kr/?_gl=1*lm4zb1*_ga*NTAzNjE1NTg0LjE2NTcwODI5NTU.*_ga_LZRD6GXDLF*MTY1NzY4ODU2OS41LjAuMTY1NzY4ODU2OS42MA..">공식 한국 사용자 모임</a> 의 tutorial 정리- toc: true</p>
+<h3 id="Tensor">
+<a class="anchor" href="#Tensor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tensor<a class="anchor-link" href="#Tensor"> </a>
+</h3>
 <ul>
-<li>branch: master</li>
-<li>badges: true</li>
-<li>comments: true</li>
-<li>categories: [jupyter]</li>
-<li>image: images/chart-preview.png</li>
-</ul>
-</blockquote>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Tensor">Tensor<a class="anchor-link" href="#Tensor"> </a></h3><ul>
 <li>배열 array 또는 행렬 matrix 과 유사한 특수 자료구조</li>
 <li>모델의 입출력 및 매개변수 부호화를 진행</li>
 <li>numpy의 ndarray와 유사: NumPy 배열로 생성할 수 있음<ul>
@@ -162,7 +160,8 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing code_cell rendered">
 <details class="description">
       <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
-        <p><div class="input">
+        <p></p>
+<div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
@@ -179,7 +178,7 @@ window.onload = wrap_img;
     </div>
 </div>
 </div>
-</p>
+
     </details>
 <div class="output_wrapper">
 <div class="output">
@@ -199,12 +198,17 @@ window.onload = wrap_img;
 </div>
     
 
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Dataset">Dataset<a class="anchor-link" href="#Dataset"> </a></h3><p><div class="flash flash-success">
-    <svg class="octicon octicon-checklist" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M2.5 1.75a.25.25 0 01.25-.25h8.5a.25.25 0 01.25.25v7.736a.75.75 0 101.5 0V1.75A1.75 1.75 0 0011.25 0h-8.5A1.75 1.75 0 001 1.75v11.5c0 .966.784 1.75 1.75 1.75h3.17a.75.75 0 000-1.5H2.75a.25.25 0 01-.25-.25V1.75zM4.75 4a.75.75 0 000 1.5h4.5a.75.75 0 000-1.5h-4.5zM4 7.75A.75.75 0 014.75 7h2a.75.75 0 010 1.5h-2A.75.75 0 014 7.75zm11.774 3.537a.75.75 0 00-1.048-1.074L10.7 14.145 9.281 12.72a.75.75 0 00-1.062 1.058l1.943 1.95a.75.75 0 001.055.008l4.557-4.45z"></path></svg>
+<h3 id="Dataset">
+<a class="anchor" href="#Dataset" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dataset<a class="anchor-link" href="#Dataset"> </a>
+</h3>
+<p></p>
+<div class="flash flash-success">
+    <svg class="octicon octicon-checklist" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M2.5 1.75a.25.25 0 01.25-.25h8.5a.25.25 0 01.25.25v7.736a.75.75 0 101.5 0V1.75A1.75 1.75 0 0011.25 0h-8.5A1.75 1.75 0 001 1.75v11.5c0 .966.784 1.75 1.75 1.75h3.17a.75.75 0 000-1.5H2.75a.25.25 0 01-.25-.25V1.75zM4.75 4a.75.75 0 000 1.5h4.5a.75.75 0 000-1.5h-4.5zM4 7.75A.75.75 0 014.75 7h2a.75.75 0 010 1.5h-2A.75.75 0 014 7.75zm11.774 3.537a.75.75 0 00-1.048-1.074L10.7 14.145 9.281 12.72a.75.75 0 00-1.062 1.058l1.943 1.95a.75.75 0 001.055.008l4.557-4.45z"></path></svg>
     <strong>Tip: </strong>가독성 (readability) 과 모듈성 (modularity) 을 위해 <em>데이터셋 코드는 모델 학습 코드로부터 분리하는것이 이상적이다.</em> : Dataset Class를 따로 정의
-</div></p>
+</div>
 
 </div>
 </div>
@@ -214,7 +218,8 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing code_cell rendered">
 <details class="description" open="">
       <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
-        <p><div class="input">
+        <p></p>
+<div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
@@ -225,7 +230,7 @@ window.onload = wrap_img;
     <span class="c1"># Dataset 객체 생성시 *한 번*만 호출되는 함수</span>
     <span class="c1"># 변형을 초기화한다.</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">annotation_file</span><span class="p">,</span> <span class="n">img_dir</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">target_transform</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">img_labels</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">annotation_file</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;file_name&#39;</span><span class="p">,</span> <span class="s1">&#39;label&#39;</span><span class="p">])</span>    
+        <span class="bp">self</span><span class="o">.</span><span class="n">img_labels</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">annotation_file</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">'file_name'</span><span class="p">,</span> <span class="s1">'label'</span><span class="p">])</span>    
         <span class="bp">self</span><span class="o">.</span><span class="n">img_dir</span> <span class="o">=</span> <span class="n">img_dir</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">transform</span> <span class="o">=</span> <span class="n">transform</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">target_transform</span> <span class="o">=</span> <span class="n">target_transform</span>
@@ -234,7 +239,7 @@ window.onload = wrap_img;
     </div>
 </div>
 </div>
-</p>
+
     </details>
 </div>
     
@@ -243,7 +248,15 @@ window.onload = wrap_img;
 
 
 
-  </div><a class="u-url" href="/archive/2022/07/13/torch-101.html" hidden></a>
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="4923/archive"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/archive/jupyter/2022/07/13/torch-101.html" hidden></a>
 </article>
 
       </div>

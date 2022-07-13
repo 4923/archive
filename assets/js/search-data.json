@@ -2,10 +2,10 @@
   
     
         "post0": {
-            "title": "Title",
-            "content": "PyTorch 101 . 공식 한국 사용자 모임 의 tutorial 정리- toc: true . branch: master | badges: true | comments: true | categories: [jupyter] | image: images/chart-preview.png | . Tensor . 배열 array 또는 행렬 matrix 과 유사한 특수 자료구조 | 모델의 입출력 및 매개변수 부호화를 진행 | numpy의 ndarray와 유사: NumPy 배열로 생성할 수 있음 NumPy 변환 (Bridge) | . | . # import libraries # basic tools import numpy as np import pandas as pd # torch import torch from torch.utils.data import Dataset . . /opt/homebrew/Caskroom/miniforge/base/envs/cv-py38/lib/python3.8/site-packages/tqdm/auto.py:22: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html from .autonotebook import tqdm as notebook_tqdm . Dataset . . Tip: 가독성 (readability) 과 모듈성 (modularity) 을 위해 데이터셋 코드는 모델 학습 코드로부터 분리하는것이 이상적이다. : Dataset Class를 따로 정의 . # Dataset Class는 3가지 함수를 구현해야한다. # `__init__`, `__len__`, `__getitem__` class ImageDataset(Dataset): # Dataset 객체 생성시 *한 번*만 호출되는 함수 # 변형을 초기화한다. def __init__(self, annotation_file, img_dir, transform=None, target_transform=None): self.img_labels = pd.read_csv(annotation_file, names=[&#39;file_name&#39;, &#39;label&#39;]) self.img_dir = img_dir self.transform = transform self.target_transform = target_transform . .",
-            "url": "https://4923.github.io/archive/2022/07/13/torch-101.html",
-            "relUrl": "/2022/07/13/torch-101.html",
+            "title": "PyTorch 101",
+            "content": "Tensor . 배열 array 또는 행렬 matrix 과 유사한 특수 자료구조 | 모델의 입출력 및 매개변수 부호화를 진행 | numpy의 ndarray와 유사: NumPy 배열로 생성할 수 있음 NumPy 변환 (Bridge) | . | . # import libraries # basic tools import numpy as np import pandas as pd # torch import torch from torch.utils.data import Dataset . . /opt/homebrew/Caskroom/miniforge/base/envs/cv-py38/lib/python3.8/site-packages/tqdm/auto.py:22: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html from .autonotebook import tqdm as notebook_tqdm . Dataset . . Tip: 가독성 (readability) 과 모듈성 (modularity) 을 위해 데이터셋 코드는 모델 학습 코드로부터 분리하는것이 이상적이다. : Dataset Class를 따로 정의 . # Dataset Class는 3가지 함수를 구현해야한다. # `__init__`, `__len__`, `__getitem__` class ImageDataset(Dataset): # Dataset 객체 생성시 *한 번*만 호출되는 함수 # 변형을 초기화한다. def __init__(self, annotation_file, img_dir, transform=None, target_transform=None): self.img_labels = pd.read_csv(annotation_file, names=[&#39;file_name&#39;, &#39;label&#39;]) self.img_dir = img_dir self.transform = transform self.target_transform = target_transform . .",
+            "url": "https://4923.github.io/archive/jupyter/2022/07/13/torch-101.html",
+            "relUrl": "/jupyter/2022/07/13/torch-101.html",
             "date": " • Jul 13, 2022"
         }
         
