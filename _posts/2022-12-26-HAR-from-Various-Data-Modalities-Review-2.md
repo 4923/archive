@@ -117,7 +117,7 @@ aggregation for action classification,” in CVPR, 2017.
 - 샴네트워크 
     <figure>
     <img width="600" alt="siamese network" src="https://user-images.githubusercontent.com/60145951/209576942-b98a7973-be82-46f3-b292-cbf6be463153.png"/>
-    <figcaption>Fig 4. <a href="https://serokell.io/blog/nn-and-one-shot-learning"/>ref: A Guide to One-Shot Learning</a></figcaption>
+    <figcaption>Fig 4. <a href="https://serokell.io/blog/nn-and-one-shot-learning">ref: A Guide to One-Shot Learning</a></figcaption>
     </figure>
     - two stages: verification and generalization 가 포함된다.
     - 각각 다른 입력을 동일한 네트워크 인스턴스에 학습시키고, 이는 동일한 데이터셋에서 훈련되어 유사도를 반환한다. 
@@ -126,10 +126,10 @@ aggregation for action classification,” in CVPR, 2017.
 
 Knowledge distillation $^{5)}$ 이 사용된다. "[Data 에서 의미를 파악하면 Information 이 되고, Information 에서 문맥을 파악하면 Knowledge 이 되고, Knowledge 를 활용하면 Wisdom 이 된다.](https://velog.io/@dldydldy75/%EC%A7%80%EC%8B%9D-%EC%A6%9D%EB%A5%98-Knowledge-Distillation)" 모델 압축을 위한 절차로, soft label과 hard label을 일치시키는 것이 목적이며 soft label에는 temperature scaling function을 적용하여 확률 분포를 부드럽게 만든다. 예를 들어 feature들의 label이  $[0, 1, 0]^{T}$ 이면 Hard label, $[0.05, 0.75, 0.2]^{T}$ 이면 soft label이다. 각 feature들은 서로 다른 특성을 가지고 있지만 공통된 특성 또한 가지고 있기 때문에, 이 공통 요소를 포함하는 class score를 날려버리면 (hard label) 정보가 손실되는 셈이다. 이렇게 정보가 손실되지 않게 Teacher network를 구성하고 Student network가 teacher network에 최대한 가까운 정답을 반환하도록 학습시킨다. 위에서 언급한 `temperature`는 그 값이 낮을 때 입력값의 출력을 크게 만들어주는 등 필요에 따라 값에 가중치를 둠으로써 Soft label의 이점을 최대화 한다. [참고](https://light-tree.tistory.com/196)
 
-| teacher network; optical flow data| 
+| teacher network; optical flow data | 
 | :--------------------------------: |
-| ⬇︎ |
-| student network; motion vector |
+|     ⬇︎ Knowledge Distillation ⬇︎     |
+|   student network; motion vector   |
 
 | ![](https://velog.velcdn.com/images%2Fdldydldy75%2Fpost%2F2bc5e3eb-b58b-456b-9b6b-420cd996ae38%2Fimage.png) | ![https://intellabs.github.io/distiller/knowledge_distillation.html](https://intellabs.github.io/distiller/imgs/knowledge_distillation.png) |
 |:-:|:-:|
@@ -193,7 +193,21 @@ multi layer LSTM model 설계 후 다음 프레임에 가중치를 부여한 Att
 
 RGB video만 사용할 경우 옷 또는 신체의 부피를 포함해 RGB data의 문제였던 다양한 변수 (e.g. background, illumination environment) 로부터 상당부 자유로울 수 있다. 초기에는 수작업으로 특징을 추출하여 관절 또는 신체 부위 기반의 방법이 제안되었는데 딥러닝의 발전에 따라 RNn, CNN, GNN, GCN을 적용하게 되었다.
 
+<figure>
+<img width="539" alt="image" src="https://user-images.githubusercontent.com/60145951/209585313-6fc0b53c-f815-4b60-baa0-13c677a06ab5.png">
+<figcaption>Fig 7. Performance of skeleton-based deep learning HAR methods on NTU RGB+D and NTU RGB+D 120 datasets.</figcaption>
+</figure>
+
 ### 2.3 depth
+
+> Depth maps refer to images where the pixel values represent the distance information from a given viewpoint to the points in the scene. 
+
+색상, 질감 등의 변화에 강건하며 3차원 상의 정보이므로 신뢰할 수 있는 3D 구조 및 기하학적 정보를 제공한다. depth map은 왜 필요한가? 3D 데이터를 2D 이미지로 변환하기 위함이다: depth image  
+depth 정보는 특수한 센서를 필요로 하는데, 이는 active sensors (e.g., Time-of-Flight and structured-light-based cameras) and pas- sive sensors (e.g., stereo cameras) 로 나뉜다.   
+active sensor는 방사선을 물체에 방출하여 **반사되는 에너지를 측정**하여 깊이정보를 얻는, 말그대로 능동적인 행동에 의해 발생하는 정보를 수집하는 센서다. Kinect, RealSense3D 등의 특수한 장치를 포함하는 센서가 포함된다.
+passive sensor는 물체가 방출하거나 반사하는 **자연적인 에너지** 를 말한다. 수동센서의 예인 stereo camera는 인간의 양안을 시뮬레이션 하는 카메라로 are recovered by seek- ing image point correspondences between stereo pairs 한다. 
+
+둘을 비교했을 때, passive depth map generation은 RGB 이미지 사이에서 깊이를 연산해내는 과정이 포함되므로 계산 비용이 많이 들 뿐 아니라 질감이 없거나 반복 패턴이 있는; view point에 따라 크게 달라지지 않는 대상에는 효과를 보이지 않을 수 있다. 따라서 대부분의 연구는 active sensor를 이용한 depth map에 초점을 맞추고 있다.
 
 ### 2.4 infrared
 
