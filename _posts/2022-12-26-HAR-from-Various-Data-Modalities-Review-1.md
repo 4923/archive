@@ -5,7 +5,7 @@ comments: true
 
 layout: post
 keywords: HAR, Review
-description: 
+description: 다양한 data modalities들의 장점, 한계를 및 modality간의 연구 흐름 파악
 categories: [HAR, review/survey]
 permalink: /HAR-from-Various-Data-Modalities-Review-1/
 title: Human Action Recognition from Various Data Modalities; A review (1)
