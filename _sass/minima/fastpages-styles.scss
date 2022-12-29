@@ -16,7 +16,7 @@ img.emoji {
 
 .post figcaption {
   text-align: center;
-  font-size: .8rem;
+  font-size: .88rem;
   font-style: italic;
   color: light-grey;
 }
@@ -30,12 +30,13 @@ img.emoji {
 // make non-headings slightly lighter
 .post-content p,
 .post-content li {
-  font-size: 1rem;
+  font-size: .8rem;
   color: #515151;
 }
 
 .post-link {
   font-weight: normal;
+  // 이쪽에서 post card font-size 불러오는게 맞는데 (`__layout.scss:230`) 여기서 설정하면 오버라이드가 안되길래 html에서 직접 변경
 }
 
 // change padding of headings
@@ -65,7 +66,7 @@ h4 {
   margin-bottom: 0.5rem !important;
 
   code {
-    font-size: 1rem;
+    font-size: .8rem;
   }
 }
 
@@ -88,7 +89,7 @@ li {
 
   .post-meta-description {
     color: rgb(88, 88, 88);
-    font-size: 1rem;
+    font-size: .8rem;
     margin-top: .05rem !important;
     margin-bottom: .05rem !important;
   }
@@ -112,7 +113,7 @@ details.description:not([open]) summary::after {
 
 // Adjust font size for footnotes.
 .footnotes {
-  font-size: 12px !important;
+  font-size: .82px !important;
 
   p,
   li {
@@ -153,7 +154,7 @@ h6:hover .anchor-link {
 .category-tags {
   margin-top: .25rem !important;
   margin-bottom: .25rem !important;
-  font-size: 105%;
+  font-size: .8rem;
 }
 
 // Custom styling for homepage post previews
@@ -161,26 +162,26 @@ h6:hover .anchor-link {
 .post-meta {
   margin-top: .25em !important;
   margin-bottom: .25em !important;
-  font-size: 105%;
+  font-size: .8rem;
 }
 
 .page-description {
   margin-top: .5rem !important;
   margin-bottom: .5rem !important;
   color: #585858;
-  font-size: 115%;
+  font-size: .8rem;
 }
 
 // Custom styling for category tags
 .category-tags-icon {
-  font-size: 75% !important;
+  font-size: 1rem !important;
   padding-left: 0.375em;
   opacity: 35%;
 }
 
 .category-tags-link {
   color: rgb(187, 129, 129) !important;
-  font-size: 13px !important;
+  font-size: 1rem !important;
 }
 
 // Search Page Styles
@@ -193,7 +194,7 @@ h6:hover .anchor-link {
 }
 
 .search-results-list-item .search-result-title {
-  font-size: 16px;
+  font-size: 1rem;
   color: #d9230f;
 }
 
@@ -217,12 +218,12 @@ h6:hover .anchor-link {
 
 .search-result-rel-date {
   color: rgb(109, 120, 138);
-  font-size: 14px;
+  font-size: 1rem;
 }
 
 .search-result-preview {
   color: #777;
-  font-size: 16px;
+  font-size: 1rem;
   margin-top: .02rem !important;
   margin-bottom: .02rem !important;
 }
@@ -235,7 +236,7 @@ h6:hover .anchor-link {
 table {
   white-space: normal;
   max-width: 100%;
-  font-size: 100%;
+  font-size: 80%;
   border: none;
 
   th {
@@ -295,7 +296,7 @@ table {
 }
 
 pre code {
-  font-size: 15px !important;
+  font-size: .8rem !important;
 }
 
 // Handle youtube videos, so they dont break on mobile devices

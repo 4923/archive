@@ -48,7 +48,7 @@ $dt-green-light: rgb(172, 229, 145);
   text-rendering: optimizeLegibility;
   font-family: Menlo, Monaco, Consolas, "Lucida Console", Roboto, Ubuntu, monospace;
   border-radius: 5px;
-  font-size: 105%;
+  font-size: .8rem;
 }
 
 .output_area pre,
@@ -66,7 +66,7 @@ $dt-green-light: rgb(172, 229, 145);
 .output_area pre {
   border-left: 1px solid grey;
   margin-left: 1rem !important;
-  font-size: 16px;
+  font-size: .8rem;
 }
 
 .code_cell table {
@@ -91,7 +91,7 @@ $dt-green-light: rgb(172, 229, 145);
   code {
     background: $dt-code-cell-background;
     color: $dt-gray-light;
-    font-size: 110%;
+    font-size: .8rem;
   }
 
   .hll,
@@ -231,5 +231,5 @@ $dt-green-light: rgb(172, 229, 145);
 }
 
 p code {
-  font-size: 1rem;
+  font-size: .8rem;
 }
