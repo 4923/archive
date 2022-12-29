@@ -202,14 +202,37 @@ RGB video만 사용할 경우 옷 또는 신체의 부피를 포함해 RGB data�
 
 > Depth maps refer to images where the pixel values represent the distance information from a given viewpoint to the points in the scene. 
 
-색상, 질감 등의 변화에 강건하며 3차원 상의 정보이므로 신뢰할 수 있는 3D 구조 및 기하학적 정보를 제공한다. depth map은 왜 필요한가? 3D 데이터를 2D 이미지로 변환하기 위함이다: depth image  
-depth 정보는 특수한 센서를 필요로 하는데, 이는 active sensors (e.g., Time-of-Flight and structured-light-based cameras) and pas- sive sensors (e.g., stereo cameras) 로 나뉜다.   
+색상, 질감 등의 변화에 강건하며 3차원 상의 정보이므로 신뢰할 수 있는 3D 구조 및 기하학적 정보를 제공한다. depth map은 왜 필요한가? 3D 데이터를 2D 이미지로 변환하기 위함이다: depth 정보는 특수한 센서를 필요로 하는데, 이는 active sensors (e.g., Time-of-Flight and structured-light-based cameras) and pas- sive sensors (e.g., stereo cameras) 로 나뉜다.   
 active sensor는 방사선을 물체에 방출하여 **반사되는 에너지를 측정**하여 깊이정보를 얻는, 말그대로 능동적인 행동에 의해 발생하는 정보를 수집하는 센서다. Kinect, RealSense3D 등의 특수한 장치를 포함하는 센서가 포함된다.
 passive sensor는 물체가 방출하거나 반사하는 **자연적인 에너지** 를 말한다. 수동센서의 예인 stereo camera는 인간의 양안을 시뮬레이션 하는 카메라로 are recovered by seek- ing image point correspondences between stereo pairs 한다. 
 
-둘을 비교했을 때, passive depth map generation은 RGB 이미지 사이에서 깊이를 연산해내는 과정이 포함되므로 계산 비용이 많이 들 뿐 아니라 질감이 없거나 반복 패턴이 있는; view point에 따라 크게 달라지지 않는 대상에는 효과를 보이지 않을 수 있다. 따라서 대부분의 연구는 active sensor를 이용한 depth map에 초점을 맞추고 있다.
+둘을 비교했을 때, passive depth map generation은 RGB 이미지 사이에서 깊이를 연산해내는 과정이 포함되므로 계산 비용이 많이 들 뿐 아니라 질감이 없거나 반복 패턴이 있는; view point에 따라 크게 달라지지 않는 대상에는 효과를 보이지 않을 수 있다. 따라서 대부분의 연구는 active sensor를 이용한 depth map에 초점을 맞추고 있다. ("only a few works used depth maps captured by stereo cameras") 
+
+**datasets and methods**
+
+데이터셋으로는 Deep Learning methods가 도래하기 전까지 사용했던 hand-crafted Depth Motion Map (DMM) features가 있다. 딥러닝 프레임워크도 이 DMM을 활용하는데, `weighted hierarchial DMMs` 이 제안되었다. 그러나 기존의 DMMs가 구체적인 시간정보를 포착하지 못하는 한계를 직면하자 Wang et.al 은 dynamic images at the body, body part, joint level 총 세가지를 짝지은 `depth sequences` 를 CNNs에 먹이는 방식을 제안했다.
+
+depth modality의 성능은 1. depth maps including dynamic (depth images, 2. dynamic depth normal images, 3. dynamic depth motion normal images 의 발견에 힘입어 크게 성장했다. 발전을 위해 제안된 아이디어는 `view invarient` 을 이용한 방법론들이 다수인데, 다른 시각에서 본 이미지들을 high-level space로 옮김으로써 입체감을 부여하고 (Rahmani et al. [9]) CNN 모델이 human pose model과 Fourier Temporal Pyramids를 학습하게 하여 시점에 따른 행동 변화를 학습하게 하는 방식이 있다. 
+
+**estimate without depth sensor**
+
+그러나 **depth 정보를 추정해낼 수 있는 방법 또한 있다.** `depth estimation` 기술이 이미 존재하고 Zhu and Newsam [224] 는 depth estimation을 이용해 RGB video에서 depth 을 추출해낸 바 있다. 
+
+- [paperswithcode:depth estimation](https://paperswithcode.com/task/depth-estimation); 
+    > Newer methods can directly estimate depth by minimizing the regression loss, or by learning to generate a novel view from a sequence. 
+    > The most popular benchmarks are KITTI and NYUv2. Models are typically evaluated according to a RMS metric.
+
+
+**limitation**
+
+그러나 일반적으로 depth information은 외형정보가 부족하므로 다른 data modality와 융합하여 사용된다.
+- section 3 에서 더 살펴볼 수 있으나, 본 포스트에서는 single modality까지만 다루겠다.
 
 ### 2.4 infrared
+
+주변광에 의지하지 않아도 되므로 야간 HAR에 적합하다. depth sensor와 마찬가지로 반사광선을 활용하여 물체를 인식하는데, 적외선을 내보내는 센서가 active sensor라면 대상에서 방출되는 광선 (열 에너지 등) 을 인식하는 방법은 수동 인식이다. 
+
+**methods**
 
 ### 2.5 Point Cloud
 
