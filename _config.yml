@@ -49,10 +49,10 @@ use_math: true
 show_description: true
 
 # Set this to true to display image previews on home page, if they exist
-show_image: true
+show_image: false
 
 # Set this to true to turn on annotations with hypothes.is (https://web.hypothes.is/)
-annotations: true
+annotations: false
 
 # Set this to true to display tags on each post
 show_tags: true
@@ -114,7 +114,7 @@ kramdown:
   math_engine: katex
   input: GFM
   auto_ids: true
-  hard_wrap: false
+  hard_wrap: true
   syntax_highlighter: rouge
 
 # to limit size of xml as it can grow quite large.

@@ -24,7 +24,9 @@ img.emoji {
 .page-content {
   -webkit-font-smoothing: antialiased !important;
   text-rendering: optimizeLegibility !important;
-  font-family: "Segoe UI", SegoeUI, Roboto, "Segoe WP", "Helvetica Neue", "Helvetica", "Tahoma", "Arial", sans-serif !important;
+  // font-family: "Segoe UI", SegoeUI, Roboto, "Segoe WP", "Helvetica Neue", "Helvetica", "Tahoma", "Arial", sans-serif !important;
+  font-family: "Noto Serif", sans-serif;
+  padding: 0% 15% 5%;
 }
 
 // make non-headings slightly lighter
@@ -37,6 +39,14 @@ img.emoji {
 .post-link {
   font-weight: normal;
   // 이쪽에서 post card font-size 불러오는게 맞는데 (`__layout.scss:230`) 여기서 설정하면 오버라이드가 안되길래 html에서 직접 변경
+  color: black;
+  font-family: "Noto Serif", sans-serif;
+}
+
+a:visited {
+  font-weight: normal;
+  color: #A8A9AD;
+  font-family: "Noto Serif", sans-serif;
 }
 
 // change padding of headings
