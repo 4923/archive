@@ -228,13 +228,72 @@ depth modality의 성능은 1. depth maps including dynamic (depth images, 2. dy
 그러나 일반적으로 depth information은 외형정보가 부족하므로 다른 data modality와 융합하여 사용된다.
 - section 3 에서 더 살펴볼 수 있으나, 본 포스트에서는 single modality까지만 다루겠다.
 
-### 2.4 infrared
+### 2.4 infrared (IR)
+
+> Infrared radiation is emitted from all surfaces that have a temperature above 0 K (−273.15 °C) and the strength of emitted radiation depends on the surface temperature (higher temperatures have greater radiant energy) ([sciencedirect/infrared-radiation](https://www.sciencedirect.com/topics/physics-and-astronomy/infrared-radiation))
 
 주변광에 의지하지 않아도 되므로 야간 HAR에 적합하다. depth sensor와 마찬가지로 반사광선을 활용하여 물체를 인식하는데, 적외선을 내보내는 센서가 active sensor라면 대상에서 방출되는 광선 (열 에너지 등) 을 인식하는 방법은 수동 인식이다. 
 
 **methods**
 
+Kawashima et.al 의 Action recognition from extremely low-resolution thermal image sequence (2017, AVSS) 에 의하면 극히 낮은 해상도 $^{1}$ $^{2}$ 의 row resolution thermal images에서 먼저 사람의 무게중심을 기반으로 사람 부분만 추출하고, 다음으로 cropped sequences들과 frame간 차이를 LSTM기반의 CNN에 입력해 시공간 정보를 담은 모델을 생성한다. 
+해당 연구에서 이어진 연구로는 열화상 비디오들에서 학습된 시공간 정보를 동시에 학습하기 위해 3D CNN을 적용한  Shah et al의 연구가 있고, Meglouli et al는 raw thermal images를 사용하는 대신 raw thermal sequences를 3D CNN에 적용하여 optical flow information를 연산해냈다.
+    
+- thermal images vs thermal sequence?
+
+    | ![Example of a thermal image sequence](https://www.researchgate.net/profile/Yasutomo-Kawanishi/publication/320649612/figure/fig2/AS:667869876596744@1536243995369/Example-of-a-thermal-image-sequence.png) |
+    | :-: |
+    | Example of a thermal image sequence (Action Recognition from Extremely Low-Resolution Thermal Image Sequence) |
+
+이미지간 차이를 추출해낸 결과로 보인다.
+    
+
+$^{1}$ 왜 저해상도라는 말이 언급되는가?
+- 기본적으로 IR(InfraRed) radiation은 전자기파 (electromagnetic waves) 이며 oscillate (진동) 주기는 $3 * 10^{11}Hz$ 에서 $4 * 10^{14}Hz$ 다. ([sciencedirect/IR Radiation/Jyrki K. Kauppinen, Jari O. Partanen, in Encyclopedia of Spectroscopy and Spectrometry (Third Edition), 2017](https://www.sciencedirect.com/topics/chemistry/ir-radiation))
+- 고주파면 High-Frequency, 고해상도면 High-Resolution인데 왜 해상도가 언급되는가: 적외선 이미지는 해상도가 rgb 이미지보다 훨씬 낮다. 여기서 말하는 해상도가 낮다는건 픽셀정보인 공간 해상도를 구분하는것
+
+    | ![Example of RGB and InfRared (IR pair images in real maritime dataset)](https://www.researchgate.net/publication/343453594/figure/fig5/AS:928906546802693@1598479987148/Example-of-RGB-and-InfRared-IR-pair-images-in-the-real-maritime-dataset-at-a.png) |
+    | :-: |
+    | Example of RGB and InfRared (IR pair images in real maritime dataset) |
+    
+- 해상도란 : 신호에서 minimum하게 구분할 수 있는 간격으로 탐지하기 위해 받아들이는게 신호라고 할 때 서로 다른 신호의 간격이 얼마나 가까이까지 구분해낼 수 있는가를 해상도라고 말한다. 즉, 실제로 서로 다른걸 다르다고 말할 수 있는 거리가 해상도다. 해상도가 높으면 같은 이미지도 높은 픽셀로 표현할 수 있다.
+- 예를들어 High Resolution infrared Radiation Sounder (HIRS) sensor 는 적외선 방사선 검출기의 단점내지 한계인 해상도를 개선한 센서라고 생각할 수 있다. 
+
+
+$^{2}$ 그렇다면 왜 *초*저해상도 이미지를 굳이 사용하는가? 
+- quotation : [Kawashima, Takayuki & Kawanishi, Yasutomo & Ide, Ichiro & Murase, H. & Deguchi, Daisuke & Aizawa, Tomoyoshi & Kawade, Masato. (2017). Action recognition from extremely low-resolution thermal image sequence. 1-6. 10.1109/AVSS.2017.8078497.](https://www.researchgate.net/publication/320649612_Action_recognition_from_extremely_low-resolution_thermal_image_sequence)
+
+| ![Figure 3. Example of images captured at night-time](https://user-images.githubusercontent.com/60145951/210193383-9f232405-bbfb-4758-8ff9-4660b1afe83d.png) |
+| :-: |
+| Figure 3. Example of images captured at night-time |
+
+> Therefore, it is difficult to compute feature points and to obtain a clear edge of the human body from it. More-over, the pixel values will be easily affected by factors such as the motion of a person and the distance between the sen-sor and the human body. Therefore, most conventional action recognition methods using a visible-light camera are not suitable for being applied to extremely low-resolution thermal image sequences
+
+이러한 이유로 초저해상도 열화상 이미지를 사용하게 된다. 
+
+low-resolution thermal image sequences는 아래와 같은 특성을 가진다.
+
+1. edge of the human body does not appear clearly
+    - 위 인용에서 초저해상도 열화상 이미지를 사용하는 이유로 든 사례와 같다. RGB high resolution image 도 human body edge를 명확하게 연산하기는 어려우며 pixel values들은 사람의 움직임, 센서와의 거리 등에 크게 영향을 받는다.
+    - high resolution image가 집중하는 human body edge가 연산해내기 어려운 특성이라면 아예 이를 제외하고 다른 부분에 초점을 맞추겠다는 선언으로 보인다.
+2. The motion of a person changes the pixel values of both the human body and its surrounding region
+    - 1이 low resolution image sequence를 사용해야 하는 이유와 관계가 있다면 이 항목은 edge를 명확하게 찾을 수 없는 대신 얻을 수 있는 정보를 말한다.
+    - 대략적인 범위를 알 수 있으니 결국 얼만큼 움직이는지만 감지해내면 되고, 그 움직임은 pixel 값으로 표현되니 optical image 를 대신할 수 있다.
+3. When the distance between the sensor and the human body changes, the pixel values also change
+    - 또 다른 RGB image approach의 한계였던 센서와의 거리가 thermal image에도 영향을 미치지만 이것은 pixel value에 영향을 미치므로 연산으로 보완할 수 있을 것으로 보인다.
+4. A pixel value changes depending on the occupancy area ratio of the human body in the observation range of a thermopile infrared sensor
+    - 결과적으로 센서와의 거리 (view point) 등의 변수도 pixel에 반영이 되므로 적외선 센서의 특징을 고려할 때 기존 접근법의 한계를 극복할 수 있을 것이다.
+
+| ![Figure 4. Example of a thermal image sequence](https://user-images.githubusercontent.com/60145951/210193861-5a363fd9-d470-4374-b7aa-16a8cf59044e.png) |
+| :-: |
+| Figure 4. Example of a thermal image sequence |
+
+
+
+
 ### 2.5 Point Cloud
+
+> Point cloud data is composed of a numerous collection of points that represent the spatial distribution and surface characteristics of the target under a spatial reference system.
 
 | ![lidar point cloud](https://miro.medium.com/max/1400/1*Gbzp4-b8zXe5JGZmG-uXNw.webp) |
 | :-: |
