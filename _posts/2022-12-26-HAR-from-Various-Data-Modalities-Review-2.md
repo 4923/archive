@@ -218,9 +218,17 @@ depth modality의 성능은 1. depth maps including dynamic (depth images, 2. dy
 
 그러나 **depth 정보를 추정해낼 수 있는 방법 또한 있다.** `depth estimation` 기술이 이미 존재하고 Zhu and Newsam [224] 는 depth estimation을 이용해 RGB video에서 depth 을 추출해낸 바 있다. 
 
-- [paperswithcode:depth estimation](https://paperswithcode.com/task/depth-estimation); 
+- [paperswithcode:depth estimation](https://paperswithcode.com/task/depth-estimation) 
     > Newer methods can directly estimate depth by minimizing the regression loss, or by learning to generate a novel view from a sequence. 
     > The most popular benchmarks are KITTI and NYUv2. Models are typically evaluated according to a RMS metric.
+    - Subtask로는 Monocular Depth Estimation, Stereo Depth Estimation 등이 있다.
+
+- 2022 큰 주목을 받았던 diffusion model 또한 depth estimation을 사용하고 있다. multi-view 이미지들에서 차이점이 되는 point들을 찾고, 이 차이를 "splatting and diffusion"하여 depth map을 생성한다. 
+    - [differentiable diffusion for dense depth estimation from multi-view images (CVPR, 2021)](https://visual.cs.brown.edu/projects/diffdiffdepth-webpage/)
+
+    |![generating diffusion map by splatting and diffusion differences of Multi-View images](https://user-images.githubusercontent.com/60145951/210206872-5b823b30-f566-4043-b0df-4eed1fcff155.png)|
+    |:-:|
+    |generating diffusion map by splatting and diffusion differences of Multi-View images|
 
 
 **limitation**
@@ -263,9 +271,9 @@ $^{1}$ 왜 저해상도라는 말이 언급되는가?
 $^{2}$ 그렇다면 왜 *초*저해상도 이미지를 굳이 사용하는가? 
 - quotation : [Kawashima, Takayuki & Kawanishi, Yasutomo & Ide, Ichiro & Murase, H. & Deguchi, Daisuke & Aizawa, Tomoyoshi & Kawade, Masato. (2017). Action recognition from extremely low-resolution thermal image sequence. 1-6. 10.1109/AVSS.2017.8078497.](https://www.researchgate.net/publication/320649612_Action_recognition_from_extremely_low-resolution_thermal_image_sequence)
 
-| ![Figure 3. Example of images captured at night-time](https://user-images.githubusercontent.com/60145951/210193383-9f232405-bbfb-4758-8ff9-4660b1afe83d.png) |
-| :-: |
-| Figure 3. Example of images captured at night-time |
+| ![Figure 3. Example of images captured at night-time](https://user-images.githubusercontent.com/60145951/210193383-9f232405-bbfb-4758-8ff9-4660b1afe83d.png) | ![Figure 4. Example of a thermal image sequence](https://user-images.githubusercontent.com/60145951/210193861-5a363fd9-d470-4374-b7aa-16a8cf59044e.png) |
+| :-: | :-: |
+| Figure 3. Example of images captured at night-time | Figure 4. Example of a thermal image sequence |
 
 > Therefore, it is difficult to compute feature points and to obtain a clear edge of the human body from it. More-over, the pixel values will be easily affected by factors such as the motion of a person and the distance between the sen-sor and the human body. Therefore, most conventional action recognition methods using a visible-light camera are not suitable for being applied to extremely low-resolution thermal image sequences
 
@@ -283,12 +291,6 @@ low-resolution thermal image sequences는 아래와 같은 특성을 가진다.
     - 또 다른 RGB image approach의 한계였던 센서와의 거리가 thermal image에도 영향을 미치지만 이것은 pixel value에 영향을 미치므로 연산으로 보완할 수 있을 것으로 보인다.
 4. A pixel value changes depending on the occupancy area ratio of the human body in the observation range of a thermopile infrared sensor
     - 결과적으로 센서와의 거리 (view point) 등의 변수도 pixel에 반영이 되므로 적외선 센서의 특징을 고려할 때 기존 접근법의 한계를 극복할 수 있을 것이다.
-
-| ![Figure 4. Example of a thermal image sequence](https://user-images.githubusercontent.com/60145951/210193861-5a363fd9-d470-4374-b7aa-16a8cf59044e.png) |
-| :-: |
-| Figure 4. Example of a thermal image sequence |
-
-
 
 
 ### 2.5 Point Cloud
