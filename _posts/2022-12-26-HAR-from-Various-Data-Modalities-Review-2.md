@@ -297,18 +297,40 @@ low-resolution thermal image sequences는 아래와 같은 특성을 가진다.
 
 > Point cloud data is composed of a numerous collection of points that represent the spatial distribution and surface characteristics of the target under a spatial reference system.
 
+시공간보다는 2D와 3D 모두 풍부한 정보를 얻을 수 있는 데이터 양식으로 2차원에서는 실루엣을, 3차원에서는 대상의 기하학적 정보를 포함하기 때문에 3D HAR에서 확고한 입지를 다지고 있다. 해당 정보를 얻기 위한 방법은 두가지가 있는데 하나는 3D sensor (cf. LiDar, Kinect) 를 사용하는 것이고 다른 하나는 이미지를 기반으로 한 3차원 재구성 (image based 3D reconstruction) 을 수행하는 것이다.
+
 | ![lidar point cloud](https://miro.medium.com/max/1400/1*Gbzp4-b8zXe5JGZmG-uXNw.webp) |
 | :-: |
 | Fig 1. lidar point cloud |
 
-### 2.6 event stream
 
-## Non-visible Modalities
+**Using point cloud sequence by Voxel**
 
-### 2.7 audio
+또한 딥러닝의 발전으로 딥러닝 방법론이 주목받았고, 일반적으로 더 나은 성능을 보였다. 2020년 CVPR에서 “3dv: 3d dynamic voxel for action recognition in depth video,” 발표되어 raw point cloud sequence를 일반적으로 사용할 수 있는 3D 화소 집합 (`voxel sets`) 으로 변환한 바 있다. 
 
-### 2.8 acceleration
+- ?: temporal rank pooling이 뭘까? 선형대수의 그 rank 인가? rank를 어떻게 풀링하는가...? 그걸 하는게 어떤 효과가 있는가...?
+- voxel : 입체 화상을 구성하는 3D 화소로 volume element를 말한다. 데이터 포인트로 구성되는데 이는 하나 또는 여러개의 데이터 조각으로 구성된다. (e.g. 불투명도, 색상 ...) 따라서 Vector (or Tensor) 데이터로 구성되며 다양한 속성을 표현할 수 있다. (e.g. CT에서 재료의 불투명도를 부여하는 Hounsfield scale: 방사선의 밀도를 표현)
 
-### 2.9 radar
 
-### 2.10 WiFi
+    -  pixel : *pic*ture + *el*ement 
+        - raster image를 구성하는 가장 작은 단위 또는 display에서 접근 가능한 모든 점들의 집합을 말하며 대부분 digital display 에서 표현되는 그래픽들의 가장 작은 단위로 사용된다.
+    - voxel : *vo*lume + *el*ement
+        - 3D Computer graphic에서 3차원 상의 일반 격자(regular grid)를 나타내기 위한 단위로, 고유한 state parameter를 가지며 모델 객체에 종속된다.  ([wiki](https://en.wikipedia.org/wiki/Voxel)) 
+            - *regular grid?* : grid는 regular grid와 irregular grid로 구분되는데 일반 격자는 테셀레이션(tesselation)의 n차원 유클리디안 공간으로 규칙적인 간격을 가진다.
+            - *tesselation?* : 테셀레이션은 computer graphic 용어로 장면의 객체를 렌더링하기에 적합하도록 나타내는 다각형 데이터 집합 또는 vertex sets 이다.* 
+    - texel : *tex*ture + *el*ement
+        - texture map의 기본단위로, 이미지를 픽셀로 표현하는 것 처럼 배열을 texture 공간에 나타내어 질감을 표현한다.
+    - resel : *res*olution + *el*ement 
+        - 실제 공간 해상도에서 이미지 또는 부피데이터셋이 차지하는 비율을 나타낸다. resels per pixel, resels per voxel 등으로 표현한다.
+
+이렇듯 voxel에는 다양한 속성을 표현할 수 있으므로 voxel sets 을 3D action information으로 인코딩할 수 있다. 이러한 추상화 과정을 통해 학습한 모델이 `PointNet++`다.
+
+물론, point cloud를 voxel로 변환하는 과정에서 다량의 양자화 오차(quantization errors)가 발생하여 효력면에서 충분히 효과적이지 않은데 이를 해결하기 위해 제안된 모델이 `MeteorNet`이다. 해당 모델은 여러 프레임의 point cloud들을 local 특성으로 합산하는데 이 때 spatio-temporal neighboring point 들을 사용한다. 다시 말해, 모든 point cloud를 voxel로 변환할 때 유실되는 값이 많으므로 국소 범위에서 관계가 있을 것으로 추정되는 주변 값을 변환하고, 또 변환하여 오차를 줄이는 방식을 채용한 셈이다.
+- 양자화 오차 : ADC (Analog to Digital Converter) 에서 입력 아날로그 신호가 출력 디지털 신호로 변환될 때 유실되는 값이다.
+
+이와 반대로 점의 공간적 불규칙성이 정보값에 혼란을 줄 것을 우려한 `PSTNet`은 시공간 정보를 분리하기도 했다. 
+
+**Modeling**
+
+이렇게 재구성된 Point Cloud로 수행해야하는 바는 다른 modality와 동일하게, 시공간을 동시에 고려고 그 특성을 파악하는 작업이다. 3차원 공간의 정보의 누수를 막고 voxel sets을 구해낸 후의 연구는 시간을 모델링하는데 초점을 맞추는데 이는 여타 방법론과 유사하다. RNN 기반의 모델인 LSTM을 적용한다. 눈여겨 볼 점은 4D CNN이 도입되었다는 점인데, 이는 LSTM 도입의 연장선으로 이미 3차원인 공간 모델링에 시간 차원을 추가하는 방식이다.
+- self-supervised modeling이 상대적으로 자주 언급되는데 최신 연구이기 때문인지 point cloud 특성 때문인지 확인이 필요함.
