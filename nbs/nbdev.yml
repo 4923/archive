@@ -1,0 +1,9 @@
+project:
+  output-dir: _docs
+
+website:
+  title: "archive"
+  site-url: "https://4923.github.io/archive"
+  description: "A blog for research"
+  repo-branch: master
+  repo-url: "https://github.com/4923/archive"
