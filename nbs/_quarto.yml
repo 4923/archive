@@ -1,11 +1,36 @@
+# ./nbs/_quarto.yml
+
 project:
   type: website
 
+execute:
+  echo: true
+
+
 format:
   html:
-    theme: cosmo
+    # https://bootswatch.com/sketchy/
+    theme: 
+      light: sketchy  
+      dark: sketchy  
     css: styles.css
     toc: true
+
+    # https://quarto.org/docs/output-formats/html-code.html#code-overflow
+    code-overflow: wrap
+    
+    # https://quarto.org/docs/output-formats/html-code.html#code-tools
+    code-fold: true   
+    code-tools: true
+
+    # https://quarto.org/docs/output-formats/html-code.html#line-numbers
+    code-line-numbers: true
+
+
+# https://quarto.org/docs/output-formats/html-code.html#highlighting
+highlight-style: github
+
+
 
 website:
   twitter-card: true
