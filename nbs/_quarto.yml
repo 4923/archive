@@ -1,11 +1,10 @@
-# ./nbs/_quarto.yml
+# ./git lonbs/_quarto.yml
 
 project:
   type: website
 
 execute:
   echo: true
-
 
 format:
   html:
@@ -15,31 +14,28 @@ format:
       dark: sketchy  
     css: styles.css
     toc: true
-
     # https://quarto.org/docs/output-formats/html-code.html#code-overflow
     code-overflow: wrap
-    
     # https://quarto.org/docs/output-formats/html-code.html#code-tools
     code-fold: true   
     code-tools: true
-
     # https://quarto.org/docs/output-formats/html-code.html#line-numbers
     code-line-numbers: true
-
-
 # https://quarto.org/docs/output-formats/html-code.html#highlighting
 highlight-style: github
 
-
+metadata-files: [nbdev.yml, sidebar.yml]
 
 website:
   twitter-card: true
   open-graph: true
   repo-actions: [issue]
+  
   navbar:
     background: primary
     search: true
-  sidebar:
-    style: floating
 
-metadata-files: [nbdev.yml, sidebar.yml]
+  sidebar:            # https://quarto.org/docs/websites/website-navigation.html#side-navigation 
+    style: floating
+    search: true
+    contents: auto    # https://quarto.org/docs/websites/website-navigation.html#auto-generation
