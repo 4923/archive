@@ -38,7 +38,7 @@ metadata-files: [nbdev.yml, sidebar.yml]
 website:
   sidebar:            # https://quarto.org/docs/websites/website-navigation.html#side-navigation 
     style: floating
-    search: true
+    # search: true
     contents: auto    # https://quarto.org/docs/websites/website-navigation.html#auto-generation
 
   favicon: favicon.ico
