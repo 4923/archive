@@ -9,10 +9,10 @@ execute:
 format:
   html:
     # https://bootswatch.com/sketchy/
-    theme: 
-      light: sketchy  
-      dark: sketchy  
-    css: styles.css
+    theme:
+      light: lux
+      dark: superhero
+    # css: styles.css
     toc: true
     # https://quarto.org/docs/output-formats/html-code.html#code-overflow
     code-overflow: wrap
@@ -20,9 +20,12 @@ format:
     code-fold: true   
     code-tools: true
     # https://quarto.org/docs/output-formats/html-code.html#line-numbers
-    code-line-numbers: true
+    code-line-numbers: false
+    code-block-border-left: true
 # https://quarto.org/docs/output-formats/html-code.html#highlighting
-highlight-style: github
+# Quarto will automatically select the appropriate style based upon the code chunk background color’s darkness. 
+# Users may always opt to specify the full name (e.g. atom-one-dark) to by pass this automatic behavior.
+
 
 metadata-files: [nbdev.yml, sidebar.yml]
 
