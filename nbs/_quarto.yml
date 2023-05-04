@@ -12,10 +12,10 @@ format:
     theme:
       light: lux
       dark: superhero
-    # css: styles.css
+    css: styles.css
     toc: true
     # https://quarto.org/docs/output-formats/html-code.html#code-overflow
-    code-overflow: wrap
+    code-overflow: "wrap"
     # https://quarto.org/docs/output-formats/html-code.html#code-tools
     code-fold: true   
     code-tools: true
@@ -29,7 +29,7 @@ format:
 
 metadata-files: [nbdev.yml, sidebar.yml]
 
-website:
+website:  
   twitter-card: true
   open-graph: true
   repo-actions: [issue]
@@ -42,3 +42,4 @@ website:
     style: floating
     search: true
     contents: auto    # https://quarto.org/docs/websites/website-navigation.html#auto-generation
+  
