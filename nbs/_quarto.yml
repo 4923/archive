@@ -14,12 +14,18 @@ format:
       dark: superhero
     css: styles.css
     toc: true
+    
+    # ====
+    # CODE
+    # ====
+    
     # https://quarto.org/docs/output-formats/html-code.html#code-overflow
-    code-overflow: "wrap"
+    code-overflow: wrap
     # https://quarto.org/docs/output-formats/html-code.html#code-tools
     code-fold: true   
     code-tools: true
     # https://quarto.org/docs/output-formats/html-code.html#line-numbers
+    highlight-style: oblivion
     code-line-numbers: false
     code-block-border-left: true
 # https://quarto.org/docs/output-formats/html-code.html#highlighting
@@ -34,12 +40,11 @@ website:
   open-graph: true
   repo-actions: [issue]
   
-  navbar:
-    background: primary
-    search: true
-
   sidebar:            # https://quarto.org/docs/websites/website-navigation.html#side-navigation 
     style: floating
     search: true
     contents: auto    # https://quarto.org/docs/websites/website-navigation.html#auto-generation
   
+  navbar:
+    background: primary
+    search: true
