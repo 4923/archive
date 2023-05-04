@@ -10,8 +10,8 @@ format:
   html:
     # https://bootswatch.com/sketchy/
     theme:
-      light: lux
-      dark: superhero
+      light: Lux
+      dark: Superhero
     css: styles.css
     toc: true
     
@@ -35,9 +35,7 @@ format:
 
 metadata-files: [nbdev.yml, sidebar.yml]
 
-website:  
-  twitter-card: true
-  open-graph: true
+website:
   repo-actions: [issue]
   
   sidebar:            # https://quarto.org/docs/websites/website-navigation.html#side-navigation 
@@ -48,3 +46,9 @@ website:
   navbar:
     background: primary
     search: true
+
+  favicon: favicon.ico
+  comments: 
+    utterances:
+      repo: 4923/archive
+
