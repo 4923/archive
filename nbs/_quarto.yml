@@ -36,19 +36,14 @@ format:
 metadata-files: [nbdev.yml, sidebar.yml]
 
 website:
-  repo-actions: [issue]
-  
   sidebar:            # https://quarto.org/docs/websites/website-navigation.html#side-navigation 
     style: floating
     search: true
     contents: auto    # https://quarto.org/docs/websites/website-navigation.html#auto-generation
-  
-  navbar:
-    background: primary
-    search: true
 
   favicon: favicon.ico
   comments: 
     utterances:
       repo: 4923/archive
+  repo-actions: [issue]
 
