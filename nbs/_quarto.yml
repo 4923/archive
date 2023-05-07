@@ -10,7 +10,7 @@ format:
   html:
     # https://bootswatch.com/sketchy/
     theme:
-      light: Lux
+      light: cosmo
       dark: Superhero
     css: styles.css
     toc: true
@@ -20,13 +20,13 @@ format:
     # ====
     
     # https://quarto.org/docs/output-formats/html-code.html#code-overflow
-    code-overflow: wrap
+    code-overflow: scroll
     # https://quarto.org/docs/output-formats/html-code.html#code-tools
     code-fold: true   
     code-tools: true
     # https://quarto.org/docs/output-formats/html-code.html#line-numbers
-    highlight-style: oblivion
-    code-line-numbers: false
+    highlight-style: github
+    code-line-numbers: true
     code-block-border-left: true
 # https://quarto.org/docs/output-formats/html-code.html#highlighting
 # Quarto will automatically select the appropriate style based upon the code chunk background color’s darkness. 
