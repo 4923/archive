@@ -8,10 +8,10 @@ execute:
 
 format:
   html:
-    # https://bootswatch.com/sketchy/
+    # https://bootswatch.com/
     theme:
-      light: cosmo
-      dark: Superhero
+      light: sandstone
+      dark: darkly
     css: styles.css
     toc: true
     
@@ -26,8 +26,9 @@ format:
     code-tools: true
     # https://quarto.org/docs/output-formats/html-code.html#line-numbers
     highlight-style: github
-    code-line-numbers: true
-    code-block-border-left: true
+    code-line-numbers: false
+    code-block-background: true
+    code-copy: hover
 # https://quarto.org/docs/output-formats/html-code.html#highlighting
 # Quarto will automatically select the appropriate style based upon the code chunk background color’s darkness. 
 # Users may always opt to specify the full name (e.g. atom-one-dark) to by pass this automatic behavior.

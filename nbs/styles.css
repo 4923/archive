@@ -13,7 +13,7 @@
 .cell-output>pre,
 .cell-output>.sourceCode>pre,
 .cell-output-stdout>pre {
-  margin-left: 0.1rem;
+  margin-left: 0.8rem;
   margin-top: 0;
   background: none;
   border-left: 2px solid lightsalmon;
@@ -27,13 +27,15 @@
 
 .cell-output>.sourceCode {
   background: none;
-  margin-top: 5px;
+  margin-top: 0;
 }
 
 div.description {
   padding-left: 2px;
   padding-top: 5px;
   font-style: italic;
-  font-size: 120%;
+  font-size: 100%;
   opacity: 70%;
 }
+
+/* custom */
