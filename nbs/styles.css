@@ -1,3 +1,7 @@
+* {
+  font-size: 97%;
+}
+
 .cell {
   margin-bottom: 1rem;
 }
@@ -94,6 +98,7 @@ footer {
     display: none;
     padding: auto;
   }
+
 
   header {
     /* quarto-sidebar 의 상단이 비지 않게 하기 위함 */
