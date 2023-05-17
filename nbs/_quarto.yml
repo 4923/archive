@@ -8,6 +8,7 @@ execute:
 
 format:
   html:
+    page-layout: full
     # https://bootswatch.com/
     theme:
       light: sandstone
