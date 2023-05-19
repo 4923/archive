@@ -1,7 +1,5 @@
 tmp/
 _docs/
-# ownership verification
-!nbs/_docs/google04744230aa0cd356.html
 _proc/
 
 *.bak
