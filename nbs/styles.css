@@ -46,32 +46,38 @@ div.description {
 
 /* custom */
 header {
-  padding-bottom: 3rem;
+  padding: 3rem;
 }
 
 footer {
   padding-top: 10rem;
 }
 
-#quarto-sidebar {
+/* #quarto-sidebar {
   padding-left: 10%;
   padding-right: 10%;
-}
-
-#quarto-document-content {
-  position: relative;
-  width: 100%;
-  /* padding-left: 10%; */
-}
-
-/* #quarto-margin-sidebar {
-  padding-left: 10%;
 } */
 
-#page-navigation {
-  padding-top: 3rem;
+#title-block-header {
+  padding: 0%
 }
 
-#quarto-sidebar-glass {
-  padding-bottom: 3rem;
+
+@media (max-width: 750px) {
+
+  /* 상단이 비지 않게 하기 위함 */
+  header {
+    padding: 0;
+  }
+
+  #quarto-sidebar {
+    padding-top: 1.2rem;
+    padding-left: 1.2rem;
+  }
+
+  #quarto-margin-sidebar {
+    display: none;
+  }
+
+
 }
