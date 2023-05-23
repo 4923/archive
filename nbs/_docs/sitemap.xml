@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://4923.github.io/archive/index.html</loc>
-    <lastmod>2023-10-10T11:49:58.016Z</lastmod>
+    <lastmod>2023-10-10T19:16:22.212Z</lastmod>
   </url>
   <url>
     <loc>https://4923.github.io/archive/techniques/zero_shot.html</loc>
@@ -10,7 +10,7 @@
   </url>
   <url>
     <loc>https://4923.github.io/archive/NLP/LLM.html</loc>
-    <lastmod>2023-10-10T14:04:16.129Z</lastmod>
+    <lastmod>2023-10-10T19:54:38.999Z</lastmod>
   </url>
   <url>
     <loc>https://4923.github.io/archive/NLP/huggingface/pretrained.html</loc>
@@ -30,15 +30,15 @@
   </url>
   <url>
     <loc>https://4923.github.io/archive/NLP/huggingface/PEFT.html</loc>
-    <lastmod>2023-10-10T18:50:41.139Z</lastmod>
+    <lastmod>2023-10-10T19:57:41.613Z</lastmod>
   </url>
   <url>
     <loc>https://4923.github.io/archive/NLP/LoRA.html</loc>
-    <lastmod>2023-10-10T19:12:42.955Z</lastmod>
+    <lastmod>2023-10-10T19:31:35.910Z</lastmod>
   </url>
   <url>
     <loc>https://4923.github.io/archive/NLP/huggingface/tips.html</loc>
-    <lastmod>2023-10-10T18:55:30.332Z</lastmod>
+    <lastmod>2023-10-10T19:21:00.396Z</lastmod>
   </url>
   <url>
     <loc>https://4923.github.io/archive/NLP/encoding.html</loc>
@@ -46,10 +46,14 @@
   </url>
   <url>
     <loc>https://4923.github.io/archive/NLP/ptuning.html</loc>
-    <lastmod>2023-10-10T19:03:15.262Z</lastmod>
+    <lastmod>2023-10-10T19:31:41.090Z</lastmod>
   </url>
   <url>
     <loc>https://4923.github.io/archive/HAR/modalities.html</loc>
     <lastmod>2023-10-10T19:11:13.647Z</lastmod>
+  </url>
+  <url>
+    <loc>https://4923.github.io/archive/NLP/lora.html</loc>
+    <lastmod>2023-10-10T19:35:07.512Z</lastmod>
   </url>
 </urlset>
