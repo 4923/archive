@@ -1,59 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://4923.github.io/archive/index.html</loc>
-    <lastmod>2023-10-10T19:16:22.212Z</lastmod>
-  </url>
-  <url>
-    <loc>https://4923.github.io/archive/techniques/zero_shot.html</loc>
-    <lastmod>2023-10-10T12:43:25.590Z</lastmod>
-  </url>
-  <url>
-    <loc>https://4923.github.io/archive/NLP/LLM.html</loc>
-    <lastmod>2023-10-10T19:54:38.999Z</lastmod>
-  </url>
-  <url>
-    <loc>https://4923.github.io/archive/NLP/huggingface/pretrained.html</loc>
-    <lastmod>2023-10-10T14:38:55.349Z</lastmod>
-  </url>
-  <url>
-    <loc>https://4923.github.io/archive/NLP/LLM_fine_tuning.html</loc>
-    <lastmod>2023-10-10T14:31:35.086Z</lastmod>
-  </url>
-  <url>
-    <loc>https://4923.github.io/archive/NLP/huggingface/LLM_fine_tuning.html</loc>
-    <lastmod>2023-10-10T17:06:07.273Z</lastmod>
-  </url>
-  <url>
-    <loc>https://4923.github.io/archive/NLP/PEFT.html</loc>
-    <lastmod>2023-10-10T18:45:01.114Z</lastmod>
-  </url>
-  <url>
-    <loc>https://4923.github.io/archive/NLP/huggingface/PEFT.html</loc>
-    <lastmod>2023-10-10T19:57:41.613Z</lastmod>
-  </url>
-  <url>
-    <loc>https://4923.github.io/archive/NLP/LoRA.html</loc>
-    <lastmod>2023-10-10T19:31:35.910Z</lastmod>
-  </url>
-  <url>
-    <loc>https://4923.github.io/archive/NLP/huggingface/tips.html</loc>
-    <lastmod>2023-10-10T19:21:00.396Z</lastmod>
-  </url>
-  <url>
-    <loc>https://4923.github.io/archive/NLP/encoding.html</loc>
-    <lastmod>2023-10-10T19:12:58.554Z</lastmod>
+    <loc>https://4923.github.io/archive/etc/blogging.html</loc>
+    <lastmod>2023-10-10T20:04:33.705Z</lastmod>
   </url>
   <url>
     <loc>https://4923.github.io/archive/NLP/ptuning.html</loc>
-    <lastmod>2023-10-10T19:31:41.090Z</lastmod>
+    <lastmod>2023-10-10T20:04:34.084Z</lastmod>
+  </url>
+  <url>
+    <loc>https://4923.github.io/archive/NLP/LLM.html</loc>
+    <lastmod>2023-10-10T20:04:34.425Z</lastmod>
+  </url>
+  <url>
+    <loc>https://4923.github.io/archive/NLP/LoRA.html</loc>
+    <lastmod>2023-10-10T20:04:35.044Z</lastmod>
+  </url>
+  <url>
+    <loc>https://4923.github.io/archive/NLP/instruction_tuning.html</loc>
+    <lastmod>2023-10-10T20:04:35.365Z</lastmod>
+  </url>
+  <url>
+    <loc>https://4923.github.io/archive/NLP/huggingface/PEFT.html</loc>
+    <lastmod>2023-10-10T20:04:35.984Z</lastmod>
+  </url>
+  <url>
+    <loc>https://4923.github.io/archive/NLP/huggingface/tips.html</loc>
+    <lastmod>2023-10-10T20:04:36.314Z</lastmod>
+  </url>
+  <url>
+    <loc>https://4923.github.io/archive/NLP/encoding.html</loc>
+    <lastmod>2023-10-10T20:04:36.974Z</lastmod>
   </url>
   <url>
     <loc>https://4923.github.io/archive/HAR/modalities.html</loc>
-    <lastmod>2023-10-10T19:11:13.647Z</lastmod>
+    <lastmod>2023-10-10T20:04:38.264Z</lastmod>
   </url>
   <url>
-    <loc>https://4923.github.io/archive/NLP/lora.html</loc>
-    <lastmod>2023-10-10T19:35:07.512Z</lastmod>
+    <loc>https://4923.github.io/archive/HAR/mmlab.html</loc>
+    <lastmod>2023-10-10T20:04:38.944Z</lastmod>
+  </url>
+  <url>
+    <loc>https://4923.github.io/archive/index.html</loc>
+    <lastmod>2023-10-10T20:04:39.478Z</lastmod>
+  </url>
+  <url>
+    <loc>https://4923.github.io/archive/techniques/imbalanced.html</loc>
+    <lastmod>2023-10-10T20:04:39.882Z</lastmod>
+  </url>
+  <url>
+    <loc>https://4923.github.io/archive/techniques/freezing.html</loc>
+    <lastmod>2023-10-10T20:04:40.217Z</lastmod>
+  </url>
+  <url>
+    <loc>https://4923.github.io/archive/techniques/zero_shot.html</loc>
+    <lastmod>2023-10-10T20:04:40.621Z</lastmod>
   </url>
 </urlset>
