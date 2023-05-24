@@ -49,8 +49,12 @@ header {
   padding: 3rem;
 }
 
+#quarto-header {
+  padding: 1.5rem;
+}
+
 footer {
-  padding-top: 10rem;
+  padding-top: 3rem;
 }
 
 /* #quarto-sidebar {
@@ -69,6 +73,15 @@ footer {
   header {
     padding: 0;
   }
+
+  #quarto-document-content {
+    padding-top: 1rem;
+  }
+
+  #quarto-header {
+    padding: 0rem;
+  }
+
 
   #quarto-sidebar {
     padding-top: 1.2rem;

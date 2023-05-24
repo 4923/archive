@@ -47,6 +47,7 @@ website:
     style: floating
     search: true
     contents: auto    # https://quarto.org/docs/websites/website-navigation.html#auto-generation
+    navbar: false # Hides the navbar on this page
 
   favicon: favicon.ico
   comments: 
@@ -55,7 +56,6 @@ website:
   repo-actions: [issue]
 
   page-navigation: true
-  back-to-top-navigation: true
 
   page-footer: 
     left: "Copyright 2023, YeEun Hong" 
