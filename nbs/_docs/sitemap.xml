@@ -2,58 +2,86 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://4923.github.io/archive/etc/blogging.html</loc>
-    <lastmod>2023-10-10T20:04:33.705Z</lastmod>
+    <lastmod>2023-11-12T10:12:13.449Z</lastmod>
   </url>
   <url>
     <loc>https://4923.github.io/archive/NLP/ptuning.html</loc>
-    <lastmod>2023-10-10T20:04:34.084Z</lastmod>
+    <lastmod>2023-11-11T07:39:36.917Z</lastmod>
   </url>
   <url>
     <loc>https://4923.github.io/archive/NLP/LLM.html</loc>
-    <lastmod>2023-10-10T20:04:34.425Z</lastmod>
+    <lastmod>2023-11-11T07:39:31.875Z</lastmod>
   </url>
   <url>
     <loc>https://4923.github.io/archive/NLP/LoRA.html</loc>
-    <lastmod>2023-10-10T20:04:35.044Z</lastmod>
+    <lastmod>2023-11-11T07:39:34.355Z</lastmod>
   </url>
   <url>
     <loc>https://4923.github.io/archive/NLP/instruction_tuning.html</loc>
-    <lastmod>2023-10-10T20:04:35.365Z</lastmod>
+    <lastmod>2023-11-11T06:51:46.811Z</lastmod>
   </url>
   <url>
     <loc>https://4923.github.io/archive/NLP/huggingface/PEFT.html</loc>
-    <lastmod>2023-10-10T20:04:35.984Z</lastmod>
+    <lastmod>2023-11-11T07:39:39.718Z</lastmod>
   </url>
   <url>
     <loc>https://4923.github.io/archive/NLP/huggingface/tips.html</loc>
-    <lastmod>2023-10-10T20:20:03.246Z</lastmod>
+    <lastmod>2023-11-11T07:39:47.145Z</lastmod>
   </url>
   <url>
     <loc>https://4923.github.io/archive/NLP/encoding.html</loc>
-    <lastmod>2023-10-10T20:04:36.974Z</lastmod>
+    <lastmod>2023-11-11T06:51:51.930Z</lastmod>
   </url>
   <url>
     <loc>https://4923.github.io/archive/HAR/modalities.html</loc>
-    <lastmod>2023-10-10T20:04:38.264Z</lastmod>
+    <lastmod>2023-11-11T07:38:57.853Z</lastmod>
   </url>
   <url>
     <loc>https://4923.github.io/archive/HAR/mmlab.html</loc>
-    <lastmod>2023-10-10T20:04:38.944Z</lastmod>
+    <lastmod>2023-10-10T20:39:35.897Z</lastmod>
   </url>
   <url>
     <loc>https://4923.github.io/archive/index.html</loc>
-    <lastmod>2023-10-10T20:04:39.478Z</lastmod>
+    <lastmod>2023-11-12T11:21:00.099Z</lastmod>
   </url>
   <url>
     <loc>https://4923.github.io/archive/techniques/imbalanced.html</loc>
-    <lastmod>2023-10-10T20:04:39.882Z</lastmod>
+    <lastmod>2023-10-10T20:39:36.821Z</lastmod>
   </url>
   <url>
     <loc>https://4923.github.io/archive/techniques/freezing.html</loc>
-    <lastmod>2023-10-10T20:04:40.217Z</lastmod>
+    <lastmod>2023-10-10T20:39:37.117Z</lastmod>
   </url>
   <url>
     <loc>https://4923.github.io/archive/techniques/zero_shot.html</loc>
-    <lastmod>2023-10-10T20:04:40.621Z</lastmod>
+    <lastmod>2023-10-10T20:39:37.504Z</lastmod>
+  </url>
+  <url>
+    <loc>https://4923.github.io/archive/papers/231007820.html</loc>
+    <lastmod>2023-11-06T06:49:26.382Z</lastmod>
+  </url>
+  <url>
+    <loc>https://4923.github.io/archive/papers/2310.07820.html</loc>
+    <lastmod>2023-11-12T08:26:09.407Z</lastmod>
+  </url>
+  <url>
+    <loc>https://4923.github.io/archive/papers/2106.09685.html</loc>
+    <lastmod>2023-11-11T11:15:13.795Z</lastmod>
+  </url>
+  <url>
+    <loc>https://4923.github.io/archive/Graph/GNN101.html</loc>
+    <lastmod>2023-11-12T11:16:41.239Z</lastmod>
+  </url>
+  <url>
+    <loc>https://4923.github.io/archive/papers/2303.11638.html</loc>
+    <lastmod>2023-11-11T13:02:28.129Z</lastmod>
+  </url>
+  <url>
+    <loc>https://4923.github.io/archive/cv.html</loc>
+    <lastmod>2023-11-12T11:16:37.298Z</lastmod>
+  </url>
+  <url>
+    <loc>https://4923.github.io/archive/CV.html</loc>
+    <lastmod>2023-11-12T11:20:10.473Z</lastmod>
   </url>
 </urlset>

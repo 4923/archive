@@ -38,6 +38,7 @@ format:
 metadata-files: [nbdev.yml, sidebar.yml]
 
 website:
+  reader-mode: false
   # navbar:
   #   background: primary
   #   search: true
@@ -46,8 +47,8 @@ website:
   sidebar:            # https://quarto.org/docs/websites/website-navigation.html#side-navigation 
     style: floating
     search: true
-    contents: auto    # https://quarto.org/docs/websites/website-navigation.html#auto-generation
     navbar: false # Hides the navbar on this page
+    contents: auto    # https://quarto.org/docs/websites/website-navigation.html#auto-generation
 
   favicon: favicon.ico
   comments: 
