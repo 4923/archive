@@ -49,6 +49,11 @@ website:
     search: true
     navbar: false # Hides the navbar on this page
     contents: auto    # https://quarto.org/docs/websites/website-navigation.html#auto-generation
+    tools:
+      - icon: person-circle
+        href: https://4923.github.io/archive/CV.html
+      - icon: github
+        href: https://github.com/4923
 
   favicon: favicon.ico
   comments: 
@@ -59,7 +64,5 @@ website:
   page-navigation: true
 
   page-footer: 
-    left: "Copyright 2023, YeEun Hong" 
-    right: 
-      - icon: github
-        href: https://github.com/4923
+    center: "Copyright 2023, YeEun Hong" 
+    

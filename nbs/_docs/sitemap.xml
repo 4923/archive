@@ -1,87 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://4923.github.io/archive/etc/blogging.html</loc>
-    <lastmod>2023-11-12T10:12:13.449Z</lastmod>
-  </url>
-  <url>
-    <loc>https://4923.github.io/archive/NLP/ptuning.html</loc>
-    <lastmod>2023-11-11T07:39:36.917Z</lastmod>
-  </url>
-  <url>
-    <loc>https://4923.github.io/archive/NLP/LLM.html</loc>
-    <lastmod>2023-11-11T07:39:31.875Z</lastmod>
-  </url>
-  <url>
-    <loc>https://4923.github.io/archive/NLP/LoRA.html</loc>
-    <lastmod>2023-11-11T07:39:34.355Z</lastmod>
-  </url>
-  <url>
-    <loc>https://4923.github.io/archive/NLP/instruction_tuning.html</loc>
-    <lastmod>2023-11-11T06:51:46.811Z</lastmod>
-  </url>
-  <url>
-    <loc>https://4923.github.io/archive/NLP/huggingface/PEFT.html</loc>
-    <lastmod>2023-11-11T07:39:39.718Z</lastmod>
-  </url>
-  <url>
-    <loc>https://4923.github.io/archive/NLP/huggingface/tips.html</loc>
-    <lastmod>2023-11-11T07:39:47.145Z</lastmod>
-  </url>
-  <url>
-    <loc>https://4923.github.io/archive/NLP/encoding.html</loc>
-    <lastmod>2023-11-11T06:51:51.930Z</lastmod>
-  </url>
-  <url>
-    <loc>https://4923.github.io/archive/HAR/modalities.html</loc>
-    <lastmod>2023-11-11T07:38:57.853Z</lastmod>
-  </url>
-  <url>
-    <loc>https://4923.github.io/archive/HAR/mmlab.html</loc>
-    <lastmod>2023-10-10T20:39:35.897Z</lastmod>
-  </url>
-  <url>
-    <loc>https://4923.github.io/archive/index.html</loc>
-    <lastmod>2023-11-12T11:28:20.986Z</lastmod>
-  </url>
-  <url>
-    <loc>https://4923.github.io/archive/techniques/imbalanced.html</loc>
-    <lastmod>2023-10-10T20:39:36.821Z</lastmod>
-  </url>
-  <url>
-    <loc>https://4923.github.io/archive/techniques/freezing.html</loc>
-    <lastmod>2023-11-12T11:27:10.704Z</lastmod>
-  </url>
-  <url>
-    <loc>https://4923.github.io/archive/techniques/zero_shot.html</loc>
-    <lastmod>2023-10-10T20:39:37.504Z</lastmod>
-  </url>
-  <url>
-    <loc>https://4923.github.io/archive/papers/231007820.html</loc>
-    <lastmod>2023-11-06T06:49:26.382Z</lastmod>
-  </url>
-  <url>
-    <loc>https://4923.github.io/archive/papers/2310.07820.html</loc>
-    <lastmod>2023-11-12T08:26:09.407Z</lastmod>
+    <loc>https://4923.github.io/archive/CV.html</loc>
+    <lastmod>2023-11-12T11:54:36.771Z</lastmod>
   </url>
   <url>
     <loc>https://4923.github.io/archive/papers/2106.09685.html</loc>
-    <lastmod>2023-11-11T11:15:13.795Z</lastmod>
-  </url>
-  <url>
-    <loc>https://4923.github.io/archive/Graph/GNN101.html</loc>
-    <lastmod>2023-11-12T11:16:41.239Z</lastmod>
+    <lastmod>2023-11-12T12:05:24.349Z</lastmod>
   </url>
   <url>
     <loc>https://4923.github.io/archive/papers/2303.11638.html</loc>
-    <lastmod>2023-11-11T13:02:28.129Z</lastmod>
+    <lastmod>2023-11-12T11:50:51.903Z</lastmod>
   </url>
   <url>
-    <loc>https://4923.github.io/archive/cv.html</loc>
-    <lastmod>2023-11-12T11:16:37.298Z</lastmod>
+    <loc>https://4923.github.io/archive/papers/2310.07820.html</loc>
+    <lastmod>2023-11-12T12:02:11.242Z</lastmod>
   </url>
   <url>
-    <loc>https://4923.github.io/archive/CV.html</loc>
-    <lastmod>2023-11-12T11:24:18.607Z</lastmod>
+    <loc>https://4923.github.io/archive/Graph/GNN101.html</loc>
+    <lastmod>2023-11-12T11:50:52.746Z</lastmod>
+  </url>
+  <url>
+    <loc>https://4923.github.io/archive/etc/blogging.html</loc>
+    <lastmod>2023-11-12T12:05:05.806Z</lastmod>
+  </url>
+  <url>
+    <loc>https://4923.github.io/archive/NLP/ptuning.html</loc>
+    <lastmod>2023-11-12T11:50:53.764Z</lastmod>
+  </url>
+  <url>
+    <loc>https://4923.github.io/archive/NLP/LoRA.html</loc>
+    <lastmod>2023-11-12T12:05:28.214Z</lastmod>
+  </url>
+  <url>
+    <loc>https://4923.github.io/archive/NLP/instruction_tuning.html</loc>
+    <lastmod>2023-11-12T12:05:03.056Z</lastmod>
+  </url>
+  <url>
+    <loc>https://4923.github.io/archive/NLP/huggingface/PEFT.html</loc>
+    <lastmod>2023-11-12T11:50:55.237Z</lastmod>
+  </url>
+  <url>
+    <loc>https://4923.github.io/archive/NLP/huggingface/tips.html</loc>
+    <lastmod>2023-11-12T11:50:55.538Z</lastmod>
+  </url>
+  <url>
+    <loc>https://4923.github.io/archive/NLP/encoding.html</loc>
+    <lastmod>2023-11-12T11:50:56.163Z</lastmod>
+  </url>
+  <url>
+    <loc>https://4923.github.io/archive/HAR/modalities.html</loc>
+    <lastmod>2023-11-12T11:50:57.395Z</lastmod>
+  </url>
+  <url>
+    <loc>https://4923.github.io/archive/HAR/mmlab.html</loc>
+    <lastmod>2023-11-12T11:50:58.021Z</lastmod>
+  </url>
+  <url>
+    <loc>https://4923.github.io/archive/index.html</loc>
+    <lastmod>2023-11-12T12:07:03.662Z</lastmod>
+  </url>
+  <url>
+    <loc>https://4923.github.io/archive/techniques/imbalanced.html</loc>
+    <lastmod>2023-11-12T12:05:15.204Z</lastmod>
+  </url>
+  <url>
+    <loc>https://4923.github.io/archive/techniques/freezing.html</loc>
+    <lastmod>2023-11-12T12:05:21.444Z</lastmod>
+  </url>
+  <url>
+    <loc>https://4923.github.io/archive/techniques/zero_shot.html</loc>
+    <lastmod>2023-11-12T11:50:59.618Z</lastmod>
   </url>
 </urlset>
