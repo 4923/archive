@@ -11,14 +11,10 @@ format:
     # page-layout: full
     # https://bootswatch.com/
     theme:
-      light: sandstone
+      light: flatly
       dark: darkly
     css: styles.css
-    toc: true
-    
-    # ====
-    # CODE
-    # ====
+    # toc: true
     
     # https://quarto.org/docs/output-formats/html-code.html#code-overflow
     code-overflow: scroll
@@ -38,17 +34,17 @@ format:
 metadata-files: [nbdev.yml, sidebar.yml]
 
 website:
-  reader-mode: false
-  # navbar:
-  #   background: primary
-  #   search: true
   google-analytics: "G-SRFKSE5H0V"
-
-  sidebar:            # https://quarto.org/docs/websites/website-navigation.html#side-navigation 
-    style: floating
+  reader-mode: false
+  navbar:
+    background: primary
     search: true
-    navbar: false # Hides the navbar on this page
-    contents: auto    # https://quarto.org/docs/websites/website-navigation.html#auto-generation
+
+  # sidebar:            # https://quarto.org/docs/websites/website-navigation.html#side-navigation 
+  #   style: floating
+  #   # contents: auto    # https://quarto.org/docs/websites/website-navigation.html#auto-generation
+  #   search: true
+  #   navbar: false # Hides the navbar on this page
     tools:
       - icon: person-circle
         href: https://4923.github.io/archive/CV.html
@@ -59,10 +55,8 @@ website:
   comments: 
     utterances:
       repo: 4923/archive
+
   repo-actions: [issue]
 
   page-navigation: true
-
-  page-footer: 
-    center: "Copyright 2023, YeEun Hong" 
-    
+  
