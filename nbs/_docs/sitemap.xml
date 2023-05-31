@@ -6,15 +6,15 @@
   </url>
   <url>
     <loc>https://4923.github.io/archive/papers/2106.09685.html</loc>
-    <lastmod>2023-11-12T12:05:24.349Z</lastmod>
+    <lastmod>2023-11-14T02:50:01.519Z</lastmod>
   </url>
   <url>
     <loc>https://4923.github.io/archive/papers/2303.11638.html</loc>
-    <lastmod>2023-11-12T11:50:51.903Z</lastmod>
+    <lastmod>2023-11-14T02:28:54.700Z</lastmod>
   </url>
   <url>
     <loc>https://4923.github.io/archive/papers/2310.07820.html</loc>
-    <lastmod>2023-11-12T12:02:11.242Z</lastmod>
+    <lastmod>2023-11-14T02:50:06.544Z</lastmod>
   </url>
   <url>
     <loc>https://4923.github.io/archive/Graph/GNN101.html</loc>
@@ -42,7 +42,7 @@
   </url>
   <url>
     <loc>https://4923.github.io/archive/NLP/huggingface/tips.html</loc>
-    <lastmod>2023-11-12T11:50:55.538Z</lastmod>
+    <lastmod>2023-11-13T00:57:24.052Z</lastmod>
   </url>
   <url>
     <loc>https://4923.github.io/archive/NLP/encoding.html</loc>
@@ -58,7 +58,7 @@
   </url>
   <url>
     <loc>https://4923.github.io/archive/index.html</loc>
-    <lastmod>2023-11-12T12:44:36.057Z</lastmod>
+    <lastmod>2023-11-14T02:49:40.489Z</lastmod>
   </url>
   <url>
     <loc>https://4923.github.io/archive/techniques/imbalanced.html</loc>
@@ -71,5 +71,9 @@
   <url>
     <loc>https://4923.github.io/archive/techniques/zero_shot.html</loc>
     <lastmod>2023-11-12T11:50:59.618Z</lastmod>
+  </url>
+  <url>
+    <loc>https://4923.github.io/archive/HAR/ntu-skl-plotting.html</loc>
+    <lastmod>2023-11-16T03:34:43.891Z</lastmod>
   </url>
 </urlset>
