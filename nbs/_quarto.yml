@@ -12,7 +12,7 @@ format:
     # https://bootswatch.com/
     theme:
       light: flatly
-      dark: darkly
+      # dark: darkly
     css: styles.css
     # toc: true
     
@@ -39,17 +39,17 @@ website:
   navbar:
     background: primary
     search: true
+    tools:
+      - icon: person-circle
+        href: https://4923.github.io/archive/CV.html
+      - icon: github
+        href: https://github.com/4923
 
   # sidebar:            # https://quarto.org/docs/websites/website-navigation.html#side-navigation 
   #   style: floating
   #   # contents: auto    # https://quarto.org/docs/websites/website-navigation.html#auto-generation
   #   search: true
   #   navbar: false # Hides the navbar on this page
-    tools:
-      - icon: person-circle
-        href: https://4923.github.io/archive/CV.html
-      - icon: github
-        href: https://github.com/4923
 
   favicon: favicon.ico
   comments: 
