@@ -301,9 +301,9 @@ window.document.addEventListener("DOMContentLoaded", function (_event) {
                 toggleIcon
               );
             }
-            // toggleTitle.classList.add("zindex-over-content");
-            // toggleTitle.classList.add("quarto-sidebar-toggle-title");
-            // toggleContainer.append(toggleTitle);
+            toggleTitle.classList.add("zindex-over-content");
+            toggleTitle.classList.add("quarto-sidebar-toggle-title");
+            toggleContainer.append(toggleTitle);
 
             const toggleContents = window.document.createElement("div");
             toggleContents.classList = el.classList;

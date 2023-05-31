@@ -31,7 +31,7 @@ format:
 # Users may always opt to specify the full name (e.g. atom-one-dark) to by pass this automatic behavior.
 
 
-metadata-files: [nbdev.yml, sidebar.yml]
+metadata-files: [nbdev.yml] #, sidebar.yml]
 
 website:
   google-analytics: "G-SRFKSE5H0V"
