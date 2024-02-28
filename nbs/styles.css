@@ -37,6 +37,7 @@
 div.description {
   padding-left: 2px;
   padding-top: 5px;
+  padding-bottom: 15px;
   font-style: italic;
   font-size: 100%;
   opacity: 70%;
