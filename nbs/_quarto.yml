@@ -14,7 +14,12 @@ format:
       light: flatly
       # dark: darkly
     css: styles.css
-    # toc: true
+    toc: true
+    grid:
+      sidebar-width: 300px
+      body-width: 900px
+      margin-width: 200px
+      gutter-width: 0rem
     
     # https://quarto.org/docs/output-formats/html-code.html#code-overflow
     code-overflow: scroll
@@ -47,12 +52,13 @@ website:
       - icon: github
         href: https://github.com/4923
 
-  # sidebar:            # https://quarto.org/docs/websites/website-navigation.html#side-navigation 
-  #   contents: auto    # https://quarto.org/docs/websites/website-navigation.html#auto-generation
-  #   style: floating
-  #   border: false
-  #   search: true
-  #   navbar: false # Hides the navbar on this page
+  sidebar:            # https://quarto.org/docs/websites/website-navigation.html#side-navigation 
+    contents: auto    # https://quarto.org/docs/websites/website-navigation.html#auto-generation
+    style: floating
+    border: true
+    collapse-level: 1
+    # search: true
+    # navbar: false # Hides the navbar on this page
 
   favicon: favicon.ico
   # comments: 

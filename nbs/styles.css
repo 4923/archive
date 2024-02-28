@@ -1,5 +1,5 @@
 * {
-  font-size: 1rem;
+  font-size: .9rem;
   font-family: "Noto Sans", "Noto Sans KR";
 }
 
@@ -68,6 +68,7 @@ custom
 
 .navbar-title {
   font-size: 1.5rem;
+  margin-left: 3rem;
 }
 
 #quarto-content>* {
@@ -124,16 +125,37 @@ custom
   opacity: 50%;
 }
 
+/* sidebar */
+
+.sidebar.sidebar-navigation>* {
+  padding-top: 0rem;
+}
+
+.sidebar-item {
+  /* font-weight: lighter; */
+  margin-top: .4rem;
+  margin-bottom: .4rem;
+
+}
+
+
 /* footer */
 footer {
-  padding-top: 3rem;
+  margin-top: 3rem;
+}
+
+.page-navigation {
+  margin-top: 5rem;
+  margin-bottom: 5rem;
 }
 
 
 
 
 
-/* font */
+/* 
+font
+*/
 
 .roboto-thin {
   font-family: "Roboto", sans-serif;
