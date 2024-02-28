@@ -9,6 +9,17 @@ a {
   font-size: 0.8rem;
 }
 
+/* 문단 간격 커스텀 */
+p {
+  margin-top: .5rem;
+  margin-bottom: .5rem;
+}
+
+li {
+  margin-top: .3rem;
+  margin-bottom: .3rem;
+}
+
 .cell {
   margin-bottom: 0rem;
 }
@@ -48,9 +59,7 @@ div.description {
 
 
 /* 
-
 custom 
-
 */
 
 #quarto-content {
@@ -109,6 +118,11 @@ custom
 
 /* listing: grid 활성화 부분 끝 */
 
+
+/* caption */
+.column-margin {
+  opacity: 50%;
+}
 
 /* footer */
 footer {

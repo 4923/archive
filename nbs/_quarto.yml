@@ -8,7 +8,7 @@ execute:
 
 format:
   html:
-    page-layout: full
+    page-layout: article
     # https://bootswatch.com/
     theme:
       light: flatly
