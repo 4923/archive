@@ -8,7 +8,7 @@ execute:
 
 format:
   html:
-    # page-layout: full
+    page-layout: full
     # https://bootswatch.com/
     theme:
       light: flatly
@@ -36,9 +36,11 @@ metadata-files: [nbdev.yml] #, sidebar.yml]
 website:
   google-analytics: "G-SRFKSE5H0V"
   reader-mode: false
+  # back-to-top-navigation: true
+
   navbar:
     background: primary
-    search: true
+    # search: true
     tools:
       - icon: person-circle
         href: https://4923.github.io/archive/CV.html
@@ -46,15 +48,16 @@ website:
         href: https://github.com/4923
 
   # sidebar:            # https://quarto.org/docs/websites/website-navigation.html#side-navigation 
+  #   contents: auto    # https://quarto.org/docs/websites/website-navigation.html#auto-generation
   #   style: floating
-  #   # contents: auto    # https://quarto.org/docs/websites/website-navigation.html#auto-generation
+  #   border: false
   #   search: true
   #   navbar: false # Hides the navbar on this page
 
   favicon: favicon.ico
-  comments: 
-    utterances:
-      repo: 4923/archive
+  # comments: 
+  #   utterances:
+  #     repo: 4923/archive
 
   repo-actions: [issue]
 

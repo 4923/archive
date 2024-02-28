@@ -1,9 +1,16 @@
 * {
-  font-size: 96%;
+  font-size: 1rem;
+  font-family: "Noto Sans", "Noto Sans KR";
+}
+
+
+/* 커스텀이지만 필수임: font-size는 subtitle에 맞춰서 변경할 것 */
+a {
+  font-size: 0.8rem;
 }
 
 .cell {
-  margin-bottom: 1rem;
+  margin-bottom: 0rem;
 }
 
 .cell>.sourceCode {
@@ -35,57 +42,153 @@
 }
 
 div.description {
-  padding-left: 2px;
-  padding-top: 5px;
-  padding-bottom: 15px;
-  font-style: italic;
-  font-size: 100%;
   opacity: 70%;
 }
 
 
 
-/* custom */
+/* 
+
+custom 
+
+*/
+
+#quarto-content {
+  padding-top: 3rem;
+}
+
+.navbar-title {
+  font-size: 1.5rem;
+}
+
+#quarto-content>* {
+  padding-top: 0px;
+  /* 14px에서 우측 워드 클라우드와 높이 맞추기 위해 제거 */
+}
+
+/* listing: grid 일때만 활성화 */
+
+.page-columns>.content {
+  margin-left: 3rem;
+  margin-right: 3rem;
+}
+
+.listing-pagination {
+  padding-top: 2rem;
+}
+
+.listing-categories {
+  font-size: 0.8rem;
+  padding-top: 0.3rem;
+}
+
+.quarto-grid-item>.post-contents {
+  font-size: 0.8rem;
+}
+
+.text-muted {
+  padding-top: 0.3rem;
+}
+
+.card-title {
+  font-weight: bold;
+  letter-spacing: -0.08rem;
+  padding-bottom: 0.3rem;
+}
+
+.card-subtitle {
+  font-size: 0.8rem;
+  letter-spacing: -0.05rem;
+  font-weight: normal;
+}
+
+.card-text:last-child {
+  font-size: 0.8rem;
+  font-weight: lighter;
+}
+
+/* listing: grid 활성화 부분 끝 */
 
 
+/* footer */
 footer {
   padding-top: 3rem;
 }
 
-/* #quarto-sidebar {
-  padding-left: 10%;
-  padding-right: 10%;
-} */
 
-#title-block-header {
-  padding: 0%
+
+
+
+/* font */
+
+.roboto-thin {
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
+  font-style: normal;
 }
 
+.roboto-light {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
 
-@media (max-width: 750px) {
+.roboto-regular {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
 
-  /* 상단이 비지 않게 하기 위함 */
-  header {
-    padding: 0;
-  }
+.roboto-medium {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
 
-  #quarto-document-content {
-    padding-top: 1rem;
-  }
+.roboto-bold {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
 
-  #quarto-header {
-    padding: 0rem;
-  }
+.roboto-black {
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+}
 
+.roboto-thin-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
+  font-style: italic;
+}
 
-  #quarto-sidebar {
-    padding-top: 1.2rem;
-    padding-left: 1.2rem;
-  }
+.roboto-light-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-style: italic;
+}
 
-  #quarto-margin-sidebar {
-    display: none;
-  }
+.roboto-regular-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
 
+.roboto-medium-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-style: italic;
+}
 
+.roboto-bold-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.roboto-black-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
+  font-style: italic;
 }
