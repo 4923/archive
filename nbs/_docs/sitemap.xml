@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://4923.github.io/archive/papers/2106.09685.html</loc>
-    <lastmod>2024-02-28T17:30:49.921Z</lastmod>
+    <lastmod>2024-02-28T18:33:38.826Z</lastmod>
   </url>
   <url>
     <loc>https://4923.github.io/archive/papers/2303.11638.html</loc>
@@ -10,19 +10,19 @@
   </url>
   <url>
     <loc>https://4923.github.io/archive/papers/2310.07820.html</loc>
-    <lastmod>2024-02-28T16:42:37.102Z</lastmod>
+    <lastmod>2024-02-28T18:33:39.280Z</lastmod>
   </url>
   <url>
     <loc>https://4923.github.io/archive/Graph/GNN101.html</loc>
-    <lastmod>2024-02-28T17:31:44.880Z</lastmod>
+    <lastmod>2024-02-28T18:33:39.774Z</lastmod>
   </url>
   <url>
     <loc>https://4923.github.io/archive/NLP/ptuning.html</loc>
-    <lastmod>2024-02-28T14:30:30.301Z</lastmod>
+    <lastmod>2024-02-28T18:32:43.088Z</lastmod>
   </url>
   <url>
     <loc>https://4923.github.io/archive/NLP/LoRA.html</loc>
-    <lastmod>2024-02-28T13:57:45.764Z</lastmod>
+    <lastmod>2024-02-28T18:33:41.264Z</lastmod>
   </url>
   <url>
     <loc>https://4923.github.io/archive/NLP/instruction_tuning.html</loc>
@@ -30,31 +30,31 @@
   </url>
   <url>
     <loc>https://4923.github.io/archive/NLP/huggingface/PEFT.html</loc>
-    <lastmod>2024-02-28T14:30:31.018Z</lastmod>
+    <lastmod>2024-02-28T18:32:12.596Z</lastmod>
   </url>
   <url>
     <loc>https://4923.github.io/archive/NLP/huggingface/tips.html</loc>
-    <lastmod>2024-02-28T14:06:06.010Z</lastmod>
+    <lastmod>2024-02-28T18:33:41.570Z</lastmod>
   </url>
   <url>
     <loc>https://4923.github.io/archive/NLP/encoding.html</loc>
-    <lastmod>2024-02-28T14:30:31.726Z</lastmod>
+    <lastmod>2024-02-28T18:33:42.269Z</lastmod>
   </url>
   <url>
     <loc>https://4923.github.io/archive/HAR/modalities.html</loc>
-    <lastmod>2024-02-28T14:31:20.452Z</lastmod>
+    <lastmod>2024-02-28T18:34:05.444Z</lastmod>
   </url>
   <url>
     <loc>https://4923.github.io/archive/HAR/ntu-skl-plotting.html</loc>
-    <lastmod>2024-02-28T15:55:40.370Z</lastmod>
+    <lastmod>2024-02-28T18:33:42.779Z</lastmod>
   </url>
   <url>
     <loc>https://4923.github.io/archive/HAR/mmlab.html</loc>
-    <lastmod>2024-02-28T17:30:38.575Z</lastmod>
+    <lastmod>2024-02-28T18:33:43.499Z</lastmod>
   </url>
   <url>
     <loc>https://4923.github.io/archive/index.html</loc>
-    <lastmod>2024-02-28T17:31:35.654Z</lastmod>
+    <lastmod>2024-02-28T18:33:52.234Z</lastmod>
   </url>
   <url>
     <loc>https://4923.github.io/archive/techniques/imbalanced.html</loc>
@@ -62,11 +62,11 @@
   </url>
   <url>
     <loc>https://4923.github.io/archive/techniques/freezing.html</loc>
-    <lastmod>2024-02-28T14:06:02.438Z</lastmod>
+    <lastmod>2024-02-28T18:33:05.906Z</lastmod>
   </url>
   <url>
     <loc>https://4923.github.io/archive/techniques/zero_shot.html</loc>
-    <lastmod>2024-02-28T17:31:26.575Z</lastmod>
+    <lastmod>2024-02-28T18:33:19.573Z</lastmod>
   </url>
   <url>
     <loc>https://4923.github.io/archive/CV.html</loc>
@@ -82,14 +82,14 @@
   </url>
   <url>
     <loc>https://4923.github.io/archive/techniques/handling_imbalanced_data.html</loc>
-    <lastmod>2024-02-28T13:58:21.031Z</lastmod>
+    <lastmod>2024-02-28T18:33:13.254Z</lastmod>
   </url>
   <url>
     <loc>https://4923.github.io/archive/LAB_HAI/How_2_read_a_paper.html</loc>
-    <lastmod>2024-02-28T17:27:25.347Z</lastmod>
+    <lastmod>2024-02-28T18:33:40.304Z</lastmod>
   </url>
   <url>
     <loc>https://4923.github.io/archive/LAB_HAI/Machine_Learning.html</loc>
-    <lastmod>2024-02-28T16:47:18.289Z</lastmod>
+    <lastmod>2024-02-28T18:33:40.645Z</lastmod>
   </url>
 </urlset>
