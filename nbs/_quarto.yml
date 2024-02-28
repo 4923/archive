@@ -19,7 +19,7 @@ format:
       sidebar-width: 300px
       body-width: 900px
       margin-width: 200px
-      gutter-width: 0rem
+      gutter-width: 3rem
     
     # https://quarto.org/docs/output-formats/html-code.html#code-overflow
     code-overflow: scroll
