@@ -46,9 +46,11 @@ website:
   navbar:
     background: primary
     # search: true
+    bread-crumbs: false
     tools:
       - icon: person-circle
-        href: https://4923.github.io/archive/CV.html
+        # href: https://4923.github.io/archive/CV.html
+        href: CV.ipynb
       - icon: github
         href: https://github.com/4923
 
@@ -61,11 +63,10 @@ website:
     navbar: false # Hides the navbar on this page
 
   favicon: favicon.ico
+  
   # comments: 
   #   utterances:
   #     repo: 4923/archive
 
   repo-actions: [issue]
-
-  page-navigation: true
-  
+  page-navigation: false
