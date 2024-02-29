@@ -44,9 +44,9 @@ website:
   # back-to-top-navigation: true
 
   navbar:
+    
     background: primary
     # search: true
-    bread-crumbs: false
     tools:
       - icon: person-circle
         # href: https://4923.github.io/archive/CV.html
@@ -70,3 +70,5 @@ website:
 
   repo-actions: [issue]
   page-navigation: false
+
+bread-crumbs: false
