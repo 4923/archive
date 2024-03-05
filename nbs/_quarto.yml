@@ -39,6 +39,9 @@ format:
 metadata-files: [nbdev.yml] #, sidebar.yml]
 
 website:
+  title: :"dotpyo"
+  site-url: 'https://dotpyo.github.io/archive'
+  site-path: '/'
   google-analytics: "G-SRFKSE5H0V"
   reader-mode: false
   # back-to-top-navigation: true
