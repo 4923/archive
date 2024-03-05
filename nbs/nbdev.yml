@@ -3,8 +3,8 @@ project:
 
 website:
   title: "archive"
-  site-url: "https://4923.github.io/archive"
+  site-url: "https://dotpyo.github.io/archive"
   # repo-branch: master
   repo-branch: main
-  repo-url: "https://github.com/4923/archive"
+  repo-url: "https://github.com/dotpyo/archive"
   

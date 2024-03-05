@@ -49,10 +49,10 @@ website:
     # search: true
     tools:
       - icon: person-circle
-        # href: https://4923.github.io/archive/CV.html
+        # href: https://dotpyo.github.io/archive/CV.html
         href: CV.ipynb
       - icon: github
-        href: https://github.com/4923
+        href: https://github.com/dotpyo
 
   sidebar:            # https://quarto.org/docs/websites/website-navigation.html#side-navigation 
     contents: auto    # https://quarto.org/docs/websites/website-navigation.html#auto-generation
@@ -66,7 +66,7 @@ website:
   
   # comments: 
   #   utterances:
-  #     repo: 4923/archive
+  #     repo: dotpyo/archive
 
   repo-actions: [issue]
   page-navigation: false
