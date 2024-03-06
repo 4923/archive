@@ -22,5 +22,6 @@ jobs:
       # uses나 run만 있는 경우가 있어서 뭔가 했더니 이것 때문이었음
         # - https://github.com/einaregilsson/beanstalk-deploy/issues/2#issuecomment-555894644
       - name: deploy
-        # using exist uses example
+        # using exist uses example > 도대체 설정을 왜 바꿔둔거지 general>action>general 에서 reusable 모두 사용 가능하게 변경
+        # https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#managing-github-actions-permissions-for-your-repository
         uses: fastai/workflows/quarto-ghp@master
