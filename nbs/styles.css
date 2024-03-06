@@ -1,7 +1,6 @@
 * {
   font-size: .9rem;
-  font-family: "Gothic A1", sans-serif !important;
-  line-height: 1.8 !important;
+  line-height: 2 !important;
 }
 
 
@@ -68,9 +67,6 @@ pre>code.sourceCode {
 custom 
 */
 
-.quarto-listing-category-title {
-  margin-top: 2rem;
-}
 
 blockquote.blockquote {
   /* padding-top: 1.5rem; */
@@ -79,16 +75,20 @@ blockquote.blockquote {
   padding-bottom: .05rem;
 }
 
+
+.quarto-listing-category-title {
+  margin-top: 2rem;
+}
+
 #quarto-content>* {
-  padding-top: 0px;
+  margin-top: 2rem;
 }
 
 /* listing: grid 일때만 활성화 */
 
-/* .page-columns>.content { */
-/* margin-left: 3rem; */
-/* margin-right: 3rem; */
-/* } */
+.page-columns>.content {
+  margin-top: 3rem;
+}
 
 .listing-pagination {
   padding-top: 2rem;
@@ -103,17 +103,20 @@ blockquote.blockquote {
 }
 
 .card-title {
-  font-weight: bold;
   /* letter-spacing: -0.08rem; */
   padding-bottom: 0.3rem;
+  font-size: .95rem;
+  font-weight: bolder;
 }
 
 .card-subtitle {
   /* letter-spacing: -0.05rem; */
+  font-size: .8rem;
   font-weight: normal;
 }
 
 .card-text:last-child {
+  font-size: .8rem;
   font-weight: lighter;
 }
 
