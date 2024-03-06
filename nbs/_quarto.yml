@@ -75,3 +75,6 @@ website:
   repo-actions: [issue]
   page-navigation: false
 
+# reference-location: margin
+# citation-location: margin
+callout-appearance: simple
