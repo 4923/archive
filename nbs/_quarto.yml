@@ -78,3 +78,4 @@ website:
 # reference-location: margin
 # citation-location: margin
 callout-appearance: simple
+bread-crumbs: false
