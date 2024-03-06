@@ -1,18 +1,15 @@
 * {
-  font-size: .9rem;
-  font-family: "Noto Sans", "Noto Sans KR";
+  font-size: 1rem;
+  font-family: "Gothic A1", sans-serif !important;
+  line-height: 1.8 !important;
 }
 
 
-/* 커스텀이지만 필수임: font-size는 subtitle에 맞춰서 변경할 것 */
-a {
-  font-size: 0.8rem;
-}
+/* 본문 커스텀 */
 
-/* 문단 간격 커스텀 */
 p {
-  margin-top: .5rem;
-  margin-bottom: .5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 li {
@@ -56,6 +53,16 @@ div.description {
   opacity: 70%;
 }
 
+/* 
+source code
+*/
+
+/* title 없는 블럭 */
+pre>code.sourceCode {
+  white-space: pre-wrap;
+  margin-left: .8rem;
+  margin-bottom: 1.5rem;
+}
 
 
 /* 
@@ -63,37 +70,27 @@ custom
 */
 
 #quarto-content {
-  padding-top: 3rem;
-}
-
-.navbar-title {
-  font-size: 1.5rem;
-  margin-left: 3rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
 }
 
 #quarto-content>* {
   padding-top: 0px;
-  /* 14px에서 우측 워드 클라우드와 높이 맞추기 위해 제거 */
 }
 
 /* listing: grid 일때만 활성화 */
 
-.page-columns>.content {
-  margin-left: 3rem;
-  margin-right: 3rem;
-}
+/* .page-columns>.content { */
+/* margin-left: 3rem; */
+/* margin-right: 3rem; */
+/* } */
 
 .listing-pagination {
   padding-top: 2rem;
 }
 
 .listing-categories {
-  font-size: 0.8rem;
   padding-top: 0.3rem;
-}
-
-.quarto-grid-item>.post-contents {
-  font-size: 0.8rem;
 }
 
 .text-muted {
@@ -102,18 +99,16 @@ custom
 
 .card-title {
   font-weight: bold;
-  letter-spacing: -0.08rem;
+  /* letter-spacing: -0.08rem; */
   padding-bottom: 0.3rem;
 }
 
 .card-subtitle {
-  font-size: 0.8rem;
-  letter-spacing: -0.05rem;
+  /* letter-spacing: -0.05rem; */
   font-weight: normal;
 }
 
 .card-text:last-child {
-  font-size: 0.8rem;
   font-weight: lighter;
 }
 
