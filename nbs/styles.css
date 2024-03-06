@@ -94,30 +94,45 @@ blockquote.blockquote {
   padding-top: 2rem;
 }
 
-.listing-categories {
-  padding-top: 0.3rem;
-}
-
-.text-muted {
-  padding-top: 0.3rem;
-}
 
 .card-title {
   /* letter-spacing: -0.08rem; */
   padding-bottom: 0.3rem;
   font-size: .95rem;
   font-weight: bolder;
+  line-height: 1.3 !important;
+}
+
+.listing-reading-time {
+  /* padding-top: 0.3rem; */
+  /* font-size: .3rem; */
+  font-size: 80%;
+  line-height: 1 !important;
+}
+
+.listing-categories {
+  padding-top: 0.3rem;
+  font-size: .8rem;
+  line-height: 1 !important;
+}
+
+.text-muted {
+  padding-top: 0.3rem;
+  font-size: .6rem;
+  line-height: 1.3 !important;
 }
 
 .card-subtitle {
   /* letter-spacing: -0.05rem; */
   font-size: .8rem;
   font-weight: normal;
+  line-height: 1.3 !important;
 }
 
 .card-text:last-child {
   font-size: .8rem;
   font-weight: lighter;
+  line-height: 1.3 !important;
 }
 
 /* listing: grid 활성화 부분 끝 */

@@ -49,6 +49,7 @@ website:
   # features
   reader-mode: false
   # back-to-top-navigation: true
+  bread-crumbs: false
   navbar:
     background: primary
     # search: true
@@ -78,4 +79,4 @@ website:
 # reference-location: margin
 # citation-location: margin
 callout-appearance: simple
-bread-crumbs: false
+
