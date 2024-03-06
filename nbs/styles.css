@@ -1,5 +1,5 @@
 * {
-  font-size: 1rem;
+  font-size: .9rem;
   font-family: "Gothic A1", sans-serif !important;
   line-height: 1.8 !important;
 }
@@ -8,8 +8,8 @@
 /* 본문 커스텀 */
 
 p {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin-top: .3rem;
+  margin-bottom: .3rem;
 }
 
 li {
@@ -69,9 +69,11 @@ pre>code.sourceCode {
 custom 
 */
 
-#quarto-content {
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
+blockquote.blockquote {
+  /* padding-top: 1.5rem; */
+  padding-top: .05rem;
+  /* padding-bottom: 1.5rem; */
+  padding-bottom: .05rem;
 }
 
 #quarto-content>* {
