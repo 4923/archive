@@ -4,11 +4,17 @@ permissions:
   contents: write
   pages: write
 
+# https://docs.github.com/en/actions/deployment/about-deployments/deploying-with-github-actions
+concurrency: production
+
 on:
   push:
-    branches: [ "main", "master" ]
+    branches:
+      [ "main", "master" ]
 
-# jobs:
-#   deploy:
-#     runs-on: ubuntu-latest
-#     steps: [uses: fastai/workflows/quarto-ghp@master]
+jobs:
+  deployment:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: deploy
