@@ -17,6 +17,8 @@ jobs:
     runs-on: ubuntu-latest
     environment: production
     steps:
-      - name: deploy
       # every step must define a `uses` or `run` key
-      - uses: actions/checkout@v4
+      # uses나 run만 있는 경우가 있어서 뭔가 했더니 이것 때문이었음
+        # - https://github.com/einaregilsson/beanstalk-deploy/issues/2#issuecomment-555894644
+      - name: deploy
+        uses: actions/checkout@v4
