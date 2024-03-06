@@ -18,3 +18,5 @@ jobs:
     environment: production
     steps:
       - name: deploy
+      # every step must define a `uses` or `run` key
+      - uses: actions/checkout@v4
