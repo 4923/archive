@@ -1,0 +1,6 @@
+[submodule "cv.typ"]
+	path = cv.typ
+	url = https://github.com/jskherman/cv.typ
+[submodule "nbs/cv/cv.typ"]
+	path = nbs/cv/cv.typ
+	url = https://github.com/jskherman/cv.typ
