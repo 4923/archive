@@ -21,4 +21,5 @@ jobs:
       # uses나 run만 있는 경우가 있어서 뭔가 했더니 이것 때문이었음
         # - https://github.com/einaregilsson/beanstalk-deploy/issues/2#issuecomment-555894644
       - name: deploy
-        uses: actions/checkout@v4
+        # using exist uses example
+        uses: fastai/workflows/quarto-ghp@master
