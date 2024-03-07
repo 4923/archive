@@ -1,17 +1,14 @@
+name: Deploy to GitHub Pages
+
+permissions:
+  contents: write
+  pages: write
+
 on:
-  workflow_dispatch:
   push:
-    branches: main
-
-name: Quarto Publish
-
+    branches: [ "main", "master" ]
+  workflow_dispatch:
 jobs:
-  build-deploy:
+  deploy:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    steps:
-      - name: Render and Publish
-        uses: quarto-dev/quarto-actions/publish@v2
-        with:
-          target: gh-pages
+    steps: [uses: fastai/workflows/quarto-ghp@master]
