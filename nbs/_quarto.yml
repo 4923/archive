@@ -3,8 +3,10 @@
 project:
   type: website
 
+# Freezing Computations
+# To make sure that R, Python, and Julia code is only executed locally, configure your project to use Quarto’s freeze feature by adding this to your _quarto.yml:
 execute:
-  echo: true
+  freeze: auto
 
 format:
   html:
