@@ -1,27 +1,41 @@
-# return to 0
-name: Deploy to GitHub Pages
+# https://quarto.org/docs/publishing/github-pages.html
 
-permissions:
-  contents: write
-  pages: write
 
-# https://docs.github.com/en/actions/deployment/about-deployments/deploying-with-github-actions
-concurrency: production
+# Freezing Computations
+# To make sure that R, Python, and Julia code is only executed locally, configure your project to use Quarto’s freeze feature by adding this to your _quarto.yml:
+execute:
+  freeze: auto
 
 on:
+  workflow_dispatch:
   push:
-    branches:
-      [ "main", "master" ]
-  # workflow_dispatch:
+    branches: main
+
+name: Quarto Publish
+
 jobs:
-  deployment:
+  build-deploy:
     runs-on: ubuntu-latest
-    environment: production
+    permissions:
+      contents: write
     steps:
-      # every step must define a `uses` or `run` key
-      # uses나 run만 있는 경우가 있어서 뭔가 했더니 이것 때문이었음
-        # - https://github.com/einaregilsson/beanstalk-deploy/issues/2#issuecomment-555894644
-      - name: deploy
-        # using exist uses example > 도대체 설정을 왜 바꿔둔거지 general>action>general 에서 reusable 모두 사용 가능하게 변경
-        # https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#managing-github-actions-permissions-for-your-repository
-        uses: fastai/workflows/quarto-ghp@master
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+
+      - name: Install Python and Dependencies
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+      - run: pip install jupyter
+      - run: pip install -r requirements.txt
+
+      - name: Render and Publish
+        uses: quarto-dev/quarto-actions/publish@v2
+        with:
+          target: gh-pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
