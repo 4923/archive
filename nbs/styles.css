@@ -24,15 +24,13 @@ li {
   margin-bottom: 0;
 }
 
-.cell-output>pre {
-  margin-bottom: 0;
-}
-
 .cell-output>pre,
 .cell-output>.sourceCode>pre,
 .cell-output-stdout>pre {
   margin-left: 0.8rem;
   margin-top: 0;
+  margin-bottom: 0;
+
   background: none;
   border-left: 2px solid lightsalmon;
   border-top-left-radius: 0;
