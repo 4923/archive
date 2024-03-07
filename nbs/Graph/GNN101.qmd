@@ -1,11 +1,13 @@
 ---
-# title-block-banner: true
+title-block-banner: true
 title: Graph 101
 subtitle: Graph Representation Learning (2020, William L. Hamilton)
 description: 읽으며 도움이 될만한 내용 기록
 
 toc: false
 sidebar: false
+categories:
+    - graph
 ---
 
 
