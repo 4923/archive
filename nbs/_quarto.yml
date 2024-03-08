@@ -7,9 +7,6 @@ project:
 # To make sure that R, Python, and Julia code is only executed locally, configure your project to use Quarto’s freeze feature by adding this to your _quarto.yml:
 execute:
   freeze: auto
-
-listing:
-    type: table
     
 format:
   html:
@@ -17,6 +14,28 @@ format:
     fontsize: 1rem
     linestretch: 1.8
     whitespace: 4
+    mainfont: Helvetica
+
+    # math
+    html-math-method: mathjax
+
+    # table of contents
+    toc: true
+    toc-depth: 4
+    toc-location: right
+
+    # code
+    # https://quarto.org/docs/output-formats/html-code.html#code-overflow
+    code-overflow: scroll
+    # https://quarto.org/docs/output-formats/html-code.html#code-tools
+    code-fold: false   
+    code-tools: true
+    # https://quarto.org/docs/output-formats/html-code.html#line-numbers
+    highlight-style: github
+    code-line-numbers: true
+    code-block-background: true
+    code-copy: hover
+
     
 
     # layout
@@ -25,24 +44,13 @@ format:
       light: flatly
       # dark: darkly
     css: styles.css
-    toc: true
 
-    # grid:
+    # grid: 
     #   sidebar-width: 300px
     #   body-width: 900px
     #   margin-width: 200px
     #   gutter-width: 3rem
     
-    # https://quarto.org/docs/output-formats/html-code.html#code-overflow
-    code-overflow: scroll
-    # https://quarto.org/docs/output-formats/html-code.html#code-tools
-    code-fold: false   
-    code-tools: true
-    # https://quarto.org/docs/output-formats/html-code.html#line-numbers
-    highlight-style: github
-    code-line-numbers: false
-    code-block-background: true
-    code-copy: hover
 # https://quarto.org/docs/output-formats/html-code.html#highlighting
 # Quarto will automatically select the appropriate style based upon the code chunk background color’s darkness. 
 # Users may always opt to specify the full name (e.g. atom-one-dark) to by pass this automatic behavior.
@@ -88,6 +96,7 @@ website:
   repo-actions: [issue]
   page-navigation: false
 
+# Footnotes
 # reference-location: margin
 # citation-location: margin
 callout-appearance: simple
