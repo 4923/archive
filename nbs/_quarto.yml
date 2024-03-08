@@ -12,38 +12,39 @@ format:
   html:
     # font
     fontsize: 1rem
-    linestretch: 1.8
-    whitespace: 4
+    linestretch: 2.2
+    # whitespace: ???
+    section-divs: true
     mainfont: Helvetica
 
     # math
     html-math-method: mathjax
+    classoption: fleqn
 
     # table of contents
     toc: true
     toc-depth: 4
     toc-location: right
+    strip-comments: false
 
     # code
-    # https://quarto.org/docs/output-formats/html-code.html#code-overflow
-    code-overflow: scroll
-    # https://quarto.org/docs/output-formats/html-code.html#code-tools
-    code-fold: false   
-    code-tools: true
-    # https://quarto.org/docs/output-formats/html-code.html#line-numbers
     highlight-style: github
-    code-line-numbers: true
+    code-overflow: scroll   # https://quarto.org/docs/output-formats/html-code.html#code-overflow
+    code-fold: false    # https://quarto.org/docs/output-formats/html-code.html#code-tools
+    code-tools: true
+    code-line-numbers: true   # https://quarto.org/docs/output-formats/html-code.html#line-numbers
     code-block-background: true
     code-copy: hover
-
-    
 
     # layout
     page-layout: full # article
     theme:  # https://bootswatch.com/
-      light: flatly
-      # dark: darkly
+      light: Flatly
+      dark: Darkly
     css: styles.css
+    title-block-style: default
+    title-block-banner: true
+    title-block-categories: true
 
     # grid: 
     #   sidebar-width: 300px
@@ -97,7 +98,7 @@ website:
   page-navigation: false
 
 # Footnotes
-# reference-location: margin
-# citation-location: margin
+reference-location: block     # [document | section | block | margin ]
+# citation-location: margin   # [document | margin ]
 callout-appearance: simple
 
