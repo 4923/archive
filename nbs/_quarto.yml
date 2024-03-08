@@ -11,11 +11,10 @@ execute:
 format:
   html:
     # font
-    fontsize: 1rem
-    linestretch: 2.2
+    fontsize: 1.3rem
+    linestretch: 1.8
     # whitespace: ???
-    section-divs: true
-    mainfont: Helvetica
+    # section-divs: true
 
     # math
     html-math-method: mathjax
