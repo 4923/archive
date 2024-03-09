@@ -54,6 +54,7 @@ format:
     css: styles.css
     title-block-style: default
     title-block-banner: true
+    # "#003B68"
     title-block-categories: true
 
     # grid: 
@@ -93,10 +94,10 @@ website:
   sidebar:            # https://quarto.org/docs/websites/website-navigation.html#side-navigation 
     contents: auto    # https://quarto.org/docs/websites/website-navigation.html#auto-generation
     style: floating
-    border: true
-    collapse-level: 1
+    # border: true
+    collapse-level: 2
     # search: true
-    navbar: true # Hides the navbar on this page
+    navbar: false # Hides the navbar on this page
 
   favicon: favicon.ico
   
@@ -112,3 +113,7 @@ reference-location: block     # [document | section | block | margin ]
 # citation-location: margin   # [document | margin ]
 callout-appearance: simple
 
+author: 
+    name: dotpyo
+    email: 4923.py@gmail.com
+date-modified: last-modified
