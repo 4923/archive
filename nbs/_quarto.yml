@@ -12,7 +12,7 @@ format:
   html:
     # header
     include-in-header: 
-      - text: <meta name="referrer" content="no-referrer" />
+      # - text: <meta name="referrer" content="strict-origin-when-cross-origin" >
       - file: header.html
 
     # font
@@ -84,13 +84,13 @@ website:
       - icon: github
         href: https://github.com/dotpyo
 
-  # sidebar:            # https://quarto.org/docs/websites/website-navigation.html#side-navigation 
-  #   contents: auto    # https://quarto.org/docs/websites/website-navigation.html#auto-generation
-  #   style: floating
-  #   border: true
-  #   collapse-level: 1
-  #   # search: true
-  #   navbar: false # Hides the navbar on this page
+  sidebar:            # https://quarto.org/docs/websites/website-navigation.html#side-navigation 
+    contents: auto    # https://quarto.org/docs/websites/website-navigation.html#auto-generation
+    style: floating
+    border: true
+    collapse-level: 1
+    # search: true
+    navbar: false # Hides the navbar on this page
 
   favicon: favicon.ico
   

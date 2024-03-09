@@ -26,7 +26,7 @@ categories:
 
 그래프는 어디에나 있는 데이터 구조이며 복잡한 시스템을 묘사하는 일반적인 언어이다. 대부분의 일반적인 관점에서 그래프는 정점(`node`)들과 그 상호작용 집합인 간선(`edge`)와 같은 단순한 객체들의 집합이었다. 예를 들어 사회 관계망을 그래프로 부호화(encode) 하는 경우 우리는 아마 개인을 표현하기 위해 정점을, 개인이 친구임을 표현하기 위해서는 간선를 사용할 것이다. 생물학 도메인에서는 그래프의 정점을 단백질을 표현하는데 사용할 수 있으며 간선은 다양한 생물학적 연관관계; 예를들어 단백질 사이의 운동관계를 표현하는데 사용할 수 있다.
 
-|<img a="Zachary Karate Club Network" src="https://github.com/4923/archive/assets/60145951/344c9b97-9d0d-46c6-89fa-c3cbb19b3ba2" width="100%" >
+|<img a="Zachary Karate Club Network" src="https://github.com/dotpyo/archive/assets/60145951/344c9b97-9d0d-46c6-89fa-c3cbb19b3ba2" width="100%" >
 |:-:|
 |Zachary Karate Club Network|
 
