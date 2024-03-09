@@ -12,14 +12,14 @@ format:
   html:
     # header
     include-in-header: 
-      - text: <meta name="referrer" content="no-referrer" />  
+      - text: <meta name="referrer" content="no-referrer" />
       - file: header.html
 
     # font
     fontsize: 1.3rem
     linestretch: 1.8
-    # whitespace: ???
-    # section-divs: true
+    whitespace: 0
+    section-divs: true
 
     # math
     html-math-method: mathjax
