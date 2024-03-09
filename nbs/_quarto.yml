@@ -43,8 +43,8 @@ format:
     # layout
     page-layout: full # article
     theme:  # https://bootswatch.com/
-      light: Flatly
-      dark: Darkly
+      light: flatly
+      dark: darkly
     css: styles.css
     title-block-style: default
     title-block-banner: true
