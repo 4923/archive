@@ -1,3 +1,4 @@
+/* 메인 페이지 */
 .listing-title {
     font-weight: bold;
     font-size: large;
@@ -19,4 +20,18 @@
 .category-cloud {
     line-height: 1.2;
     opacity: 0.8;
+}
+
+/* 상단 배너 */
+.quarto-secondary-nav-title {
+    color: white;
+    opacity: 80%;
+}
+
+.quarto-banner>nav.quarto-secondary-nav {
+    border: 0px;
+}
+
+.quarto-secondary-nav button.quarto-btn-toggle {
+    color: white;
 }
