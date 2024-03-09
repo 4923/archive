@@ -16,9 +16,9 @@ format:
       - file: header.html
 
     # font
-    fontsize: 1.3rem
-    linestretch: 1.8
-    whitespace: 0
+    fontsize: 1.2rem
+    linestretch: 2
+    whitespace: 200rem
     section-divs: true
 
     # math
