@@ -10,6 +10,11 @@ execute:
     
 format:
   html:
+    # header
+    include-in-header: 
+      - text: <meta name="referrer" content="no-referrer" />  
+      - file: header.html
+
     # font
     fontsize: 1.3rem
     linestretch: 1.8
