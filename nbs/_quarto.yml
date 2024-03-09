@@ -96,7 +96,7 @@ website:
     border: true
     collapse-level: 1
     # search: true
-    navbar: false # Hides the navbar on this page
+    navbar: true # Hides the navbar on this page
 
   favicon: favicon.ico
   
