@@ -10,6 +10,12 @@ execute:
     
 format:
   html:
+    # [ 주의 ] 이미지 확장자 제거
+    # (240309) github issue 에 이미지를 호스팅해오는 과정을 거쳤었는데 이 경우 html 렌더링 과정에서 `.png`가 자동으로 붙는다.
+    # 해당 문제를 해결하기 위해 이미지 확장자를 자동으로 붙이는 기능을 제거했지만 권고할만한 사항은 아니라고 한다.
+    # https://github.com/quarto-dev/quarto-cli/issues/6092
+    default-image-extension: ""
+
     # header
     include-in-header: 
       # - text: <meta name="referrer" content="strict-origin-when-cross-origin" >
