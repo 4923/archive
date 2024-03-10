@@ -423,17 +423,23 @@ logits?
 <ul>
 <li>log + odds</li>
 <li>정규화 되지 않은 로그 확률로, 모든 실수가 될 수 있다.</li>
-<li>log-odds function은 <span class="math inline">\(0~1\)</span> 사이의 값을 계산하는 시그모이드의 역함수다.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></li>
+<li>log-odds function은 <span class="math inline">\(0~1\)</span> 사이의 값을 계산하는 시그모이드의 역함수다.
+<ul>
+<li><a href="https://haje01.github.io/2019/11/19/logit.html"><span class="citation" data-cites="haje01">@haje01</span></a></li>
+</ul></li>
 </ul>
 <p>classification을 진행할 때 중간 레이어에 무엇을 넣든 마지막에 FC layer로 마무리하는데 이때 노드를 분류하는 클래스의 수만큼 만든다. 즉, 이 FC layer를 통과한 결과가 특정 클래스에 해당할 가능성을 의미한다고 볼 수 있다. FC layer에 들어가기 전단계인 활성화 함수로는 Sigmoid, Softmax, ReLU 등을 사용한다. 활성화 함수에 넣기 전의 로그 확률을 logits라고 말하며 PyTorch에서는 실질적으로 이 값을 다룬다.</p>
 <blockquote class="blockquote">
 <p>역순으로 생각하면 쉽다.<br>
 1. 분류 문제에서 각 클래스에 해당할 확률을 알아낸다.<br>
-2. 그 확률은 활성화 함수라는 값을 통해 나온 값이다.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a><br>
+2. 그 확률은 활성화 함수라는 값을 통해 나온 값이다.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a><br>
 3. 위의 활성화 함수에 넣는 값이 <code>logit</code> 이다</p>
 </blockquote>
 <p><strong>왜 최종 확률이 아니라 logits을 남겨두는가?</strong></p>
-<p>활성화 함수를 통한 값, 확률을 보면 직관적인 이해도가 높아지지만 잠재적으로 값이 누수되거나 연산 과정에서 값이 누락될 위험이 잔존한다.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> 활성화 함수를 통해 확률을 구하는 과정은 어렵지 않으므로 그 원형인 <code>logits</code>을 보존하는게 나은 선택이다. 그뿐 아니라 logit은 entropy 연산에서도 사용되므로 남겨두는 편이 활용도가 좋다.</p>
+<p>활성화 함수를 통한 값, 확률을 보면 직관적인 이해도가 높아지지만 잠재적으로 값이 누수되거나 연산 과정에서 값이 누락될 위험이 잔존한다. 활성화 함수를 통해 확률을 구하는 과정은 어렵지 않으므로 그 원형인 <code>logits</code>을 보존하는게 나은 선택이다. 그뿐 아니라 logit은 entropy 연산에서도 사용되므로 남겨두는 편이 활용도가 좋다.</p>
+<ul>
+<li><a href="https://discuss.pytorch.org/t/why-have-a-model-output-raw-logits-instead-of-softmax/114289/2"><span class="citation" data-cites="KFrank">@KFrank</span></a></li>
+</ul>
 <blockquote class="blockquote">
 <p>즉, logit을 남겨두는 이유를 아래로 정리할 수 있다.<br>
 1. 정보의 손실을 막기 위해<br>
@@ -442,7 +448,7 @@ logits?
 </div>
 </div>
 </div>
-<div class="no-row-height column-margin column-container"><div id="fn6"><p><sup>6</sup>&nbsp;<a href="https://discuss.pytorch.org/t/why-have-a-model-output-raw-logits-instead-of-softmax/114289/2"><span class="citation" data-cites="KFrank">@KFrank</span></a></p></div></div><div class="no-row-height column-margin column-container"><div id="fn5"><p><sup>5</sup>&nbsp;활성화 함수는 확률을 연산하는 함수다.</p></div></div><div class="no-row-height column-margin column-container"><div id="fn4"><p><sup>4</sup>&nbsp;<a href="https://haje01.github.io/2019/11/19/logit.html"><span class="citation" data-cites="haje01">@haje01</span></a></p></div></div><div class="callout callout-style-simple callout-note callout-titled">
+<div class="no-row-height column-margin column-container"><div id="fn4"><p><sup>4</sup>&nbsp;활성화 함수는 확률을 연산하는 함수다.</p></div></div><div class="callout callout-style-simple callout-note callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -492,11 +498,11 @@ logits?
 <ol type="1">
 <li>최적화 단계: 하이퍼파라미터를 정의하고 학습하며 파라미터를 조정한다. (train_loop)
 <ul>
-<li>epoch, batch size<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>, learning rate</li>
+<li>epoch, batch size<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>, learning rate</li>
 <li>각 epoch마다 어떤 단계를 거칠 것인가, 모델 설계는 이쪽에 들어간다</li>
 </ul></li>
 </ol>
-<div class="no-row-height column-margin column-container"><div id="fn7"><p><sup>7</sup>&nbsp;size에 맞추어 batch를 넘겨줄 수 있는것도 DataLoader가 배치를 만들어주는 역할을 하기 때문이다.</p></div></div><div class="callout callout-style-simple callout-note callout-titled">
+<div class="no-row-height column-margin column-container"><div id="fn5"><p><sup>5</sup>&nbsp;size에 맞추어 batch를 넘겨줄 수 있는것도 DataLoader가 배치를 만들어주는 역할을 하기 때문이다.</p></div></div><div class="callout callout-style-simple callout-note callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
