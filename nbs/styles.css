@@ -2,11 +2,13 @@
 .listing-title {
     font-weight: bold;
     font-size: large;
+    line-height: 1.3;
 }
 
 .listing-subtitle {
     font-size: medium;
     font-weight: medium;
+    line-height: 1.3;
     opacity: 0.6;
 }
 
