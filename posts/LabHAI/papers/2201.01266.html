@@ -184,6 +184,7 @@ window.Quarto = {
    
   <ul>
   <li><a href="#abstract" id="toc-abstract" class="nav-link active" data-scroll-target="#abstract">Abstract</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/dotpyo/archive/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -442,9 +443,61 @@ RPN에서의 FCN 언급
 </div>
 </div>
 </div>
-
-
 <div class="no-row-height column-margin column-container"><div id="fn10"><p><sup>10</sup>&nbsp;stride 값이 32다. 16, 8 도 마찬가지다.</p></div></div></section>
+<section id="introduction" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<ul>
+<li>알아 둘 내용만 기록</li>
+</ul>
+<ol type="1">
+<li>인간 뇌에 영향을 미치는 brain tumors 는 120종류가 넘는다.</li>
+<li>뇌종양은 두가지로 분류되는데<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a> 원발성 뇌종양은 뇌에서 직접 발현하며<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a> 이차성/전이성 뇌종양은 다른 장기로부터 전이된다.<a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a>
+<ul>
+<li>primary tumor: 대부분 신경아교세포<a href="#fn14" class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a>에서 비롯된 신경교종<a href="#fn15" class="footnote-ref" id="fnref15" role="doc-noteref"><sup>15</sup></a></li>
+</ul></li>
+<li>종양의 병리학적 단계에 따른 하위 분류: low grade gliomas(LGG)<a href="#fn16" class="footnote-ref" id="fnref16" role="doc-noteref"><sup>16</sup></a>, High grade gliomas(HGG)<a href="#fn17" class="footnote-ref" id="fnref17" role="doc-noteref"><sup>17</sup></a>
+<ul>
+<li>HGG: 악성<a href="#fn18" class="footnote-ref" id="fnref18" role="doc-noteref"><sup>18</sup></a>으로 빠르게 자라며 수술 또는 방사선 치료가 필요한 종양, 예후가 좋지 않다.</li>
+<li><a href="https://www.snubh.org/dh/main/index.do?DP_CD=DCD4&amp;MENU_ID=004007007">참고: 분당서울대병원</a></li>
+</ul></li>
+<li>Magnetic Resonance Imaging (MRI)는 진단분석 도구로 쓰이며 모니터링, 분석, 수술계획 수립 등에서 사용된다.</li>
+<li>딥러닝 기반 이미지 분할(image segmentation) 기법은 (1) 정확하고 (2) 재현 가능한 방법을 제공하는데 두각을 드러낸다.
+<ul>
+<li>재현 가능한 방법이 중요한 이유는 수술 때문인가?</li>
+</ul></li>
+<li>CNN의 limited kernel size로 인한 long range dependencies 문제는 정확한 종양 segmentation에서 치명적이다; 종양이 다양한 크기나 모양으로 나타나기 때문</li>
+<li>본 논문에서 주목한 <strong>ViT</strong>의 장점
+<ul>
+<li>pairwise interaction between token embedding and its global contextual representation
+<ul>
+<li>self-attention을 기반으로 한 transformer이므로 당연함</li>
+</ul></li>
+<li>effective learning of pretext task for self-supervised pre-training
+<ul>
+<li>pretext task?
+<ul>
+<li>SSL을 할때 연구자가 미리 설정해두는 과제로 모델은 해당 과제(task)를 목표로 라벨이 <em>없는</em> 데이터를 학습한다.</li>
+<li>한 파트 안에서 다른 파트를 예측하는 학습인 self prediction과 배치 데이터 샘플 간의 유사성을 찾는 contrastive learning<a href="#fn19" class="footnote-ref" id="fnref19" role="doc-noteref"><sup>19</sup></a>으로 나뉜다. (<a href="https://sanghyu.tistory.com/184">출처</a>)</li>
+<li>자기지도학습에서 데이터의 표현을 학습하기 위해 구성한 문제를 pretext task라고 지칭하고, 실제로 풀고 싶은 문제를 downstream task라고 한다. ‘의료 데이터의 자기지도학습 적용을 위한 pretext task 분석’(공희산 외, 2021)은 rotation task와 jigsaw task를 수행했을때 이미지 전체를 보고 학습하는 rotation task의 효과가 더 좋았다고 발표했다.</li>
+</ul></li>
+<li>self-supervised(자기지도학습)이 논문의 과제에서 주요한 영향을 미치는 이유?</li>
+</ul></li>
+</ul></li>
+<li><strong>의료 영상 분야에서 UNETR은 ViT를 encoder에 적용한 최초의 모델이다.</strong></li>
+<li>Transformer와 Swin Transformer의 차이점?
+<ul>
+<li>우선 ‘Swin transformers are suitable for various down- stream tasks wherein the extracted multi-scale features can be leveraged for further processing.’ 때문에 사용했다고 한다.</li>
+</ul></li>
+<li>종합적으로 Swin UNETR은 다음 세가지의 조합이 되겠다.
+<ol type="1">
+<li>Swin Transformer as an encoder</li>
+<li>utilized U-shape network</li>
+<li>CNN based decoder</li>
+</ol></li>
+</ol>
+
+
+<div class="no-row-height column-margin column-container"><div id="fn11"><p><sup>11</sup>&nbsp;Brain tumors are categorized into primary and secondary tumor types</p></div><div id="fn12"><p><sup>12</sup>&nbsp;primary tumor type originate from brain cells</p></div><div id="fn13"><p><sup>13</sup>&nbsp;secondary tumors metastasize into the brain from other organs</p></div><div id="fn14"><p><sup>14</sup>&nbsp;glial cell</p></div><div id="fn15"><p><sup>15</sup>&nbsp;gliomas</p></div><div id="fn16"><p><sup>16</sup>&nbsp;WHO grade II</p></div><div id="fn17"><p><sup>17</sup>&nbsp;WHO grade III-IV</p></div><div id="fn18"><p><sup>18</sup>&nbsp;malignant</p></div><div id="fn19"><p><sup>19</sup>&nbsp;siamese network를 기반으로 발전함</p></div></div></section>
 
 
 </main> <!-- /main -->
