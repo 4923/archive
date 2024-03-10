@@ -10,7 +10,273 @@
 <atom:link href="https://dotpyo.github.io/archive/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.4.551</generator>
-<lastBuildDate>Sat, 09 Mar 2024 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Mon, 11 Mar 2024 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Swin UNETR: Swin Transformers for Semantic Segmentation of Brain Tumors in MRI Images</title>
+  <dc:creator>dotpyo </dc:creator>
+  <link>https://dotpyo.github.io/archive/posts/LabHAI/papers/2201.01266.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<blockquote class="blockquote">
+<p>목표<br>
+1. 이해할 수 있는데까지 이해하기<br>
+2. <a href="https://monai.io/research/swin-unetr">코드</a>를 이용한 재구현</p>
+</blockquote>
+<ul>
+<li>General Terms: Image Segmenatation</li>
+<li>Keywords: Image Segmentation, Vision Transformer, Swin Transformer, UNETR, Swin UNETR, BRATS, Brain Tumor Segmentation</li>
+</ul>
+<p><br></p>
+<section id="abstract" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="abstract">Abstract</h2>
+<ul>
+<li><p>뇌종양의 semantic segmentation<sup>1</sup>은 근본적으로 <strong>multiple MRI imaging</strong>을 이용한 의료이미지 분석 과제다.</p></li>
+<li><p>3D 의료 영상 세그멘테이션에서는 FCNNs <sup>2</sup> 방식이 사실상의 표준 <sup>3</sup>으로 자리잡았다.</p>
+<blockquote class="blockquote">
+<p><code>U-net</code><sup>4</sup>: U shape Convolution Network of Biomedical domain for Image segmentation</p>
+</blockquote>
+<ul>
+<li><strong><a href="https://arxiv.org/abs/1505.04597v1">U-Net: Convolutional Networks for Biomedical Image Segmentation</a></strong> 에서 발표되었으며 네트워크의 크기가 U모양이다.<sup>5</sup></li>
+<li><code>U-net</code>은 다음 과제에서 SOTA를 달성했다.
+<ol type="1">
+<li>2D semantic segmentation</li>
+<li>3D semantic segmentation</li>
+</ol>
+<ul>
+<li>across various imaging modalities</li>
+</ul></li>
+<li><code>U-net</code> 의 한계는 이러하다: long range dependency
+<ul>
+<li>convolution layers의 제한된 kernel 사이즈<sup>6</sup>로 인한 장거리 예측에 어려움이 있다.<sup>7</sup></li>
+<li><img src="https://latex.codecogs.com/png.latex?%5Ctherefore"> 다양한 크기의 종양을 분할하는데 어려움이 있다.<sup>8</sup></li>
+</ul></li>
+<li>반면 transformer 계열 모델에서는 long range 문제가 희박하게 일어나고, 이것을 medical domain에 적용한 것이 <code>Swin UNEt TRansformers</code>다.</li>
+</ul></li>
+<li><p>UNETR 에서는 FCNNs이 아닌 tranformer를 적용했다. &gt; <code>UNETR</code>: 3D brain tumor semantic segmentation transformer model</p>
+<ul>
+<li>UNETR의 특징 또는 기여점
+<ul>
+<li>3D brain tumor semantic segmentation task를 seq2seq 과제로 재구성했다</li>
+<li>multi model 입력 데이터를 1D sequence에 embedding 했다.</li>
+<li>해당 데이터를 계층적 UNETR의 인코더에 입력으로 사용했다.</li>
+<li>encoder: 5개의 다른 해상도의 특징 추출<sup>9</sup> &gt;&gt; decoder: FCNN기반, 해상도 특징이 각각 연결된다. (via skip connection)</li>
+</ul></li>
+</ul></li>
+</ul>
+<div class="no-row-height column-margin column-container"><div id="fn1"></div><div id="fn2"><p><sup>2</sup>&nbsp;Fully Convolutional Neural Networks</p></div><div id="fn3"><p><sup>3</sup>&nbsp;de facto standard</p></div><div id="fn4"><p><sup>4</sup>&nbsp;U-shaped net</p></div><div id="fn5"><p><sup>5</sup>&nbsp;the expansive path is more or less symmetric to the contracting path, and yields a u-shaped architecture</p></div><div id="fn6"><p><sup>6</sup>&nbsp;이후 맥락에 따라 kernel크기에 따라 이미지 크기가 작아지는 문제로 보인다.</p></div><div id="fn7"><p><sup>7</sup>&nbsp;long-range information is sub-optimal</p></div><div id="fn8"><p><sup>8</sup>&nbsp;멀리 떨어질수록 관계가 줄어드는 지역적 특성을 살린 것이 CNN이다. 이게 다양한 크기의 종양 판별과 무슨 관계가 있는지 확인 필요.</p></div><div id="fn9"><p><sup>9</sup>&nbsp;각각 다른 해상도가 시사하는 바는?</p></div></div><div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+RPN에서의 FCN 언급
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Region Proposal Network에서 언급하는 ’CNN으로 공간 정보를 보존한다’는 말이 이 말이다. 같은 segmentation task이니 모두 공간 정보를 보존하는게 중요할거라고 생각했는데 이 아이디어를 object detection에서 모두 쓰고 있었다. 초기 FCN의 segmentation이 얼마나 거칠었는지 생각해보면 큰 발전을 이뤘다고 할 수 있다.</p>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><img src="https://github.com/dotpyo/archive/assets/60145951/e71d22a8-daf3-44b7-971d-78236d247c7a" class="img-fluid" alt="FCN - masking"></th>
+<th style="text-align: center;"><img src="https://github.com/dotpyo/archive/assets/60145951/2cbbec6c-5ed0-4dd0-b75d-cfcc9f390d0a" class="img-fluid" alt="mask rcnn - masking"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">FCN (2015)</td>
+<td style="text-align: center;">mask r-cnn (2018)</td>
+</tr>
+</tbody>
+</table>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><img src="https://github.com/dotpyo/archive/assets/60145951/1b91d4d4-d6a8-4019-8d8b-a55463566c78" class="img-fluid" alt="faster r-cnn"></th>
+<th style="text-align: center;"><img src="https://github.com/dotpyo/archive/assets/60145951/4865dced-6c6a-416c-8cbe-772ec9b1e496" class="img-fluid" alt="mask r-cnn"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">faster r-cnn (2016)</td>
+<td style="text-align: center;">mask r-cnn (2018)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+간단한 FCN 정리
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<blockquote class="blockquote">
+<p>발상: 이미지의 정보가 압축된 Feature map이 있다면 역으로 사용/복원할 수 있지 않을까?</p>
+</blockquote>
+<table class="table">
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><img src="https://github.com/dotpyo/archive/assets/60145951/25079cc3-21fe-455e-81dd-858282c7db1a" class="img-fluid" alt="FCN"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Fully Convolution Network</td>
+</tr>
+</tbody>
+</table>
+<p>CNN을 생각해보자. CNN은 이미지의 픽셀들에 Convolution 연산을 해서 특징들을 찾아낸다. 그걸 Feature map 이라고 했다. 그렇다면 어떤 모델이든 마지막 Convolution 레이어의 결과물, 다시 말해 마지막 Feature map 은 이미지의 특징을 가장 압축적으로 가지고 있는 행렬 아니겠나? 이걸 천천히 되돌려 생각하면 레이어마다 산출되는 Feature map 은 이미지의 정보를 <img src="https://latex.codecogs.com/png.latex?n"> 배 압축한 행렬이 된다. 우리는 이렇게 이미지의 정보를 압축하는 과정을 <code>down sampling</code> 이라고 하기로 했다.</p>
+<p>우리에겐 학습 과정이 있으니 down sampling 을 역으로 되짚어 갈 수도 있다. 이를 <code>deconvolution</code> 또는 <code>up sampling</code>의 한 종류라고 한다. 물론 다른 방법으로도 이미지를 복원할 수 있다. 그 방법을 논문에선 <code>bilinear interpolation</code>(이중선형보간)이라고 하는데, 선형 보간을 2차원으로 확장했다고 생각하면 될 것 같다. 픽셀간의 거리비를 이용해 빈 공간을 채우는 방식이라고 한다.</p>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*1ItRe38ocUZLKJEkGHUh4Q.png" class="img-fluid" alt="linear interpolation"></th>
+<th style="text-align: center;"><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*arKsBkAMZG-EDF2WIVBUNw.png" class="img-fluid" alt="bilinear interpolation"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">linear interpolation</td>
+<td style="text-align: center;">bilinear interpolation</td>
+</tr>
+</tbody>
+</table>
+<p>그러면 convolution은 어떻게 역으로 되짚어 가야할까? feature map의 크기를 키우면 된다. 우리는 feature map의 특정 픽셀에 해당하는 이미지의 픽셀들을 알고 있다. 그 이미지의 픽셀들을 convolution 한 결과가 feature map 이니 당연하다. 그리고 특징을 뽑아내는 과정에서 버렸던 정보들은 feature map에 kernel을 곱하면 된다. 나누기의 반대는 곱하기라는 개념과 크게 다르지 않다.</p>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><img src="https://user-images.githubusercontent.com/50395556/81543395-f8727800-93b0-11ea-9ed2-2b41abb17bc2.png" class="img-fluid" alt="convolution"></th>
+<th style="text-align: center;"><img src="https://user-images.githubusercontent.com/50395556/81542337-75045700-93af-11ea-89d6-0b35870b4b7d.png" class="img-fluid" alt="deconvolution"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">convolution</td>
+<td style="text-align: center;">deconvolution</td>
+</tr>
+</tbody>
+</table>
+<p>FCN에서는 이 두가지 개념에 skip architecture라는 고유한 구조를 적용해 모든 레이어를 컨볼루션화 한다. 참고로 논문에서 사용한 커널의 크기는 <img src="https://latex.codecogs.com/png.latex?14%20%5Ctimes%2014">다.</p>
+<ol type="1">
+<li>가장 먼저 마지막 계층에 21채널의 <img src="https://latex.codecogs.com/png.latex?1%20%5Ctimes%201"> convolution 레이어를 붙이는데 이는 <a href="http://host.robots.ox.ac.uk/pascal/VOC/">PASCAL</a> 이라는 객체 검출 데이터셋과 형태를 맞추기 위함이었다.<br>
+</li>
+<li>32x<sup>10</sup> upsample로 시작한다. <img src="https://latex.codecogs.com/png.latex?1%20%5Ctimes%201"> 형태의 pool5 layer를 32배 하는데 이때 upsample이 deconvolution 과정을 말한다. 이렇게 upsample 한 예측결과는 그대로 둔다.</li>
+<li>16x upsample을 만든다.
+<ol type="1">
+<li>마지막 layer(pool5)의 마지막 conv layer를 2배 upsample 하고 이를 커널(<img src="https://latex.codecogs.com/png.latex?14%20%5Ctimes%2014">)과 곱한다</li>
+<li>직전 layer(pool4)을 1에 더하여 semantic 정보를 구체화 한다.</li>
+</ol></li>
+<li>3에서 얻은 행렬을 16배 upsample 하여 pool4만 upsample 하는 것보다 세밀한 결과를 얻는다.</li>
+</ol>
+<table class="table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*-1hOIxlnFn3qd7n5JEgzFg.png" class="img-fluid" alt="FCN 16s"></th>
+<th style="text-align: center;"><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*1r-KVNqt9V7JiDT-zyOEAQ.png" class="img-fluid" alt="FCN 8s"></th>
+<th style="text-align: center;"><img src="https://github.com/dotpyo/archive/assets/60145951/ddbb1ff6-6779-4de3-a19d-912cd81079d6" class="img-fluid" alt="figure 3"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">FCN 16s</td>
+<td style="text-align: center;">FCN 8s</td>
+<td style="text-align: center;">DAG nets learn to combine coarse</td>
+</tr>
+</tbody>
+</table>
+<p>비슷한 과정을 8배에서도 진행해서 더 선명한 이미지를 얻고, 그렇게 <strong>복원된 이미지의 각 픽셀을 분류</strong> 하는 것이 segmentation의 전체 과정이다. 이때 해당 논문만의 특징인 skip architecture는 간단하게 각 feature map이 어떤 정보를 담고 있었을지 추론하는 과정을 생각해보면 된다. Convolution을 진행할수록 구체적인 정보보다는 대략적인 정보를 담게 되는데 이것에 착안해 후반의 layer에서는 대략적인 특성을, 초반의 layer에서는 구체적인 특성에 집중하도록 했다.</p>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><img src="https://github.com/dotpyo/archive/assets/60145951/0dba93cb-c855-43c2-88ab-dbc02f498ae6" class="img-fluid" alt="FCN for segmentation"></th>
+<th style="text-align: center;"><img src="https://github.com/dotpyo/archive/assets/60145951/796cc036-a553-4173-b210-a25bbaf7a30b" class="img-fluid" alt="FCN layers"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">FCN for segmentation</td>
+<td style="text-align: center;">FCN layers</td>
+</tr>
+</tbody>
+</table>
+<table class="table">
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*pbEMiRkXz65ejneuuToK3g.png" class="img-fluid" alt="skip architecture"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">skip architecture</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>출처
+<ul>
+<li>FCN: <a href="https://medium.com/@msmapark2/fcn-%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-fully-convolutional-networks-for-semantic-segmentation-81f016d76204">https://medium.com/<span class="citation" data-cites="msmapark2">@msmapark2</span></a></li>
+<li>bilinear interpolation: <a href="https://dambaekday.tistory.com/3">https://dambaekday.tistory.com/3</a></li>
+<li>deconvolution: <a href="https://realblack0.github.io/2020/05/11/transpose-convolution.html">https://realblack0.github.io/2020/05/11/transpose-convolution.html</a></li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+<div class="no-row-height column-margin column-container"><div id="fn10"><p><sup>10</sup>&nbsp;stride 값이 32다. 16, 8 도 마찬가지다.</p></div></div></section>
+
+
+ ]]></description>
+  <category>tutorial</category>
+  <category>paper review</category>
+  <guid>https://dotpyo.github.io/archive/posts/LabHAI/papers/2201.01266.html</guid>
+  <pubDate>Mon, 11 Mar 2024 00:00:00 GMT</pubDate>
+</item>
 <item>
   <title>DCGAN face tutorial</title>
   <dc:creator>dotpyo </dc:creator>
@@ -10418,71 +10684,6 @@ RLHF, alignment method
   <category>Zero Shot</category>
   <category>paper review</category>
   <guid>https://dotpyo.github.io/archive/posts/papers/2310.07820.html</guid>
-  <pubDate>Sat, 23 Sep 2023 00:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>LoRA: Low-Rank Adaptation of Large Language Models</title>
-  <dc:creator>dotpyo </dc:creator>
-  <link>https://dotpyo.github.io/archive/posts/papers/2106.09685.html</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<ul>
-<li><a href="https://github.com/microsoft/LoRA">github</a></li>
-</ul>
-<section id="abstract" class="level3">
-<h3 class="anchored" data-anchor-id="abstract">Abstract</h3>
-<p>MS사에서 진행한 연구. 자연어 처리에서의 중요한 패러다임 중 하나는 일반적인 도메인에서 학습된 대규모 사전학습 모델을 특정 과업이나 도메인에 적용시키는 것이다. 이 작업을 fine tuning이라고 하는데 더 큰 사전학습 모델을 사용할수록 모델의 매개변수를 유지하는 것은 더욱 어려워진다. 이는 더 많은 컴퓨팅 파워를 요구하고, 더 많은 비용을 야기하므로 현재 패러다임에서 큰 모델을 효과적으로 fine tuning 하는 방법을 찾는 것은 중요하다.</p>
-<p>이에 연구진은 <strong>L</strong>ow <strong>R</strong>ank <strong>A</strong>daption (<code>LoRA</code>)를 제안한다. LoRA는 사전학습 모델의 가중치를 freeze하고 학습 가능한 rank decomposition matrices를 각 레이어에 끼워넣는 방식이다. 이는 downstream 작업에서 학습 가능한 매개변수의 개수를 크게 줄일 수 있다.</p>
-<p>연구진이 예시로 든 GPT-3 175B 모델은 매개변수가 175 Billion 개라는 의미로 수많은 매개변수가 모델 안에 내재되어있음을 이름으로 알 수 있다. 해당 모델을 비롯하여 현재의 LLM 모델들은 billion 단위의 매개변수를 기본적으로 탑재하고 있고 이는 자연히 막대한 컴퓨팅 자원을 필요로 하게 된다.</p>
-<p>예시 모델을 LoRA와 Adam으로 fine tuning한 경우 학습 가능한 매개변수는 10,000배 줄어들고 GPU memory 크기는 3배 줄어들게 된다. LoRA는 fine tuning된 RoBERTa, DeBERTa, GPT-2, GPT-3의 능력 동급 혹은 그 이상으로 기능한다. 더 적은 개수의 학습 가능 매개변수를 가졌음에도 불구하고 더 많은 학습 처리량을 보이며, adapter와는 다르게 추론 지연(<em>inference latency</em>)이 일어나지 않는다는 장점이 있다.</p>
-<p>연구진은 또한 경험적 조사를 통해 language model adaptation의 낮은 계수(rank of matrix)가 모델의 효과를 조명함을 알아냈다.</p>
-<p>이에 연구진은 RoBERTa, DeBERTa, GPT-2의 checkpoints와 LoRA를 PyTorch로 구현한 통합 구현체를 배포한다. : <a href="https://github.com/microsoft/LoRA">https://github.com/microsoft/LoRA</a></p>
-<div class="callout callout-style-simple callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-fine tuning에 최적화 함수가 필요한 이유
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<ol start="17" type="A">
-<li><p>fine tuning은 새로운 데이터로 모델을 학습하여 일반적인 과제를 수행하는 대형 모델을 특수한 도메인에 정착시키는 과정이다. 이 과정은 단순 학습인데 왜 최적화 함수가 필요한가? 이전에 사용했던 최적화 함수를 다시 사용하면 되지 않나?</p></li>
-<li><p>fine tuning도 결과적으로 ’학습’을 하는 과정이다. 학습 과정에서 optimizer는 최적화 함수로 loss function의 값이 가장 작은 값으로 수렴하도록 돕는 역할을 한다. 즉, loss function을 최적화하는 것이 optimizer의 목표다. optimizer 함수는 모델의 매개변수(parameter)를 매번 조절하여 손실함수의 값을 최소화하는데, 이를 통해 fine tuning에서도 tuning이 제대로 되고 있는지 확인할 수 있다. 최적화는 모델 성능에도 영향을 미치므로 단순히 이전에 사용했던 최적화 함수를 재사용하기보다는 새로운 전략을 모색하는 것이 효과적이다. 최적화 전략은 데이터셋의 크기, 사용 가능한 계산 리소스를 포함한 여러가지 요소를 고려하기 때문이다.</p></li>
-</ol>
-<table class="table">
-<colgroup>
-<col style="width: 100%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: center;"><img a="optimization process" src="https://velog.velcdn.com/images/freesky/post/762c7c9b-6276-4343-aa9d-9fda9684cb3f/image.gif" width="80%"></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">optimization process</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-
-
-</section>
-
- ]]></description>
-  <category>LLM</category>
-  <category>paper review</category>
-  <guid>https://dotpyo.github.io/archive/posts/papers/2106.09685.html</guid>
   <pubDate>Sat, 23 Sep 2023 00:00:00 GMT</pubDate>
 </item>
 </channel>
