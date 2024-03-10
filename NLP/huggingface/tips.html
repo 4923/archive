@@ -6,10 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="dotpyo">
-<meta name="description" content="P-tuning is a method for automatically searching and optimizing for better prompts in a continuous space.">
+<meta name="description" content="huggingface를 사용하며 알게 된 것들.">
 
-<title>archive - p tuning</title>
+<title>archive - tips</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -80,7 +79,6 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-L5Y3XFBP62', { 'anonymize_ip': true});
 </script>
-<meta name="referrer" content="strict-origin-when-cross-origin">
 
 
 <link rel="stylesheet" href="../../styles.css">
@@ -110,17 +108,16 @@ gtag('config', 'G-L5Y3XFBP62', { 'anonymize_ip': true});
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-page-left">
-      <h1 class="title">p tuning</h1>
-            <p class="subtitle lead">PEFT; p tuning</p>
+      <h1 class="title">tips</h1>
+            <p class="subtitle lead">huggingface 알아보기</p>
                   <div>
         <div class="description">
-          P-tuning is a method for automatically searching and optimizing for better prompts in a continuous space.
+          huggingface를 사용하며 알게 된 것들.
         </div>
       </div>
                           <div class="quarto-categories">
                 <div class="quarto-category">NLP</div>
-                <div class="quarto-category">LLM</div>
-                <div class="quarto-category">technique</div>
+                <div class="quarto-category">huggingface</div>
               </div>
                   </div>
   </div>
@@ -128,20 +125,8 @@ gtag('config', 'G-L5Y3XFBP62', { 'anonymize_ip': true});
   
   <div class="quarto-title-meta column-page-left">
 
-      <div>
-      <div class="quarto-title-meta-heading">Author</div>
-      <div class="quarto-title-meta-contents">
-               <p>dotpyo <a href="mailto:4923.py@gmail.com" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> </p>
-            </div>
-    </div>
       
     
-      <div>
-      <div class="quarto-title-meta-heading">Modified</div>
-      <div class="quarto-title-meta-contents">
-        <p class="date-modified">March 9, 2024</p>
-      </div>
-    </div>
       
     </div>
     
@@ -154,8 +139,7 @@ gtag('config', 'G-L5Y3XFBP62', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#p-tuning" id="toc-p-tuning" class="nav-link active" data-scroll-target="#p-tuning">p tuning</a></li>
-  <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference">Reference</a></li>
+  <li><a href="#다운로드-받은-모델-삭제하는-방법-cache-cli에서-지우기" id="toc-다운로드-받은-모델-삭제하는-방법-cache-cli에서-지우기" class="nav-link active" data-scroll-target="#다운로드-받은-모델-삭제하는-방법-cache-cli에서-지우기">다운로드 받은 모델 삭제하는 방법 (cache cli에서 지우기)</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/dotpyo/archive/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -166,18 +150,22 @@ gtag('config', 'G-L5Y3XFBP62', { 'anonymize_ip': true});
 
 
 
-<section id="p-tuning" class="level4">
-<h4 class="anchored" data-anchor-id="p-tuning">p tuning</h4>
-<p>“P-tuning is a method for automatically searching and optimizing for better prompts in a continuous space.”</p>
-<ul>
-<li>PLM의 일부 가중치만 미세조정하여 <code>continuous prompt emobedding</code>만 tuninng한다.</li>
-</ul>
-</section>
-<section id="reference" class="level4">
-<h4 class="anchored" data-anchor-id="reference">Reference</h4>
-<ul>
-<li><a href="https://huggingface.co/blog/peft">https://huggingface.co/blog/peft</a></li>
-</ul>
+<section id="다운로드-받은-모델-삭제하는-방법-cache-cli에서-지우기" class="level3">
+<h3 class="anchored" data-anchor-id="다운로드-받은-모델-삭제하는-방법-cache-cli에서-지우기">다운로드 받은 모델 삭제하는 방법 (cache cli에서 지우기)</h3>
+<pre><code>➜ huggingface-cli scan-cache
+REPO ID                     REPO TYPE SIZE ON DISK NB FILES LAST_ACCESSED LAST_MODIFIED REFS                LOCAL PATH
+--------------------------- --------- ------------ -------- ------------- ------------- ------------------- -------------------------------------------------------------------------
+glue                        dataset         116.3K       15 4 days ago    4 days ago    2.4.0, main, 1.17.0 /home/wauplin/.cache/huggingface/hub/datasets--glue
+google/fleurs               dataset          64.9M        6 1 week ago    1 week ago    refs/pr/1, main     /home/wauplin/.cache/huggingface/hub/datasets--google--fleurs
+Jean-Baptiste/camembert-ner model           441.0M        7 2 weeks ago   16 hours ago  main                /home/wauplin/.cache/huggingface/hub/models--Jean-Baptiste--camembert-ner
+bert-base-cased             model             1.9G       13 1 week ago    2 years ago                       /home/wauplin/.cache/huggingface/hub/models--bert-base-cased
+t5-base                     model            10.1K        3 3 months ago  3 months ago  main                /home/wauplin/.cache/huggingface/hub/models--t5-base
+t5-small                    model           970.7M       11 3 days ago    3 days ago    refs/pr/1, main     /home/wauplin/.cache/huggingface/hub/models--t5-small
+
+Done in 0.0s. Scanned 6 repo(s) for a total of 3.4G.
+Got 1 warning(s) while scanning. Use -vvv to print details.</code></pre>
+<p>삭제 : <code>rm -r {LOCAL PATH}</code></p>
+<p>ref : <a href="https://huggingface.co/docs/huggingface_hub/guides/manage-cache">https://huggingface.co/docs/huggingface_hub/guides/manage-cache</a></p>
 
 
 </section>

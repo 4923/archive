@@ -2,90 +2,90 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://dotpyo.github.io/archive/index.html</loc>
-    <lastmod>2024-03-10T12:39:53.924Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dotpyo.github.io/archive/posts/papers/2106.09685.html</loc>
-    <lastmod>2024-03-10T12:39:54.124Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dotpyo.github.io/archive/posts/HAR/ntu-skl-plotting.html</loc>
-    <lastmod>2024-03-10T12:39:54.104Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dotpyo.github.io/archive/posts/Graph/GNN101.html</loc>
-    <lastmod>2024-03-10T12:39:20.404Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dotpyo.github.io/archive/posts/LabHAI/tutorial/pytorch101.html</loc>
-    <lastmod>2024-03-10T12:39:54.036Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dotpyo.github.io/archive/posts/LabHAI/tutorial/GAN/DCGAN_tutorial.html</loc>
-    <lastmod>2024-03-10T12:39:54.108Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dotpyo.github.io/archive/posts/LabHAI/tutorial/maskrcnn/torchvision_finetuning_instance_segmentation.html</loc>
-    <lastmod>2024-03-10T12:39:54.056Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dotpyo.github.io/archive/posts/techniques/zero_shot.html</loc>
-    <lastmod>2024-03-10T12:39:54.004Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dotpyo.github.io/archive/posts/NLP/lora.html</loc>
-    <lastmod>2024-03-10T12:39:53.956Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dotpyo.github.io/archive/posts/NLP/huggingface/tips.html</loc>
-    <lastmod>2024-03-10T12:39:53.968Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dotpyo.github.io/archive/posts/NLP/ptuning.html</loc>
-    <lastmod>2024-03-10T12:39:53.924Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dotpyo.github.io/archive/CV.html</loc>
-    <lastmod>2024-03-10T12:39:53.928Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dotpyo.github.io/archive/posts/NLP/encoding.html</loc>
-    <lastmod>2024-03-10T12:39:53.928Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dotpyo.github.io/archive/posts/NLP/huggingface/peft.html</loc>
-    <lastmod>2024-03-10T12:39:53.988Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dotpyo.github.io/archive/posts/techniques/handling_imbalanced_data.html</loc>
-    <lastmod>2024-03-10T12:39:53.976Z</lastmod>
+    <lastmod>2024-03-10T12:28:00.754Z</lastmod>
   </url>
   <url>
     <loc>https://dotpyo.github.io/archive/posts/techniques/freezing.html</loc>
-    <lastmod>2024-03-10T12:39:54.008Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dotpyo.github.io/archive/posts/LabHAI/tutorial/GAN/fgsm_tutorial.html</loc>
-    <lastmod>2024-03-10T12:39:54.056Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dotpyo.github.io/archive/posts/LabHAI/tutorial/How_2_read_a_paper.html</loc>
-    <lastmod>2024-03-10T12:39:54.024Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dotpyo.github.io/archive/posts/LabHAI/tutorial/transfer_learning/transfer_learning_tutorial.html</loc>
-    <lastmod>2024-03-10T12:39:54.084Z</lastmod>
+    <lastmod>2024-03-09T11:31:45.617Z</lastmod>
   </url>
   <url>
     <loc>https://dotpyo.github.io/archive/posts/HAR/mmlab.html</loc>
-    <lastmod>2024-03-10T12:39:54.088Z</lastmod>
+    <lastmod>2024-03-09T11:31:45.609Z</lastmod>
   </url>
   <url>
     <loc>https://dotpyo.github.io/archive/posts/HAR/modalities.html</loc>
-    <lastmod>2024-03-10T12:39:54.112Z</lastmod>
+    <lastmod>2024-03-09T11:31:45.609Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dotpyo.github.io/archive/posts/NLP/huggingface/tips.html</loc>
+    <lastmod>2024-03-09T11:31:45.616Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dotpyo.github.io/archive/posts/NLP/LoRA.html</loc>
+    <lastmod>2024-03-10T12:36:14.908Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dotpyo.github.io/archive/posts/Graph/GNN101.html</loc>
+    <lastmod>2024-03-09T18:57:31.170Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dotpyo.github.io/archive/posts/LabHAI/tutorial/pytorch101.html</loc>
+    <lastmod>2024-03-09T19:47:09.566Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dotpyo.github.io/archive/posts/LabHAI/tutorial/maskrcnn/torchvision_finetuning_instance_segmentation.html</loc>
+    <lastmod>2024-03-09T19:47:16.515Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dotpyo.github.io/archive/posts/LabHAI/tutorial/GAN/DCGAN_tutorial.html</loc>
+    <lastmod>2024-03-10T07:51:01.870Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dotpyo.github.io/archive/posts/papers/2106.09685.html</loc>
+    <lastmod>2024-03-09T11:31:45.616Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dotpyo.github.io/archive/CV.html</loc>
+    <lastmod>2024-03-09T11:31:45.608Z</lastmod>
   </url>
   <url>
     <loc>https://dotpyo.github.io/archive/posts/papers/2310.07820.html</loc>
-    <lastmod>2024-03-10T12:39:54.132Z</lastmod>
+    <lastmod>2024-03-09T11:31:45.616Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dotpyo.github.io/archive/posts/LabHAI/tutorial/GAN/fgsm_tutorial.html</loc>
+    <lastmod>2024-03-09T19:47:36.359Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dotpyo.github.io/archive/posts/LabHAI/tutorial/How_2_read_a_paper.html</loc>
+    <lastmod>2024-03-09T19:46:53.670Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dotpyo.github.io/archive/posts/LabHAI/tutorial/transfer_learning/transfer_learning_tutorial.html</loc>
+    <lastmod>2024-03-09T19:47:22.316Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dotpyo.github.io/archive/posts/NLP/ptuning.html</loc>
+    <lastmod>2024-03-09T11:31:45.616Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dotpyo.github.io/archive/posts/NLP/huggingface/PEFT.html</loc>
+    <lastmod>2024-03-09T11:31:45.616Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dotpyo.github.io/archive/posts/NLP/encoding.html</loc>
+    <lastmod>2024-03-09T11:31:45.616Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dotpyo.github.io/archive/posts/HAR/ntu-skl-plotting.html</loc>
+    <lastmod>2024-03-09T11:31:45.610Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dotpyo.github.io/archive/posts/techniques/handling_imbalanced_data.html</loc>
+    <lastmod>2024-03-09T11:31:45.617Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dotpyo.github.io/archive/posts/techniques/zero_shot.html</loc>
+    <lastmod>2024-03-09T11:31:45.617Z</lastmod>
   </url>
 </urlset>

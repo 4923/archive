@@ -6,10 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="dotpyo">
-<meta name="description" content="P-tuning is a method for automatically searching and optimizing for better prompts in a continuous space.">
+<meta name="description" content="Some extensive deep-learning models have demonstrated that their weight matrix often resides within low-rank spaces.">
 
-<title>archive - p tuning</title>
+<title>archive - LoRA</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,28 +21,62 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<link href="../../favicon.ico" rel="icon">
-<script src="../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../favicon.ico" rel="icon">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -80,10 +113,38 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-L5Y3XFBP62', { 'anonymize_ip': true});
 </script>
-<meta name="referrer" content="strict-origin-when-cross-origin">
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<link rel="stylesheet" href="../../styles.css">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -93,12 +154,12 @@ gtag('config', 'G-L5Y3XFBP62', { 'anonymize_ip': true});
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">archive</span>
     </a>
   </div>
         <div class="quarto-navbar-tools tools-wide tools-end">
-    <a href="../../CV.html" title="&amp;nbsp;" class="quarto-navigation-tool px-1" aria-label="&amp;nbsp;"><i class="bi bi-person-circle"></i></a>
+    <a href="../CV.html" title="&amp;nbsp;" class="quarto-navigation-tool px-1" aria-label="&amp;nbsp;"><i class="bi bi-person-circle"></i></a>
     <a href="https://github.com/dotpyo" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
@@ -110,11 +171,11 @@ gtag('config', 'G-L5Y3XFBP62', { 'anonymize_ip': true});
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-page-left">
-      <h1 class="title">p tuning</h1>
-            <p class="subtitle lead">PEFT; p tuning</p>
+      <h1 class="title">LoRA</h1>
+            <p class="subtitle lead">PEFT; Low Rank Adaption</p>
                   <div>
         <div class="description">
-          P-tuning is a method for automatically searching and optimizing for better prompts in a continuous space.
+          Some extensive deep-learning models have demonstrated that their weight matrix often resides within low-rank spaces.
         </div>
       </div>
                           <div class="quarto-categories">
@@ -128,20 +189,8 @@ gtag('config', 'G-L5Y3XFBP62', { 'anonymize_ip': true});
   
   <div class="quarto-title-meta column-page-left">
 
-      <div>
-      <div class="quarto-title-meta-heading">Author</div>
-      <div class="quarto-title-meta-contents">
-               <p>dotpyo <a href="mailto:4923.py@gmail.com" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> </p>
-            </div>
-    </div>
       
     
-      <div>
-      <div class="quarto-title-meta-heading">Modified</div>
-      <div class="quarto-title-meta-contents">
-        <p class="date-modified">March 9, 2024</p>
-      </div>
-    </div>
       
     </div>
     
@@ -154,7 +203,8 @@ gtag('config', 'G-L5Y3XFBP62', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#p-tuning" id="toc-p-tuning" class="nav-link active" data-scroll-target="#p-tuning">p tuning</a></li>
+  <li><a href="#lora" id="toc-lora" class="nav-link active" data-scroll-target="#lora">LoRA</a></li>
+  <li><a href="#implementation" id="toc-implementation" class="nav-link" data-scroll-target="#implementation">Implementation</a></li>
   <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference">Reference</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/dotpyo/archive/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
@@ -166,16 +216,66 @@ gtag('config', 'G-L5Y3XFBP62', { 'anonymize_ip': true});
 
 
 
-<section id="p-tuning" class="level4">
-<h4 class="anchored" data-anchor-id="p-tuning">p tuning</h4>
-<p>“P-tuning is a method for automatically searching and optimizing for better prompts in a continuous space.”</p>
+<p><a href="https://medium.com/@Shrishml/lora-low-rank-adaptation-from-the-first-principle-7e1adec71541">LoRA: Low-Rank Adaptation from the first principle</a> 를 번역하고 요약한 글이다.</p>
+<section id="lora" class="level4">
+<h4 class="anchored" data-anchor-id="lora">LoRA</h4>
+<p>사전 학습된 모델 가중치를 동결하고 학습 가능한 순위 분해 행렬을 트랜스포머 아키텍처의 각 계층에 주입함으로써 LLM이 제기하는 비용 및 효율성 문제에 대한 해결책을 제시한다. 이 혁신적인 접근 방식은 다운스트림 작업에서 학습 가능한 파라미터의 수를 획기적으로 줄여 GPU 메모리 요구 사항을 크게 줄이고 학습 처리량을 개선한다. 여기서 ’Low Rank matrix’는 왜 중요할까? ’extensive deep learning model’의 가중치 행렬이 low rank matrix에 존재한다는 연구결과가 있었기 때문이다.</p>
 <ul>
-<li>PLM의 일부 가중치만 미세조정하여 <code>continuous prompt emobedding</code>만 tuninng한다.</li>
+<li><p>e.g.&nbsp;1000차원의 임베딩 벡터가 있다고 하자. 이렇게 하면 <span class="math inline">\(1000x1000\)</span> 차원의 K, Q, V 행렬이 생성되며, 각각 <span class="math inline">\(10^3 * 10^3 = 10^6\)</span> 개의 훈련 가능한 파라미터가 생성된다. 반면 이를 low rank matrix로 압축시키면 학습 가능한 파라미터는 20000개로 줄어든다. 따라서 LLM의 목표는 이 행렬들을 low rank로 압축하여 학습해야하는 파라미터의 수를 줄이는 것이다. (그림 참고)</p>
+<table class="table">
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><br><img src="https://miro.medium.com/v2/resize:fit:452/format:webp/1*Q_ygJFnJaI3AS1n-zXQvdg.png"><br></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Our reparametrization. We only train A and B. For above example r=8 and d =1000.</td>
+</tr>
+</tbody>
+</table>
+<p>LLM에서의 fine tuning은 모델 내의 모든 가중치 행렬을 또 다른 가중치 행렬로 이동하는 과정으로 이해될 수 있는데 base model의 안정성을 위해 가중치행렬을 동결하고 (freeze) <span class="math inline">\(W\)</span> 행렬을 두개의 low rank matrix인 <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span> 로 분해하는 과정을 거친다. 이 과정에서 가중치 행렬을 정확하게 찾아낼 수 있다면 좋겠지만 찾아내는 과정 또한 연산량에 포함된다. 그러므로 <code>r</code> 파라미터로 가중치 행렬이 있을만한 ’적당히 작은 랭크의 행렬’으로 정하고 근사화한다. (LoR<strong>A</strong>)</p></li>
 </ul>
+</section>
+<section id="implementation" class="level4">
+<h4 class="anchored" data-anchor-id="implementation">Implementation</h4>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource py number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">from</span> peft <span class="im">import</span> PeftModel</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="im">from</span> peft <span class="im">import</span> LoraConfig, get_peft_model, prepare_model_for_int8_training, set_peft_model_state_dict</span>
+<span id="cb1-3"><a href="#cb1-3"></a></span>
+<span id="cb1-4"><a href="#cb1-4"></a></span>
+<span id="cb1-5"><a href="#cb1-5"></a>model <span class="op">=</span> AutoModelForCausalLM.from_pretrained(</span>
+<span id="cb1-6"><a href="#cb1-6"></a>        <span class="st">"bigcode/starcoder"</span>,</span>
+<span id="cb1-7"><a href="#cb1-7"></a>        use_auth_token<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb1-8"><a href="#cb1-8"></a>        device_map<span class="op">=</span>{<span class="st">""</span>: Accelerator().process_index},</span>
+<span id="cb1-9"><a href="#cb1-9"></a>    )</span>
+<span id="cb1-10"><a href="#cb1-10"></a></span>
+<span id="cb1-11"><a href="#cb1-11"></a></span>
+<span id="cb1-12"><a href="#cb1-12"></a><span class="co"># lora hyperparameters</span></span>
+<span id="cb1-13"><a href="#cb1-13"></a>lora_config <span class="op">=</span> LoraConfig(r<span class="op">=</span><span class="dv">8</span>,target_modules <span class="op">=</span> [<span class="st">"c_proj"</span>, <span class="st">"c_attn"</span>, <span class="st">"q_attn"</span>])</span>
+<span id="cb1-14"><a href="#cb1-14"></a></span>
+<span id="cb1-15"><a href="#cb1-15"></a></span>
+<span id="cb1-16"><a href="#cb1-16"></a>model <span class="op">=</span> get_peft_model(model, lora_config)</span>
+<span id="cb1-17"><a href="#cb1-17"></a>training_args <span class="op">=</span> TrainingArguments(</span>
+<span id="cb1-18"><a href="#cb1-18"></a>    ...</span>
+<span id="cb1-19"><a href="#cb1-19"></a>)</span>
+<span id="cb1-20"><a href="#cb1-20"></a></span>
+<span id="cb1-21"><a href="#cb1-21"></a>trainer <span class="op">=</span> Trainer(model<span class="op">=</span>model, args<span class="op">=</span>training_args, </span>
+<span id="cb1-22"><a href="#cb1-22"></a>                  train_dataset<span class="op">=</span>train_data, eval_dataset<span class="op">=</span>val_data)</span>
+<span id="cb1-23"><a href="#cb1-23"></a></span>
+<span id="cb1-24"><a href="#cb1-24"></a><span class="bu">print</span>(<span class="st">"Training..."</span>)</span>
+<span id="cb1-25"><a href="#cb1-25"></a>trainer.train()</span>
+<span id="cb1-26"><a href="#cb1-26"></a></span>
+<span id="cb1-27"><a href="#cb1-27"></a><span class="co"># plugging the adapter into basemodel back</span></span>
+<span id="cb1-28"><a href="#cb1-28"></a>model <span class="op">=</span> PeftModel.from_pretrained(<span class="st">"bigcode/starcoder"</span>, peft_model_path)</span>
+<span id="cb1-29"><a href="#cb1-29"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="reference" class="level4">
 <h4 class="anchored" data-anchor-id="reference">Reference</h4>
 <ul>
+<li>LoRA : <a href="https://medium.com/@Shrishml/lora-low-rank-adaptation-from-the-first-principle-7e1adec71541">https://medium.com/<span class="citation" data-cites="Shrishml/lora-low-rank-adaptation-from-the-first-principle-7e1adec71541">@Shrishml/lora-low-rank-adaptation-from-the-first-principle-7e1adec71541</span></a></li>
 <li><a href="https://huggingface.co/blog/peft">https://huggingface.co/blog/peft</a></li>
 </ul>
 

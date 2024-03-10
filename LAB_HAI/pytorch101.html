@@ -6,7 +6,6 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="dotpyo">
 <meta name="description" content="전반적인 내용을 가볍게 훑고 지나간다.">
 
 <title>archive - PyTorch101</title>
@@ -59,25 +58,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../../">
-<link href="../../../favicon.ico" rel="icon">
-<script src="../../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../favicon.ico" rel="icon">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -114,7 +111,6 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-L5Y3XFBP62', { 'anonymize_ip': true});
 </script>
-<meta name="referrer" content="strict-origin-when-cross-origin">
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -146,34 +142,43 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="../../../styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-sidebar floating nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../../index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">archive</span>
     </a>
   </div>
-        <div class="quarto-navbar-tools tools-wide tools-end">
-    <a href="../../../CV.html" title="&amp;nbsp;" class="quarto-navigation-tool px-1" aria-label="&amp;nbsp;"><i class="bi bi-person-circle"></i></a>
+        <div class="quarto-navbar-tools tools-end">
+    <a href="../CV.html" title="&amp;nbsp;" class="quarto-navigation-tool px-1" aria-label="&amp;nbsp;"><i class="bi bi-person-circle"></i></a>
     <a href="https://github.com/dotpyo" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
           <div id="quarto-search" class="" title="Search"></div>
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <a class="flex-grow-1 no-decor" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+          <h1 class="quarto-secondary-nav-title">PyTorch101</h1>
+        </a>     
+    </div>
+  </nav>
 </header>
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">PyTorch101</h1>
+    <div class="quarto-title column-body">
+      <h1 class="title d-none d-lg-block">PyTorch101</h1>
             <p class="subtitle lead">Introduction to PyTorch</p>
                   <div>
         <div class="description">
@@ -188,28 +193,202 @@ window.Quarto = {
   </div>
     
   
-  <div class="quarto-title-meta column-page-left">
+  <div class="quarto-title-meta">
 
-      <div>
-      <div class="quarto-title-meta-heading">Author</div>
-      <div class="quarto-title-meta-contents">
-               <p>dotpyo <a href="mailto:4923.py@gmail.com" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> </p>
-            </div>
-    </div>
       
     
-      <div>
-      <div class="quarto-title-meta-heading">Modified</div>
-      <div class="quarto-title-meta-contents">
-        <p class="date-modified">March 10, 2024</p>
-      </div>
-    </div>
       
     </div>
     
   
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../CV.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">&nbsp;</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
+ <span class="menu-text">Graph</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Graph/GNN101.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Graph 101</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+ <span class="menu-text">HAR</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../HAR/mmlab.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">MMLAB</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../HAR/modalities.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Modalities</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../HAR/ntu-skl-plotting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">skeleton data plotting</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">LAB HAI</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../LAB_HAI/How_2_read_a_paper.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">How to read a paper</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../LAB_HAI/pytorch101.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">PyTorch101</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+ <span class="menu-text">NLP</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../NLP/encoding.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">encoding</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../NLP/LoRA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">LoRA</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../NLP/ptuning.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">p tuning</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+ <span class="menu-text">Huggingface</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../NLP/huggingface/PEFT.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">PEFT</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../NLP/huggingface/tips.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">tips</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+ <span class="menu-text">Papers</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../papers/2106.09685.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">LoRA: Low-Rank Adaptation of Large Language Models</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../papers/2310.07820.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">LLMs Are Zero-Shot Time Series Forecasters</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">
+ <span class="menu-text">Techniques</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../techniques/freezing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Model freezing</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../techniques/handling_imbalanced_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Handling imbalanced Data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../techniques/zero_shot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Zero-shot Learning</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -218,27 +397,18 @@ window.Quarto = {
   <ul>
   <li><a href="#왜-파이토치냐" id="toc-왜-파이토치냐" class="nav-link active" data-scroll-target="#왜-파이토치냐">1. 왜 파이토치냐?</a></li>
   <li><a href="#주요-내용" id="toc-주요-내용" class="nav-link" data-scroll-target="#주요-내용">2. 주요 내용</a>
-  <ul>
-  <li><a href="#데이터는-어떻게" id="toc-데이터는-어떻게" class="nav-link" data-scroll-target="#데이터는-어떻게">2.1. 데이터는 어떻게?</a>
   <ul class="collapse">
-  <li><a href="#활용은-이렇게-한다." id="toc-활용은-이렇게-한다." class="nav-link" data-scroll-target="#활용은-이렇게-한다.">2.1.1. 활용은 이렇게 한다.</a></li>
-  </ul></li>
-  <li><a href="#모델은-어떻게" id="toc-모델은-어떻게" class="nav-link" data-scroll-target="#모델은-어떻게">2.2. 모델은 어떻게?</a>
-  <ul class="collapse">
-  <li><a href="#예시-모델-확인" id="toc-예시-모델-확인" class="nav-link" data-scroll-target="#예시-모델-확인">2.2.1. 예시 모델 확인</a></li>
-  </ul></li>
+  <li><a href="#데이터는-어떻게" id="toc-데이터는-어떻게" class="nav-link" data-scroll-target="#데이터는-어떻게">2.1. 데이터는 어떻게?</a></li>
+  <li><a href="#모델은-어떻게" id="toc-모델은-어떻게" class="nav-link" data-scroll-target="#모델은-어떻게">2.2. 모델은 어떻게?</a></li>
   <li><a href="#학습은-어떻게" id="toc-학습은-어떻게" class="nav-link" data-scroll-target="#학습은-어떻게">2.3. 학습은 어떻게?</a></li>
-  <li><a href="#모델-관리는-어떻게" id="toc-모델-관리는-어떻게" class="nav-link" data-scroll-target="#모델-관리는-어떻게">2.4. 모델 관리는 어떻게?</a>
-  <ul class="collapse">
-  <li><a href="#저장하고-불러오기" id="toc-저장하고-불러오기" class="nav-link" data-scroll-target="#저장하고-불러오기">저장하고 불러오기</a></li>
-  </ul></li>
+  <li><a href="#모델-관리는-어떻게" id="toc-모델-관리는-어떻게" class="nav-link" data-scroll-target="#모델-관리는-어떻게">2.5. 모델 관리는 어떻게?</a></li>
   </ul></li>
   <li><a href="#전체-흐름" id="toc-전체-흐름" class="nav-link" data-scroll-target="#전체-흐름">3. 전체 흐름</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/dotpyo/archive/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
@@ -248,23 +418,27 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="왜-파이토치냐">1. 왜 파이토치냐?</h2>
 <ol type="1">
 <li>이전에 <code>왜 텐서냐</code>, 부터 시작해야 한다.</li>
-<li>왜 텐서일까?
+<li>왜 텐서일까?</li>
+</ol>
 <ul>
-<li>텐서란 무엇일까?
+<li><p>텐서란 무엇일까?</p>
 <ul>
-<li>텐서는 배열이나 행렬과 같은 특수 자료 구조. GPU에서 사용할 수 있도록 NumPy의 ndarray를 개량했다. 개념적으로는 배열(array)와 다를게 없다.</li>
-<li>정말로 다를게 없나?
+<li><p>텐서는 배열이나 행렬과 같은 특수 자료 구조. GPU에서 사용할 수 있도록 NumPy의 ndarray를 개량했다. 개념적으로는 배열(array)와 다를게 없다.</p></li>
+<li><p>정말로 다를게 없나?</p>
 <ul>
 <li>그렇다! 텐서와 넘파이배열은 종종 내부 메모리를 공유하며 서로 형태를 전환할 수 있기까지 하다.</li>
 </ul></li>
 </ul></li>
-</ul></li>
+</ul>
+<ol start="3" type="1">
 <li>그러므로 다른 자료형과 구분되는 텐서의 특징은 <code>GPU 사용이 가능</code>하다는 점이다. 즉, 병렬연산에 최적화 되어있다는 것과 같다.</li>
 <li>그 빠른 병렬연산으로 하는 일이 <code>automatic differentiation</code> 즉, 자동 미분이다.</li>
 </ol>
 <blockquote class="blockquote">
 <p>Tensor is optimized at automatic differentiation</p>
 </blockquote>
+<p><br></p>
+<p><br></p>
 </section>
 <section id="주요-내용" class="level2">
 <h2 class="anchored" data-anchor-id="주요-내용">2. 주요 내용</h2>
@@ -274,11 +448,6 @@ window.Quarto = {
 <section id="데이터는-어떻게" class="level3">
 <h3 class="anchored" data-anchor-id="데이터는-어떻게">2.1. 데이터는 어떻게?</h3>
 <p><code>PyTorch</code>의 데이터셋 관리 방식은 독특하지만 편리하다. 데이터 작업을 위한 기본 요소 두가지가 존재하는데 이는 각각 <code>DataLoader</code> 와 <code>Dataset</code>이다. <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> 데이터를 받아오는건 샘플(feature), 정답(label)으로 구성된 <code>Dataset</code>이고 각각의 값을 iterable한 객체로 감싸 접근하게 쉽게 만든 객체가 <code>DataLoader</code>다.</p>
-<aside id="footnotes" class="footnotes footnotes-end-of-block" role="doc-footnote">
-<ol>
-<li id="fn1"><p>모두 <code>torch.utils.data</code> 하위의 모듈이다.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</aside>
 <ul>
 <li><code>Dataset</code>: sample, label; 정답이 매칭된 데이터
 <ul>
@@ -302,11 +471,11 @@ __init__
 <li>Dataset 객체가 구축될 때 한 번 실행되는 초기화 함수.</li>
 <li>예를 들어, 이미지 파일과 주석 파일이 포함된 디렉토리와 변형방법 (transform, target_transform) 을 초기화한다.</li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, annotations_file, img_dir, transform<span class="op">=</span><span class="va">None</span>, target_transform<span class="op">=</span><span class="va">None</span>) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
-<span id="cb1-2"><a href="#cb1-2"></a>    <span class="va">self</span>.img_labels <span class="op">=</span> pd.read_csv(annotations_file)</span>
-<span id="cb1-3"><a href="#cb1-3"></a>    <span class="va">self</span>.img_dir <span class="op">=</span> img_dir</span>
-<span id="cb1-4"><a href="#cb1-4"></a>    <span class="va">self</span>.transform <span class="op">=</span> transform</span>
-<span id="cb1-5"><a href="#cb1-5"></a>    <span class="va">self</span>.target_transform <span class="op">=</span> target_transform</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, annotations_file, img_dir, transform<span class="op">=</span><span class="va">None</span>, target_transform<span class="op">=</span><span class="va">None</span>) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="va">self</span>.img_labels <span class="op">=</span> pd.read_csv(annotations_file)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="va">self</span>.img_dir <span class="op">=</span> img_dir</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="va">self</span>.transform <span class="op">=</span> transform</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="va">self</span>.target_transform <span class="op">=</span> target_transform</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -335,25 +504,19 @@ __getitem__
 </ul></li>
 <li>텐서 이미지와 라벨을 최종 형태인 <strong>dictionary</strong> 로 변환한다.</li>
 </ol>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">def</span> <span class="fu">__getitem__</span>(<span class="va">self</span>, idx) <span class="op">-&gt;</span> <span class="bu">dict</span>:</span>
-<span id="cb2-2"><a href="#cb2-2"></a>    img_path <span class="op">=</span> os.path.join(<span class="va">self</span>.img_dir, <span class="va">self</span>.img_labels.iloc[idx, <span class="dv">0</span>])</span>
-<span id="cb2-3"><a href="#cb2-3"></a>    image <span class="op">=</span> read_image(img_path)</span>
-<span id="cb2-4"><a href="#cb2-4"></a>    label <span class="op">=</span> <span class="va">self</span>.img_labels.iloc[idx, <span class="dv">1</span>]</span>
-<span id="cb2-5"><a href="#cb2-5"></a>    <span class="cf">if</span> <span class="va">self</span>.transform:</span>
-<span id="cb2-6"><a href="#cb2-6"></a>        image <span class="op">=</span> <span class="va">self</span>.transform(image)</span>
-<span id="cb2-7"><a href="#cb2-7"></a>    <span class="cf">if</span> <span class="va">self</span>.target_transform:</span>
-<span id="cb2-8"><a href="#cb2-8"></a>        label <span class="op">=</span> <span class="va">self</span>.target_transform(label)</span>
-<span id="cb2-9"><a href="#cb2-9"></a>    sample <span class="op">=</span> {<span class="st">"image"</span>: image, <span class="st">"label"</span>: label}</span>
-<span id="cb2-10"><a href="#cb2-10"></a>    <span class="cf">return</span> sample</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="fu">__getitem__</span>(<span class="va">self</span>, idx) <span class="op">-&gt;</span> <span class="bu">dict</span>:</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    img_path <span class="op">=</span> os.path.join(<span class="va">self</span>.img_dir, <span class="va">self</span>.img_labels.iloc[idx, <span class="dv">0</span>])</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    image <span class="op">=</span> read_image(img_path)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    label <span class="op">=</span> <span class="va">self</span>.img_labels.iloc[idx, <span class="dv">1</span>]</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="va">self</span>.transform:</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        image <span class="op">=</span> <span class="va">self</span>.transform(image)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="va">self</span>.target_transform:</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        label <span class="op">=</span> <span class="va">self</span>.target_transform(label)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    sample <span class="op">=</span> {<span class="st">"image"</span>: image, <span class="st">"label"</span>: label}</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> sample</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
-<aside id="footnotes" class="footnotes footnotes-end-of-block" role="doc-footnote">
-<ol start="2">
-<li id="fn2"><p><a href="http://torchvision.io">torchvision.io</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>왜 하필 이 단계에서 진행하는지는 <code>target_transform</code>을 확인할 것<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</aside>
 <section id="활용은-이렇게-한다." class="level4">
 <h4 class="anchored" data-anchor-id="활용은-이렇게-한다.">2.1.1. 활용은 이렇게 한다.</h4>
 <ol type="1">
@@ -365,11 +528,12 @@ __getitem__
 <ul>
 <li>iterable한 객체이므로 for문으로 간단하게 테스트 할 수 있다.</li>
 </ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">from</span> torch.utils.data <span class="im">import</span> Dataset  <span class="co"># 이전 단계에서 정의한 학습용, 테스트용 데이터셋</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="im">from</span> torch.utils.data <span class="im">import</span> DataLoader</span>
-<span id="cb3-3"><a href="#cb3-3"></a></span>
-<span id="cb3-4"><a href="#cb3-4"></a>train_dataloader <span class="op">=</span> DataLoader(training_data:Dataset, batch_size:<span class="bu">int</span><span class="op">=</span><span class="dv">64</span>, shuffle:<span class="bu">bool</span><span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb3-5"><a href="#cb3-5"></a>test_dataloader <span class="op">=</span> DataLoader(test_data, batch_size<span class="op">=</span><span class="dv">64</span>, shuffle<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch.utils.data <span class="im">import</span> Dataset  <span class="co"># 이전 단계에서 정의한 학습용, 테스트용 데이터셋</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch.utils.data <span class="im">import</span> DataLoader</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>train_dataloader <span class="op">=</span> DataLoader(training_data:Dataset, batch_size:<span class="bu">int</span><span class="op">=</span><span class="dv">64</span>, shuffle:<span class="bu">bool</span><span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>test_dataloader <span class="op">=</span> DataLoader(test_data, batch_size<span class="op">=</span><span class="dv">64</span>, shuffle<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><br></p>
 </section>
 </section>
 <section id="모델은-어떻게" class="level3">
@@ -386,36 +550,36 @@ __getitem__
 <div class="code-with-filename-file">
 <pre><strong>tutorials.pytorch.py</strong></pre>
 </div>
-<div class="sourceCode" id="cb4" data-filename="tutorials.pytorch.py"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># 학습에 사용할 CPU나 GPU, MPS 장치를 얻습니다.</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a>device <span class="op">=</span> (</span>
-<span id="cb4-3"><a href="#cb4-3"></a>    <span class="st">"cuda"</span></span>
-<span id="cb4-4"><a href="#cb4-4"></a>    <span class="cf">if</span> torch.cuda.is_available()</span>
-<span id="cb4-5"><a href="#cb4-5"></a>    <span class="cf">else</span> <span class="st">"mps"</span></span>
-<span id="cb4-6"><a href="#cb4-6"></a>    <span class="cf">if</span> torch.backends.mps.is_available()</span>
-<span id="cb4-7"><a href="#cb4-7"></a>    <span class="cf">else</span> <span class="st">"cpu"</span></span>
-<span id="cb4-8"><a href="#cb4-8"></a>)</span>
-<span id="cb4-9"><a href="#cb4-9"></a><span class="bu">print</span>(<span class="ss">f"Using </span><span class="sc">{</span>device<span class="sc">}</span><span class="ss"> device"</span>)</span>
-<span id="cb4-10"><a href="#cb4-10"></a></span>
-<span id="cb4-11"><a href="#cb4-11"></a><span class="co"># 모델을 정의합니다.</span></span>
-<span id="cb4-12"><a href="#cb4-12"></a><span class="kw">class</span> NeuralNetwork(nn.Module):</span>
-<span id="cb4-13"><a href="#cb4-13"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
-<span id="cb4-14"><a href="#cb4-14"></a>        <span class="bu">super</span>().<span class="fu">__init__</span>()</span>
-<span id="cb4-15"><a href="#cb4-15"></a>        <span class="va">self</span>.flatten <span class="op">=</span> nn.Flatten()</span>
-<span id="cb4-16"><a href="#cb4-16"></a>        <span class="va">self</span>.linear_relu_stack <span class="op">=</span> nn.Sequential(</span>
-<span id="cb4-17"><a href="#cb4-17"></a>            nn.Linear(<span class="dv">28</span><span class="op">*</span><span class="dv">28</span>, <span class="dv">512</span>),</span>
-<span id="cb4-18"><a href="#cb4-18"></a>            nn.ReLU(),</span>
-<span id="cb4-19"><a href="#cb4-19"></a>            nn.Linear(<span class="dv">512</span>, <span class="dv">512</span>),</span>
-<span id="cb4-20"><a href="#cb4-20"></a>            nn.ReLU(),</span>
-<span id="cb4-21"><a href="#cb4-21"></a>            nn.Linear(<span class="dv">512</span>, <span class="dv">10</span>)</span>
-<span id="cb4-22"><a href="#cb4-22"></a>        )</span>
-<span id="cb4-23"><a href="#cb4-23"></a></span>
-<span id="cb4-24"><a href="#cb4-24"></a>    <span class="kw">def</span> forward(<span class="va">self</span>, x):</span>
-<span id="cb4-25"><a href="#cb4-25"></a>        x <span class="op">=</span> <span class="va">self</span>.flatten(x)</span>
-<span id="cb4-26"><a href="#cb4-26"></a>        logits <span class="op">=</span> <span class="va">self</span>.linear_relu_stack(x)</span>
-<span id="cb4-27"><a href="#cb4-27"></a>        <span class="cf">return</span> logits</span>
-<span id="cb4-28"><a href="#cb4-28"></a></span>
-<span id="cb4-29"><a href="#cb4-29"></a>model <span class="op">=</span> NeuralNetwork().to(device)</span>
-<span id="cb4-30"><a href="#cb4-30"></a><span class="bu">print</span>(model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4" data-filename="tutorials.pytorch.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 학습에 사용할 CPU나 GPU, MPS 장치를 얻습니다.</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>device <span class="op">=</span> (</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"cuda"</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> torch.cuda.is_available()</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span> <span class="st">"mps"</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> torch.backends.mps.is_available()</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span> <span class="st">"cpu"</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Using </span><span class="sc">{</span>device<span class="sc">}</span><span class="ss"> device"</span>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 모델을 정의합니다.</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> NeuralNetwork(nn.Module):</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>().<span class="fu">__init__</span>()</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.flatten <span class="op">=</span> nn.Flatten()</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.linear_relu_stack <span class="op">=</span> nn.Sequential(</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>            nn.Linear(<span class="dv">28</span><span class="op">*</span><span class="dv">28</span>, <span class="dv">512</span>),</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>            nn.ReLU(),</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>            nn.Linear(<span class="dv">512</span>, <span class="dv">512</span>),</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>            nn.ReLU(),</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>            nn.Linear(<span class="dv">512</span>, <span class="dv">10</span>)</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> forward(<span class="va">self</span>, x):</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>        x <span class="op">=</span> <span class="va">self</span>.flatten(x)</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>        logits <span class="op">=</span> <span class="va">self</span>.linear_relu_stack(x)</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> logits</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> NeuralNetwork().to(device)</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="callout callout-style-simple callout-note callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
@@ -452,13 +616,6 @@ logits?
 </div>
 </div>
 </div>
-<aside id="footnotes" class="footnotes footnotes-end-of-block" role="doc-footnote">
-<ol start="4">
-<li id="fn4"><p><a href="https://haje01.github.io/2019/11/19/logit.html"><span class="citation" data-cites="haje01">@haje01</span></a><a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn5"><p>활성화 함수는 확률을 연산하는 함수다.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn6"><p><a href="https://discuss.pytorch.org/t/why-have-a-model-output-raw-logits-instead-of-softmax/114289/2"><span class="citation" data-cites="KFrank">@KFrank</span></a><a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</aside>
 <div class="callout callout-style-simple callout-note callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -501,6 +658,7 @@ logits?
 </div>
 </div>
 </div>
+<p><br></p>
 </section>
 </section>
 <section id="학습은-어떻게" class="level3">
@@ -513,30 +671,12 @@ logits?
 <li>각 epoch마다 어떤 단계를 거칠 것인가, 모델 설계는 이쪽에 들어간다</li>
 </ul></li>
 </ol>
-<aside id="footnotes" class="footnotes footnotes-end-of-block" role="doc-footnote">
-<ol start="7">
-<li id="fn7"><p>size에 맞추어 batch를 넘겨줄 수 있는것도 DataLoader가 배치를 만들어주는 역할을 하기 때문이다.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</aside>
-<div class="callout callout-style-simple callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-배치 정규화
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
+<p>:::{callout-note collapse:true} #### 배치 정규화</p>
 <blockquote class="blockquote">
 <p>학습 데이터의 분포를 정하는 방식, 학습 단계에서만 사용한다.</p>
 </blockquote>
 <p>학습을 하면서 분포를 정하는 방식인 배치 정규화는 과적합 외에도 기울기 소실 및 폭주를 완화하여 학습을 안정적으로 할 수 있게 돕는데 가중치 <span class="math inline">\(w\)</span> 가 커질 경우 다음 층에서 학습해야 하는 범위가 커진다. 따라서 학습 중 레이어 단위의 가중치 조절이 필요한데 이 역할이 배치 정규화다.</p>
-</div>
-</div>
-</div>
+<p>:::</p>
 <ol start="3" type="1">
 <li>검증 단계 (test_loop)
 <ul>
@@ -544,18 +684,9 @@ logits?
 <li><code>eval()</code> 로 평가모드 전환 잊지 말 것</li>
 </ul></li>
 </ol>
-<div class="callout callout-style-simple callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<code>eval</code>이 무엇인가
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
+<p>:::{callout-note collapse:true}</p>
+<section id="eval이-무엇인가" class="level4">
+<h4 class="anchored" data-anchor-id="eval이-무엇인가"><code>eval</code>이 무엇인가</h4>
 <ul>
 <li>evaluation의 약자로 모델을 평가하는 과정이다.</li>
 <li>모델을 평가모드로만 전환하는 단계다.
@@ -567,91 +698,75 @@ logits?
 <li>일관성 있는 결과를 얻을 수 있다. (모델 자체의 성능에 집중할 수 있다.)</li>
 </ul></li>
 </ul>
-</div>
-</div>
-</div>
+<p>:::</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>tutorials.pytorch.py</strong></pre>
 </div>
-<div class="sourceCode" id="cb5" data-filename="tutorials.pytorch.py"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">def</span> train_loop(dataloader, model, loss_fn, optimizer):</span>
-<span id="cb5-2"><a href="#cb5-2"></a>    size <span class="op">=</span> <span class="bu">len</span>(dataloader.dataset)</span>
-<span id="cb5-3"><a href="#cb5-3"></a>    <span class="cf">for</span> batch, (X, y) <span class="kw">in</span> <span class="bu">enumerate</span>(dataloader):</span>
-<span id="cb5-4"><a href="#cb5-4"></a>        <span class="co"># 예측(prediction)과 손실(loss) 계산</span></span>
-<span id="cb5-5"><a href="#cb5-5"></a>        pred <span class="op">=</span> model(X)</span>
-<span id="cb5-6"><a href="#cb5-6"></a>        loss <span class="op">=</span> loss_fn(pred, y)</span>
-<span id="cb5-7"><a href="#cb5-7"></a></span>
-<span id="cb5-8"><a href="#cb5-8"></a>        <span class="co"># 역전파</span></span>
-<span id="cb5-9"><a href="#cb5-9"></a>        optimizer.zero_grad()</span>
-<span id="cb5-10"><a href="#cb5-10"></a>        loss.backward()</span>
-<span id="cb5-11"><a href="#cb5-11"></a>        optimizer.step()</span>
-<span id="cb5-12"><a href="#cb5-12"></a></span>
-<span id="cb5-13"><a href="#cb5-13"></a>        <span class="cf">if</span> batch <span class="op">%</span> <span class="dv">100</span> <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb5-14"><a href="#cb5-14"></a>            loss, current <span class="op">=</span> loss.item(), (batch <span class="op">+</span> <span class="dv">1</span>) <span class="op">*</span> <span class="bu">len</span>(X)</span>
-<span id="cb5-15"><a href="#cb5-15"></a>            <span class="bu">print</span>(<span class="ss">f"loss: </span><span class="sc">{</span>loss<span class="sc">:&gt;7f}</span><span class="ss">  [</span><span class="sc">{</span>current<span class="sc">:&gt;5d}</span><span class="ss">/</span><span class="sc">{</span>size<span class="sc">:&gt;5d}</span><span class="ss">]"</span>)</span>
-<span id="cb5-16"><a href="#cb5-16"></a></span>
-<span id="cb5-17"><a href="#cb5-17"></a></span>
-<span id="cb5-18"><a href="#cb5-18"></a><span class="kw">def</span> test_loop(dataloader, model, loss_fn):</span>
-<span id="cb5-19"><a href="#cb5-19"></a>    size <span class="op">=</span> <span class="bu">len</span>(dataloader.dataset)</span>
-<span id="cb5-20"><a href="#cb5-20"></a>    num_batches <span class="op">=</span> <span class="bu">len</span>(dataloader)</span>
-<span id="cb5-21"><a href="#cb5-21"></a>    test_loss, correct <span class="op">=</span> <span class="dv">0</span>, <span class="dv">0</span></span>
-<span id="cb5-22"><a href="#cb5-22"></a></span>
-<span id="cb5-23"><a href="#cb5-23"></a>    <span class="cf">with</span> torch.no_grad():</span>
-<span id="cb5-24"><a href="#cb5-24"></a>        <span class="cf">for</span> X, y <span class="kw">in</span> dataloader:</span>
-<span id="cb5-25"><a href="#cb5-25"></a>            pred <span class="op">=</span> model(X)</span>
-<span id="cb5-26"><a href="#cb5-26"></a>            test_loss <span class="op">+=</span> loss_fn(pred, y).item()</span>
-<span id="cb5-27"><a href="#cb5-27"></a>            correct <span class="op">+=</span> (pred.argmax(<span class="dv">1</span>) <span class="op">==</span> y).<span class="bu">type</span>(torch.<span class="bu">float</span>).<span class="bu">sum</span>().item()</span>
-<span id="cb5-28"><a href="#cb5-28"></a></span>
-<span id="cb5-29"><a href="#cb5-29"></a>    test_loss <span class="op">/=</span> num_batches</span>
-<span id="cb5-30"><a href="#cb5-30"></a>    correct <span class="op">/=</span> size</span>
-<span id="cb5-31"><a href="#cb5-31"></a>    <span class="bu">print</span>(<span class="ss">f"Test Error: </span><span class="ch">\n</span><span class="ss"> Accuracy: </span><span class="sc">{</span>(<span class="dv">100</span><span class="op">*</span>correct)<span class="sc">:&gt;0.1f}</span><span class="ss">%, Avg loss: </span><span class="sc">{</span>test_loss<span class="sc">:&gt;8f}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5" data-filename="tutorials.pytorch.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> train_loop(dataloader, model, loss_fn, optimizer):</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    size <span class="op">=</span> <span class="bu">len</span>(dataloader.dataset)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> batch, (X, y) <span class="kw">in</span> <span class="bu">enumerate</span>(dataloader):</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>        <span class="co"># 예측(prediction)과 손실(loss) 계산</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>        pred <span class="op">=</span> model(X)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>        loss <span class="op">=</span> loss_fn(pred, y)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>        <span class="co"># 역전파</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>        optimizer.zero_grad()</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>        loss.backward()</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>        optimizer.step()</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> batch <span class="op">%</span> <span class="dv">100</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>            loss, current <span class="op">=</span> loss.item(), (batch <span class="op">+</span> <span class="dv">1</span>) <span class="op">*</span> <span class="bu">len</span>(X)</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"loss: </span><span class="sc">{</span>loss<span class="sc">:&gt;7f}</span><span class="ss">  [</span><span class="sc">{</span>current<span class="sc">:&gt;5d}</span><span class="ss">/</span><span class="sc">{</span>size<span class="sc">:&gt;5d}</span><span class="ss">]"</span>)</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> test_loop(dataloader, model, loss_fn):</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    size <span class="op">=</span> <span class="bu">len</span>(dataloader.dataset)</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    num_batches <span class="op">=</span> <span class="bu">len</span>(dataloader)</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    test_loss, correct <span class="op">=</span> <span class="dv">0</span>, <span class="dv">0</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> torch.no_grad():</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> X, y <span class="kw">in</span> dataloader:</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>            pred <span class="op">=</span> model(X)</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>            test_loss <span class="op">+=</span> loss_fn(pred, y).item()</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>            correct <span class="op">+=</span> (pred.argmax(<span class="dv">1</span>) <span class="op">==</span> y).<span class="bu">type</span>(torch.<span class="bu">float</span>).<span class="bu">sum</span>().item()</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>    test_loss <span class="op">/=</span> num_batches</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>    correct <span class="op">/=</span> size</span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Test Error: </span><span class="ch">\n</span><span class="ss"> Accuracy: </span><span class="sc">{</span>(<span class="dv">100</span><span class="op">*</span>correct)<span class="sc">:&gt;0.1f}</span><span class="ss">%, Avg loss: </span><span class="sc">{</span>test_loss<span class="sc">:&gt;8f}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p><br></p>
+</section>
 </section>
 <section id="모델-관리는-어떻게" class="level3">
-<h3 class="anchored" data-anchor-id="모델-관리는-어떻게">2.4. 모델 관리는 어떻게?</h3>
+<h3 class="anchored" data-anchor-id="모델-관리는-어떻게">2.5. 모델 관리는 어떻게?</h3>
 <section id="저장하고-불러오기" class="level4">
 <h4 class="anchored" data-anchor-id="저장하고-불러오기">저장하고 불러오기</h4>
 <p>모델의 형태를 포함하여 저장하고 불러오는 것을 목표로 한다.</p>
 <ol type="1">
-<li><p>모델 전체를 불러오는 <code>torch.save()</code></p>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>tutorials.pytorch.py</strong></pre>
-</div>
-<div class="sourceCode" id="cb6" data-filename="tutorials.pytorch.py"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># 경로 지정</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a>PATH <span class="op">=</span> <span class="st">"entire_model.pt"</span></span>
-<span id="cb6-3"><a href="#cb6-3"></a></span>
-<span id="cb6-4"><a href="#cb6-4"></a><span class="co"># 저장하기</span></span>
-<span id="cb6-5"><a href="#cb6-5"></a>torch.save(net, PATH)</span>
-<span id="cb6-6"><a href="#cb6-6"></a></span>
-<span id="cb6-7"><a href="#cb6-7"></a><span class="co"># 불러오기</span></span>
-<span id="cb6-8"><a href="#cb6-8"></a>model <span class="op">=</span> torch.load(PATH)</span>
-<span id="cb6-9"><a href="#cb6-9"></a>model.<span class="bu">eval</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
+<li><p>모델 전체를 불러오는 <code>torch.save()</code> ```py # 경로 지정 PATH = “entire_model.pt”</p>
+<p># 저장하기 torch.save(net, PATH)</p>
+<p># 불러오기 model = torch.load(PATH) model.eval() ```</p></li>
 <li><p>[권장] 매개변수만 저장하는 <code>torch.save_dict()</code></p>
 <ul>
 <li>문법이 직관적이다.</li>
 <li>하지만 모델 저장시 사용한 클래스 밑 디렉토리 구조에 종속된다. (매개변수이니 어쩔 수 없다.)</li>
 </ul>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>tutorials.pytorch.py</strong></pre>
-</div>
-<div class="sourceCode" id="cb7" data-filename="tutorials.pytorch.py"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># 경로 지정</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a>PATH <span class="op">=</span> <span class="st">"state_dict_model.pt"</span></span>
-<span id="cb7-3"><a href="#cb7-3"></a></span>
-<span id="cb7-4"><a href="#cb7-4"></a><span class="co"># 저장하기</span></span>
-<span id="cb7-5"><a href="#cb7-5"></a>torch.save(net.state_dict(), PATH)</span>
-<span id="cb7-6"><a href="#cb7-6"></a></span>
-<span id="cb7-7"><a href="#cb7-7"></a><span class="co"># 불러오기</span></span>
-<span id="cb7-8"><a href="#cb7-8"></a>model <span class="op">=</span> Net()</span>
-<span id="cb7-9"><a href="#cb7-9"></a>model.load_state_dict(torch.load(PATH))</span>
-<span id="cb7-10"><a href="#cb7-10"></a>model.<span class="bu">eval</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
+<div class="sourceCode" id="cb6"><pre class="sourceCode py code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 경로 지정</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>PATH <span class="op">=</span> <span class="st">"state_dict_model.pt"</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 저장하기</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>torch.save(net.state_dict(), PATH)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 불러오기</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> Net()</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>model.load_state_dict(torch.load(PATH))</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>model.<span class="bu">eval</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ol>
 <ul>
 <li>불러올 때에도 <code>.eval()</code> 과정을 거친단걸 잊지 말자!</li>
 </ul>
+<p><br></p>
 </section>
 </section>
 </section>
@@ -688,7 +803,19 @@ logits?
 
 </section>
 
-</main> <!-- /main -->
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>모두 <code>torch.utils.data</code> 하위의 모듈이다.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p><a href="http://torchvision.io">torchvision.io</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>왜 하필 이 단계에서 진행하는지는 <code>target_transform</code>을 확인할 것<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p><a href="https://haje01.github.io/2019/11/19/logit.html"><span class="citation" data-cites="haje01">@haje01</span></a><a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>활성화 함수는 확률을 연산하는 함수다.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p><a href="https://discuss.pytorch.org/t/why-have-a-model-output-raw-logits-instead-of-softmax/114289/2"><span class="citation" data-cites="KFrank">@KFrank</span></a><a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>size에 맞추어 batch를 넘겨줄 수 있는것도 DataLoader가 배치를 만들어주는 역할을 하기 때문이다.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -709,150 +836,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
-  const disableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'prefetch';
-    }
-  }
-  const enableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'stylesheet';
-    }
-  }
-  const manageTransitions = (selector, allowTransitions) => {
-    const els = window.document.querySelectorAll(selector);
-    for (let i=0; i < els.length; i++) {
-      const el = els[i];
-      if (allowTransitions) {
-        el.classList.remove('notransition');
-      } else {
-        el.classList.add('notransition');
-      }
-    }
-  }
-  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
-    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
-    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
-    let newTheme = '';
-    if(darkModeDefault) {
-      newTheme = isAlternate ? baseTheme : alternateTheme;
-    } else {
-      newTheme = isAlternate ? alternateTheme : baseTheme;
-    }
-    const changeGiscusTheme = () => {
-      // From: https://github.com/giscus/giscus/issues/336
-      const sendMessage = (message) => {
-        const iframe = document.querySelector('iframe.giscus-frame');
-        if (!iframe) return;
-        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
-      }
-      sendMessage({
-        setConfig: {
-          theme: newTheme
-        }
-      });
-    }
-    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
-    if (isGiscussLoaded) {
-      changeGiscusTheme();
-    }
-  }
-  const toggleColorMode = (alternate) => {
-    // Switch the stylesheets
-    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
-    manageTransitions('#quarto-margin-sidebar .nav-link', false);
-    if (alternate) {
-      enableStylesheet(alternateStylesheets);
-      for (const sheetNode of alternateStylesheets) {
-        if (sheetNode.id === "quarto-bootstrap") {
-          toggleBodyColorMode(sheetNode);
-        }
-      }
-    } else {
-      disableStylesheet(alternateStylesheets);
-      toggleBodyColorPrimary();
-    }
-    manageTransitions('#quarto-margin-sidebar .nav-link', true);
-    // Switch the toggles
-    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
-    for (let i=0; i < toggles.length; i++) {
-      const toggle = toggles[i];
-      if (toggle) {
-        if (alternate) {
-          toggle.classList.add("alternate");     
-        } else {
-          toggle.classList.remove("alternate");
-        }
-      }
-    }
-    // Hack to workaround the fact that safari doesn't
-    // properly recolor the scrollbar when toggling (#1455)
-    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
-      manageTransitions("body", false);
-      window.scrollTo(0, 1);
-      setTimeout(() => {
-        window.scrollTo(0, 0);
-        manageTransitions("body", true);
-      }, 40);  
-    }
-  }
-  const isFileUrl = () => { 
-    return window.location.protocol === 'file:';
-  }
-  const hasAlternateSentinel = () => {  
-    let styleSentinel = getColorSchemeSentinel();
-    if (styleSentinel !== null) {
-      return styleSentinel === "alternate";
-    } else {
-      return false;
-    }
-  }
-  const setStyleSentinel = (alternate) => {
-    const value = alternate ? "alternate" : "default";
-    if (!isFileUrl()) {
-      window.localStorage.setItem("quarto-color-scheme", value);
-    } else {
-      localAlternateSentinel = value;
-    }
-  }
-  const getColorSchemeSentinel = () => {
-    if (!isFileUrl()) {
-      const storageValue = window.localStorage.getItem("quarto-color-scheme");
-      return storageValue != null ? storageValue : localAlternateSentinel;
-    } else {
-      return localAlternateSentinel;
-    }
-  }
-  const darkModeDefault = false;
-  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
-  // Dark / light mode switch
-  window.quartoToggleColorScheme = () => {
-    // Read the current dark / light value 
-    let toAlternate = !hasAlternateSentinel();
-    toggleColorMode(toAlternate);
-    setStyleSentinel(toAlternate);
-    toggleGiscusIfUsed(toAlternate, darkModeDefault);
-  };
-  // Ensure there is a toggle, if there isn't float one in the top right
-  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-    const a = window.document.createElement('a');
-    a.classList.add('top-right');
-    a.classList.add('quarto-color-scheme-toggle');
-    a.href = "";
-    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
-    const i = window.document.createElement("i");
-    i.classList.add('bi');
-    a.appendChild(i);
-    window.document.body.appendChild(a);
-  }
-  // Switch to dark mode if need be
-  if (hasAlternateSentinel()) {
-    toggleColorMode(true);
-  } else {
-    toggleColorMode(false);
-  }
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {

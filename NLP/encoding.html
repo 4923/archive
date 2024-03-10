@@ -6,10 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="dotpyo">
-<meta name="description" content="불균형 데이터를 다루는 방법에 대해 알아보자">
+<meta name="description" content="transformer에 사용되는 positional encoding을 알아보고 활용하는 방법을 알아보자">
 
-<title>archive - Handling imbalanced Data</title>
+<title>archive - encoding</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -59,25 +58,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<link href="../../favicon.ico" rel="icon">
-<script src="../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../favicon.ico" rel="icon">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -114,39 +113,9 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-L5Y3XFBP62', { 'anonymize_ip': true});
 </script>
-<meta name="referrer" content="strict-origin-when-cross-origin">
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -156,12 +125,12 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">archive</span>
     </a>
   </div>
         <div class="quarto-navbar-tools tools-wide tools-end">
-    <a href="../../CV.html" title="&amp;nbsp;" class="quarto-navigation-tool px-1" aria-label="&amp;nbsp;"><i class="bi bi-person-circle"></i></a>
+    <a href="../CV.html" title="&amp;nbsp;" class="quarto-navigation-tool px-1" aria-label="&amp;nbsp;"><i class="bi bi-person-circle"></i></a>
     <a href="https://github.com/dotpyo" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
@@ -173,15 +142,16 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-page-left">
-      <h1 class="title">Handling imbalanced Data</h1>
-            <p class="subtitle lead">undersampling, oversampling, loss function, weight sampling</p>
+      <h1 class="title">encoding</h1>
+            <p class="subtitle lead">Positional encoding</p>
                   <div>
         <div class="description">
-          불균형 데이터를 다루는 방법에 대해 알아보자
+          transformer에 사용되는 positional encoding을 알아보고 활용하는 방법을 알아보자
         </div>
       </div>
                           <div class="quarto-categories">
-                <div class="quarto-category">technique</div>
+                <div class="quarto-category">NLP</div>
+                <div class="quarto-category">PyTorch</div>
               </div>
                   </div>
   </div>
@@ -189,20 +159,8 @@ window.Quarto = {
   
   <div class="quarto-title-meta column-page-left">
 
-      <div>
-      <div class="quarto-title-meta-heading">Author</div>
-      <div class="quarto-title-meta-contents">
-               <p>dotpyo <a href="mailto:4923.py@gmail.com" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> </p>
-            </div>
-    </div>
       
     
-      <div>
-      <div class="quarto-title-meta-heading">Modified</div>
-      <div class="quarto-title-meta-contents">
-        <p class="date-modified">March 9, 2024</p>
-      </div>
-    </div>
       
     </div>
     
@@ -215,10 +173,16 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#summary" id="toc-summary" class="nav-link active" data-scroll-target="#summary">Summary</a>
+  <li><a href="#examples-pytorch" id="toc-examples-pytorch" class="nav-link active" data-scroll-target="#examples-pytorch">Examples: PyTorch</a>
   <ul>
-  <li><a href="#weight-sampling" id="toc-weight-sampling" class="nav-link" data-scroll-target="#weight-sampling">Weight sampling</a></li>
-  <li><a href="#loss-function" id="toc-loss-function" class="nav-link" data-scroll-target="#loss-function">loss function</a></li>
+  <li><a href="#embedding" id="toc-embedding" class="nav-link" data-scroll-target="#embedding">Embedding</a>
+  <ul class="collapse">
+  <li><a href="#docstring" id="toc-docstring" class="nav-link" data-scroll-target="#docstring">Docstring</a></li>
+  <li><a href="#arguments" id="toc-arguments" class="nav-link" data-scroll-target="#arguments">Arguments</a></li>
+  <li><a href="#attributes" id="toc-attributes" class="nav-link" data-scroll-target="#attributes">Attributes</a></li>
+  <li><a href="#shape" id="toc-shape" class="nav-link" data-scroll-target="#shape">Shape</a></li>
+  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/dotpyo/archive/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
@@ -230,70 +194,161 @@ window.Quarto = {
 
 
 
-<section id="summary" class="level2">
-<h2 class="anchored" data-anchor-id="summary">Summary</h2>
-<ol type="1">
-<li>under sampling : 너무 많은 양의 데이터를 잘라내는 방식</li>
-<li>over sampling : 적은 양의 데이터를 증강하는 방식</li>
-<li>weight sampling : 학습할 배치에 데이터가 들어갈 확률을 지정하는 방식</li>
-<li>loss function : 적은 양의 데이터 학습과정에 가중치를 주는 방식</li>
-</ol>
-<p>데이터의 절대량을 조정하는 방법과 (1, 2) 학습할 때 데이터의 균형을 맞추는 방법이 (3, 4) 있다.</p>
-<p>이들 중 <code>weight sampling</code> 방법과 imbalanced data task에 적합한 <code>loss function</code>를 알아보겠다.</p>
-<section id="weight-sampling" class="level3">
-<h3 class="anchored" data-anchor-id="weight-sampling">Weight sampling</h3>
-<p>배치(batch)크기는 하이퍼파라미터(hyperparameter)의 한 종류로 한 번 기울기를 갱신할 때(step) 사용하는 데이터의 개수를 말한다. 배치는 미니배치(mini batch)라고도 불리며 <span class="math inline">\(2^n\)</span> 개로 구성된다. 이 때 배치를 구성하는 방식을 샘플링(Sampling)이라고 하는데 Weight Sampling은 배치를 구성하는 데이터를 각각 다른 확률에 따라 추출하는 샘플링 방식이다. 따라서 데이터의 절대적인 개수가 작아 뽑힐 확률이 적은 데이터에게 가중치를 주어 더 자주 뽑힐 수 있게 조정하는 과정을 거칠 수 있다.</p>
-<p>예를 들어, 아래 표와 같은 데이터가 있을 때, c가 뽑힐 확률은 0.1, d가 뽑힐 확률은 0.4로 d가 뽑힐 확률이 네배 더 크다. 불균형 데이터(imbalanced data) 에서는 치명적으로, 한 배치에 뽑힌 데이터가 모두 한 label로 구성될 가능성이 있기 때문이다. 아래 표에서 배치가 32라고 할 때, 배치를 구성하는 label이 모두 d라면 모델은 균형있는 학습을 하지 못하게 되거나 d에 과적합 될 수 있다. 그러므로 전체 데이터가 불균형하더라도 배치 안에서는 균형있는 학습을 진행하기 위해 <a href="https://pytorch.org/docs/stable/data.html#torch.utils.data.WeightedRandomSampler"><code>torch.utils.data.WeightedRandomSampler</code></a> 메서드를 사용한다.</p>
-<table class="table">
-<thead>
-<tr class="header">
-<th style="text-align: center;">label</th>
-<th style="text-align: center;">count</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">a</td>
-<td style="text-align: center;">30</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">b</td>
-<td style="text-align: center;">20</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">c</td>
-<td style="text-align: center;">10</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">d</td>
-<td style="text-align: center;">40</td>
-</tr>
-</tbody>
-</table>
-<p><code>WeightedRandomSampler</code> 를 사용하면 코드 셀과 같은 결과를 확인할 수 있다. 첫번째 예제에서는 index 1의 가중치가 0.9로 가장 크며 복원추출(replacement=True)한 결과 역시 1이 세번으로 가장 많이 추출된 것을 확인 할 수 있다.</p>
-<div id="cell-7" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">from</span> torch.utils.data <span class="im">import</span> WeightedRandomSampler</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="bu">print</span>(<span class="st">"replacement = True</span><span class="ch">\t</span><span class="st">-&gt; "</span>, <span class="bu">list</span>(WeightedRandomSampler([<span class="fl">0.1</span>, <span class="fl">0.9</span>, <span class="fl">0.4</span>, <span class="fl">0.7</span>, <span class="fl">3.0</span>, <span class="fl">0.6</span>], <span class="dv">5</span>, replacement<span class="op">=</span><span class="va">True</span>)))</span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="bu">print</span>(<span class="st">"replacement = False</span><span class="ch">\t</span><span class="st">-&gt; "</span>, <span class="bu">list</span>(WeightedRandomSampler([<span class="fl">0.9</span>, <span class="fl">0.4</span>, <span class="fl">0.05</span>, <span class="fl">0.2</span>, <span class="fl">0.3</span>, <span class="fl">0.1</span>], <span class="dv">5</span>, replacement<span class="op">=</span><span class="va">False</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>replacement = True  -&gt;  [4, 1, 1, 4, 1]
-replacement = False -&gt;  [0, 1, 2, 4, 5]</code></pre>
+<p>encoding을 <code>왜</code> 할까? 컴퓨터가 자연어를 이해할 수 있을까? 아니다. 따라서 컴퓨터가 이해할 수 있도록, <em>단어 자체의 정보는 보존</em>한 채 자연어를 숫자로 바꾸는 방법이 encoding이다.<br>
+그렇다면 <code>positional encoding</code>에서 보존하고자 하는 정보는 무엇일까? <em>자리</em>다. 자리가 왜 중요한가? 자리가 의미를 반영하는 경우가 있기 때문이다. 부정어구가 대표적이다. 아래 두 문장을 보면 알 수 있다. 부정어구 <em>안</em> 이 위치하는 곳에 따라 음식의 재료가 바뀐다.</p>
+<pre><code>김밥에 오이가 안 들었고 샌드위치에 오이가 들었다.  
+김밥에 오이가 들었고 샌드위치에 오이가 안 들었다.</code></pre>
+<p>위치가 중요함을 알았으니 위치 정보를 컴퓨터가 이해할 수 있는 언어로 바뀐 단어에 주입하는 방법에 대해 알아보자.</p>
+<section id="examples-pytorch" class="level1">
+<h1>Examples: PyTorch</h1>
+<section id="embedding" class="level2">
+<h2 class="anchored" data-anchor-id="embedding">Embedding</h2>
+<section id="docstring" class="level3">
+<h3 class="anchored" data-anchor-id="docstring">Docstring</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource py number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">class</span> Embedding(Module):</span>
+<span id="cb2-2"><a href="#cb2-2"></a>    <span class="co">r"""A simple lookup table that stores embeddings of a fixed dictionary and size.</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="co">    This module is often used to store word embeddings and retrieve them using indices.</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="co">    The input to the module is a list of indices, and the output is the corresponding</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="co">    word embeddings.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>pytorch의 모든 신경망은 <code>nn</code> 을 상속받음으로써 시작된다. <code>Module</code>은 <code>nn.Module</code>로 공식문서에서 별도로 import 했다. docstring에 의하면 본 모듈은 word embedding 또는 index들을 사용하여 word embedding을 검색하는데 사용된다. 이 모듈을 향한 <em>입력</em> 은 index들로 구성된 <em>list</em> 이고, 이 모듈의 결과값은 word embedding에 해당한다.</p>
+</section>
+<section id="arguments" class="level3">
+<h3 class="anchored" data-anchor-id="arguments">Arguments</h3>
+<blockquote class="blockquote">
+<p>instance를 생성할 때 입력할 params</p>
+</blockquote>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource py number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>    Args:</span>
+<span id="cb3-2"><a href="#cb3-2"></a>        num_embeddings (<span class="bu">int</span>): size of the dictionary of embeddings</span>
+<span id="cb3-3"><a href="#cb3-3"></a>        embedding_dim (<span class="bu">int</span>): the size of each embedding vector</span>
+<span id="cb3-4"><a href="#cb3-4"></a>        padding_idx (<span class="bu">int</span>, optional): If specified, the entries at :attr:`padding_idx` do <span class="kw">not</span> contribute to the gradient<span class="op">;</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a>                                     therefore, the embedding vector at :attr:`padding_idx` <span class="kw">is</span> <span class="kw">not</span> updated during training,</span>
+<span id="cb3-6"><a href="#cb3-6"></a>                                     i.e. it remains <span class="im">as</span> a fixed <span class="st">"pad"</span>. For a newly constructed Embedding,</span>
+<span id="cb3-7"><a href="#cb3-7"></a>                                     the embedding vector at :attr:`padding_idx` will default to <span class="bu">all</span> zeros,</span>
+<span id="cb3-8"><a href="#cb3-8"></a>                                     but can be updated to another value to be used <span class="im">as</span> the padding vector.</span>
+<span id="cb3-9"><a href="#cb3-9"></a>        max_norm (<span class="bu">float</span>, optional): If given, each embedding vector <span class="cf">with</span> norm larger than :attr:`max_norm`</span>
+<span id="cb3-10"><a href="#cb3-10"></a>                                    <span class="kw">is</span> renormalized to have norm :attr:`max_norm`.</span>
+<span id="cb3-11"><a href="#cb3-11"></a>        norm_type (<span class="bu">float</span>, optional): The p of the p<span class="op">-</span>norm to compute <span class="cf">for</span> the :attr:`max_norm` option. Default ``<span class="dv">2</span>``.</span>
+<span id="cb3-12"><a href="#cb3-12"></a>        scale_grad_by_freq (<span class="bu">bool</span>, optional): If given, this will scale gradients by the inverse of frequency of</span>
+<span id="cb3-13"><a href="#cb3-13"></a>                                                the words <span class="kw">in</span> the mini<span class="op">-</span>batch. Default ``False``.</span>
+<span id="cb3-14"><a href="#cb3-14"></a>        sparse (<span class="bu">bool</span>, optional): If ``True``, gradient w.r.t. :attr:`weight` matrix will be a sparse tensor.</span>
+<span id="cb3-15"><a href="#cb3-15"></a>                                 See Notes <span class="cf">for</span> more details regarding sparse gradients.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>num_embeddings : int 값으로, embedding 될 단어쌍 (dictionary) 의 최대 값을 말한다.</li>
+<li>embedding_dim : int 값으로, 각 embedding 벡터의 길이를 말한다.</li>
+</ul>
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+왜 num_embeddings 에는 임베딩 될 값의 크기보다 더 큰 값을 넣어야 하는가?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>instance인 <code>embedding</code> 을 어떻게 쓸 지 생각해보면 좋다. 우리는 <em>어떤 값</em>을 숫자로 표현할 것이고 input 값에 9가 들어가든 len(‘가나다라마바사’) 가 들어가든 아무런 상관이 없다. 단지 숫자로 변환 할 때 모듈이 nn.Embedding 이고 instance를 생성할 때 미리 parameter를 준비해 놔야 하는 점만 중요하게 여기면 된다.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource py number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="bu">input</span> <span class="op">=</span> torch.LongTensor([[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">5</span>],[<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="bu">len</span>(<span class="st">'가나다라마바사'</span>)]])</span>
+<span id="cb4-2"><a href="#cb4-2"></a>embedding <span class="op">=</span> nn.Embedding(<span class="dv">10</span>, <span class="dv">3</span>)</span>
+<span id="cb4-3"><a href="#cb4-3"></a></span>
+<span id="cb4-4"><a href="#cb4-4"></a>embedding(<span class="bu">input</span>[<span class="dv">1</span>][<span class="op">-</span><span class="dv">1</span>])</span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="co"># tensor([ 0.2074,  0.0673, -0.1462], grad_fn=&lt;EmbeddingBackward0&gt;)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>nn.Embedding 을 통해 인스턴스를 생성할 때 <code>(num_embeddings * embedding_eim)</code> 모양의 파라미터가 생긴다. <code>embedding(input)</code> 을 통해 input 값을 임베딩 하면 미리 만들어둔 파라미터에 임베딩 된 값이 걸리게 되는 셈이다.</p>
+<ul>
+<li>reference
+<ul>
+<li><a href="https://discuss.pytorch.kr/t/embedding/942">https://discuss.pytorch.kr/t/embedding/942</a></li>
+</ul></li>
+</ul>
+</div>
 </div>
 </div>
 </section>
-<section id="loss-function" class="level3">
-<h3 class="anchored" data-anchor-id="loss-function">loss function</h3>
-<p>다른 방법으로는 학습 과정에서 가중치를 주는 방법이 있다. 모델이 문제를 풀 때 해당 문제가 쉬운지 어려운지는 어떻게 판별할까? 분류 문제에서는 최종 확률값으로 문제의 난이도를 판별한다. 이것 같기도 하고, 저것 같기도 해서 헷갈리니 각 label이 답일 확률이 비슷비슷하게 높은 것이다. 따라서 <span class="math inline">\(logit\)</span> <span class="math inline">\(^1)\)</span> 값의 평균은 낮을 수밖에 없다. 답을 결정하는 최종 확률은 그 중 가장 높은 값을 고른 것이니 최종 확률이 낮을수록 어려운 문제다.</p>
-<ul>
-<li><span class="math inline">\(^1)\)</span> <span class="math inline">\(logit\)</span> : <a href="https://kevinitcoding.tistory.com/entry/%EB%94%A5-%EB%9F%AC%EB%8B%9D%EC%9D%84-%EC%9C%84%ED%95%9C-%ED%9A%8C%EA%B7%80-%EB%B6%84%EC%84%9D%EC%9D%98-%EC%9D%B4%ED%95%B4-Logit-Sigmoid-Softmax">어떤 사건이 벌어질 확률 <span class="math inline">\(p\)</span>가 <span class="math inline">\([0,1]\)</span> 사이의 값일때 이를 <span class="math inline">\([-\infty, +\infty]\)</span> 사이 실수값으로 변환하는 과정을 로짓(logit) 변환이라고 한다.</a></li>
-</ul>
-<section id="focal-loss" class="level5">
-<h5 class="anchored" data-anchor-id="focal-loss">focal loss</h5>
-<p>문제가 어려운 문제인지 아닌지 알아야 하는 이유는 여기에 있다. <code>focal loss</code>는 불균형 데이터 문제를 해결할 때 대표적으로 쓰이는 손실함수로, 쉬운 문제를 틀렸을 때엔 작은 loss 값을, 어려운 문제를 틀렸을 때엔 큰 loss 값을 반환한다. 데이터가 적어 상대적으로 잘 학습하지 못한 label은 틀렸을 때 모델의 성능에 크게 영향을 미치게 되므로 학습 과정에서 가중치를 준다고 생각할 수 있다. 그렇다면 focal loss의 최대값은 어떻게 될까? focal loss는 기본적으로 연산한 loss에서 난이도만큼 값을 ‘깎는’ 원리이므로 focal loss의 최대값은 기본 손실값과 같을 것이다.</p>
-<ul>
-<li>torchvision에서 제공하는 focal loss : <a href="https://pytorch.org/vision/main/_modules/torchvision/ops/focal_loss.html">source code</a></li>
-</ul>
-<p>이 외에도 기존 손실함수에 가중치를 줄 수 있는데 f1, cross entropy, fbeta, accuracy 등의 함수가 그러하다. 해당 함수들의 ‘average’ 인자값에 ’weighted’를 주면 가중된 손실이 누적된다. 이렇게 가중된 손실함수를 여러개 사용하면 모델의 성능이 개선될 수 있다.</p>
+<section id="attributes" class="level3">
+<h3 class="anchored" data-anchor-id="attributes">Attributes</h3>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource py number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>    Attributes:</span>
+<span id="cb5-2"><a href="#cb5-2"></a>        weight (Tensor): the learnable weights of the module of shape (num_embeddings, embedding_dim)</span>
+<span id="cb5-3"><a href="#cb5-3"></a>                         initialized <span class="im">from</span> :math:`\mathcal{N}(<span class="dv">0</span>, <span class="dv">1</span>)`</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>이전에 instance를 생성할 때 num_embeddings, embedding_dim 을 할당하면 그 형태의 파라미터가 생성된다고 적은 바 있다. 이 형태에 따라 랜덤하게 가중치를 할당하는 역할을 한다. 최초에는 0부터 1 사이의 값으로 할당되며 <em>이 Tensor는 직접적으로 학습</em>되는 값이다.</p>
+</section>
+<section id="shape" class="level3">
+<h3 class="anchored" data-anchor-id="shape">Shape</h3>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource py number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>    Shape:</span>
+<span id="cb6-2"><a href="#cb6-2"></a>        <span class="op">-</span> Input: :math:`(<span class="op">*</span>)`, IntTensor <span class="kw">or</span> LongTensor of arbitrary shape containing the indices to extract</span>
+<span id="cb6-3"><a href="#cb6-3"></a>        <span class="op">-</span> Output: :math:`(<span class="op">*</span>, H)`, where `<span class="op">*</span>` <span class="kw">is</span> the <span class="bu">input</span> shape <span class="kw">and</span> :math:`H<span class="op">=</span>\text{embedding\_dim}`</span>
+<span id="cb6-4"><a href="#cb6-4"></a></span>
+<span id="cb6-5"><a href="#cb6-5"></a>    .. note::</span>
+<span id="cb6-6"><a href="#cb6-6"></a>        Keep <span class="kw">in</span> mind that only a limited number of optimizers support</span>
+<span id="cb6-7"><a href="#cb6-7"></a>        sparse gradients: currently it<span class="st">'s :class:`optim.SGD` (`CUDA` and `CPU`),</span></span>
+<span id="cb6-8"><a href="#cb6-8"></a><span class="er">        :class:`optim.SparseAdam` </span>(`CUDA` <span class="kw">and</span> `CPU`) <span class="kw">and</span> :<span class="kw">class</span>:`optim.Adagrad` (`CPU`)</span>
+<span id="cb6-9"><a href="#cb6-9"></a></span>
+<span id="cb6-10"><a href="#cb6-10"></a>    .. note::</span>
+<span id="cb6-11"><a href="#cb6-11"></a>        When :attr:`max_norm` <span class="kw">is</span> <span class="kw">not</span> ``None``, :<span class="kw">class</span>:`Embedding`<span class="st">'s forward method will modify the</span></span>
+<span id="cb6-12"><a href="#cb6-12"></a><span class="er">        :attr:`weight` tensor in-place. Since tensors needed for gradient computations cannot be</span></span>
+<span id="cb6-13"><a href="#cb6-13"></a>        modified <span class="kw">in</span><span class="op">-</span>place, performing a differentiable operation on ``Embedding.weight`` before</span>
+<span id="cb6-14"><a href="#cb6-14"></a>        calling :<span class="kw">class</span>:`Embedding`<span class="st">'s forward method requires cloning ``Embedding.weight`` when</span></span>
+<span id="cb6-15"><a href="#cb6-15"></a><span class="er">        :attr:`max_norm` is not ``None``. For example::</span></span>
+<span id="cb6-16"><a href="#cb6-16"></a></span>
+<span id="cb6-17"><a href="#cb6-17"></a>            n, d, m <span class="op">=</span> <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span></span>
+<span id="cb6-18"><a href="#cb6-18"></a>            embedding <span class="op">=</span> nn.Embedding(n, d, max_norm<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb6-19"><a href="#cb6-19"></a>            W <span class="op">=</span> torch.randn((m, d), requires_grad<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb6-20"><a href="#cb6-20"></a>            idx <span class="op">=</span> torch.tensor([<span class="dv">1</span>, <span class="dv">2</span>])</span>
+<span id="cb6-21"><a href="#cb6-21"></a>            a <span class="op">=</span> embedding.weight.clone() <span class="op">@</span> W.t()  <span class="co"># weight must be cloned for this to be differentiable</span></span>
+<span id="cb6-22"><a href="#cb6-22"></a>            b <span class="op">=</span> embedding(idx) <span class="op">@</span> W.t()  <span class="co"># modifies weight in-place</span></span>
+<span id="cb6-23"><a href="#cb6-23"></a>            out <span class="op">=</span> (a.unsqueeze(<span class="dv">0</span>) <span class="op">+</span> b.unsqueeze(<span class="dv">1</span>))</span>
+<span id="cb6-24"><a href="#cb6-24"></a>            loss <span class="op">=</span> out.sigmoid().prod()</span>
+<span id="cb6-25"><a href="#cb6-25"></a>            loss.backward()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="examples" class="level3">
+<h3 class="anchored" data-anchor-id="examples">Examples</h3>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource py number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>    Examples::</span>
+<span id="cb7-2"><a href="#cb7-2"></a></span>
+<span id="cb7-3"><a href="#cb7-3"></a>        <span class="op">&gt;&gt;&gt;</span> <span class="co"># an Embedding module containing 10 tensors of size 3</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a>        <span class="op">&gt;&gt;&gt;</span> embedding <span class="op">=</span> nn.Embedding(<span class="dv">10</span>, <span class="dv">3</span>)</span>
+<span id="cb7-5"><a href="#cb7-5"></a>        <span class="op">&gt;&gt;&gt;</span> <span class="co"># a batch of 2 samples of 4 indices each</span></span>
+<span id="cb7-6"><a href="#cb7-6"></a>        <span class="op">&gt;&gt;&gt;</span> <span class="bu">input</span> <span class="op">=</span> torch.LongTensor([[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">5</span>],[<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">9</span>]])</span>
+<span id="cb7-7"><a href="#cb7-7"></a>        <span class="op">&gt;&gt;&gt;</span> <span class="co"># xdoctest: +IGNORE_WANT("non-deterministic")</span></span>
+<span id="cb7-8"><a href="#cb7-8"></a>        <span class="op">&gt;&gt;&gt;</span> embedding(<span class="bu">input</span>)</span>
+<span id="cb7-9"><a href="#cb7-9"></a>        tensor([[[<span class="op">-</span><span class="fl">0.0251</span>, <span class="op">-</span><span class="fl">1.6902</span>,  <span class="fl">0.7172</span>],</span>
+<span id="cb7-10"><a href="#cb7-10"></a>                 [<span class="op">-</span><span class="fl">0.6431</span>,  <span class="fl">0.0748</span>,  <span class="fl">0.6969</span>],</span>
+<span id="cb7-11"><a href="#cb7-11"></a>                 [ <span class="fl">1.4970</span>,  <span class="fl">1.3448</span>, <span class="op">-</span><span class="fl">0.9685</span>],</span>
+<span id="cb7-12"><a href="#cb7-12"></a>                 [<span class="op">-</span><span class="fl">0.3677</span>, <span class="op">-</span><span class="fl">2.7265</span>, <span class="op">-</span><span class="fl">0.1685</span>]],</span>
+<span id="cb7-13"><a href="#cb7-13"></a></span>
+<span id="cb7-14"><a href="#cb7-14"></a>                [[ <span class="fl">1.4970</span>,  <span class="fl">1.3448</span>, <span class="op">-</span><span class="fl">0.9685</span>],</span>
+<span id="cb7-15"><a href="#cb7-15"></a>                 [ <span class="fl">0.4362</span>, <span class="op">-</span><span class="fl">0.4004</span>,  <span class="fl">0.9400</span>],</span>
+<span id="cb7-16"><a href="#cb7-16"></a>                 [<span class="op">-</span><span class="fl">0.6431</span>,  <span class="fl">0.0748</span>,  <span class="fl">0.6969</span>],</span>
+<span id="cb7-17"><a href="#cb7-17"></a>                 [ <span class="fl">0.9124</span>, <span class="op">-</span><span class="fl">2.3616</span>,  <span class="fl">1.1151</span>]]])</span>
+<span id="cb7-18"><a href="#cb7-18"></a></span>
+<span id="cb7-19"><a href="#cb7-19"></a></span>
+<span id="cb7-20"><a href="#cb7-20"></a>        <span class="op">&gt;&gt;&gt;</span> <span class="co"># example with padding_idx</span></span>
+<span id="cb7-21"><a href="#cb7-21"></a>        <span class="op">&gt;&gt;&gt;</span> embedding <span class="op">=</span> nn.Embedding(<span class="dv">10</span>, <span class="dv">3</span>, padding_idx<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb7-22"><a href="#cb7-22"></a>        <span class="op">&gt;&gt;&gt;</span> <span class="bu">input</span> <span class="op">=</span> torch.LongTensor([[<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">0</span>,<span class="dv">5</span>]])</span>
+<span id="cb7-23"><a href="#cb7-23"></a>        <span class="op">&gt;&gt;&gt;</span> embedding(<span class="bu">input</span>)</span>
+<span id="cb7-24"><a href="#cb7-24"></a>        tensor([[[ <span class="fl">0.0000</span>,  <span class="fl">0.0000</span>,  <span class="fl">0.0000</span>],</span>
+<span id="cb7-25"><a href="#cb7-25"></a>                 [ <span class="fl">0.1535</span>, <span class="op">-</span><span class="fl">2.0309</span>,  <span class="fl">0.9315</span>],</span>
+<span id="cb7-26"><a href="#cb7-26"></a>                 [ <span class="fl">0.0000</span>,  <span class="fl">0.0000</span>,  <span class="fl">0.0000</span>],</span>
+<span id="cb7-27"><a href="#cb7-27"></a>                 [<span class="op">-</span><span class="fl">0.1655</span>,  <span class="fl">0.9897</span>,  <span class="fl">0.0635</span>]]])</span>
+<span id="cb7-28"><a href="#cb7-28"></a></span>
+<span id="cb7-29"><a href="#cb7-29"></a>        <span class="op">&gt;&gt;&gt;</span> <span class="co"># example of changing `pad` vector</span></span>
+<span id="cb7-30"><a href="#cb7-30"></a>        <span class="op">&gt;&gt;&gt;</span> padding_idx <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb7-31"><a href="#cb7-31"></a>        <span class="op">&gt;&gt;&gt;</span> embedding <span class="op">=</span> nn.Embedding(<span class="dv">3</span>, <span class="dv">3</span>, padding_idx<span class="op">=</span>padding_idx)</span>
+<span id="cb7-32"><a href="#cb7-32"></a>        <span class="op">&gt;&gt;&gt;</span> embedding.weight</span>
+<span id="cb7-33"><a href="#cb7-33"></a>        Parameter containing:</span>
+<span id="cb7-34"><a href="#cb7-34"></a>        tensor([[ <span class="fl">0.0000</span>,  <span class="fl">0.0000</span>,  <span class="fl">0.0000</span>],</span>
+<span id="cb7-35"><a href="#cb7-35"></a>                [<span class="op">-</span><span class="fl">0.7895</span>, <span class="op">-</span><span class="fl">0.7089</span>, <span class="op">-</span><span class="fl">0.0364</span>],</span>
+<span id="cb7-36"><a href="#cb7-36"></a>                [ <span class="fl">0.6778</span>,  <span class="fl">0.5803</span>,  <span class="fl">0.2678</span>]], requires_grad<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb7-37"><a href="#cb7-37"></a>        <span class="op">&gt;&gt;&gt;</span> <span class="cf">with</span> torch.no_grad():</span>
+<span id="cb7-38"><a href="#cb7-38"></a>        ...     embedding.weight[padding_idx] <span class="op">=</span> torch.ones(<span class="dv">3</span>)</span>
+<span id="cb7-39"><a href="#cb7-39"></a>        <span class="op">&gt;&gt;&gt;</span> embedding.weight</span>
+<span id="cb7-40"><a href="#cb7-40"></a>        Parameter containing:</span>
+<span id="cb7-41"><a href="#cb7-41"></a>        tensor([[ <span class="fl">1.0000</span>,  <span class="fl">1.0000</span>,  <span class="fl">1.0000</span>],</span>
+<span id="cb7-42"><a href="#cb7-42"></a>                [<span class="op">-</span><span class="fl">0.7895</span>, <span class="op">-</span><span class="fl">0.7089</span>, <span class="op">-</span><span class="fl">0.0364</span>],</span>
+<span id="cb7-43"><a href="#cb7-43"></a>                [ <span class="fl">0.6778</span>,  <span class="fl">0.5803</span>,  <span class="fl">0.2678</span>]], requires_grad<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb7-44"><a href="#cb7-44"></a>    <span class="co">"""</span></span>
+<span id="cb7-45"><a href="#cb7-45"></a><span class="co">    __constants__ = ['num_embeddings', 'embedding_dim', 'padding_idx', 'max_norm',</span></span>
+<span id="cb7-46"><a href="#cb7-46"></a><span class="co">                     'norm_type', 'scale_grad_by_freq', 'sparse']</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>

@@ -6,10 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="dotpyo">
-<meta name="description" content="P-tuning is a method for automatically searching and optimizing for better prompts in a continuous space.">
+<meta name="description" content="pytorch의 모델 레이어와 파라미터를 확인하고 freezing하는 방법을 알아보자">
 
-<title>archive - p tuning</title>
+<title>archive - Model freezing</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -25,25 +24,25 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<link href="../../favicon.ico" rel="icon">
-<script src="../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../favicon.ico" rel="icon">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -80,10 +79,9 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-L5Y3XFBP62', { 'anonymize_ip': true});
 </script>
-<meta name="referrer" content="strict-origin-when-cross-origin">
 
 
-<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -93,12 +91,12 @@ gtag('config', 'G-L5Y3XFBP62', { 'anonymize_ip': true});
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">archive</span>
     </a>
   </div>
         <div class="quarto-navbar-tools tools-wide tools-end">
-    <a href="../../CV.html" title="&amp;nbsp;" class="quarto-navigation-tool px-1" aria-label="&amp;nbsp;"><i class="bi bi-person-circle"></i></a>
+    <a href="../CV.html" title="&amp;nbsp;" class="quarto-navigation-tool px-1" aria-label="&amp;nbsp;"><i class="bi bi-person-circle"></i></a>
     <a href="https://github.com/dotpyo" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
@@ -109,39 +107,25 @@ gtag('config', 'G-L5Y3XFBP62', { 'anonymize_ip': true});
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">p tuning</h1>
-            <p class="subtitle lead">PEFT; p tuning</p>
+    <div class="quarto-title column-page">
+      <h1 class="title">Model freezing</h1>
+            <p class="subtitle lead">pytorch model layer freezing</p>
                   <div>
         <div class="description">
-          P-tuning is a method for automatically searching and optimizing for better prompts in a continuous space.
+          pytorch의 모델 레이어와 파라미터를 확인하고 freezing하는 방법을 알아보자
         </div>
       </div>
                           <div class="quarto-categories">
-                <div class="quarto-category">NLP</div>
-                <div class="quarto-category">LLM</div>
-                <div class="quarto-category">technique</div>
+                <div class="quarto-category">PyTorch</div>
               </div>
                   </div>
   </div>
     
   
-  <div class="quarto-title-meta column-page-left">
+  <div class="quarto-title-meta column-page">
 
-      <div>
-      <div class="quarto-title-meta-heading">Author</div>
-      <div class="quarto-title-meta-contents">
-               <p>dotpyo <a href="mailto:4923.py@gmail.com" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> </p>
-            </div>
-    </div>
       
     
-      <div>
-      <div class="quarto-title-meta-heading">Modified</div>
-      <div class="quarto-title-meta-contents">
-        <p class="date-modified">March 9, 2024</p>
-      </div>
-    </div>
       
     </div>
     
@@ -149,38 +133,18 @@ gtag('config', 'G-L5Y3XFBP62', { 'anonymize_ip': true});
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#p-tuning" id="toc-p-tuning" class="nav-link active" data-scroll-target="#p-tuning">p tuning</a></li>
-  <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference">Reference</a></li>
-  </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/dotpyo/archive/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content quarto-banner-title-block column-page" id="quarto-document-content">
 
 
 
 
 
-<section id="p-tuning" class="level4">
-<h4 class="anchored" data-anchor-id="p-tuning">p tuning</h4>
-<p>“P-tuning is a method for automatically searching and optimizing for better prompts in a continuous space.”</p>
-<ul>
-<li>PLM의 일부 가중치만 미세조정하여 <code>continuous prompt emobedding</code>만 tuninng한다.</li>
-</ul>
-</section>
-<section id="reference" class="level4">
-<h4 class="anchored" data-anchor-id="reference">Reference</h4>
-<ul>
-<li><a href="https://huggingface.co/blog/peft">https://huggingface.co/blog/peft</a></li>
-</ul>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -792,4 +756,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/dotpyo/archive/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/dotpyo/archive/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

@@ -6,7 +6,6 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="dotpyo">
 <meta name="description" content="Object Detection을 가볍게 다루고 구현을 중심으로 정리한다.">
 
 <title>archive - finetuning tutorial</title>
@@ -59,25 +58,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../../../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../../../">
-<link href="../../../../favicon.ico" rel="icon">
-<script src="../../../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="../../../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../favicon.ico" rel="icon">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -114,7 +113,6 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-L5Y3XFBP62', { 'anonymize_ip': true});
 </script>
-<meta name="referrer" content="strict-origin-when-cross-origin">
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -146,7 +144,7 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="../../../../styles.css">
+<link rel="stylesheet" href="../../../styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -156,12 +154,12 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../../../index.html">
+    <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">archive</span>
     </a>
   </div>
         <div class="quarto-navbar-tools tools-wide tools-end">
-    <a href="../../../../CV.html" title="&amp;nbsp;" class="quarto-navigation-tool px-1" aria-label="&amp;nbsp;"><i class="bi bi-person-circle"></i></a>
+    <a href="../../../CV.html" title="&amp;nbsp;" class="quarto-navigation-tool px-1" aria-label="&amp;nbsp;"><i class="bi bi-person-circle"></i></a>
     <a href="https://github.com/dotpyo" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
@@ -191,20 +189,8 @@ window.Quarto = {
   
   <div class="quarto-title-meta column-page">
 
-      <div>
-      <div class="quarto-title-meta-heading">Author</div>
-      <div class="quarto-title-meta-contents">
-               <p>dotpyo <a href="mailto:4923.py@gmail.com" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> </p>
-            </div>
-    </div>
       
     
-      <div>
-      <div class="quarto-title-meta-heading">Modified</div>
-      <div class="quarto-title-meta-contents">
-        <p class="date-modified">March 10, 2024</p>
-      </div>
-    </div>
       
     </div>
     
@@ -220,6 +206,9 @@ window.Quarto = {
 
 
 
+<blockquote class="blockquote">
+<p>구현을 중심으로 정리한다</p>
+</blockquote>
 <pre><code>  pytorch                               2.2.1-py3.10_0
   torchaudio                            2.2.1-py310_cpu
   torchvision                           0.17.1-py310_cpu</code></pre>
@@ -229,7 +218,7 @@ window.Quarto = {
 </colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: center;"><img a="sample penn-fundan DS" src="https://github.com/dotpyo/archive/assets/60145951/3c5ec485-1520-4df8-9b2b-188c92e7d699" width="100%"></th>
+<th style="text-align: center;"><img src="https://github.com/dotpyo/archive/assets/60145951/3c5ec485-1520-4df8-9b2b-188c92e7d699.png" class="img-fluid" alt="sample penn-fundan DS"></th>
 </tr>
 </thead>
 <tbody>
@@ -251,7 +240,7 @@ window.Quarto = {
 </ul></li>
 <li>Model: pretrained Mask R-CNN</li>
 </ul>
-<div id="cell-3" class="cell" data-execution_count="44">
+<div id="cell-3" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> torchvision</span>
 <span id="cb2-2"><a href="#cb2-2"></a></span>
 <span id="cb2-3"><a href="#cb2-3"></a><span class="co"># FastRCNN: https://arxiv.org/abs/1506.01497</span></span>
@@ -283,7 +272,7 @@ Object detection history
 </colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: center;"><img a="selective search" src="https://github.com/dotpyo/archive/assets/60145951/c06c82c0-19a6-43d0-8c9e-1fdab3c61407" width="100%"></th>
+<th style="text-align: center;"><img src="https://github.com/dotpyo/archive/assets/60145951/c06c82c0-19a6-43d0-8c9e-1fdab3c61407.png" class="img-fluid" alt="selective search"></th>
 </tr>
 </thead>
 <tbody>
@@ -326,7 +315,7 @@ Object detection history
 </colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: center;"><img a="object detection" src="https://github.com/dotpyo/archive/assets/60145951/a0dbb2ce-972e-4d0e-8533-25b516863e90" width="100%"></th>
+<th style="text-align: center;"><img src="https://github.com/dotpyo/archive/assets/60145951/a0dbb2ce-972e-4d0e-8533-25b516863e90.png" class="img-fluid" alt="image"></th>
 </tr>
 </thead>
 <tbody>
@@ -424,7 +413,7 @@ Faster R-CNN, Mask R-CNN; Image Segmentation
 <li><a href="https://herbwood.tistory.com/10">https://herbwood.tistory.com/10</a></li>
 <li><a href="https://ropiens.tistory.com/76">https://ropiens.tistory.com/76</a></li>
 <li><a href="https://velog.io/@skhim520/Mask-R-CNN-%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0">https://velog.io/<span class="citation" data-cites="skhim520/Mask-R-CNN">@skhim520/Mask-R-CNN</span>-%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0</a></li>
-<li><a href="https://medium.com/@parkie0517/mask-r-cnn-%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-roialign-mask-prediction-branch%EC%97%90-%EA%B4%80%ED%95%B4%EC%84%9C-%EC%82%B4%ED%8E%B4%EB%B3%B4%EA%B8%B0-1b1fc2715600">RoI Align</a></li>
+<li>RoI Align: <a href="https://medium.com/@parkie0517/mask-r-cnn-%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-roialign-mask-prediction-branch%EC%97%90-%EA%B4%80%ED%95%B4%EC%84%9C-%EC%82%B4%ED%8E%B4%EB%B3%B4%EA%B8%B0-1b1fc2715600">https://medium.com/<span class="citation" data-cites="parkie0517/mask-r-cnn">@parkie0517/mask-r-cnn</span>-%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-roialign-mask-prediction-branch%EC%97%90-%EA%B4%80%ED%95%B4%EC%84%9C-%EC%82%B4%ED%8E%B4%EB%B3%B4%EA%B8%B0-1b1fc2715600</a></li>
 </ul></li>
 </ul>
 </div>
@@ -433,7 +422,7 @@ Faster R-CNN, Mask R-CNN; Image Segmentation
 </section>
 <section id="라이브러리" class="level3">
 <h3 class="anchored" data-anchor-id="라이브러리">라이브러리</h3>
-<div id="cell-6" class="cell" data-execution_count="45">
+<div id="cell-6" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">import</span> os</span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="im">import</span> torch</span>
 <span id="cb3-3"><a href="#cb3-3"></a></span>
@@ -445,7 +434,7 @@ Faster R-CNN, Mask R-CNN; Image Segmentation
 </section>
 <section id="데이터셋-생성" class="level3">
 <h3 class="anchored" data-anchor-id="데이터셋-생성">데이터셋 생성</h3>
-<div id="cell-9" class="cell" data-execution_count="47">
+<div id="cell-9" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb4-2"><a href="#cb4-2"></a><span class="im">from</span> torchvision.io <span class="im">import</span> read_image</span>
 <span id="cb4-3"><a href="#cb4-3"></a></span>
@@ -468,74 +457,73 @@ Faster R-CNN, Mask R-CNN; Image Segmentation
 </div>
 </div>
 </div>
-<div id="cell-10" class="cell" data-execution_count="48">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="co">"""데이터를 한번에 불러오기"""</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a><span class="kw">class</span> PennFudanDataset(torch.utils.data.Dataset):</span>
-<span id="cb5-3"><a href="#cb5-3"></a>    <span class="co"># `root dir` 에서의 `root`</span></span>
-<span id="cb5-4"><a href="#cb5-4"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, root, transforms):</span>
-<span id="cb5-5"><a href="#cb5-5"></a>        <span class="va">self</span>.root <span class="op">=</span> root </span>
-<span id="cb5-6"><a href="#cb5-6"></a>        <span class="va">self</span>.transforms <span class="op">=</span> transforms </span>
-<span id="cb5-7"><a href="#cb5-7"></a></span>
-<span id="cb5-8"><a href="#cb5-8"></a>        <span class="co"># load all image file</span></span>
-<span id="cb5-9"><a href="#cb5-9"></a>        <span class="co"># ensure that they are aligned; img, mask 한꺼번에 다루기 위해 </span></span>
-<span id="cb5-10"><a href="#cb5-10"></a>        <span class="va">self</span>.imgs <span class="op">=</span> <span class="bu">list</span>(<span class="bu">sorted</span>(os.listdir(os.path.join(root, <span class="st">"PNGImages"</span>))))</span>
-<span id="cb5-11"><a href="#cb5-11"></a>        <span class="va">self</span>.masks <span class="op">=</span> <span class="bu">list</span>(<span class="bu">sorted</span>(os.listdir(os.path.join(root, <span class="st">"PedMasks"</span>))))</span>
-<span id="cb5-12"><a href="#cb5-12"></a>    </span>
-<span id="cb5-13"><a href="#cb5-13"></a>    <span class="kw">def</span> <span class="fu">__getitem__</span>(<span class="va">self</span>, idx):</span>
-<span id="cb5-14"><a href="#cb5-14"></a>        <span class="co"># load images and masks</span></span>
-<span id="cb5-15"><a href="#cb5-15"></a>        img_path <span class="op">=</span> os.path.join(<span class="va">self</span>.root, <span class="st">"PNGImages"</span>, <span class="va">self</span>.imgs[idx])</span>
-<span id="cb5-16"><a href="#cb5-16"></a>        mask_path <span class="op">=</span> os.path.join(<span class="va">self</span>.root, <span class="st">"PedMasks"</span>, <span class="va">self</span>.masks[idx])</span>
-<span id="cb5-17"><a href="#cb5-17"></a>        <span class="co"># 위에서 import 한 torchvision의 read_image사용</span></span>
-<span id="cb5-18"><a href="#cb5-18"></a>        img <span class="op">=</span> read_image(img_path)      <span class="co"># [3, 397, 396]</span></span>
-<span id="cb5-19"><a href="#cb5-19"></a>        mask <span class="op">=</span> read_image(mask_path)    <span class="co"># [1, 397, 396]</span></span>
-<span id="cb5-20"><a href="#cb5-20"></a></span>
-<span id="cb5-21"><a href="#cb5-21"></a>        <span class="co"># 고유한 값 추출</span></span>
-<span id="cb5-22"><a href="#cb5-22"></a>        <span class="co"># torch.unique(input:Tensor) -&gt; return the unique elements of the input tensor</span></span>
-<span id="cb5-23"><a href="#cb5-23"></a>        obj_ids <span class="op">=</span> torch.unique(mask)    <span class="co"># [0, 1, 2] (shape: [3])</span></span>
-<span id="cb5-24"><a href="#cb5-24"></a>        obj_ids <span class="op">=</span> obj_ids [<span class="dv">1</span>:]          <span class="co"># 이때 첫값은 배경: black</span></span>
-<span id="cb5-25"><a href="#cb5-25"></a>        num_objs <span class="op">=</span> <span class="bu">len</span>(obj_ids)         <span class="co"># 총 채널 개수</span></span>
-<span id="cb5-26"><a href="#cb5-26"></a></span>
-<span id="cb5-27"><a href="#cb5-27"></a>        <span class="co"># split the color-encoded mask into a set of binary masks</span></span>
-<span id="cb5-28"><a href="#cb5-28"></a>        <span class="co"># mask: [2, 1, 1] 형태의 [0, 1]로 이루어진 행렬; binary mask</span></span>
-<span id="cb5-29"><a href="#cb5-29"></a>        masks <span class="op">=</span> (mask <span class="op">==</span> obj_ids[:, <span class="va">None</span>, <span class="va">None</span>]).to(dtype<span class="op">=</span>torch.uint8)</span>
-<span id="cb5-30"><a href="#cb5-30"></a></span>
-<span id="cb5-31"><a href="#cb5-31"></a>        <span class="co"># bbox generate</span></span>
-<span id="cb5-32"><a href="#cb5-32"></a>        <span class="co"># shape: [number of people, 4]</span></span>
-<span id="cb5-33"><a href="#cb5-33"></a>        boxes <span class="op">=</span> masks_to_boxes(mask)    <span class="co"># [x1, y1, x2, y2], 사람의 수만큼 해당 행렬이 포함되어있다.</span></span>
-<span id="cb5-34"><a href="#cb5-34"></a></span>
-<span id="cb5-35"><a href="#cb5-35"></a>        <span class="co"># label이 하나이므로 (1) 속하느냐 (0) 속하지 않느냐 로 구분된다.</span></span>
-<span id="cb5-36"><a href="#cb5-36"></a>        labels <span class="op">=</span> torch.ones((num_objs,), dtype<span class="op">=</span>torch.int64)</span>
-<span id="cb5-37"><a href="#cb5-37"></a></span>
-<span id="cb5-38"><a href="#cb5-38"></a>        image_id <span class="op">=</span> idx</span>
-<span id="cb5-39"><a href="#cb5-39"></a>        area <span class="op">=</span> (boxes[:, <span class="dv">3</span>] <span class="op">-</span> boxes[:, <span class="dv">1</span>]) <span class="op">*</span> (boxes[:, <span class="dv">2</span>] <span class="op">-</span> boxes[:, <span class="dv">0</span>])</span>
-<span id="cb5-40"><a href="#cb5-40"></a>        <span class="co"># suppose all instances are not crowd</span></span>
-<span id="cb5-41"><a href="#cb5-41"></a>        iscrowd <span class="op">=</span> torch.zeros((num_objs,), dtype<span class="op">=</span>torch.int64)</span>
-<span id="cb5-42"><a href="#cb5-42"></a></span>
-<span id="cb5-43"><a href="#cb5-43"></a>        <span class="co"># Wrap sample and targets into torchvision tv_tensors:</span></span>
-<span id="cb5-44"><a href="#cb5-44"></a>        img <span class="op">=</span> tv_tensors.Image(img)</span>
-<span id="cb5-45"><a href="#cb5-45"></a></span>
-<span id="cb5-46"><a href="#cb5-46"></a>        target <span class="op">=</span> {}</span>
-<span id="cb5-47"><a href="#cb5-47"></a>        target[<span class="st">"boxes"</span>] <span class="op">=</span> tv_tensors.BoundingBoxes(</span>
-<span id="cb5-48"><a href="#cb5-48"></a>                            boxes, </span>
-<span id="cb5-49"><a href="#cb5-49"></a>                            <span class="bu">format</span><span class="op">=</span><span class="st">"XYXY"</span>, canvas_size<span class="op">=</span>F.get_size(img))</span>
-<span id="cb5-50"><a href="#cb5-50"></a>        target[<span class="st">"masks"</span>] <span class="op">=</span> tv_tensors.Mask(masks)</span>
-<span id="cb5-51"><a href="#cb5-51"></a>        target[<span class="st">"labels"</span>] <span class="op">=</span> labels</span>
-<span id="cb5-52"><a href="#cb5-52"></a>        target[<span class="st">"image_id"</span>] <span class="op">=</span> image_id</span>
-<span id="cb5-53"><a href="#cb5-53"></a>        target[<span class="st">"area"</span>] <span class="op">=</span> area</span>
-<span id="cb5-54"><a href="#cb5-54"></a>        target[<span class="st">"iscrowd"</span>] <span class="op">=</span> iscrowd</span>
-<span id="cb5-55"><a href="#cb5-55"></a></span>
-<span id="cb5-56"><a href="#cb5-56"></a>        <span class="cf">if</span> <span class="va">self</span>.transforms <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
-<span id="cb5-57"><a href="#cb5-57"></a>            img, target <span class="op">=</span> <span class="va">self</span>.transforms(img, target)</span>
-<span id="cb5-58"><a href="#cb5-58"></a></span>
-<span id="cb5-59"><a href="#cb5-59"></a>        <span class="cf">return</span> img, target</span>
-<span id="cb5-60"><a href="#cb5-60"></a></span>
-<span id="cb5-61"><a href="#cb5-61"></a>    <span class="kw">def</span> <span class="fu">__len__</span>(<span class="va">self</span>):</span>
-<span id="cb5-62"><a href="#cb5-62"></a>        <span class="cf">return</span> <span class="bu">len</span>(<span class="va">self</span>.imgs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-10" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">class</span> PennFudanDataset(torch.utils.data.Dataset):</span>
+<span id="cb5-2"><a href="#cb5-2"></a>    <span class="co"># `root dir` 에서의 `root`</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, root, transforms):</span>
+<span id="cb5-4"><a href="#cb5-4"></a>        <span class="va">self</span>.root <span class="op">=</span> root </span>
+<span id="cb5-5"><a href="#cb5-5"></a>        <span class="va">self</span>.transforms <span class="op">=</span> transforms </span>
+<span id="cb5-6"><a href="#cb5-6"></a></span>
+<span id="cb5-7"><a href="#cb5-7"></a>        <span class="co"># load all image file</span></span>
+<span id="cb5-8"><a href="#cb5-8"></a>        <span class="co"># ensure that they are aligned; img, mask 한꺼번에 다루기 위해 </span></span>
+<span id="cb5-9"><a href="#cb5-9"></a>        <span class="va">self</span>.imgs <span class="op">=</span> <span class="bu">list</span>(<span class="bu">sorted</span>(os.listdir(os.path.join(root, <span class="st">"PNGImages"</span>))))</span>
+<span id="cb5-10"><a href="#cb5-10"></a>        <span class="va">self</span>.masks <span class="op">=</span> <span class="bu">list</span>(<span class="bu">sorted</span>(os.listdir(os.path.join(root, <span class="st">"PedMasks"</span>))))</span>
+<span id="cb5-11"><a href="#cb5-11"></a>    </span>
+<span id="cb5-12"><a href="#cb5-12"></a>    <span class="kw">def</span> <span class="fu">__getitem__</span>(<span class="va">self</span>, idx):</span>
+<span id="cb5-13"><a href="#cb5-13"></a>        <span class="co"># load images and masks</span></span>
+<span id="cb5-14"><a href="#cb5-14"></a>        img_path <span class="op">=</span> os.path.join(<span class="va">self</span>.root, <span class="st">"PNGImages"</span>, <span class="va">self</span>.imgs[idx])</span>
+<span id="cb5-15"><a href="#cb5-15"></a>        mask_path <span class="op">=</span> os.path.join(<span class="va">self</span>.root, <span class="st">"PedMasks"</span>, <span class="va">self</span>.masks[idx])</span>
+<span id="cb5-16"><a href="#cb5-16"></a>        <span class="co"># 위에서 import 한 torchvision의 read_image사용</span></span>
+<span id="cb5-17"><a href="#cb5-17"></a>        img <span class="op">=</span> read_image(img_path)      <span class="co"># [3, 397, 396]</span></span>
+<span id="cb5-18"><a href="#cb5-18"></a>        mask <span class="op">=</span> read_image(mask_path)    <span class="co"># [1, 397, 396]</span></span>
+<span id="cb5-19"><a href="#cb5-19"></a></span>
+<span id="cb5-20"><a href="#cb5-20"></a>        <span class="co"># 고유한 값 추출</span></span>
+<span id="cb5-21"><a href="#cb5-21"></a>        <span class="co"># torch.unique(input:Tensor) -&gt; return the unique elements of the input tensor</span></span>
+<span id="cb5-22"><a href="#cb5-22"></a>        obj_ids <span class="op">=</span> torch.unique(mask)    <span class="co"># [0, 1, 2] (shape: [3])</span></span>
+<span id="cb5-23"><a href="#cb5-23"></a>        obj_ids <span class="op">=</span> obj_ids [<span class="dv">1</span>:]          <span class="co"># 이때 첫값은 배경: black</span></span>
+<span id="cb5-24"><a href="#cb5-24"></a>        num_objs <span class="op">=</span> <span class="bu">len</span>(obj_ids)         <span class="co"># 총 채널 개수</span></span>
+<span id="cb5-25"><a href="#cb5-25"></a></span>
+<span id="cb5-26"><a href="#cb5-26"></a>        <span class="co"># split the color-encoded mask into a set of binary masks</span></span>
+<span id="cb5-27"><a href="#cb5-27"></a>        <span class="co"># mask: [2, 1, 1] 형태의 [0, 1]로 이루어진 행렬; binary mask</span></span>
+<span id="cb5-28"><a href="#cb5-28"></a>        masks <span class="op">=</span> (mask <span class="op">==</span> obj_ids[:, <span class="va">None</span>, <span class="va">None</span>]).to(dtype<span class="op">=</span>torch.uint8)</span>
+<span id="cb5-29"><a href="#cb5-29"></a></span>
+<span id="cb5-30"><a href="#cb5-30"></a>        <span class="co"># bbox generate</span></span>
+<span id="cb5-31"><a href="#cb5-31"></a>        <span class="co"># shape: [number of people, 4]</span></span>
+<span id="cb5-32"><a href="#cb5-32"></a>        boxes <span class="op">=</span> masks_to_boxes(mask)    <span class="co"># [x1, y1, x2, y2], 사람의 수만큼 해당 행렬이 포함되어있다.</span></span>
+<span id="cb5-33"><a href="#cb5-33"></a></span>
+<span id="cb5-34"><a href="#cb5-34"></a>        <span class="co"># label이 하나이므로 (1) 속하느냐 (0) 속하지 않느냐 로 구분된다.</span></span>
+<span id="cb5-35"><a href="#cb5-35"></a>        labels <span class="op">=</span> torch.ones((num_objs,), dtype<span class="op">=</span>torch.int64)</span>
+<span id="cb5-36"><a href="#cb5-36"></a></span>
+<span id="cb5-37"><a href="#cb5-37"></a>        image_id <span class="op">=</span> idx</span>
+<span id="cb5-38"><a href="#cb5-38"></a>        area <span class="op">=</span> (boxes[:, <span class="dv">3</span>] <span class="op">-</span> boxes[:, <span class="dv">1</span>]) <span class="op">*</span> (boxes[:, <span class="dv">2</span>] <span class="op">-</span> boxes[:, <span class="dv">0</span>])</span>
+<span id="cb5-39"><a href="#cb5-39"></a>        <span class="co"># suppose all instances are not crowd</span></span>
+<span id="cb5-40"><a href="#cb5-40"></a>        iscrowd <span class="op">=</span> torch.zeros((num_objs,), dtype<span class="op">=</span>torch.int64)</span>
+<span id="cb5-41"><a href="#cb5-41"></a></span>
+<span id="cb5-42"><a href="#cb5-42"></a>        <span class="co"># Wrap sample and targets into torchvision tv_tensors:</span></span>
+<span id="cb5-43"><a href="#cb5-43"></a>        img <span class="op">=</span> tv_tensors.Image(img)</span>
+<span id="cb5-44"><a href="#cb5-44"></a></span>
+<span id="cb5-45"><a href="#cb5-45"></a>        target <span class="op">=</span> {}</span>
+<span id="cb5-46"><a href="#cb5-46"></a>        target[<span class="st">"boxes"</span>] <span class="op">=</span> tv_tensors.BoundingBoxes(</span>
+<span id="cb5-47"><a href="#cb5-47"></a>                            boxes, </span>
+<span id="cb5-48"><a href="#cb5-48"></a>                            <span class="bu">format</span><span class="op">=</span><span class="st">"XYXY"</span>, canvas_size<span class="op">=</span>F.get_size(img))</span>
+<span id="cb5-49"><a href="#cb5-49"></a>        target[<span class="st">"masks"</span>] <span class="op">=</span> tv_tensors.Mask(masks)</span>
+<span id="cb5-50"><a href="#cb5-50"></a>        target[<span class="st">"labels"</span>] <span class="op">=</span> labels</span>
+<span id="cb5-51"><a href="#cb5-51"></a>        target[<span class="st">"image_id"</span>] <span class="op">=</span> image_id</span>
+<span id="cb5-52"><a href="#cb5-52"></a>        target[<span class="st">"area"</span>] <span class="op">=</span> area</span>
+<span id="cb5-53"><a href="#cb5-53"></a>        target[<span class="st">"iscrowd"</span>] <span class="op">=</span> iscrowd</span>
+<span id="cb5-54"><a href="#cb5-54"></a></span>
+<span id="cb5-55"><a href="#cb5-55"></a>        <span class="cf">if</span> <span class="va">self</span>.transforms <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb5-56"><a href="#cb5-56"></a>            img, target <span class="op">=</span> <span class="va">self</span>.transforms(img, target)</span>
+<span id="cb5-57"><a href="#cb5-57"></a></span>
+<span id="cb5-58"><a href="#cb5-58"></a>        <span class="cf">return</span> img, target</span>
+<span id="cb5-59"><a href="#cb5-59"></a></span>
+<span id="cb5-60"><a href="#cb5-60"></a>    <span class="kw">def</span> <span class="fu">__len__</span>(<span class="va">self</span>):</span>
+<span id="cb5-61"><a href="#cb5-61"></a>        <span class="cf">return</span> <span class="bu">len</span>(<span class="va">self</span>.imgs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="모델-선언" class="level3">
 <h3 class="anchored" data-anchor-id="모델-선언">모델 선언</h3>
-<div id="cell-12" class="cell" data-execution_count="49">
+<div id="cell-12" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="im">import</span> torchvision</span>
 <span id="cb6-2"><a href="#cb6-2"></a><span class="im">from</span> torchvision.models.detection.faster_rcnn <span class="im">import</span> FastRCNNPredictor</span>
 <span id="cb6-3"><a href="#cb6-3"></a></span>
@@ -552,7 +540,7 @@ Faster R-CNN, Mask R-CNN; Image Segmentation
 </div>
 <section id="backbone" class="level4">
 <h4 class="anchored" data-anchor-id="backbone">backbone</h4>
-<div id="cell-14" class="cell" data-execution_count="50">
+<div id="cell-14" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="im">import</span> torchvision</span>
 <span id="cb7-2"><a href="#cb7-2"></a><span class="im">from</span> torchvision.models.detection <span class="im">import</span> FasterRCNN</span>
 <span id="cb7-3"><a href="#cb7-3"></a><span class="co"># AnchorGenerator:</span></span>
@@ -565,7 +553,7 @@ Faster R-CNN, Mask R-CNN; Image Segmentation
 <span id="cb7-10"><a href="#cb7-10"></a><span class="co"># --- load a pre-trained model for cls --- #</span></span>
 <span id="cb7-11"><a href="#cb7-11"></a><span class="co"># https://github.com/pytorch/vision/blob/main/torchvision/models/mobilenetv2.py</span></span>
 <span id="cb7-12"><a href="#cb7-12"></a><span class="co"># backbone의 결과값은 ordered dict이므로 인덱싱도 가능</span></span>
-<span id="cb7-13"><a href="#cb7-13"></a>backbone <span class="op">=</span> torchvision.models.mobilenet_v3_small(weights<span class="op">=</span><span class="st">"DEFAULT"</span>).features</span>
+<span id="cb7-13"><a href="#cb7-13"></a>backbone <span class="op">=</span> torchvision.models.mobilenet_v2(weights<span class="op">=</span><span class="st">"DEFAULT"</span>).features</span>
 <span id="cb7-14"><a href="#cb7-14"></a><span class="co"># ``FasterRCNN`` needs to know the number of output channels in a backbone.</span></span>
 <span id="cb7-15"><a href="#cb7-15"></a><span class="co">#   \because backbone의 output channel이 anchor box가 된다.</span></span>
 <span id="cb7-16"><a href="#cb7-16"></a><span class="co"># torchvision.models.mobilenet_v2(weights="DEFAULT").features 코드로 확인 가능</span></span>
@@ -597,190 +585,189 @@ Faster R-CNN, Mask R-CNN; Image Segmentation
 <span id="cb7-42"><a href="#cb7-42"></a>    box_roi_pool<span class="op">=</span>roi_pooler</span>
 <span id="cb7-43"><a href="#cb7-43"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div id="cell-15" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>backbone[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<pre><code>Conv2dNormActivation(
+  (0): Conv2d(3, 32, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+  (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (2): ReLU6(inplace=True)
+)</code></pre>
+</div>
+</div>
 </section>
 <section id="데이터셋에-맞추어-객체-검출-object-detection-segmentation" class="level4">
 <h4 class="anchored" data-anchor-id="데이터셋에-맞추어-객체-검출-object-detection-segmentation">데이터셋에 맞추어 객체 검출 (object detection, segmentation)</h4>
 <ul>
 <li>1 stage 방법론을 채택</li>
 </ul>
-<div id="cell-16" class="cell" data-execution_count="52">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="im">import</span> torchvision</span>
-<span id="cb8-2"><a href="#cb8-2"></a><span class="im">from</span> torchvision.models.detection.faster_rcnn <span class="im">import</span> FastRCNNPredictor</span>
-<span id="cb8-3"><a href="#cb8-3"></a><span class="im">from</span> torchvision.models.detection.mask_rcnn <span class="im">import</span> MaskRCNNPredictor</span>
-<span id="cb8-4"><a href="#cb8-4"></a></span>
-<span id="cb8-5"><a href="#cb8-5"></a><span class="kw">def</span> get_model_instance_segmentation(num_classes):</span>
-<span id="cb8-6"><a href="#cb8-6"></a>    <span class="co"># 사전학습된 모델을 불러올 것</span></span>
-<span id="cb8-7"><a href="#cb8-7"></a>    model <span class="op">=</span> torchvision.models.detection.maskrcnn_resnet50_fpn(weight<span class="op">=</span><span class="st">"DEFAULT"</span>)</span>
-<span id="cb8-8"><a href="#cb8-8"></a></span>
-<span id="cb8-9"><a href="#cb8-9"></a>    <span class="co"># '분류를 위해' 입력 특징을 받아온다.</span></span>
-<span id="cb8-10"><a href="#cb8-10"></a>    in_features <span class="op">=</span> model.roi_heads.box_predictor.cls_score.in_features</span>
-<span id="cb8-11"><a href="#cb8-11"></a>    <span class="co"># 미리 학습된 헤더를 새로운 것으로 바꾸는데, 헤더란?</span></span>
-<span id="cb8-12"><a href="#cb8-12"></a>    model.roi_heads.box_predictor <span class="op">=</span> FastRCNNPredictor(in_features, num_classes)</span>
-<span id="cb8-13"><a href="#cb8-13"></a></span>
-<span id="cb8-14"><a href="#cb8-14"></a>    <span class="co"># mask predictor'를 위한' 입력 특징의 '차원'을 얻는다.</span></span>
-<span id="cb8-15"><a href="#cb8-15"></a>    in_features_mask <span class="op">=</span> model.roi_heads.mask_predictor.conv5_mask.in_channels</span>
-<span id="cb8-16"><a href="#cb8-16"></a>    hidden_layer <span class="op">=</span> <span class="dv">256</span></span>
-<span id="cb8-17"><a href="#cb8-17"></a>    <span class="co"># mask predictor 변경</span></span>
-<span id="cb8-18"><a href="#cb8-18"></a>    model.roi_heads.mask_predictor <span class="op">=</span> MaskRCNNPredictor(in_features_mask,</span>
-<span id="cb8-19"><a href="#cb8-19"></a>                                                        hidden_layer,</span>
-<span id="cb8-20"><a href="#cb8-20"></a>                                                        num_classes)</span>
-<span id="cb8-21"><a href="#cb8-21"></a></span>
-<span id="cb8-22"><a href="#cb8-22"></a>    <span class="cf">return</span> model</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-17" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="im">import</span> torchvision</span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="im">from</span> torchvision.models.detection.faster_rcnn <span class="im">import</span> FastRCNNPredictor</span>
+<span id="cb10-3"><a href="#cb10-3"></a><span class="im">from</span> torchvision.models.detection.mask_rcnn <span class="im">import</span> MaskRCNNPredictor</span>
+<span id="cb10-4"><a href="#cb10-4"></a></span>
+<span id="cb10-5"><a href="#cb10-5"></a><span class="kw">def</span> get_model_instance_segmentation(num_classes):</span>
+<span id="cb10-6"><a href="#cb10-6"></a>    <span class="co"># 사전학습된 모델을 불러올 것</span></span>
+<span id="cb10-7"><a href="#cb10-7"></a>    model <span class="op">=</span> torchvision.models.detection.maskrcnn_resnet50_fpn(weight<span class="op">=</span><span class="st">"DEFAULT"</span>)</span>
+<span id="cb10-8"><a href="#cb10-8"></a></span>
+<span id="cb10-9"><a href="#cb10-9"></a>    <span class="co"># '분류를 위해' 입력 특징을 받아온다.</span></span>
+<span id="cb10-10"><a href="#cb10-10"></a>    in_features <span class="op">=</span> model.roi_heads.box_predictor.cls_score.in_features</span>
+<span id="cb10-11"><a href="#cb10-11"></a>    <span class="co"># 미리 학습된 헤더를 새로운 것으로 바꾸는데, 헤더란?</span></span>
+<span id="cb10-12"><a href="#cb10-12"></a>    model.roi_heads.box_predictor <span class="op">=</span> FastRCNNPredictor(in_features, num_classes)</span>
+<span id="cb10-13"><a href="#cb10-13"></a></span>
+<span id="cb10-14"><a href="#cb10-14"></a>    <span class="co"># mask predictor'를 위한' 입력 특징의 '차원'을 얻는다.</span></span>
+<span id="cb10-15"><a href="#cb10-15"></a>    in_features_mask <span class="op">=</span> model.roi_heads.mask_predictor.conv5_mask.in_channels</span>
+<span id="cb10-16"><a href="#cb10-16"></a>    hidden_layer <span class="op">=</span> <span class="dv">256</span></span>
+<span id="cb10-17"><a href="#cb10-17"></a>    <span class="co"># mask predictor 변경</span></span>
+<span id="cb10-18"><a href="#cb10-18"></a>    model.roi_heads.mask_predictor <span class="op">=</span> MaskRCNNPredictor(in_features_mask,</span>
+<span id="cb10-19"><a href="#cb10-19"></a>                                                        hidden_layer,</span>
+<span id="cb10-20"><a href="#cb10-20"></a>                                                        num_classes)</span>
+<span id="cb10-21"><a href="#cb10-21"></a></span>
+<span id="cb10-22"><a href="#cb10-22"></a>    <span class="cf">return</span> model</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
 <section id="통합" class="level3">
 <h3 class="anchored" data-anchor-id="통합">통합</h3>
-<div id="cell-18" class="cell" data-execution_count="53">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># #| output: false</span></span>
-<span id="cb9-2"><a href="#cb9-2"></a><span class="co"># os.system("wget https://raw.githubusercontent.com/pytorch/vision/main/references/detection/engine.py")</span></span>
-<span id="cb9-3"><a href="#cb9-3"></a><span class="co"># os.system("wget https://raw.githubusercontent.com/pytorch/vision/main/references/detection/utils.py")</span></span>
-<span id="cb9-4"><a href="#cb9-4"></a><span class="co"># os.system("wget https://raw.githubusercontent.com/pytorch/vision/main/references/detection/coco_utils.py")</span></span>
-<span id="cb9-5"><a href="#cb9-5"></a><span class="co"># os.system("wget https://raw.githubusercontent.com/pytorch/vision/main/references/detection/coco_eval.py")</span></span>
-<span id="cb9-6"><a href="#cb9-6"></a><span class="co"># os.system("wget https://raw.githubusercontent.com/pytorch/vision/main/references/detection/transforms.py")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-19" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="co"># #| output: false</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a><span class="co"># os.system("wget https://raw.githubusercontent.com/pytorch/vision/main/references/detection/engine.py")</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a><span class="co"># os.system("wget https://raw.githubusercontent.com/pytorch/vision/main/references/detection/utils.py")</span></span>
+<span id="cb11-4"><a href="#cb11-4"></a><span class="co"># os.system("wget https://raw.githubusercontent.com/pytorch/vision/main/references/detection/coco_utils.py")</span></span>
+<span id="cb11-5"><a href="#cb11-5"></a><span class="co"># os.system("wget https://raw.githubusercontent.com/pytorch/vision/main/references/detection/coco_eval.py")</span></span>
+<span id="cb11-6"><a href="#cb11-6"></a><span class="co"># os.system("wget https://raw.githubusercontent.com/pytorch/vision/main/references/detection/transforms.py")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="데이터-증강-및-변환" class="level4">
 <h4 class="anchored" data-anchor-id="데이터-증강-및-변환">데이터 증강 및 변환</h4>
-<div id="cell-20" class="cell" data-execution_count="54">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># import transforms as T  # ModuleNotFoundError: No module named 'sgmllib'</span></span>
-<span id="cb10-2"><a href="#cb10-2"></a><span class="im">from</span> torchvision.transforms <span class="im">import</span> v2 <span class="im">as</span> T</span>
-<span id="cb10-3"><a href="#cb10-3"></a></span>
-<span id="cb10-4"><a href="#cb10-4"></a><span class="kw">def</span> get_transform(train):</span>
-<span id="cb10-5"><a href="#cb10-5"></a>    transforms <span class="op">=</span> []</span>
-<span id="cb10-6"><a href="#cb10-6"></a>    transforms.append(T.PILToTensor())</span>
-<span id="cb10-7"><a href="#cb10-7"></a>    transforms.append(T.ToDtype(torch.<span class="bu">float</span>, scale <span class="op">=</span> <span class="va">True</span>))</span>
-<span id="cb10-8"><a href="#cb10-8"></a>    <span class="cf">if</span> train:</span>
-<span id="cb10-9"><a href="#cb10-9"></a>        transforms.append(T.RandomHorizontalFlip(<span class="fl">0.5</span>))</span>
-<span id="cb10-10"><a href="#cb10-10"></a>    <span class="cf">return</span> T.Compose(transforms)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-21" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># import transforms as T  # ModuleNotFoundError: No module named 'sgmllib'</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="im">from</span> torchvision.transforms <span class="im">import</span> v2 <span class="im">as</span> T</span>
+<span id="cb12-3"><a href="#cb12-3"></a></span>
+<span id="cb12-4"><a href="#cb12-4"></a><span class="kw">def</span> get_transform(train):</span>
+<span id="cb12-5"><a href="#cb12-5"></a>    transforms <span class="op">=</span> []</span>
+<span id="cb12-6"><a href="#cb12-6"></a>    transforms.append(T.PILToTensor())</span>
+<span id="cb12-7"><a href="#cb12-7"></a>    transforms.append(T.ToDtype(torch.<span class="bu">float</span>, scale <span class="op">=</span> <span class="va">True</span>))</span>
+<span id="cb12-8"><a href="#cb12-8"></a>    <span class="cf">if</span> train:</span>
+<span id="cb12-9"><a href="#cb12-9"></a>        transforms.append(T.RandomHorizontalFlip(<span class="fl">0.5</span>))</span>
+<span id="cb12-10"><a href="#cb12-10"></a>    <span class="cf">return</span> T.Compose(transforms)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>테스트 코드</p>
-<div id="cell-22" class="cell" data-execution_count="55">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="im">import</span> utils</span>
-<span id="cb11-2"><a href="#cb11-2"></a></span>
-<span id="cb11-3"><a href="#cb11-3"></a>model <span class="op">=</span> torchvision.models.detection.fasterrcnn_resnet50_fpn(weights<span class="op">=</span><span class="st">"DEFAULT"</span>)</span>
-<span id="cb11-4"><a href="#cb11-4"></a>dataset <span class="op">=</span> PennFudanDataset(root<span class="op">=</span><span class="st">'./data/PennFudanPed/'</span>, transforms<span class="op">=</span>get_transform(train<span class="op">=</span><span class="va">True</span>))</span>
-<span id="cb11-5"><a href="#cb11-5"></a>data_loader <span class="op">=</span> torch.utils.data.DataLoader(</span>
-<span id="cb11-6"><a href="#cb11-6"></a>    dataset, batch_size<span class="op">=</span><span class="dv">4</span>, shuffle<span class="op">=</span><span class="va">True</span>, num_workers<span class="op">=</span><span class="dv">0</span>,</span>
-<span id="cb11-7"><a href="#cb11-7"></a>    collate_fn<span class="op">=</span>utils.collate_fn)</span>
-<span id="cb11-8"><a href="#cb11-8"></a>    <span class="co"># num_workers=0 issue &gt;&gt; RuntimeError: DataLoader worker (pid(s) 75278) exited unexpectedly</span></span>
-<span id="cb11-9"><a href="#cb11-9"></a><span class="co"># 학습 시</span></span>
-<span id="cb11-10"><a href="#cb11-10"></a>images,targets <span class="op">=</span> <span class="bu">next</span>(<span class="bu">iter</span>(data_loader))</span>
-<span id="cb11-11"><a href="#cb11-11"></a>images <span class="op">=</span> <span class="bu">list</span>(image <span class="cf">for</span> image <span class="kw">in</span> images)</span>
-<span id="cb11-12"><a href="#cb11-12"></a>targets <span class="op">=</span> [{k: v <span class="cf">for</span> k, v <span class="kw">in</span> t.items()} <span class="cf">for</span> t <span class="kw">in</span> targets]</span>
-<span id="cb11-13"><a href="#cb11-13"></a>output <span class="op">=</span> model(images,targets)   <span class="co"># Returns losses and detections</span></span>
-<span id="cb11-14"><a href="#cb11-14"></a><span class="co"># 추론 시</span></span>
-<span id="cb11-15"><a href="#cb11-15"></a>model.<span class="bu">eval</span>()</span>
-<span id="cb11-16"><a href="#cb11-16"></a>x <span class="op">=</span> [torch.rand(<span class="dv">3</span>, <span class="dv">300</span>, <span class="dv">400</span>), torch.rand(<span class="dv">3</span>, <span class="dv">500</span>, <span class="dv">400</span>)]</span>
-<span id="cb11-17"><a href="#cb11-17"></a>predictions <span class="op">=</span> model(x)           <span class="co"># Returns predictions</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-23" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="im">import</span> utils</span>
+<span id="cb13-2"><a href="#cb13-2"></a></span>
+<span id="cb13-3"><a href="#cb13-3"></a>model <span class="op">=</span> torchvision.models.detection.fasterrcnn_resnet50_fpn(weights<span class="op">=</span><span class="st">"DEFAULT"</span>)</span>
+<span id="cb13-4"><a href="#cb13-4"></a>dataset <span class="op">=</span> PennFudanDataset(root<span class="op">=</span><span class="st">'./data/PennFudanPed/'</span>, transforms<span class="op">=</span>get_transform(train<span class="op">=</span><span class="va">True</span>))</span>
+<span id="cb13-5"><a href="#cb13-5"></a>data_loader <span class="op">=</span> torch.utils.data.DataLoader(</span>
+<span id="cb13-6"><a href="#cb13-6"></a>    dataset, batch_size<span class="op">=</span><span class="dv">4</span>, shuffle<span class="op">=</span><span class="va">True</span>, num_workers<span class="op">=</span><span class="dv">0</span>,</span>
+<span id="cb13-7"><a href="#cb13-7"></a>    collate_fn<span class="op">=</span>utils.collate_fn)</span>
+<span id="cb13-8"><a href="#cb13-8"></a>    <span class="co"># num_workers=0 issue &gt;&gt; RuntimeError: DataLoader worker (pid(s) 75278) exited unexpectedly</span></span>
+<span id="cb13-9"><a href="#cb13-9"></a><span class="co"># 학습 시</span></span>
+<span id="cb13-10"><a href="#cb13-10"></a>images,targets <span class="op">=</span> <span class="bu">next</span>(<span class="bu">iter</span>(data_loader))</span>
+<span id="cb13-11"><a href="#cb13-11"></a>images <span class="op">=</span> <span class="bu">list</span>(image <span class="cf">for</span> image <span class="kw">in</span> images)</span>
+<span id="cb13-12"><a href="#cb13-12"></a>targets <span class="op">=</span> [{k: v <span class="cf">for</span> k, v <span class="kw">in</span> t.items()} <span class="cf">for</span> t <span class="kw">in</span> targets]</span>
+<span id="cb13-13"><a href="#cb13-13"></a>output <span class="op">=</span> model(images,targets)   <span class="co"># Returns losses and detections</span></span>
+<span id="cb13-14"><a href="#cb13-14"></a><span class="co"># 추론 시</span></span>
+<span id="cb13-15"><a href="#cb13-15"></a>model.<span class="bu">eval</span>()</span>
+<span id="cb13-16"><a href="#cb13-16"></a>x <span class="op">=</span> [torch.rand(<span class="dv">3</span>, <span class="dv">300</span>, <span class="dv">400</span>), torch.rand(<span class="dv">3</span>, <span class="dv">500</span>, <span class="dv">400</span>)]</span>
+<span id="cb13-17"><a href="#cb13-17"></a>predictions <span class="op">=</span> model(x)           <span class="co"># Returns predictions</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
 <section id="메인-학습-검증" class="level3">
 <h3 class="anchored" data-anchor-id="메인-학습-검증">메인 학습, 검증</h3>
-<div id="cell-24" class="cell" data-execution_count="56">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="cf">if</span> torch.cuda.is_available() : device <span class="op">=</span> torch.device(<span class="st">'cuda'</span>)</span>
-<span id="cb12-2"><a href="#cb12-2"></a><span class="cf">elif</span> torch.backends.mps.is_available() : device <span class="op">=</span> torch.device(<span class="st">'mps'</span>)</span>
-<span id="cb12-3"><a href="#cb12-3"></a><span class="cf">else</span> : device<span class="op">=</span>torch.device(<span class="st">'cpu'</span>)</span>
-<span id="cb12-4"><a href="#cb12-4"></a><span class="bu">print</span>(<span class="ss">f'Using </span><span class="sc">{</span>device<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-25" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="cf">if</span> torch.cuda.is_available() : device <span class="op">=</span> torch.device(<span class="st">'cuda'</span>)</span>
+<span id="cb14-2"><a href="#cb14-2"></a><span class="cf">elif</span> torch.backends.mps.is_available() : device <span class="op">=</span> torch.device(<span class="st">'mps'</span>)</span>
+<span id="cb14-3"><a href="#cb14-3"></a><span class="cf">else</span> : device<span class="op">=</span>torch.device(<span class="st">'cpu'</span>)</span>
+<span id="cb14-4"><a href="#cb14-4"></a><span class="bu">print</span>(<span class="ss">f'Using </span><span class="sc">{</span>device<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Using mps</code></pre>
 </div>
 </div>
-<div id="cell-25" class="cell" data-execution_count="57">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="im">from</span> engine <span class="im">import</span> train_one_epoch, evaluate</span>
-<span id="cb14-2"><a href="#cb14-2"></a></span>
-<span id="cb14-3"><a href="#cb14-3"></a><span class="co"># GPU: cuda -&gt; mps</span></span>
-<span id="cb14-4"><a href="#cb14-4"></a>device <span class="op">=</span> torch.device(<span class="st">'mps'</span>) <span class="cf">if</span> torch.backends.mps.is_available() <span class="cf">else</span> torch.device(<span class="st">'cpu'</span>)</span>
-<span id="cb14-5"><a href="#cb14-5"></a><span class="co"># device = 'cpu'</span></span>
-<span id="cb14-6"><a href="#cb14-6"></a><span class="bu">print</span>(<span class="ss">f'Using </span><span class="sc">{</span>device<span class="sc">}</span><span class="ss">'</span>)</span>
-<span id="cb14-7"><a href="#cb14-7"></a></span>
-<span id="cb14-8"><a href="#cb14-8"></a><span class="co"># dataset; 2 classes; background, person</span></span>
-<span id="cb14-9"><a href="#cb14-9"></a>num_classes <span class="op">=</span> <span class="dv">2</span></span>
-<span id="cb14-10"><a href="#cb14-10"></a><span class="co"># use PennFundanPed dataset, define transform</span></span>
-<span id="cb14-11"><a href="#cb14-11"></a><span class="co"># get_transform; 위에서 정의함 - 50% 확률로 좌우 flip</span></span>
-<span id="cb14-12"><a href="#cb14-12"></a>dataset <span class="op">=</span> PennFudanDataset(<span class="st">'data/PennFudanPed'</span>, get_transform(train<span class="op">=</span><span class="va">True</span>))</span>
-<span id="cb14-13"><a href="#cb14-13"></a>dataset_test <span class="op">=</span> PennFudanDataset(<span class="st">'data/PennFudanPed'</span>, get_transform(train<span class="op">=</span><span class="va">False</span>))</span>
-<span id="cb14-14"><a href="#cb14-14"></a></span>
-<span id="cb14-15"><a href="#cb14-15"></a><span class="co"># split dataset (train, test)</span></span>
-<span id="cb14-16"><a href="#cb14-16"></a>indices <span class="op">=</span> torch.randperm(<span class="bu">len</span>(dataset)).tolist()</span>
-<span id="cb14-17"><a href="#cb14-17"></a>dataset <span class="op">=</span> torch.utils.data.Subset(dataset, indices[:<span class="op">-</span><span class="dv">50</span>])</span>
-<span id="cb14-18"><a href="#cb14-18"></a>dataset_test <span class="op">=</span> torch.utils.data.Subset(dataset_test, indices[<span class="op">-</span><span class="dv">50</span>:])</span>
-<span id="cb14-19"><a href="#cb14-19"></a></span>
-<span id="cb14-20"><a href="#cb14-20"></a><span class="co"># define dataloaders</span></span>
-<span id="cb14-21"><a href="#cb14-21"></a>data_loader <span class="op">=</span> torch.utils.data.DataLoader(</span>
-<span id="cb14-22"><a href="#cb14-22"></a>    dataset,</span>
-<span id="cb14-23"><a href="#cb14-23"></a>    batch_size<span class="op">=</span><span class="dv">2</span>,</span>
-<span id="cb14-24"><a href="#cb14-24"></a>    shuffle<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb14-25"><a href="#cb14-25"></a>    <span class="co"># num_workers=4,</span></span>
-<span id="cb14-26"><a href="#cb14-26"></a>    collate_fn<span class="op">=</span>utils.collate_fn</span>
-<span id="cb14-27"><a href="#cb14-27"></a>)</span>
-<span id="cb14-28"><a href="#cb14-28"></a></span>
-<span id="cb14-29"><a href="#cb14-29"></a>data_loader_test <span class="op">=</span> torch.utils.data.DataLoader(</span>
-<span id="cb14-30"><a href="#cb14-30"></a>    dataset_test,</span>
-<span id="cb14-31"><a href="#cb14-31"></a>    batch_size<span class="op">=</span><span class="dv">1</span>,</span>
-<span id="cb14-32"><a href="#cb14-32"></a>    shuffle<span class="op">=</span><span class="va">False</span>,</span>
-<span id="cb14-33"><a href="#cb14-33"></a>    <span class="co"># num_workers=4,</span></span>
-<span id="cb14-34"><a href="#cb14-34"></a>    collate_fn<span class="op">=</span>utils.collate_fn</span>
-<span id="cb14-35"><a href="#cb14-35"></a>)</span>
-<span id="cb14-36"><a href="#cb14-36"></a></span>
-<span id="cb14-37"><a href="#cb14-37"></a><span class="co"># get model</span></span>
-<span id="cb14-38"><a href="#cb14-38"></a>model <span class="op">=</span> get_model_instance_segmentation(num_classes<span class="op">=</span>num_classes)</span>
-<span id="cb14-39"><a href="#cb14-39"></a></span>
-<span id="cb14-40"><a href="#cb14-40"></a><span class="co"># move model into device; model도 옮겨야 한다.</span></span>
-<span id="cb14-41"><a href="#cb14-41"></a>model.to(device)</span>
-<span id="cb14-42"><a href="#cb14-42"></a><span class="co"># from torch import nn; model = nn.DataParallel(model)</span></span>
-<span id="cb14-43"><a href="#cb14-43"></a></span>
-<span id="cb14-44"><a href="#cb14-44"></a><span class="co"># construct an optimizer</span></span>
-<span id="cb14-45"><a href="#cb14-45"></a>params <span class="op">=</span> [p <span class="cf">for</span> p <span class="kw">in</span> model.parameters() <span class="cf">if</span> p.requires_grad]</span>
-<span id="cb14-46"><a href="#cb14-46"></a>optimizer <span class="op">=</span> torch.optim.SGD(</span>
-<span id="cb14-47"><a href="#cb14-47"></a>    params,</span>
-<span id="cb14-48"><a href="#cb14-48"></a>    lr<span class="op">=</span><span class="fl">0.005</span>,</span>
-<span id="cb14-49"><a href="#cb14-49"></a>    momentum<span class="op">=</span><span class="fl">0.9</span>,</span>
-<span id="cb14-50"><a href="#cb14-50"></a>    weight_decay<span class="op">=</span><span class="fl">0.0005</span></span>
-<span id="cb14-51"><a href="#cb14-51"></a>)</span>
-<span id="cb14-52"><a href="#cb14-52"></a></span>
-<span id="cb14-53"><a href="#cb14-53"></a><span class="co"># and a learning rate scheduler</span></span>
-<span id="cb14-54"><a href="#cb14-54"></a>lr_scheduler <span class="op">=</span> torch.optim.lr_scheduler.StepLR(</span>
-<span id="cb14-55"><a href="#cb14-55"></a>    optimizer,</span>
-<span id="cb14-56"><a href="#cb14-56"></a>    step_size<span class="op">=</span><span class="dv">3</span>,</span>
-<span id="cb14-57"><a href="#cb14-57"></a>    gamma<span class="op">=</span><span class="fl">0.1</span></span>
-<span id="cb14-58"><a href="#cb14-58"></a>)</span>
-<span id="cb14-59"><a href="#cb14-59"></a></span>
-<span id="cb14-60"><a href="#cb14-60"></a><span class="co"># let's train it just for 2 epochs</span></span>
-<span id="cb14-61"><a href="#cb14-61"></a>num_epochs <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb14-62"><a href="#cb14-62"></a></span>
-<span id="cb14-63"><a href="#cb14-63"></a><span class="cf">for</span> epoch <span class="kw">in</span> <span class="bu">range</span>(num_epochs):</span>
-<span id="cb14-64"><a href="#cb14-64"></a>    </span>
-<span id="cb14-65"><a href="#cb14-65"></a>    <span class="co"># train for one epoch, printing every 10 iterations</span></span>
-<span id="cb14-66"><a href="#cb14-66"></a>    train_one_epoch(model, optimizer, data_loader, device, epoch, print_freq<span class="op">=</span><span class="dv">10</span>)</span>
-<span id="cb14-67"><a href="#cb14-67"></a>    <span class="co"># update the learning rate</span></span>
-<span id="cb14-68"><a href="#cb14-68"></a>    lr_scheduler.step()</span>
-<span id="cb14-69"><a href="#cb14-69"></a>    <span class="co"># evaluate on the test dataset</span></span>
-<span id="cb14-70"><a href="#cb14-70"></a>    evaluate(model, data_loader_test, device<span class="op">=</span>device)</span>
-<span id="cb14-71"><a href="#cb14-71"></a></span>
-<span id="cb14-72"><a href="#cb14-72"></a><span class="bu">print</span>(<span class="st">"That's it!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-26" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="im">from</span> engine <span class="im">import</span> train_one_epoch, evaluate</span>
+<span id="cb16-2"><a href="#cb16-2"></a></span>
+<span id="cb16-3"><a href="#cb16-3"></a><span class="co"># GPU: cuda -&gt; mps</span></span>
+<span id="cb16-4"><a href="#cb16-4"></a>device <span class="op">=</span> torch.device(<span class="st">'mps'</span>) <span class="cf">if</span> torch.backends.mps.is_available() <span class="cf">else</span> torch.device(<span class="st">'cpu'</span>)</span>
+<span id="cb16-5"><a href="#cb16-5"></a>device <span class="op">=</span> <span class="st">'cpu'</span></span>
+<span id="cb16-6"><a href="#cb16-6"></a><span class="bu">print</span>(<span class="ss">f'Using </span><span class="sc">{</span>device<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb16-7"><a href="#cb16-7"></a></span>
+<span id="cb16-8"><a href="#cb16-8"></a><span class="co"># dataset; 2 classes; background, person</span></span>
+<span id="cb16-9"><a href="#cb16-9"></a>num_classes <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb16-10"><a href="#cb16-10"></a><span class="co"># use PennFundanPed dataset, define transform</span></span>
+<span id="cb16-11"><a href="#cb16-11"></a><span class="co"># get_transform; 위에서 정의함 - 50% 확률로 좌우 flip</span></span>
+<span id="cb16-12"><a href="#cb16-12"></a>dataset <span class="op">=</span> PennFudanDataset(<span class="st">'data/PennFudanPed'</span>, get_transform(train<span class="op">=</span><span class="va">True</span>))</span>
+<span id="cb16-13"><a href="#cb16-13"></a>dataset_test <span class="op">=</span> PennFudanDataset(<span class="st">'data/PennFudanPed'</span>, get_transform(train<span class="op">=</span><span class="va">False</span>))</span>
+<span id="cb16-14"><a href="#cb16-14"></a></span>
+<span id="cb16-15"><a href="#cb16-15"></a><span class="co"># split dataset (train, test)</span></span>
+<span id="cb16-16"><a href="#cb16-16"></a>indices <span class="op">=</span> torch.randperm(<span class="bu">len</span>(dataset)).tolist()</span>
+<span id="cb16-17"><a href="#cb16-17"></a>dataset <span class="op">=</span> torch.utils.data.Subset(dataset, indices[:<span class="op">-</span><span class="dv">50</span>])</span>
+<span id="cb16-18"><a href="#cb16-18"></a>dataset_test <span class="op">=</span> torch.utils.data.Subset(dataset_test, indices[<span class="op">-</span><span class="dv">50</span>:])</span>
+<span id="cb16-19"><a href="#cb16-19"></a></span>
+<span id="cb16-20"><a href="#cb16-20"></a><span class="co"># define dataloaders</span></span>
+<span id="cb16-21"><a href="#cb16-21"></a>data_loader <span class="op">=</span> torch.utils.data.DataLoader(</span>
+<span id="cb16-22"><a href="#cb16-22"></a>    dataset,</span>
+<span id="cb16-23"><a href="#cb16-23"></a>    batch_size<span class="op">=</span><span class="dv">8</span>,</span>
+<span id="cb16-24"><a href="#cb16-24"></a>    shuffle<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb16-25"><a href="#cb16-25"></a>    <span class="co"># num_workers=4,</span></span>
+<span id="cb16-26"><a href="#cb16-26"></a>    collate_fn<span class="op">=</span>utils.collate_fn</span>
+<span id="cb16-27"><a href="#cb16-27"></a>)</span>
+<span id="cb16-28"><a href="#cb16-28"></a></span>
+<span id="cb16-29"><a href="#cb16-29"></a>data_loader_test <span class="op">=</span> torch.utils.data.DataLoader(</span>
+<span id="cb16-30"><a href="#cb16-30"></a>    dataset_test,</span>
+<span id="cb16-31"><a href="#cb16-31"></a>    batch_size<span class="op">=</span><span class="dv">2</span>,</span>
+<span id="cb16-32"><a href="#cb16-32"></a>    shuffle<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb16-33"><a href="#cb16-33"></a>    <span class="co"># num_workers=4,</span></span>
+<span id="cb16-34"><a href="#cb16-34"></a>    collate_fn<span class="op">=</span>utils.collate_fn</span>
+<span id="cb16-35"><a href="#cb16-35"></a>)</span>
+<span id="cb16-36"><a href="#cb16-36"></a></span>
+<span id="cb16-37"><a href="#cb16-37"></a><span class="co"># get model</span></span>
+<span id="cb16-38"><a href="#cb16-38"></a>model <span class="op">=</span> get_model_instance_segmentation(num_classes<span class="op">=</span>num_classes)</span>
+<span id="cb16-39"><a href="#cb16-39"></a></span>
+<span id="cb16-40"><a href="#cb16-40"></a><span class="co"># move model into device; model도 옮겨야 한다.</span></span>
+<span id="cb16-41"><a href="#cb16-41"></a>model.to(device)</span>
+<span id="cb16-42"><a href="#cb16-42"></a><span class="co"># from torch import nn; model = nn.DataParallel(model)</span></span>
+<span id="cb16-43"><a href="#cb16-43"></a></span>
+<span id="cb16-44"><a href="#cb16-44"></a><span class="co"># construct an optimizer</span></span>
+<span id="cb16-45"><a href="#cb16-45"></a>params <span class="op">=</span> [p <span class="cf">for</span> p <span class="kw">in</span> model.parameters() <span class="cf">if</span> p.requires_grad]</span>
+<span id="cb16-46"><a href="#cb16-46"></a>optimizer <span class="op">=</span> torch.optim.SGD(</span>
+<span id="cb16-47"><a href="#cb16-47"></a>    params,</span>
+<span id="cb16-48"><a href="#cb16-48"></a>    lr<span class="op">=</span><span class="fl">0.005</span>,</span>
+<span id="cb16-49"><a href="#cb16-49"></a>    momentum<span class="op">=</span><span class="fl">0.9</span>,</span>
+<span id="cb16-50"><a href="#cb16-50"></a>    weight_decay<span class="op">=</span><span class="fl">0.0005</span></span>
+<span id="cb16-51"><a href="#cb16-51"></a>)</span>
+<span id="cb16-52"><a href="#cb16-52"></a></span>
+<span id="cb16-53"><a href="#cb16-53"></a><span class="co"># and a learning rate scheduler</span></span>
+<span id="cb16-54"><a href="#cb16-54"></a>lr_scheduler <span class="op">=</span> torch.optim.lr_scheduler.StepLR(</span>
+<span id="cb16-55"><a href="#cb16-55"></a>    optimizer,</span>
+<span id="cb16-56"><a href="#cb16-56"></a>    step_size<span class="op">=</span><span class="dv">3</span>,</span>
+<span id="cb16-57"><a href="#cb16-57"></a>    gamma<span class="op">=</span><span class="fl">0.1</span></span>
+<span id="cb16-58"><a href="#cb16-58"></a>)</span>
+<span id="cb16-59"><a href="#cb16-59"></a></span>
+<span id="cb16-60"><a href="#cb16-60"></a><span class="co"># let's train it just for 2 epochs</span></span>
+<span id="cb16-61"><a href="#cb16-61"></a>num_epochs <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb16-62"><a href="#cb16-62"></a></span>
+<span id="cb16-63"><a href="#cb16-63"></a><span class="cf">for</span> epoch <span class="kw">in</span> <span class="bu">range</span>(num_epochs):</span>
+<span id="cb16-64"><a href="#cb16-64"></a>    <span class="co"># train for one epoch, printing every 10 iterations</span></span>
+<span id="cb16-65"><a href="#cb16-65"></a>    train_one_epoch(model, optimizer, data_loader, device, epoch, print_freq<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb16-66"><a href="#cb16-66"></a>    <span class="co"># update the learning rate</span></span>
+<span id="cb16-67"><a href="#cb16-67"></a>    <span class="co"># lr_scheduler.step()</span></span>
+<span id="cb16-68"><a href="#cb16-68"></a>    <span class="co"># evaluate on the test dataset</span></span>
+<span id="cb16-69"><a href="#cb16-69"></a>    <span class="co"># evaluate(model, data_loader_test, device=device)</span></span>
+<span id="cb16-70"><a href="#cb16-70"></a></span>
+<span id="cb16-71"><a href="#cb16-71"></a><span class="bu">print</span>(<span class="st">"That's it!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Using mps
+<pre><code>Using cpu
+Epoch: [0]  [ 0/15]  eta: 0:06:38  lr: 0.000362  loss: 2.6445 (2.6445)  loss_classifier: 0.7010 (0.7010)  loss_box_reg: 0.0001 (0.0001)  loss_mask: 1.2312 (1.2312)  loss_objectness: 0.7021 (0.7021)  loss_rpn_box_reg: 0.0102 (0.0102)  time: 26.5790  data: 0.0616
+Epoch: [0]  [10/15]  eta: 0:01:47  lr: 0.003930  loss: 2.0356 (2.0212)  loss_classifier: 0.4912 (0.4857)  loss_box_reg: 0.0020 (0.0049)  loss_mask: 0.8095 (0.8197)  loss_objectness: 0.6941 (0.6910)  loss_rpn_box_reg: 0.0167 (0.0200)  time: 21.4417  data: 0.0599
+Epoch: [0]  [14/15]  eta: 0:00:20  lr: 0.005000  loss: 1.6246 (1.8542)  loss_classifier: 0.3909 (0.3933)  loss_box_reg: 0.0058 (0.0144)  loss_mask: 0.6807 (0.7523)  loss_objectness: 0.6867 (0.6735)  loss_rpn_box_reg: 0.0167 (0.0207)  time: 20.8789  data: 0.0599
+Epoch: [0] Total time: 0:05:13 (20.8793 s / it)
 That's it!</code></pre>
 </div>
 </div>
-<div class="callout callout-style-simple callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-— 이슈 기록 —
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p><code>Loss is nan, stopping training</code></p>
-<blockquote class="blockquote">
-<p>확인 결과: OOM - 메모리에 데이터를 올려두는 과정에서 배치를 1로 정하면 문제가 생기지 않는데, 2부터는 문제가 발생함.</p>
-</blockquote>
-<pre><code># mps 사용시 발생하는 이슈;
+<pre><code># --- 이슈 기록 --- #
+
+# mps 사용시 발생하는 이슈;
 #   mps nightly 배포 당시 사용했을 때 문제없이 딥러닝이 돌아갔었는데 갑자기 안 됨.
 #   v2로 올라가서 생기는 문제일지도 모르겠지만 tv_tensor를 사용해야 해서
 #   버전 다운그레이드는 불가능한 상황
@@ -799,27 +786,6 @@ Error: command buffer exited with error status.
         device = &lt;AGXG13XDevice: 0x12e53f000&gt;
             name = Apple M1 Pro 
     retainedReferences = 1</code></pre>
-<ul>
-<li>source code
-<ul>
-<li><a href="https://github.com/pytorch/pytorch/issues/77764">official pytorch github implementing list</a></li>
-<li><a href="https://github.com/pytorch/pytorch/pull/102148#issuecomment-1564555666">mps implemented test code</a></li>
-</ul></li>
-<li>pytorch github issue
-<ul>
-<li><a href="https://github.com/pytorch/pytorch/issues/119968">#119968</a></li>
-<li><a href="https://github.com/pytorch/pytorch/issues/111173">#111173</a></li>
-<li><a href="https://github.com/google/jax/issues/19110#issuecomment-1868385445">Solved!</a></li>
-</ul></li>
-<li>apple forum
-<ul>
-<li><a href="https://developer.apple.com/forums/thread/693849">#693849</a></li>
-<li><a href="https://forums.developer.apple.com/forums/thread/711854">#711854</a></li>
-</ul></li>
-</ul>
-</div>
-</div>
-</div>
 
 
 </section>

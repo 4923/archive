@@ -6,10 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="dotpyo">
-<meta name="description" content="P-tuning is a method for automatically searching and optimizing for better prompts in a continuous space.">
+<meta name="description" content="LoRA 방법론이 처음 제안된 논문">
 
-<title>archive - p tuning</title>
+<title>archive - LoRA: Low-Rank Adaptation of Large Language Models</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -25,25 +24,25 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<link href="../../favicon.ico" rel="icon">
-<script src="../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../favicon.ico" rel="icon">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -80,10 +79,9 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-L5Y3XFBP62', { 'anonymize_ip': true});
 </script>
-<meta name="referrer" content="strict-origin-when-cross-origin">
 
 
-<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -93,12 +91,12 @@ gtag('config', 'G-L5Y3XFBP62', { 'anonymize_ip': true});
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">archive</span>
     </a>
   </div>
         <div class="quarto-navbar-tools tools-wide tools-end">
-    <a href="../../CV.html" title="&amp;nbsp;" class="quarto-navigation-tool px-1" aria-label="&amp;nbsp;"><i class="bi bi-person-circle"></i></a>
+    <a href="../CV.html" title="&amp;nbsp;" class="quarto-navigation-tool px-1" aria-label="&amp;nbsp;"><i class="bi bi-person-circle"></i></a>
     <a href="https://github.com/dotpyo" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
@@ -110,17 +108,16 @@ gtag('config', 'G-L5Y3XFBP62', { 'anonymize_ip': true});
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-page-left">
-      <h1 class="title">p tuning</h1>
-            <p class="subtitle lead">PEFT; p tuning</p>
+      <h1 class="title">LoRA: Low-Rank Adaptation of Large Language Models</h1>
+            <p class="subtitle lead"><a href="https://arxiv.org/abs/2106.09685">2106.09685</a></p>
                   <div>
         <div class="description">
-          P-tuning is a method for automatically searching and optimizing for better prompts in a continuous space.
+          LoRA 방법론이 처음 제안된 논문
         </div>
       </div>
                           <div class="quarto-categories">
-                <div class="quarto-category">NLP</div>
                 <div class="quarto-category">LLM</div>
-                <div class="quarto-category">technique</div>
+                <div class="quarto-category">paper review</div>
               </div>
                   </div>
   </div>
@@ -128,20 +125,8 @@ gtag('config', 'G-L5Y3XFBP62', { 'anonymize_ip': true});
   
   <div class="quarto-title-meta column-page-left">
 
-      <div>
-      <div class="quarto-title-meta-heading">Author</div>
-      <div class="quarto-title-meta-contents">
-               <p>dotpyo <a href="mailto:4923.py@gmail.com" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> </p>
-            </div>
-    </div>
       
     
-      <div>
-      <div class="quarto-title-meta-heading">Modified</div>
-      <div class="quarto-title-meta-contents">
-        <p class="date-modified">March 9, 2024</p>
-      </div>
-    </div>
       
     </div>
     
@@ -154,8 +139,7 @@ gtag('config', 'G-L5Y3XFBP62', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#p-tuning" id="toc-p-tuning" class="nav-link active" data-scroll-target="#p-tuning">p tuning</a></li>
-  <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference">Reference</a></li>
+  <li><a href="#abstract" id="toc-abstract" class="nav-link active" data-scroll-target="#abstract">Abstract</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/dotpyo/archive/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -166,18 +150,51 @@ gtag('config', 'G-L5Y3XFBP62', { 'anonymize_ip': true});
 
 
 
-<section id="p-tuning" class="level4">
-<h4 class="anchored" data-anchor-id="p-tuning">p tuning</h4>
-<p>“P-tuning is a method for automatically searching and optimizing for better prompts in a continuous space.”</p>
 <ul>
-<li>PLM의 일부 가중치만 미세조정하여 <code>continuous prompt emobedding</code>만 tuninng한다.</li>
+<li><a href="https://github.com/microsoft/LoRA">github</a></li>
 </ul>
-</section>
-<section id="reference" class="level4">
-<h4 class="anchored" data-anchor-id="reference">Reference</h4>
-<ul>
-<li><a href="https://huggingface.co/blog/peft">https://huggingface.co/blog/peft</a></li>
-</ul>
+<section id="abstract" class="level3">
+<h3 class="anchored" data-anchor-id="abstract">Abstract</h3>
+<p>MS사에서 진행한 연구. 자연어 처리에서의 중요한 패러다임 중 하나는 일반적인 도메인에서 학습된 대규모 사전학습 모델을 특정 과업이나 도메인에 적용시키는 것이다. 이 작업을 fine tuning이라고 하는데 더 큰 사전학습 모델을 사용할수록 모델의 매개변수를 유지하는 것은 더욱 어려워진다. 이는 더 많은 컴퓨팅 파워를 요구하고, 더 많은 비용을 야기하므로 현재 패러다임에서 큰 모델을 효과적으로 fine tuning 하는 방법을 찾는 것은 중요하다.</p>
+<p>이에 연구진은 <strong>L</strong>ow <strong>R</strong>ank <strong>A</strong>daption (<code>LoRA</code>)를 제안한다. LoRA는 사전학습 모델의 가중치를 freeze하고 학습 가능한 rank decomposition matrices를 각 레이어에 끼워넣는 방식이다. 이는 downstream 작업에서 학습 가능한 매개변수의 개수를 크게 줄일 수 있다.</p>
+<p>연구진이 예시로 든 GPT-3 175B 모델은 매개변수가 175 Billion 개라는 의미로 수많은 매개변수가 모델 안에 내재되어있음을 이름으로 알 수 있다. 해당 모델을 비롯하여 현재의 LLM 모델들은 billion 단위의 매개변수를 기본적으로 탑재하고 있고 이는 자연히 막대한 컴퓨팅 자원을 필요로 하게 된다.</p>
+<p>예시 모델을 LoRA와 Adam으로 fine tuning한 경우 학습 가능한 매개변수는 10,000배 줄어들고 GPU memory 크기는 3배 줄어들게 된다. LoRA는 fine tuning된 RoBERTa, DeBERTa, GPT-2, GPT-3의 능력 동급 혹은 그 이상으로 기능한다. 더 적은 개수의 학습 가능 매개변수를 가졌음에도 불구하고 더 많은 학습 처리량을 보이며, adapter와는 다르게 추론 지연(<em>inference latency</em>)이 일어나지 않는다는 장점이 있다.</p>
+<p>연구진은 또한 경험적 조사를 통해 language model adaptation의 낮은 계수(rank of matrix)가 모델의 효과를 조명함을 알아냈다.</p>
+<p>이에 연구진은 RoBERTa, DeBERTa, GPT-2의 checkpoints와 LoRA를 PyTorch로 구현한 통합 구현체를 배포한다. : <a href="https://github.com/microsoft/LoRA">https://github.com/microsoft/LoRA</a></p>
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+fine tuning에 최적화 함수가 필요한 이유
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol start="17" type="A">
+<li><p>fine tuning은 새로운 데이터로 모델을 학습하여 일반적인 과제를 수행하는 대형 모델을 특수한 도메인에 정착시키는 과정이다. 이 과정은 단순 학습인데 왜 최적화 함수가 필요한가? 이전에 사용했던 최적화 함수를 다시 사용하면 되지 않나?</p></li>
+<li><p>fine tuning도 결과적으로 ’학습’을 하는 과정이다. 학습 과정에서 optimizer는 최적화 함수로 loss function의 값이 가장 작은 값으로 수렴하도록 돕는 역할을 한다. 즉, loss function을 최적화하는 것이 optimizer의 목표다. optimizer 함수는 모델의 매개변수(parameter)를 매번 조절하여 손실함수의 값을 최소화하는데, 이를 통해 fine tuning에서도 tuning이 제대로 되고 있는지 확인할 수 있다. 최적화는 모델 성능에도 영향을 미치므로 단순히 이전에 사용했던 최적화 함수를 재사용하기보다는 새로운 전략을 모색하는 것이 효과적이다. 최적화 전략은 데이터셋의 크기, 사용 가능한 계산 리소스를 포함한 여러가지 요소를 고려하기 때문이다.</p></li>
+</ol>
+<table class="table">
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><img a="optimization process" src="https://velog.velcdn.com/images/freesky/post/762c7c9b-6276-4343-aa9d-9fda9684cb3f/image.gif" width="80%"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">optimization process</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
 
 
 </section>
