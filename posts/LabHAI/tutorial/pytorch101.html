@@ -239,7 +239,7 @@ window.Quarto = {
 <div class="toc-actions"><ul><li><a href="https://github.com/dotpyo/archive/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content quarto-banner-title-block page-columns page-full column-page-left" id="quarto-document-content">
 
 
 
@@ -267,20 +267,15 @@ window.Quarto = {
 <p>Tensor is optimized at automatic differentiation</p>
 </blockquote>
 </section>
-<section id="주요-내용" class="level2">
+<section id="주요-내용" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="주요-내용">2. 주요 내용</h2>
 <blockquote class="blockquote">
 <p>데이터셋 구축 코드와 학습 코드를 분리하는 것이 가독성 및 유지보수면에서 좋다.</p>
 </blockquote>
-<section id="데이터는-어떻게" class="level3">
+<section id="데이터는-어떻게" class="level3 page-columns page-full">
 <h3 class="anchored" data-anchor-id="데이터는-어떻게">2.1. 데이터는 어떻게?</h3>
 <p><code>PyTorch</code>의 데이터셋 관리 방식은 독특하지만 편리하다. 데이터 작업을 위한 기본 요소 두가지가 존재하는데 이는 각각 <code>DataLoader</code> 와 <code>Dataset</code>이다. <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> 데이터를 받아오는건 샘플(feature), 정답(label)으로 구성된 <code>Dataset</code>이고 각각의 값을 iterable한 객체로 감싸 접근하게 쉽게 만든 객체가 <code>DataLoader</code>다.</p>
-<aside id="footnotes" class="footnotes footnotes-end-of-block" role="doc-footnote">
-<ol>
-<li id="fn1"><p>모두 <code>torch.utils.data</code> 하위의 모듈이다.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</aside>
-<ul>
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;모두 <code>torch.utils.data</code> 하위의 모듈이다.</p></div></div><ul>
 <li><code>Dataset</code>: sample, label; 정답이 매칭된 데이터
 <ul>
 <li>Dataset을 직접 생성하는 경우도 있는데, 이후에 <code>DataLoader</code>로 사용하기 위해 다음 세가지 magic method를 구현해야 한다: <code>__init__</code>, <code>__len__</code>, <code>__getitem__</code></li>
@@ -349,13 +344,7 @@ __getitem__
 </div>
 </div>
 </div>
-<aside id="footnotes" class="footnotes footnotes-end-of-block" role="doc-footnote">
-<ol start="2">
-<li id="fn2"><p><a href="http://torchvision.io">torchvision.io</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>왜 하필 이 단계에서 진행하는지는 <code>target_transform</code>을 확인할 것<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</aside>
-<section id="활용은-이렇게-한다." class="level4">
+<div class="no-row-height column-margin column-container"><div id="fn3"><p><sup>3</sup>&nbsp;왜 하필 이 단계에서 진행하는지는 <code>target_transform</code>을 확인할 것</p></div></div><div class="no-row-height column-margin column-container"><div id="fn2"><p><sup>2</sup>&nbsp;<a href="http://torchvision.io">torchvision.io</a></p></div></div><section id="활용은-이렇게-한다." class="level4">
 <h4 class="anchored" data-anchor-id="활용은-이렇게-한다.">2.1.1. 활용은 이렇게 한다.</h4>
 <ol type="1">
 <li><code>from torch.utils.data import DataLoader</code>로 데이터로더를 받아오고, 인자로 데이터셋과 배치사이즈를 전달한다.</li>
@@ -373,7 +362,7 @@ __getitem__
 <span id="cb3-5"><a href="#cb3-5"></a>test_dataloader <span class="op">=</span> DataLoader(test_data, batch_size<span class="op">=</span><span class="dv">64</span>, shuffle<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
-<section id="모델은-어떻게" class="level3">
+<section id="모델은-어떻게" class="level3 page-columns page-full">
 <h3 class="anchored" data-anchor-id="모델은-어떻게">2.2. 모델은 어떻게?</h3>
 <p>PyTorch의 모델들은 <code>nn.Module</code> 을 상속받는 클래스를 생성해서 정의한다. 모델을 구성하는 기본 요소가 이미 세팅되어있어 __init__에서 세팅만 하면 되니 편리하다.</p>
 <ol type="1">
@@ -381,7 +370,7 @@ __getitem__
 <li><code>forward</code> 메서드에서 데이터를 전달하는 방식을 정한다.</li>
 <li>어떤 하드웨어(cpu, gpu, mps)를 사용할지 결정하는 것도 이 단계다.</li>
 </ol>
-<section id="예시-모델-확인" class="level4">
+<section id="예시-모델-확인" class="level4 page-columns page-full">
 <h4 class="anchored" data-anchor-id="예시-모델-확인">2.2.1. 예시 모델 확인</h4>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -453,14 +442,7 @@ logits?
 </div>
 </div>
 </div>
-<aside id="footnotes" class="footnotes footnotes-end-of-block" role="doc-footnote">
-<ol start="4">
-<li id="fn4"><p><a href="https://haje01.github.io/2019/11/19/logit.html"><span class="citation" data-cites="haje01">@haje01</span></a><a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn5"><p>활성화 함수는 확률을 연산하는 함수다.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn6"><p><a href="https://discuss.pytorch.org/t/why-have-a-model-output-raw-logits-instead-of-softmax/114289/2"><span class="citation" data-cites="KFrank">@KFrank</span></a><a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</aside>
-<div class="callout callout-style-simple callout-note callout-titled">
+<div class="no-row-height column-margin column-container"><div id="fn6"><p><sup>6</sup>&nbsp;<a href="https://discuss.pytorch.org/t/why-have-a-model-output-raw-logits-instead-of-softmax/114289/2"><span class="citation" data-cites="KFrank">@KFrank</span></a></p></div></div><div class="no-row-height column-margin column-container"><div id="fn5"><p><sup>5</sup>&nbsp;활성화 함수는 확률을 연산하는 함수다.</p></div></div><div class="no-row-height column-margin column-container"><div id="fn4"><p><sup>4</sup>&nbsp;<a href="https://haje01.github.io/2019/11/19/logit.html"><span class="citation" data-cites="haje01">@haje01</span></a></p></div></div><div class="callout callout-style-simple callout-note callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -504,7 +486,7 @@ logits?
 </div>
 </section>
 </section>
-<section id="학습은-어떻게" class="level3">
+<section id="학습은-어떻게" class="level3 page-columns page-full">
 <h3 class="anchored" data-anchor-id="학습은-어떻게">2.3. 학습은 어떻게?</h3>
 <p>텐서플로우에서 처럼 <code>fit</code>으로 끝나는게 아니라 <code>train</code>함수를 따로 정의해야했다. DataLoader는 학습에 필요한 데이터니 이때 모델이 학습할 수 있게 데이터를 넘겨주고 위에서 선언한 모델과 손실함수, 최적화 함수를 함께 전달한다. 실질적인 학습이 진행되는 곳이라 위에서 <strong>정의</strong>한 값들을 다 여기에 <strong>전달</strong>해주는게 맞다.</p>
 <ol type="1">
@@ -514,12 +496,7 @@ logits?
 <li>각 epoch마다 어떤 단계를 거칠 것인가, 모델 설계는 이쪽에 들어간다</li>
 </ul></li>
 </ol>
-<aside id="footnotes" class="footnotes footnotes-end-of-block" role="doc-footnote">
-<ol start="7">
-<li id="fn7"><p>size에 맞추어 batch를 넘겨줄 수 있는것도 DataLoader가 배치를 만들어주는 역할을 하기 때문이다.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</aside>
-<div class="callout callout-style-simple callout-note callout-titled">
+<div class="no-row-height column-margin column-container"><div id="fn7"><p><sup>7</sup>&nbsp;size에 맞추어 batch를 넘겨줄 수 있는것도 DataLoader가 배치를 만들어주는 역할을 하기 때문이다.</p></div></div><div class="callout callout-style-simple callout-note callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -688,6 +665,7 @@ logits?
 
 
 </section>
+
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
