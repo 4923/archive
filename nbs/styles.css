@@ -5,16 +5,20 @@
 }
 
 .listing-subtitle {
-    line-height: 1.5;
     font-size: medium;
-    margin: 0.4rem 0rem;
-    opacity: 0.8;
+    font-weight: medium;
+    opacity: 0.6;
 }
 
 .listing-categories {
     font-size: small;
     font-size: medium;
     padding: 0px;
+}
+
+.listing-reading-time {
+    font-size: small;
+    opacity: 0.6;
 }
 
 .category-cloud {
