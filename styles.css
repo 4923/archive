@@ -41,3 +41,15 @@
 .quarto-secondary-nav button.quarto-btn-toggle {
     color: white;
 }
+
+/* scss로 안되는 인용구 */
+.blockquote {
+    /* background-color: #FFFFFF66; */
+    border-left-color: #75AADB;
+
+    /*     
+    background-color: #FFFFFF80;
+    border-radius: .3rem;
+    color: #222222;
+     */
+}
