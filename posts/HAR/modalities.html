@@ -1,0 +1,1431 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.551">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="dotpyo">
+<meta name="description" content="data modalities의 장단 및 modality간의 연구 흐름 파악">
+
+<title>archive - Modalities</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../favicon.ico" rel="icon">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-L5Y3XFBP62"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-L5Y3XFBP62', { 'anonymize_ip': true});
+</script>
+<meta name="referrer" content="strict-origin-when-cross-origin">
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">archive</span>
+    </a>
+  </div>
+        <div class="quarto-navbar-tools tools-wide tools-end">
+    <a href="../../CV.html" title="&amp;nbsp;" class="quarto-navigation-tool px-1" aria-label="&amp;nbsp;"><i class="bi bi-person-circle"></i></a>
+    <a href="https://github.com/dotpyo" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+          <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-page-left">
+      <h1 class="title">Modalities</h1>
+            <p class="subtitle lead">for Human Action Recognition</p>
+                  <div>
+        <div class="description">
+          data modalities의 장단 및 modality간의 연구 흐름 파악
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">HAR</div>
+                <div class="quarto-category">paper review</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta column-page-left">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>dotpyo <a href="mailto:4923.py@gmail.com" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> </p>
+            </div>
+    </div>
+      
+    
+      <div>
+      <div class="quarto-title-meta-heading">Modified</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date-modified">March 10, 2024</p>
+      </div>
+    </div>
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#focused-and-reviewed" id="toc-focused-and-reviewed" class="nav-link active" data-scroll-target="#focused-and-reviewed">focused and reviewed</a></li>
+  <li><a href="#contribution-follows" id="toc-contribution-follows" class="nav-link" data-scroll-target="#contribution-follows">Contribution follows</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">1. introduction</a>
+  <ul>
+  <li><a href="#visual-modalities" id="toc-visual-modalities" class="nav-link" data-scroll-target="#visual-modalities">1.1 visual modalities</a></li>
+  <li><a href="#non-visual-modalities" id="toc-non-visual-modalities" class="nav-link" data-scroll-target="#non-visual-modalities">1.2 non-visual modalities</a></li>
+  <li><a href="#usage-of-modalities-single-vs-multi" id="toc-usage-of-modalities-single-vs-multi" class="nav-link" data-scroll-target="#usage-of-modalities-single-vs-multi">1.3 Usage of modalities (single vs multi)</a>
+  <ul class="collapse">
+  <li><a href="#single-modality-and-effect-of-their-fusion" id="toc-single-modality-and-effect-of-their-fusion" class="nav-link" data-scroll-target="#single-modality-and-effect-of-their-fusion">single modality and effect of their fusion</a></li>
+  <li><a href="#data-modalities-and-its-pros-and-cons" id="toc-data-modalities-and-its-pros-and-cons" class="nav-link" data-scroll-target="#data-modalities-and-its-pros-and-cons">data modalities and its pros and cons</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#single-modality" id="toc-single-modality" class="nav-link" data-scroll-target="#single-modality">2. Single modality</a></li>
+  <li><a href="#visible-modalities" id="toc-visible-modalities" class="nav-link" data-scroll-target="#visible-modalities">visible Modalities</a>
+  <ul>
+  <li><a href="#rgb" id="toc-rgb" class="nav-link" data-scroll-target="#rgb">2.1 RGB</a>
+  <ul class="collapse">
+  <li><a href="#two-stream-2d-cnn-based-methods" id="toc-two-stream-2d-cnn-based-methods" class="nav-link" data-scroll-target="#two-stream-2d-cnn-based-methods">2.1.1 Two Stream 2D CNN-Based Methods</a></li>
+  <li><a href="#rnn-based" id="toc-rnn-based" class="nav-link" data-scroll-target="#rnn-based">2.1.2 RNN based</a></li>
+  <li><a href="#d-cnn-based-method" id="toc-d-cnn-based-method" class="nav-link" data-scroll-target="#d-cnn-based-method">2.1.3 3D CNN based method</a></li>
+  </ul></li>
+  <li><a href="#skeleton" id="toc-skeleton" class="nav-link" data-scroll-target="#skeleton">2.2 Skeleton</a></li>
+  <li><a href="#depth" id="toc-depth" class="nav-link" data-scroll-target="#depth">2.3 depth</a></li>
+  <li><a href="#infrared-ir" id="toc-infrared-ir" class="nav-link" data-scroll-target="#infrared-ir">2.4 infrared (IR)</a></li>
+  <li><a href="#point-cloud" id="toc-point-cloud" class="nav-link" data-scroll-target="#point-cloud">2.5 Point Cloud</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/dotpyo/archive/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+
+
+
+
+
+<!-- WARNING: THIS FILE WAS AUTOGENERATED! DO NOT EDIT! -->
+<section id="focused-and-reviewed" class="level4">
+<h4 class="anchored" data-anchor-id="focused-and-reviewed">focused and reviewed</h4>
+<ol type="1">
+<li>mainstream deep learning architectures
+<ul>
+<li>single modalities</li>
+<li>multiple modalities for enhanced HAR</li>
+</ul></li>
+<li>DATA : short trimmed video segments
+<ul>
+<li>one, only action instance</li>
+</ul></li>
+<li>Benchmark Datasets</li>
+</ol>
+</section>
+<section id="contribution-follows" class="level4">
+<h4 class="anchored" data-anchor-id="contribution-follows">Contribution follows</h4>
+<ol type="1">
+<li>various data modalities</li>
+<li>multi-modality based HAR
+<ul>
+<li>approach 1: fusion based</li>
+<li>approach 2: cross modality co-learning-based</li>
+</ul></li>
+<li>recent, advanced methods: SOTA approaches</li>
+<li>comprehensive comparison of existing method</li>
+</ol>
+</section>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">1. introduction</h2>
+<blockquote class="blockquote">
+<p>다양한 data modalities들의 장점, 한계를 및 modality간의 연구 흐름 파악</p>
+</blockquote>
+<p>기술의 발전과 방법론의 창안은 선행 연구의 한계와 발전 가능성에 기초하므로 기술 발전의 흐름과 맥락을 숙지하는 과정은 중요하다. 본 논문은 2022 IEEE에 발표된 Review 논문으로 다양한 인간 행동 표현형을 인식하는 HAR 연구의 최신 흐름을 기술하고 있다. 개요에 따르면 인간 행동은 다양한 데이터 양식으로 표현될 수 있다. 데이터 양식은 크게 가시성 <code>visibility</code> 에 따라 <code>visual modalities</code>, <code>non-visual modalities</code> 로 나뉜다.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">visual modalities</th>
+<th style="text-align: center;">non-visual modalities</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">RGB</td>
+<td style="text-align: center;">audio</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Skeleton</td>
+<td style="text-align: center;">acceleration</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">depth</td>
+<td style="text-align: center;">radar</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">infrared</td>
+<td style="text-align: center;">wifi signal</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">point cloud <span class="math inline">\(^{1}\)</span></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">event stream</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>point cloud <span class="math inline">\(^{1}\)</span> 3차원 공간상에 퍼져 있는 여러 포인트(Point)의 집합(set cloud)으로 Lidar 센서와 RGB-D 센서로 수집된 데이터다.</li>
+</ul>
+<section id="visual-modalities" class="level3">
+<h3 class="anchored" data-anchor-id="visual-modalities">1.1 visual modalities</h3>
+<p>일반적으로는 visual modalities가 HAR 발전에 큰 영향을 미쳐왔다. HAR의 많은 발전이 RGB Video 또는 images를 기반으로 이루어졌음을 보면 알 수 있다. <code>RGB data</code>는 관측 (surveillance) 또는 추적 (monitoring) 시스템에서 보편적으로 사용되어왔다. RGB 는 기본적으로 세 채널을 가진 ’이미지(들)’이기 때문에 큰 computing resource 를 필요로 하는데 이를 보완하기 위해 사용된 데이터가 <code>skeleton</code> 이다. skeleton data는 인간 관절의 움직임 (trajectory of human body joints) 을 encoding한 데이터로 간명하고 효과적이다. 그러나 물체가 포함되어있거나 장면간 맥락을 고려해야 하는 경우 skeleton data 만으로는 정보를 충분히 얻을 수 없는데 이 때 <code>point cloud</code> 와 <code>depth data</code>를 사용한다. 또한, ’본다’는 행위는 근본적으로 빛에 의존하는데 이 한계를 극복하기 위해 <code>infrared data</code>를 사용하며 <code>event stream</code> 은 움직였을 때를 감지하는 동작 중심 modality다.</p>
+<blockquote class="blockquote">
+<p>정보를 얻고, insight 또는 활용 가능한 부분만 추려내어 새로운 방법론을 창안하고, 기술이 최적화 되었을 때 더 필요한 정보를 얻기 위해 또 다른 modality를 사용하며 다시 불필요한 부분을 제거하는 방식으로 기술이 발전되어왔다.</p>
+</blockquote>
+<ol type="1">
+<li>가시영역에서 얻을 수 있는 정보를 얻거나 : RGB</li>
+<li>인간이 눈으로 보고 이해하는 정보에 <strong>집중</strong>하여 인간 신체에서 이른바 ROI를 추출해내는 방법을 적용한다: skeleton</li>
+<li>사람과 환경의 상호작용 또는 시공간적 맥락을 고려하기 위해 3D 구조에서 주요한 정보를 추출하는 작업을 거친다: point cloud, depth data</li>
+<li>시각에 의존하지 않고 나아가 비가시영역인 적외선 영역에서 정보를 얻음으로써 <strong>빛에 의존해야 한다는</strong> visual modalities의 태생적 한계를 극복한다: infrared data</li>
+<li>불필요한 중복, 또는 정보를 제거하여 HAR에 적합한 데이터를 구축한다: event stream</li>
+</ol>
+</section>
+<section id="non-visual-modalities" class="level3">
+<h3 class="anchored" data-anchor-id="non-visual-modalities">1.2 non-visual modalities</h3>
+<p>눈으로 봤을 때 직관적이지 않지만 사람들의 행동을 표현하는 또 다른 방식이다. 직관적이지 않음에도 사용될 수 있는 이유는 특정 상황에서 대상의 <strong>개인정보 보호</strong>가 필요할 때다. <code>audio</code> 는 시간에 따른 상황 (temporal sequence) 에서 움직임을 인지하기에 적절하며, <code>acceleration</code> 는 fine-grained HAR에 사용된다. <span class="math inline">\(^2\)</span> 또한 <code>radar</code>는 물체 뒤의 움직임도 포착할 수 있다.</p>
+<p><span class="math inline">\(^2\)</span> fine-grained HAR : 세분화된 HAR. acceleration data가 이에 사용된다는 내용은 영상의 움직임에서 가속도를 알아내는 방향의 연구를 말하는 것으로 보인다. (<a href="https://arxiv.org/abs/2211.01342">관련 논문</a>)</p>
+</section>
+<section id="usage-of-modalities-single-vs-multi" class="level3">
+<h3 class="anchored" data-anchor-id="usage-of-modalities-single-vs-multi">1.3 Usage of modalities (single vs multi)</h3>
+<section id="single-modality-and-effect-of-their-fusion" class="level4">
+<h4 class="anchored" data-anchor-id="single-modality-and-effect-of-their-fusion">single modality and effect of their fusion</h4>
+<p>살펴본 바와 같이, 각 modality는 서로 다른 강점과 한계를 가지고 있으므로 여러 양식의 데이터들을 합치거나(<code>fusion</code>), 데이터 양식간 ‘transfer of knowledge’<span class="math inline">\(^3\)</span> 를 진행하여 정확도와 강건함을 높인다.<br>
+나아가 fusion은, 서로 다른 두 개 이상의 데이터에서 각 데이터간 장단점을 상호보완하기 위한 방법론으로 소리 데이터와 시각 데이터를 포함함으로써 단순히 ‘물건을 내려 놓는’ label을 가방을 내려 놓는지, 접시를 내려놓는지 구체적으로 구분할 수 있게 한다.</p>
+<p><span class="math inline">\(^3\)</span> <code>Transfer learning</code> 은 Transfer Learning과 Knowledge Distillation으로 나뉘는데 (<a href="https://baeseongsu.github.io/posts/knowledge-distillation/#etc-%EA%B7%B8-%EB%B0%96%EC%97%90">ref</a>) 서로 다른 도메인에서 지식을 전달하는 방법이 Transfer Learning (fine tuning 필요) 이고, 같은 도메인에서 다른 모델 간 지식 전달이 이루어지는 것을 Knowledge Distillation이라고 하면 ’transfer of knowledge across modalities’는 Transfer Learning을 말하는 것으로 보인다.</p>
+</section>
+<section id="data-modalities-and-its-pros-and-cons" class="level4">
+<h4 class="anchored" data-anchor-id="data-modalities-and-its-pros-and-cons">data modalities and its pros and cons</h4>
+<table>
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><img src="https://user-images.githubusercontent.com/60145951/209530662-e526a0ee-58a4-4ad1-abf2-34ad0bb32c5c.png" class="img-fluid" alt="image"></th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</section>
+</section>
+</section>
+<section id="single-modality" class="level2">
+<h2 class="anchored" data-anchor-id="single-modality">2. Single modality</h2>
+<p>RGB, Skeleton, depth, infrared, point cloud, event stream, audio, acceleration, radar, WiFi will be reviewed</p>
+</section>
+<section id="visible-modalities" class="level2">
+<h2 class="anchored" data-anchor-id="visible-modalities">visible Modalities</h2>
+<section id="rgb" class="level3">
+<h3 class="anchored" data-anchor-id="rgb">2.1 RGB</h3>
+<blockquote class="blockquote">
+<p>한계와 장점 모두 RGB Data의 특성에서 비롯된다.</p>
+</blockquote>
+<ul>
+<li>특성
+<ol type="1">
+<li>이미지(들) 로 이루어져있다. (<span class="math inline">\(\because\)</span> video is sequence of images)</li>
+<li>RGB data를 생성하는 카메라는 사람의 눈으로 보는 장면을 재생산하는 것을 목적으로 한다.</li>
+<li>수집하기 쉽고 상황과 맥락을 반영하고 있는 풍부한 외관 정보가 포함되어있다.
+<ul>
+<li>‘rich appearance information’</li>
+</ul></li>
+<li>폭넓은 분야에 사용될 수 있다.
+<ul>
+<li>visual surveillance: 사람이 한 순간도 놓치지 않고 관찰할 수는 없는데 이를 보완할 수 있다.</li>
+<li>autonomous navigation: 자율주행(ANS)의 일부로써 사람의 개입 없이 정확하게 목적지까지 도달하도록 하는 기술이다.</li>
+<li>sport analysis: 눈으로 쫓기 힘든 순간들을 정밀하게 판독해야 하는 분야이므로 이 또한 ’사람의 눈’을 대신한다.</li>
+</ul></li>
+</ol></li>
+<li>한계
+<ul>
+<li>various of background, viewpoints, scales of humans
+<ul>
+<li>학습할 수 있는 데이터는 한정적이고, 이를 활용할 수 있는 변수는 너무 많다.</li>
+</ul></li>
+<li>illumination condition
+<ul>
+<li>촬영이라는 개념이 갖는 근본적인 한계로, 광원 상태에 따라 결과가 달라질 가능성이 있다.</li>
+</ul></li>
+<li>high computational cost
+<ul>
+<li>영상은 이미지의 연속이므로 공간과 시간을 동시에 고려하여 모델링하려면 많은 자원이 요구된다.</li>
+</ul></li>
+</ul></li>
+<li>modeling methods
+<ol type="1">
+<li>pre-deep learning : handcrafted feature-based approach, 수작업 특징 기반 접근법
+<ul>
+<li>Space-Time Volume-based methods</li>
+<li>Space-Time Interest Point (STIP)</li>
+</ul></li>
+<li>deep learning : currently mainstream
+<ul>
+<li>backbone model을 무엇으로 사용하느냐에 따라 나뉠 수 있다.</li>
+</ul>
+<ol type="1">
+<li>two-stream CNN based method / multi stream architectures (extension of two stream)
+<ul>
+<li>backbone : 2D CNN</li>
+<li>시간정보가 포함될 수 밖에 없기 때문에 temporal information, spatial information 모두 고려하는 two-stream 접근이 제안되었다.</li>
+</ul></li>
+<li>RNN based method
+<ul>
+<li>feature extractor : RNN model with 2D CNNs</li>
+<li>RGB-based model</li>
+</ul></li>
+<li>3D CNN based method</li>
+</ol></li>
+</ol></li>
+</ul>
+<section id="two-stream-2d-cnn-based-methods" class="level4">
+<h4 class="anchored" data-anchor-id="two-stream-2d-cnn-based-methods">2.1.1 Two Stream 2D CNN-Based Methods</h4>
+<blockquote class="blockquote">
+<p>two 2D CNN branches taking different input features extracted from RGB video for HAR and the <strong>final result</strong> is usually obtained through <strong>fusion strategy</strong></p>
+</blockquote>
+<p><strong>classical approach</strong></p>
+<p>고전적으로 two stream network는 각 network를 병렬적으로 학습시킨 후 결과를 융합 <code>fusion</code> 하여 최종 결과를 추론했다. 예를들어, input이 video이면 video에 내재된 정보들을 크게 1) rgb 프레임들은 공간 네트워크의, 2) multi-frame-based optical flow는 시간 네트워크의 학습 정보가 된다. 각 stream은 1) 모양 특성, appearance feature 과 2) 동작 특성 motion feature을 각각 학습한다.</p>
+<ul>
+<li>multi-frame-based optical flow: 움직임을 묘사하는 방법으로, 주로 짧은 시간 간격을 두고 연속된 이미지들로 구성된다. optical flow는 이미지의 velocity(속도) 를 계산하는데 이 속도는 이미지의 특정 지점이 다음의 어디로 이동할지 예측할 수 있게 한다.
+<ul>
+<li>주로 video understanding 에서 사용되는 개념으로 보인다.</li>
+<li>acceleration data와 어떻게 다른지 알 필요가 있다. &gt; <a href="https://arxiv.org/pdf/2008.02580.pdf">The optical flow is used to perform a prediction of the frame to code</a></li>
+<li>networks: SpyFlow, PWC-Net; compute pixel-wise motion vectors</li>
+</ul></li>
+</ul>
+<p><strong>overcome limitation</strong></p>
+<p>RGB 양식 데이터를 사용함에 있어 주된 문제로 지적되는 점은 ’큰 데이터 용량으로 인한 computing resource 부담과 연산 속도 저하’이므로 연산 속도를 높이기 위해 해상도를 낮추거나, 고해상도 데이터에서 center crop을 하는 기법을 적용했다.</p>
+<p><strong>better data representation</strong></p>
+<p>모델의 성능은 데이터의 양과 <strong>질</strong>에 좌우된다. 따라서 더 나은 video representation 에 눈을 돌리게 된다. Wang은 multi-scale video frames, optical flow를 각 CNN stream에 넣어 특성맵 feature map을 추출했고 이에서 trajectories에 중심을 둔 <strong>spatio-temporal tubes</strong> (<code>action tube</code>)를 샘플링했다. 이렇게 한 결과, Fisher Vector representation <span class="math inline">\(^{3)}\)</span> 과 SVM을 통해 분류했다.</p>
+<ul>
+<li>왜 튜브일까? : <span class="math inline">\(2)\)</span> 가 시기상 더 먼저 나온 논문이므로 후자에서 제시된 개념일 것으로 추정됨. 후자 논문의 Abstract에서 tube는 “예측된 동작을 연결함으로써 시간일관적으로 객체를 탐지하는” 개념이다.
+<ol type="1">
+<li>suggest image region : 움직임이 두드러지는 영역을 선택</li>
+<li>CNN을 이용하여 공간적 특징을 추출</li>
+<li>Action tube를 생성</li>
+</ol>
+<blockquote class="blockquote">
+<p>We link our predictions to produce detections consistent in time, which we call action tubes.</p>
+</blockquote>
+<table>
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><img src="https://user-images.githubusercontent.com/60145951/209574143-74cb413a-7e2f-449f-ba72-6624404b8904.png" class="img-fluid" alt="Fig 1: Discovering Spatio-Temporal Action Tubes; An over view of action detection framework"></th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<figcaption>
+Fig 1. Discovering Spatio-Temporal Action Tubes; An over view of action detection framework
+</figcaption>
+<table>
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><img src="https://user-images.githubusercontent.com/60145951/209574675-7829d4c4-f9d6-4e5a-89d0-59596ca8ff9e.png" class="img-fluid" alt="Fig 2. Finding action tubes; action tube approach, detect action on (a) and link detected actions in time to produce action tubes"></th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<figcaption>
+Fig 2. Finding action tubes; action tube approach, detect action on (a) and link detected actions in time to produce action
+</figcaption></li>
+<li><span class="math inline">\(^{1)}\)</span> <a href="https://arxiv.org/abs/1811.12248">Discovering Spatio-Temporal Action Tubes (2018)</a></li>
+<li><span class="math inline">\(^{2)}\)</span> <a href="https://ieeexplore.ieee.org/document/7298676">Finding action tubes</a> or <a href="https://openaccess.thecvf.com/content_cvpr_2015/papers/Gkioxari_Finding_Action_Tubes_2015_CVPR_paper.pdf">CVPR open access</a></li>
+<li><span class="math inline">\(^{3)}\)</span> Fisher Vector Representation: <a href="https://zlthinker.github.io/Fisher-Vector">ref</a></li>
+</ul>
+<p><strong>Long term video level information</strong></p>
+<blockquote class="blockquote">
+<p>정보를 mean pooling하거나 누적하여 단일한 움직임이 아닌 움직임의 연속; 좀 더 복잡한 행동을 인식</p>
+</blockquote>
+<p>각 비디오를 세 개의 segment로 나눈 후 two stream network에 입력한 후, 각 segment의점수를 <strong>average pooling</strong> 을 이용해 융합한다. 또는 segment 점수를 pooling하지 않고 <strong>element-wise multiplication</strong>으로 특성의 총계를 구한다. 이 때 two stream framework에 의해 샘플링된 외형과 동작 프레임들은 ’하나의 video-level multiplied’를 위해 aggregate 연산되며 이를 <code>action words</code> 라고 칭한다. <span class="math inline">\(^{4)}\)</span></p>
+<table class="table">
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><img width="100%" alt="image" src="https://user-images.githubusercontent.com/60145951/209576243-dfe0955c-7e9b-4375-88e1-f236719d6273.png"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Fig 3. 동작들에서 행동과 관계된 <code>action word</code>를 추출한 후 이를 총 망라하는 하나의 분류를 선택하는 과정</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li><span class="math inline">\(^{4)}\)</span> R. Girdhar, D. Ramanan, A. Gupta, J. Sivic, and B. Russell, “Actionvlad: Learning spatio-temporal aggregation for action classification,” in CVPR, 2017.</li>
+</ul>
+<p><strong>EXTENSION of two stream CNN based method</strong></p>
+<p>3 stream 으로 확장하는 등, “움직임” 또는 “프레임간 연속성”을 학습시키기 위해 다양한 방법론을 도입했다. 이후 2 stream siamese network (SNN) 로 확장되었는데 이는 동작 발생 <strong>전</strong>과 동작 <strong>후</strong> 프레임에서 특징을 추출하는 <code>one shot learning</code>의 일종으로 연속성이 아닌 동작 시작, 전, 후를 구분하여 학습하는 발상의 전환을 꾀한다.</p>
+<ul>
+<li><p>one shot learning : 소량의 데이터로 학습할 수 있게 하는 방법이 few shot learning이라면 one shot은 그 극한으로 이미지 한장을 학습 데이터로 삼는 방법론이다. 사람은 물체간의 유사성을 학습하는데, 이 유사성은 물체를 배우고 물체간의 유사성을 또 다시 배우는 과정으로 나뉠 수 있다. 다시말해, <strong>물체의 특성을 학습하고 이를 일반화</strong>할 줄 아는 능력을 학습시키는 방법이 one/few shot learning이다.</p>
+<ul>
+<li><span class="math inline">\(\therefore\)</span> 이미지 자체의 특성을 학습하는 것이 아닌, 이미지간의 유사성을 파악하고 유사도를 파악할 때 쓰는 기법인 ’거리 함수’를 사용한다.</li>
+</ul></li>
+<li><p>샴네트워크</p>
+<table class="table">
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><img width="100%" alt="siamese network" src="https://user-images.githubusercontent.com/60145951/209576942-b98a7973-be82-46f3-b292-cbf6be463153.png"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Fig 4. <a href="https://serokell.io/blog/nn-and-one-shot-learning">ref: A Guide to One-Shot Learning</a></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>two stages: verification and generalization 가 포함된다.</li>
+<li>각각 다른 입력을 동일한 네트워크 인스턴스에 학습시키고, 이는 동일한 데이터셋에서 훈련되어 유사도를 반환한다.</li>
+</ul></li>
+</ul>
+<p><strong>Tackle high computational cost</strong></p>
+<p>Knowledge distillation <span class="math inline">\(^{5)}\)</span> 이 사용된다. “<a href="https://velog.io/@dldydldy75/%EC%A7%80%EC%8B%9D-%EC%A6%9D%EB%A5%98-Knowledge-Distillation">Data 에서 의미를 파악하면 Information 이 되고, Information 에서 문맥을 파악하면 Knowledge 이 되고, Knowledge 를 활용하면 Wisdom 이 된다.</a>” 모델 압축을 위한 절차로, soft label과 hard label을 일치시키는 것이 목적이며 soft label에는 temperature scaling function을 적용하여 확률 분포를 부드럽게 만든다. 예를 들어 feature들의 label이 <span class="math inline">\([0, 1, 0]^{T}\)</span> 이면 Hard label, <span class="math inline">\([0.05, 0.75, 0.2]^{T}\)</span> 이면 soft label이다. 각 feature들은 서로 다른 특성을 가지고 있지만 공통된 특성 또한 가지고 있기 때문에, 이 공통 요소를 포함하는 class score를 날려버리면 (hard label) 정보가 손실되는 셈이다. 이렇게 정보가 손실되지 않게 Teacher network를 구성하고 Student network가 teacher network에 최대한 가까운 정답을 반환하도록 학습시킨다. 위에서 언급한 <code>temperature</code>는 그 값이 낮을 때 입력값의 출력을 크게 만들어주는 등 필요에 따라 값에 가중치를 둠으로써 Soft label의 이점을 최대화 한다. <a href="https://light-tree.tistory.com/196">참고</a></p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">teacher network; optical flow data</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">⬇︎ Knowledge Distillation ⬇︎</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">student network; motion vector</td>
+</tr>
+</tbody>
+</table>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><img src="https://velog.velcdn.com/images%2Fdldydldy75%2Fpost%2F2bc5e3eb-b58b-456b-9b6b-420cd996ae38%2Fimage.png" class="img-fluid"></th>
+<th style="text-align: center;"><img src="https://intellabs.github.io/distiller/imgs/knowledge_distillation.png" class="img-fluid" alt="https://intellabs.github.io/distiller/knowledge_distillation.html"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Knowledge Spectrum</td>
+<td style="text-align: center;">Distillation Architecture</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><span class="math inline">\(^{5)}\)</span> <a href="https://arxiv.org/abs/1503.02531">Distilling the Knowledge in a Neural Network(2015)</a></li>
+</ul>
+<p><strong>In Conclusion,</strong></p>
+<p>여러개의 stream으로 CNN architecture들을 확장하거나 더 깊게 레이어를 쌓는 등 여러 시도를 해보았으나 수많은 video의 frame 개수를 고려할 때 깊이는 오히려 HAR에 방해가 될 수 있다. 선행 연구를 통해 ’차별화된 특징’을 예측하는 것이 중요함을 파악하게 되었다. 이 외에도, fusion strategy research의 마지막 conv layer에서 공간과 시간 네트워크를 융합하는 방법이 위에서 지적된 컴퓨팅 자원을 절약하면서 (params를 줄이면서) 정확도를 유지하는 효과적인 방법임을 알아냈다.</p>
+</section>
+<section id="rnn-based" class="level4">
+<h4 class="anchored" data-anchor-id="rnn-based">2.1.2 RNN based</h4>
+<blockquote class="blockquote">
+<p>feature extractor 로 CNN을 사용한 hybrid architecture</p>
+</blockquote>
+<p><strong>LSTM based model</strong></p>
+<p>Vanilla Recurrent Neural Network의 gradient vanishing 문제로 인해 RNN based solution은 gate 를 포함하는 RNN Architecture를 채택한다. (e.g.&nbsp;LSTM)</p>
+<table class="table">
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><img width="400" alt="image" src="https://user-images.githubusercontent.com/60145951/209581127-eba182df-90a6-4c9c-b146-268ebb92f144.png"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Fig 5. RGB modality modeling methods (CNN, RNN based)</td>
+</tr>
+</tbody>
+</table>
+<p>물론 ‘이미지’에서 공간적 요소를 빠트릴 수 없기 때문에 특징 추출은 여전히 <strong>2D CNN</strong>으로 진행하고, 시간요소를 LSTM에서 차용한 구조를 통해 모델링한다. 이를 <code>LRCN</code> (Long Term Recurrent Convolutional Network, Jeff Donahue et al.&nbsp;in 2016) 라고 하며 이는 ’2D CNN; 프레임 단위 RGB feature 추출’ + ’label 생성 LSTM’으로 구성된다.</p>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><img src="https://kobiso.github.io//assets/images/lrcn.png" class="img-fluid" alt="LRCN architecture"></th>
+<th style="text-align: center;"><img src="https://kobiso.github.io//assets/images/lrcn_tasks.png" class="img-fluid" alt="recognition examples"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Fig 6.1 LRCN architecture</td>
+<td style="text-align: center;">Fig 6.2 LRCN model for some tasks</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>image reference : <a href="https://kobiso.github.io/research/research-lrcn/">Long-term Recurrent Convolution Network(LRCN)</a></li>
+</ul>
+<p><strong>attention mechanism</strong></p>
+<p>multi layer LSTM model 설계 후 다음 프레임에 가중치를 부여한 Attention map 을 <strong>재귀적으로</strong> 출력함으로써 공간적 특성에 집중할 수 있게 되었다. - feature map을 중첩해서 뽑아내는 것 처럼? - recap : main idea of attention; decoder에서 출력 단어를 추론하는 매 순간마다 encoder에서의 전체 문장을 참고한다는 점. 단, ‘해당 시점에서 예측에 필요한 부분에 집중(attention)’해서 구한다. <span class="math inline">\(Attention (Q, K, V) = Attention \ Value\)</span> 로, Query에 대해 모든 Key와의 유사도를 구한 후 (<em>전체 문장을 참고</em>) 이에 관계된 Value에 반영한다. 유사도가 반영된 값, value는 attention value라고도 한다. - Q : t 시점에서 디코더 셀에서의 은닉상태 - K : keys, ’모든 시점에서’ 인코더 셀의 은닉 상태 - V : Values, ‘모든 시점에서’ 인코더 셀의 은닉 상태로 각 인코더의 attention 가중치와 은닉상태가 가중합 된 값이다. (a.k.a. context vector)</p>
+</section>
+<section id="d-cnn-based-method" class="level4">
+<h4 class="anchored" data-anchor-id="d-cnn-based-method">2.1.3 3D CNN based method</h4>
+<blockquote class="blockquote">
+<p>HAR의 공간과 시간을 모두 식별할 수 있다는 강력한 장점이 있으나 많은 양의 훈련 데이터를 요구함</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>한계: Long term Temporal information이 전해지지 않는 문제</p>
+</blockquote>
+<p>지금까지는 모두 2D CNN을 시간과 함께 모델링했다. 그러나 Tran et.al [66]은 raw video data에서 시공간 데이터를 end-to-end 학습하기 위해 3D CNN 모델을 도입한다. 단, 이 경우 클립 수준 (16 frames or so) 에서 사용되는 모델이므로 시간이 길어질수록 temporal 정보가 옅어지는 한계가 있다.<br>
+이에, Diba et al.(<a href="https://github.com/MohsenFayyaz89/T3D">github</a>, <a href="https://paperswithcode.com/paper/temporal-3d-convnets-new-architecture-and">paper</a>)는 3D 필터 및 pooling kernel로 2D 구조였던 DenseNet을 확장한 T3D (Temporal 3D ConvNet) 과 새로운 시간 계층 TTL (Temporal Transition Layer) 을 제안했다. - 시간에 따라 convolution kernel depth가 달라지도록 모델링 한 것 같다. 3D CNN 모델이 2D 단위에서 학습한 것을 활용하지 않는 것에 착안해 2D와 3D를 함께 쓰는 방식을 채택한 것으로 보임 (논문까지 확인하기 전)</p>
+<p>그 외에, 시간 범위를 늘린 LTC (Long-term Temporal Convolution) 모델, multi scale ‘temporal-only’ convolution; Timeception 모델 등이 제안되었으며 이는 모두 복잡하거나 긴 작업에서 영상의 길이에 구애받지 않고 인식할 수 있는 강건한 모델을 만들기 위함이다.</p>
+</section>
+</section>
+<section id="skeleton" class="level3">
+<h3 class="anchored" data-anchor-id="skeleton">2.2 Skeleton</h3>
+<p>시점 변화에 민감한 pose estimation에서 motion capture system으로 수집한 데이터셋은 신뢰할 수 있다. (“Ntu rgb+d 120: A large-scale benchmark for 3d human activity understanding,” TPAMI, 2020.) 최근의 많은 연구는 Ntu의 depth map, 또는 RGB video를 사용한다 (st-gcn).</p>
+<p>RGB video만 사용할 경우 옷 또는 신체의 부피를 포함해 RGB data의 문제였던 다양한 변수 (e.g.&nbsp;background, illumination environment) 로부터 상당부 자유로울 수 있다. 초기에는 수작업으로 특징을 추출하여 관절 또는 신체 부위 기반의 방법이 제안되었는데 딥러닝의 발전에 따라 RNn, CNN, GNN, GCN을 적용하게 되었다.</p>
+<table class="table">
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><img width="539" alt="image" src="https://user-images.githubusercontent.com/60145951/209585313-6fc0b53c-f815-4b60-baa0-13c677a06ab5.png"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Fig 7. Performance of skeleton-based deep learning HAR methods on NTU RGB+D and NTU RGB+D 120 datasets.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="depth" class="level3">
+<h3 class="anchored" data-anchor-id="depth">2.3 depth</h3>
+<blockquote class="blockquote">
+<p>Depth maps refer to images where the pixel values represent the distance information from a given viewpoint to the points in the scene.</p>
+</blockquote>
+<p>색상, 질감 등의 변화에 강건하며 3차원 상의 정보이므로 신뢰할 수 있는 3D 구조 및 기하학적 정보를 제공한다. depth map은 왜 필요한가? 3D 데이터를 2D 이미지로 변환하기 위함이다: depth 정보는 특수한 센서를 필요로 하는데, 이는 active sensors (e.g., Time-of-Flight and structured-light-based cameras) and pas- sive sensors (e.g., stereo cameras) 로 나뉜다.<br>
+active sensor는 방사선을 물체에 방출하여 <strong>반사되는 에너지를 측정</strong>하여 깊이정보를 얻는, 말그대로 능동적인 행동에 의해 발생하는 정보를 수집하는 센서다. Kinect, RealSense3D 등의 특수한 장치를 포함하는 센서가 포함된다. passive sensor는 물체가 방출하거나 반사하는 <strong>자연적인 에너지</strong> 를 말한다. 수동센서의 예인 stereo camera는 인간의 양안을 시뮬레이션 하는 카메라로 are recovered by seek- ing image point correspondences between stereo pairs 한다.</p>
+<p>둘을 비교했을 때, passive depth map generation은 RGB 이미지 사이에서 깊이를 연산해내는 과정이 포함되므로 계산 비용이 많이 들 뿐 아니라 질감이 없거나 반복 패턴이 있는; view point에 따라 크게 달라지지 않는 대상에는 효과를 보이지 않을 수 있다. 따라서 대부분의 연구는 active sensor를 이용한 depth map에 초점을 맞추고 있다. (“only a few works used depth maps captured by stereo cameras”)</p>
+<p><strong>datasets and methods</strong></p>
+<p>데이터셋으로는 Deep Learning methods가 도래하기 전까지 사용했던 hand-crafted Depth Motion Map (DMM) features가 있다. 딥러닝 프레임워크도 이 DMM을 활용하는데, <code>weighted hierarchial DMMs</code> 이 제안되었다. 그러나 기존의 DMMs가 구체적인 시간정보를 포착하지 못하는 한계를 직면하자 Wang et.al 은 dynamic images at the body, body part, joint level 총 세가지를 짝지은 <code>depth sequences</code> 를 CNNs에 먹이는 방식을 제안했다.</p>
+<p>depth modality의 성능은 1. depth maps including dynamic (depth images, 2. dynamic depth normal images, 3. dynamic depth motion normal images 의 발견에 힘입어 크게 성장했다. 발전을 위해 제안된 아이디어는 <code>view invarient</code> 을 이용한 방법론들이 다수인데, 다른 시각에서 본 이미지들을 high-level space로 옮김으로써 입체감을 부여하고 (Rahmani et al.&nbsp;[9]) CNN 모델이 human pose model과 Fourier Temporal Pyramids를 학습하게 하여 시점에 따른 행동 변화를 학습하게 하는 방식이 있다.</p>
+<p><strong>estimate without depth sensor</strong></p>
+<p>그러나 <strong>depth 정보를 추정해낼 수 있는 방법 또한 있다.</strong> <code>depth estimation</code> 기술이 이미 존재하고 Zhu and Newsam [224] 는 depth estimation을 이용해 RGB video에서 depth 을 추출해낸 바 있다.</p>
+<ul>
+<li><a href="https://paperswithcode.com/task/depth-estimation">paperswithcode:depth estimation</a> &gt; Newer methods can directly estimate depth by minimizing the regression loss, or by learning to generate a novel view from a sequence. &gt; The most popular benchmarks are KITTI and NYUv2. Models are typically evaluated according to a RMS metric.
+<ul>
+<li>Subtask로는 Monocular Depth Estimation, Stereo Depth Estimation 등이 있다.</li>
+</ul></li>
+<li>2022 큰 주목을 받았던 diffusion model 또한 depth estimation을 사용하고 있다. multi-view 이미지들에서 차이점이 되는 point들을 찾고, 이 차이를 “splatting and diffusion”하여 depth map을 생성한다.
+<ul>
+<li><a href="https://visual.cs.brown.edu/projects/diffdiffdepth-webpage/">differentiable diffusion for dense depth estimation from multi-view images (CVPR, 2021)</a></li>
+</ul>
+<table class="table">
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><img src="https://user-images.githubusercontent.com/60145951/210206872-5b823b30-f566-4043-b0df-4eed1fcff155.png" class="img-fluid" alt="generating diffusion map by splatting and diffusion differences of Multi-View images"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">generating diffusion map by splatting and diffusion differences of Multi-View images</td>
+</tr>
+</tbody>
+</table></li>
+</ul>
+<p><strong>limitation</strong></p>
+<p>그러나 일반적으로 depth information은 외형정보가 부족하므로 다른 data modality와 융합하여 사용된다. - section 3 에서 더 살펴볼 수 있으나, 본 포스트에서는 single modality까지만 다루겠다.</p>
+</section>
+<section id="infrared-ir" class="level3">
+<h3 class="anchored" data-anchor-id="infrared-ir">2.4 infrared (IR)</h3>
+<blockquote class="blockquote">
+<p>Infrared radiation is emitted from all surfaces that have a temperature above 0 K (−273.15 °C) and the strength of emitted radiation depends on the surface temperature (higher temperatures have greater radiant energy) (<a href="https://www.sciencedirect.com/topics/physics-and-astronomy/infrared-radiation">sciencedirect/infrared-radiation</a>)</p>
+</blockquote>
+<p>주변광에 의지하지 않아도 되므로 야간 HAR에 적합하다. depth sensor와 마찬가지로 반사광선을 활용하여 물체를 인식하는데, 적외선을 내보내는 센서가 active sensor라면 대상에서 방출되는 광선 (열 에너지 등) 을 인식하는 방법은 수동 인식이다.</p>
+<p><strong>methods</strong></p>
+<p>Kawashima et.al 의 Action recognition from extremely low-resolution thermal image sequence (2017, AVSS) 에 의하면 극히 낮은 해상도 <span class="math inline">\(^{1}\)</span> <span class="math inline">\(^{2}\)</span> 의 row resolution thermal images에서 먼저 사람의 무게중심을 기반으로 사람 부분만 추출하고, 다음으로 cropped sequences들과 frame간 차이를 LSTM기반의 CNN에 입력해 시공간 정보를 담은 모델을 생성한다. 해당 연구에서 이어진 연구로는 열화상 비디오들에서 학습된 시공간 정보를 동시에 학습하기 위해 3D CNN을 적용한 Shah et al의 연구가 있고, Meglouli et al는 raw thermal images를 사용하는 대신 raw thermal sequences를 3D CNN에 적용하여 optical flow information를 연산해냈다.</p>
+<ul>
+<li><p>thermal images vs thermal sequence?</p>
+<table class="table">
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><img src="https://www.researchgate.net/profile/Yasutomo-Kawanishi/publication/320649612/figure/fig2/AS:667869876596744@1536243995369/Example-of-a-thermal-image-sequence.png" class="img-fluid" alt="Example of a thermal image sequence"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Example of a thermal image sequence (Action Recognition from Extremely Low-Resolution Thermal Image Sequence)</td>
+</tr>
+</tbody>
+</table></li>
+</ul>
+<p>이미지간 차이를 추출해낸 결과로 보인다.</p>
+<p><span class="math inline">\(^{1}\)</span> 왜 저해상도라는 말이 언급되는가? - 기본적으로 IR(InfraRed) radiation은 전자기파 (electromagnetic waves) 이며 oscillate (진동) 주기는 <span class="math inline">\(3 * 10^{11}Hz\)</span> 에서 <span class="math inline">\(4 * 10^{14}Hz\)</span> 다. (<a href="https://www.sciencedirect.com/topics/chemistry/ir-radiation">sciencedirect/IR Radiation/Jyrki K. Kauppinen, Jari O. Partanen, in Encyclopedia of Spectroscopy and Spectrometry (Third Edition), 2017</a>) - 고주파면 High-Frequency, 고해상도면 High-Resolution인데 왜 해상도가 언급되는가: 적외선 이미지는 해상도가 rgb 이미지보다 훨씬 낮다. 여기서 말하는 해상도가 낮다는건 픽셀정보인 공간 해상도를 구분하는것</p>
+<pre><code>| ![Example of RGB and InfRared (IR pair images in real maritime dataset)](https://www.researchgate.net/publication/343453594/figure/fig5/AS:928906546802693@1598479987148/Example-of-RGB-and-InfRared-IR-pair-images-in-the-real-maritime-dataset-at-a.png) |
+| :-: |
+| Example of RGB and InfRared (IR pair images in real maritime dataset) |</code></pre>
+<ul>
+<li>해상도란 : 신호에서 minimum하게 구분할 수 있는 간격으로 탐지하기 위해 받아들이는게 신호라고 할 때 서로 다른 신호의 간격이 얼마나 가까이까지 구분해낼 수 있는가를 해상도라고 말한다. 즉, 실제로 서로 다른걸 다르다고 말할 수 있는 거리가 해상도다. 해상도가 높으면 같은 이미지도 높은 픽셀로 표현할 수 있다.</li>
+<li>예를들어 High Resolution infrared Radiation Sounder (HIRS) sensor 는 적외선 방사선 검출기의 단점내지 한계인 해상도를 개선한 센서라고 생각할 수 있다.</li>
+</ul>
+<p><span class="math inline">\(^{2}\)</span> 그렇다면 왜 <em>초</em>저해상도 이미지를 굳이 사용하는가? - quotation : <a href="https://www.researchgate.net/publication/320649612_Action_recognition_from_extremely_low-resolution_thermal_image_sequence">Kawashima, Takayuki &amp; Kawanishi, Yasutomo &amp; Ide, Ichiro &amp; Murase, H. &amp; Deguchi, Daisuke &amp; Aizawa, Tomoyoshi &amp; Kawade, Masato. (2017). Action recognition from extremely low-resolution thermal image sequence. 1-6. 10.1109/AVSS.2017.8078497.</a></p>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><img src="https://user-images.githubusercontent.com/60145951/210193383-9f232405-bbfb-4758-8ff9-4660b1afe83d.png" class="img-fluid" alt="Figure 3. Example of images captured at night-time"></th>
+<th style="text-align: center;"><img src="https://user-images.githubusercontent.com/60145951/210193861-5a363fd9-d470-4374-b7aa-16a8cf59044e.png" class="img-fluid" alt="Figure 4. Example of a thermal image sequence"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Figure 3. Example of images captured at night-time</td>
+<td style="text-align: center;">Figure 4. Example of a thermal image sequence</td>
+</tr>
+</tbody>
+</table>
+<blockquote class="blockquote">
+<p>Therefore, it is difficult to compute feature points and to obtain a clear edge of the human body from it. More-over, the pixel values will be easily affected by factors such as the motion of a person and the distance between the sen-sor and the human body. Therefore, most conventional action recognition methods using a visible-light camera are not suitable for being applied to extremely low-resolution thermal image sequences</p>
+</blockquote>
+<p>이러한 이유로 초저해상도 열화상 이미지를 사용하게 된다.</p>
+<p>low-resolution thermal image sequences는 아래와 같은 특성을 가진다.</p>
+<ol type="1">
+<li>edge of the human body does not appear clearly
+<ul>
+<li>위 인용에서 초저해상도 열화상 이미지를 사용하는 이유로 든 사례와 같다. RGB high resolution image 도 human body edge를 명확하게 연산하기는 어려우며 pixel values들은 사람의 움직임, 센서와의 거리 등에 크게 영향을 받는다.</li>
+<li>high resolution image가 집중하는 human body edge가 연산해내기 어려운 특성이라면 아예 이를 제외하고 다른 부분에 초점을 맞추겠다는 선언으로 보인다.</li>
+</ul></li>
+<li>The motion of a person changes the pixel values of both the human body and its surrounding region
+<ul>
+<li>1이 low resolution image sequence를 사용해야 하는 이유와 관계가 있다면 이 항목은 edge를 명확하게 찾을 수 없는 대신 얻을 수 있는 정보를 말한다.</li>
+<li>대략적인 범위를 알 수 있으니 결국 얼만큼 움직이는지만 감지해내면 되고, 그 움직임은 pixel 값으로 표현되니 optical image 를 대신할 수 있다.</li>
+</ul></li>
+<li>When the distance between the sensor and the human body changes, the pixel values also change
+<ul>
+<li>또 다른 RGB image approach의 한계였던 센서와의 거리가 thermal image에도 영향을 미치지만 이것은 pixel value에 영향을 미치므로 연산으로 보완할 수 있을 것으로 보인다.</li>
+</ul></li>
+<li>A pixel value changes depending on the occupancy area ratio of the human body in the observation range of a thermopile infrared sensor
+<ul>
+<li>결과적으로 센서와의 거리 (view point) 등의 변수도 pixel에 반영이 되므로 적외선 센서의 특징을 고려할 때 기존 접근법의 한계를 극복할 수 있을 것이다.</li>
+</ul></li>
+</ol>
+</section>
+<section id="point-cloud" class="level3">
+<h3 class="anchored" data-anchor-id="point-cloud">2.5 Point Cloud</h3>
+<blockquote class="blockquote">
+<p>Point cloud data is composed of a numerous collection of points that represent the spatial distribution and surface characteristics of the target under a spatial reference system.</p>
+</blockquote>
+<p>시공간보다는 2D와 3D 모두 풍부한 정보를 얻을 수 있는 데이터 양식으로 2차원에서는 실루엣을, 3차원에서는 대상의 기하학적 정보를 포함하기 때문에 3D HAR에서 확고한 입지를 다지고 있다. 해당 정보를 얻기 위한 방법은 두가지가 있는데 하나는 3D sensor (cf.&nbsp;LiDar, Kinect) 를 사용하는 것이고 다른 하나는 이미지를 기반으로 한 3차원 재구성 (image based 3D reconstruction) 을 수행하는 것이다.</p>
+<table class="table">
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><img src="https://miro.medium.com/max/1400/1*Gbzp4-b8zXe5JGZmG-uXNw.webp" class="img-fluid" alt="lidar point cloud"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Fig 1. lidar point cloud</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Using point cloud sequence by Voxel</strong></p>
+<p>또한 딥러닝의 발전으로 딥러닝 방법론이 주목받았고, 일반적으로 더 나은 성능을 보였다. 2020년 CVPR에서 “3dv: 3d dynamic voxel for action recognition in depth video,” 발표되어 raw point cloud sequence를 일반적으로 사용할 수 있는 3D 화소 집합 (<code>voxel sets</code>) 으로 변환한 바 있다.</p>
+<ul>
+<li><p>?: temporal rank pooling이 뭘까? 선형대수의 그 rank 인가? rank를 어떻게 풀링하는가…? 그걸 하는게 어떤 효과가 있는가…?</p></li>
+<li><p>voxel : 입체 화상을 구성하는 3D 화소로 volume element를 말한다. 데이터 포인트로 구성되는데 이는 하나 또는 여러개의 데이터 조각으로 구성된다. (e.g.&nbsp;불투명도, 색상 …) 따라서 Vector (or Tensor) 데이터로 구성되며 다양한 속성을 표현할 수 있다. (e.g.&nbsp;CT에서 재료의 불투명도를 부여하는 Hounsfield scale: 방사선의 밀도를 표현)</p>
+<ul>
+<li>pixel : <em>pic</em>ture + <em>el</em>ement
+<ul>
+<li>raster image를 구성하는 가장 작은 단위 또는 display에서 접근 가능한 모든 점들의 집합을 말하며 대부분 digital display 에서 표현되는 그래픽들의 가장 작은 단위로 사용된다.</li>
+</ul></li>
+<li>voxel : <em>vo</em>lume + <em>el</em>ement
+<ul>
+<li>3D Computer graphic에서 3차원 상의 일반 격자(regular grid)를 나타내기 위한 단위로, 고유한 state parameter를 가지며 모델 객체에 종속된다. (<a href="https://en.wikipedia.org/wiki/Voxel">wiki</a>)
+<ul>
+<li><em>regular grid?</em> : grid는 regular grid와 irregular grid로 구분되는데 일반 격자는 테셀레이션(tesselation)의 n차원 유클리디안 공간으로 규칙적인 간격을 가진다.</li>
+<li><em>tesselation?</em> : 테셀레이션은 computer graphic 용어로 장면의 객체를 렌더링하기에 적합하도록 나타내는 다각형 데이터 집합 또는 vertex sets 이다.*</li>
+</ul></li>
+</ul></li>
+<li>texel : <em>tex</em>ture + <em>el</em>ement
+<ul>
+<li>texture map의 기본단위로, 이미지를 픽셀로 표현하는 것 처럼 배열을 texture 공간에 나타내어 질감을 표현한다.</li>
+</ul></li>
+<li>resel : <em>res</em>olution + <em>el</em>ement
+<ul>
+<li>실제 공간 해상도에서 이미지 또는 부피데이터셋이 차지하는 비율을 나타낸다. resels per pixel, resels per voxel 등으로 표현한다.</li>
+</ul></li>
+</ul></li>
+</ul>
+<p>이렇듯 voxel에는 다양한 속성을 표현할 수 있으므로 voxel sets 을 3D action information으로 인코딩할 수 있다. 이러한 추상화 과정을 통해 학습한 모델이 <code>PointNet++</code>다.</p>
+<p>물론, point cloud를 voxel로 변환하는 과정에서 다량의 양자화 오차(quantization errors)가 발생하여 효력면에서 충분히 효과적이지 않은데 이를 해결하기 위해 제안된 모델이 <code>MeteorNet</code>이다. 해당 모델은 여러 프레임의 point cloud들을 local 특성으로 합산하는데 이 때 spatio-temporal neighboring point 들을 사용한다. 다시 말해, 모든 point cloud를 voxel로 변환할 때 유실되는 값이 많으므로 국소 범위에서 관계가 있을 것으로 추정되는 주변 값을 변환하고, 또 변환하여 오차를 줄이는 방식을 채용한 셈이다. - 양자화 오차 : ADC (Analog to Digital Converter) 에서 입력 아날로그 신호가 출력 디지털 신호로 변환될 때 유실되는 값이다.</p>
+<p>이와 반대로 점의 공간적 불규칙성이 정보값에 혼란을 줄 것을 우려한 <code>PSTNet</code>은 시공간 정보를 분리하기도 했다.</p>
+<p><strong>Modeling</strong></p>
+<p>이렇게 재구성된 Point Cloud로 수행해야하는 바는 다른 modality와 동일하게, 시공간을 동시에 고려고 그 특성을 파악하는 작업이다. 3차원 공간의 정보의 누수를 막고 voxel sets을 구해낸 후의 연구는 시간을 모델링하는데 초점을 맞추는데 이는 여타 방법론과 유사하다. RNN 기반의 모델인 LSTM을 적용한다. 눈여겨 볼 점은 4D CNN이 도입되었다는 점인데, 이는 LSTM 도입의 연장선으로 이미 3차원인 공간 모델링에 시간 차원을 추가하는 방식이다. - self-supervised modeling이 상대적으로 자주 언급되는데 최신 연구이기 때문인지 point cloud 특성 때문인지 확인이 필요하다.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/dotpyo\.github\.io\/archive");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/dotpyo/archive/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

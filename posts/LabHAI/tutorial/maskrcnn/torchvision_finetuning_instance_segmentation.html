@@ -1,0 +1,1401 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.551">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="dotpyo">
+<meta name="description" content="Object Detection을 가볍게 다루고 구현을 중심으로 정리한다.">
+
+<title>archive - finetuning tutorial</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../../">
+<link href="../../../../favicon.ico" rel="icon">
+<script src="../../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-L5Y3XFBP62"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-L5Y3XFBP62', { 'anonymize_ip': true});
+</script>
+<meta name="referrer" content="strict-origin-when-cross-origin">
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../../../index.html">
+    <span class="navbar-title">archive</span>
+    </a>
+  </div>
+        <div class="quarto-navbar-tools tools-wide tools-end">
+    <a href="../../../../CV.html" title="&amp;nbsp;" class="quarto-navigation-tool px-1" aria-label="&amp;nbsp;"><i class="bi bi-person-circle"></i></a>
+    <a href="https://github.com/dotpyo" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+          <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-page">
+      <h1 class="title">finetuning tutorial</h1>
+            <p class="subtitle lead">TorchVision Object Detection Finetuning Tutorial</p>
+                  <div>
+        <div class="description">
+          Object Detection을 가볍게 다루고 구현을 중심으로 정리한다.
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">PyTorch</div>
+                <div class="quarto-category">computer vision</div>
+                <div class="quarto-category">tutorial</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta column-page">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>dotpyo <a href="mailto:4923.py@gmail.com" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> </p>
+            </div>
+    </div>
+      
+    
+      <div>
+      <div class="quarto-title-meta-heading">Modified</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date-modified">March 10, 2024</p>
+      </div>
+    </div>
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block column-page" id="quarto-document-content">
+
+
+
+
+
+<!-- WARNING: THIS FILE WAS AUTOGENERATED! DO NOT EDIT! -->
+<pre><code>  pytorch                               2.2.1-py3.10_0
+  torchaudio                            2.2.1-py310_cpu
+  torchvision                           0.17.1-py310_cpu</code></pre>
+<table class="table">
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><img a="sample penn-fundan DS" src="https://github.com/dotpyo/archive/assets/60145951/3c5ec485-1520-4df8-9b2b-188c92e7d699" width="100%"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Penn-Fudan Database sample (image, mask)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Dataset: Penn-Fudan Database for Pedestrian Detection and Segmentation
+<ul>
+<li>number
+<ul>
+<li>(total) 170 images</li>
+<li>(total) 345 instances of pedestrians<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></li>
+</ul></li>
+<li>usually used benchmark as segmentation</li>
+<li><a href="https://www.cis.upenn.edu/~jshi/ped_html/">https://www.cis.upenn.edu/~jshi/ped_html/</a></li>
+</ul></li>
+<li>Model: pretrained Mask R-CNN</li>
+</ul>
+<div id="cell-5" class="cell" data-execution_count="44">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> torchvision</span>
+<span id="cb2-2"><a href="#cb2-2"></a></span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="co"># FastRCNN: https://arxiv.org/abs/1506.01497</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="im">from</span> torchvision.models.detection.faster_rcnn <span class="im">import</span> FastRCNNPredictor</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="배경지식" class="level3">
+<h3 class="anchored" data-anchor-id="배경지식">배경지식</h3>
+<div class="callout callout-style-simple callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Object detection history
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong><a href="http://www.huppelen.nl/publications/selectiveSearchDraft.pdf">Selective Search for Object Recognition</a></strong></p>
+<ol type="1">
+<li>Sliding window<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>: 목표는 이미지의 전체 영역을 다양한 크기의 window로 sliding 시키고 각 window에 목표 object가 포함되는지 탐색한다. 컴퓨팅 리소스를 비효율적으로 사용한다.</li>
+<li>Region Proposal<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>: 직관적으로 생각했을 때 전체 이미지를 확인하는건 당연히 비효율적이다. <code>물체가 있을만한 구역</code>(RoI; Region of Interest)을 살피는게 중요하다.
+<ul>
+<li><p>selective search: 논문에서 밝힌 바에 따르면 해당 알고리즘은 다음 목표를 가지고 설계되었다.</p>
+<table class="table">
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><img a="selective search" src="https://github.com/dotpyo/archive/assets/60145951/c06c82c0-19a6-43d0-8c9e-1fdab3c61407" width="100%"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">selective search example</td>
+</tr>
+</tbody>
+</table>
+<ol type="1">
+<li>Capture All Scale: 객체는 어떤 형태로든 나타날 수 있다. 따라서 위의 이미지처럼 다양한 크기의 bbox를 만들어 사용한다.
+<ul>
+<li>hierarchical grouping algorithm; segmentation에서 일반적으로 사용하는 bottom up grouping이 비슷한 특징을 가진 것끼리 묶는 방식이라면 selective search는 이미 비슷한 특징을 가진 픽셀을 분류해두었다. 따라서 같은 객체에 해당하는 것끼리 묶기만 하면 된다.</li>
+</ul></li>
+<li>Diversification: 특정 구역을 지정하지 않는다. 구역은 인접한 곳의 색깔, 질감 등을 고려하여 설정되며 밝기까지 이 구역 생성 방법에 영향을 미친다.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></li>
+<li>Fast to Compute: 이렇게 다양한 조건을 고려하면 컴퓨팅 리소스를 많이 사용하지 않을까? 아니다. 이 알고리즘의 개발 목표부터 효율 추구였다.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> 위와 같은 bbox 생성 과정<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>은 컴퓨터 병목현상<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a> <a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>에 걸리지 않을 것을 목표로 한다. 결국 2.1.에서 언급한 hierarchical algorithm(or hypotheses)가 제대로 작동했기에 효율적인 컴퓨팅 리소스 사용이 가능해졌다.</li>
+</ol></li>
+</ul></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+1 stage detector vs 2 stage detector
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<blockquote class="blockquote">
+<p>object detection을 한번에 진행하느냐, 두단계에 나눠서 진행하느냐</p>
+</blockquote>
+<table class="table">
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><img a="object detection" src="https://github.com/dotpyo/archive/assets/60145951/a0dbb2ce-972e-4d0e-8533-25b516863e90" width="100%"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Zou et al.&nbsp;2019. Object Detection in 20 Years: A Survey</td>
+</tr>
+</tbody>
+</table>
+<ol type="1">
+<li>1-Stage는 RoI가 아니라 <code>Anchor box</code>를 추출한다. 먼저 이미지를 그리드 단위로 나누고, 그리드에서 confidence matrix를 생성한다. 이때문에 이미지의 맥락적 이해도가 낮고 2 stage보다 정확도가 떨어질 수 있지만 속도가 빠르다는 장점이 있어 영상처리 등에서 사용된다.
+<ul>
+<li>e.g.&nbsp;YOLO, SSD</li>
+</ul></li>
+<li>2-Stage는 고전적인 방식처럼 1. <code>RoI</code>를 탐지하고 2. Classification 또는 Box Regression을 진행한다. 여기서 bbox를 뽑는 과정은 box regression, classification은 이미지 자체의 답을 분류하는 일이다.
+<ul>
+<li>e.g.&nbsp;R-CNN계열: Fast R-CNN, Faster R-CNN</li>
+</ul></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Faster R-CNN, Mask R-CNN; Image Segmentation
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<blockquote class="blockquote">
+<p>based on top of Faster R-CNN; a model that predict both bounding boxes and class scores for potential objects in the image</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>regional proposal에서 selective search가 <strong>아닌</strong> CNN을 사용한다. (=<code>RPN</code>)</p>
+</blockquote>
+<p>Faster R-CNN의 한 종류 중 하나다. 분기점은 어디에 있을까? R-CNN이 ’potential object in the image’를 찾아내는 과정이었다면 Mask R-CNN은 그 범주를 <code>bounding box</code><a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a> 와 <code>segmentation</code><a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a> 하여 구체화한다. 같은 class여도 다른 객체로 인식하는 instance segmentation task에서 사용하기 위해 개발되었다.</p>
+<p><strong><a href="https://arxiv.org/pdf/1506.01497.pdf">Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks</a></strong></p>
+<ul>
+<li>Region Proposal Network, RPN
+<ul>
+<li>앞서 언급한 것과 같이 CNN으로 이루어져 있다.</li>
+<li>하나의 CNN으로 region proposal을 제안하고, object detection도 수행한다. = detection network인 R-CNN과 연산을 공유한다.</li>
+<li>이 과정이 FPN의 핵심이고, Mask R-CNN도 해당 과정을 채택했다고 직접 언급했다.</li>
+<li>과정
+<ol type="1">
+<li>특성 추출; 이 과정을 어떻게 진행하느냐에 따라 방법론이 달라진다. (RPN)
+<ol type="1">
+<li>이미지를 사전학습 된 Conv Layer에 통과시켜 feature map을 추출한다.</li>
+<li><em>backbone network</em>를 얻은 feature map의 각 위치에서 sliding window를 수행한다.<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a>
+<ul>
+<li>[발췌] slide a small network over the convolution feature map output
+<ul>
+<li>small network! takes input as an <span class="math inline">\(n \times n\)</span> spatial windows</li>
+</ul></li>
+</ul></li>
+<li>region proposal 생성을 위해 k개의 anchor box를 사용한다.</li>
+<li>최종적으로 bbox를 결정하게 된다.</li>
+</ol></li>
+<li>RoIPool을 통해 bbox cls, bbox reg를 진행하는 과정 (Fast R-CNN identical)
+<ol type="1">
+<li>classification 과정으로, k개의 box에 객체가 있는지 없는지 binary score로 결과를 준다.</li>
+<li>regression layer가 k개 box의 좌표를 출력한다.<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a></li>
+</ol></li>
+</ol></li>
+</ul></li>
+</ul>
+<p><strong><a href="https://arxiv.org/pdf/1703.06870.pdf">Mask R-CNN</a></strong></p>
+<ul>
+<li>Mask R-CNN
+<ul>
+<li>RPN에서 RoI를 가져오고, mask branch를 추가한 형태다.
+<ul>
+<li>bbox reg branch와 평행으로 추가</li>
+<li>mask branch; 각 RoI에 작은 FCN을 추가한 형태</li>
+</ul></li>
+</ul>
+<ol type="1">
+<li>RoI: R-CNN에서 사용하는 RoIPool 대신 RoIAlign을 사용한다.
+<ul>
+<li>RoIPool: RoI로부터 작은 크기의 feature map을 추출한다.<a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a></li>
+<li>RoIAlign: RoIPool에서의 양자화를 제거하고 bilinear interpolation을 통해 <em>추출된 특징에 맞게</em> align되게 한다. 즉, 위치정보를 보존할 수 있다.</li>
+</ul></li>
+<li>mask branch: segmentation은 픽셀 단위의 이미지 classification이다. 공간 정보가 보존된 RoI map이 있으므로 binary mask를 출력할 수 있다.<a href="#fn14" class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a></li>
+</ol></li>
+</ul>
+<p><br></p>
+<ul>
+<li>출처
+<ul>
+<li><a href="https://deep-learning-study.tistory.com/464">https://deep-learning-study.tistory.com/464</a></li>
+<li><a href="https://herbwood.tistory.com/10">https://herbwood.tistory.com/10</a></li>
+<li><a href="https://ropiens.tistory.com/76">https://ropiens.tistory.com/76</a></li>
+<li><a href="https://velog.io/@skhim520/Mask-R-CNN-%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0">https://velog.io/<span class="citation" data-cites="skhim520/Mask-R-CNN">@skhim520/Mask-R-CNN</span>-%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0</a></li>
+<li><a href="https://medium.com/@parkie0517/mask-r-cnn-%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-roialign-mask-prediction-branch%EC%97%90-%EA%B4%80%ED%95%B4%EC%84%9C-%EC%82%B4%ED%8E%B4%EB%B3%B4%EA%B8%B0-1b1fc2715600">RoI Align</a></li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="라이브러리" class="level3">
+<h3 class="anchored" data-anchor-id="라이브러리">라이브러리</h3>
+<div id="cell-8" class="cell" data-execution_count="45">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">import</span> os</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="im">import</span> torch</span>
+<span id="cb3-3"><a href="#cb3-3"></a></span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="im">from</span> torchvision.io <span class="im">import</span> read_image </span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="im">from</span> torchvision.ops.boxes <span class="im">import</span> masks_to_boxes</span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="im">from</span> torchvision <span class="im">import</span> tv_tensors</span>
+<span id="cb3-7"><a href="#cb3-7"></a><span class="im">from</span> torchvision.transforms.v2 <span class="im">import</span> functional <span class="im">as</span> F</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="데이터셋-생성" class="level3">
+<h3 class="anchored" data-anchor-id="데이터셋-생성">데이터셋 생성</h3>
+<div id="cell-11" class="cell" data-execution_count="47">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="im">from</span> torchvision.io <span class="im">import</span> read_image</span>
+<span id="cb4-3"><a href="#cb4-3"></a></span>
+<span id="cb4-4"><a href="#cb4-4"></a></span>
+<span id="cb4-5"><a href="#cb4-5"></a>image <span class="op">=</span> read_image(<span class="st">"data/PennFudanPed/PNGImages/FudanPed00046.png"</span>)</span>
+<span id="cb4-6"><a href="#cb4-6"></a>mask <span class="op">=</span> read_image(<span class="st">"data/PennFudanPed/PedMasks/FudanPed00046_mask.png"</span>)</span>
+<span id="cb4-7"><a href="#cb4-7"></a></span>
+<span id="cb4-8"><a href="#cb4-8"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">16</span>, <span class="dv">8</span>))</span>
+<span id="cb4-9"><a href="#cb4-9"></a>plt.subplot(<span class="dv">121</span>)</span>
+<span id="cb4-10"><a href="#cb4-10"></a>plt.title(<span class="st">"Image"</span>)</span>
+<span id="cb4-11"><a href="#cb4-11"></a>plt.imshow(image.permute(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">0</span>))</span>
+<span id="cb4-12"><a href="#cb4-12"></a>plt.subplot(<span class="dv">122</span>)</span>
+<span id="cb4-13"><a href="#cb4-13"></a>plt.title(<span class="st">"Mask"</span>)</span>
+<span id="cb4-14"><a href="#cb4-14"></a>plt.imshow(mask.permute(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="torchvision_finetuning_instance_segmentation_files/figure-html/cell-5-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-12" class="cell" data-execution_count="48">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="co">"""데이터를 한번에 불러오기"""</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="kw">class</span> PennFudanDataset(torch.utils.data.Dataset):</span>
+<span id="cb5-3"><a href="#cb5-3"></a>    <span class="co"># `root dir` 에서의 `root`</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, root, transforms):</span>
+<span id="cb5-5"><a href="#cb5-5"></a>        <span class="va">self</span>.root <span class="op">=</span> root </span>
+<span id="cb5-6"><a href="#cb5-6"></a>        <span class="va">self</span>.transforms <span class="op">=</span> transforms </span>
+<span id="cb5-7"><a href="#cb5-7"></a></span>
+<span id="cb5-8"><a href="#cb5-8"></a>        <span class="co"># load all image file</span></span>
+<span id="cb5-9"><a href="#cb5-9"></a>        <span class="co"># ensure that they are aligned; img, mask 한꺼번에 다루기 위해 </span></span>
+<span id="cb5-10"><a href="#cb5-10"></a>        <span class="va">self</span>.imgs <span class="op">=</span> <span class="bu">list</span>(<span class="bu">sorted</span>(os.listdir(os.path.join(root, <span class="st">"PNGImages"</span>))))</span>
+<span id="cb5-11"><a href="#cb5-11"></a>        <span class="va">self</span>.masks <span class="op">=</span> <span class="bu">list</span>(<span class="bu">sorted</span>(os.listdir(os.path.join(root, <span class="st">"PedMasks"</span>))))</span>
+<span id="cb5-12"><a href="#cb5-12"></a>    </span>
+<span id="cb5-13"><a href="#cb5-13"></a>    <span class="kw">def</span> <span class="fu">__getitem__</span>(<span class="va">self</span>, idx):</span>
+<span id="cb5-14"><a href="#cb5-14"></a>        <span class="co"># load images and masks</span></span>
+<span id="cb5-15"><a href="#cb5-15"></a>        img_path <span class="op">=</span> os.path.join(<span class="va">self</span>.root, <span class="st">"PNGImages"</span>, <span class="va">self</span>.imgs[idx])</span>
+<span id="cb5-16"><a href="#cb5-16"></a>        mask_path <span class="op">=</span> os.path.join(<span class="va">self</span>.root, <span class="st">"PedMasks"</span>, <span class="va">self</span>.masks[idx])</span>
+<span id="cb5-17"><a href="#cb5-17"></a>        <span class="co"># 위에서 import 한 torchvision의 read_image사용</span></span>
+<span id="cb5-18"><a href="#cb5-18"></a>        img <span class="op">=</span> read_image(img_path)      <span class="co"># [3, 397, 396]</span></span>
+<span id="cb5-19"><a href="#cb5-19"></a>        mask <span class="op">=</span> read_image(mask_path)    <span class="co"># [1, 397, 396]</span></span>
+<span id="cb5-20"><a href="#cb5-20"></a></span>
+<span id="cb5-21"><a href="#cb5-21"></a>        <span class="co"># 고유한 값 추출</span></span>
+<span id="cb5-22"><a href="#cb5-22"></a>        <span class="co"># torch.unique(input:Tensor) -&gt; return the unique elements of the input tensor</span></span>
+<span id="cb5-23"><a href="#cb5-23"></a>        obj_ids <span class="op">=</span> torch.unique(mask)    <span class="co"># [0, 1, 2] (shape: [3])</span></span>
+<span id="cb5-24"><a href="#cb5-24"></a>        obj_ids <span class="op">=</span> obj_ids [<span class="dv">1</span>:]          <span class="co"># 이때 첫값은 배경: black</span></span>
+<span id="cb5-25"><a href="#cb5-25"></a>        num_objs <span class="op">=</span> <span class="bu">len</span>(obj_ids)         <span class="co"># 총 채널 개수</span></span>
+<span id="cb5-26"><a href="#cb5-26"></a></span>
+<span id="cb5-27"><a href="#cb5-27"></a>        <span class="co"># split the color-encoded mask into a set of binary masks</span></span>
+<span id="cb5-28"><a href="#cb5-28"></a>        <span class="co"># mask: [2, 1, 1] 형태의 [0, 1]로 이루어진 행렬; binary mask</span></span>
+<span id="cb5-29"><a href="#cb5-29"></a>        masks <span class="op">=</span> (mask <span class="op">==</span> obj_ids[:, <span class="va">None</span>, <span class="va">None</span>]).to(dtype<span class="op">=</span>torch.uint8)</span>
+<span id="cb5-30"><a href="#cb5-30"></a></span>
+<span id="cb5-31"><a href="#cb5-31"></a>        <span class="co"># bbox generate</span></span>
+<span id="cb5-32"><a href="#cb5-32"></a>        <span class="co"># shape: [number of people, 4]</span></span>
+<span id="cb5-33"><a href="#cb5-33"></a>        boxes <span class="op">=</span> masks_to_boxes(mask)    <span class="co"># [x1, y1, x2, y2], 사람의 수만큼 해당 행렬이 포함되어있다.</span></span>
+<span id="cb5-34"><a href="#cb5-34"></a></span>
+<span id="cb5-35"><a href="#cb5-35"></a>        <span class="co"># label이 하나이므로 (1) 속하느냐 (0) 속하지 않느냐 로 구분된다.</span></span>
+<span id="cb5-36"><a href="#cb5-36"></a>        labels <span class="op">=</span> torch.ones((num_objs,), dtype<span class="op">=</span>torch.int64)</span>
+<span id="cb5-37"><a href="#cb5-37"></a></span>
+<span id="cb5-38"><a href="#cb5-38"></a>        image_id <span class="op">=</span> idx</span>
+<span id="cb5-39"><a href="#cb5-39"></a>        area <span class="op">=</span> (boxes[:, <span class="dv">3</span>] <span class="op">-</span> boxes[:, <span class="dv">1</span>]) <span class="op">*</span> (boxes[:, <span class="dv">2</span>] <span class="op">-</span> boxes[:, <span class="dv">0</span>])</span>
+<span id="cb5-40"><a href="#cb5-40"></a>        <span class="co"># suppose all instances are not crowd</span></span>
+<span id="cb5-41"><a href="#cb5-41"></a>        iscrowd <span class="op">=</span> torch.zeros((num_objs,), dtype<span class="op">=</span>torch.int64)</span>
+<span id="cb5-42"><a href="#cb5-42"></a></span>
+<span id="cb5-43"><a href="#cb5-43"></a>        <span class="co"># Wrap sample and targets into torchvision tv_tensors:</span></span>
+<span id="cb5-44"><a href="#cb5-44"></a>        img <span class="op">=</span> tv_tensors.Image(img)</span>
+<span id="cb5-45"><a href="#cb5-45"></a></span>
+<span id="cb5-46"><a href="#cb5-46"></a>        target <span class="op">=</span> {}</span>
+<span id="cb5-47"><a href="#cb5-47"></a>        target[<span class="st">"boxes"</span>] <span class="op">=</span> tv_tensors.BoundingBoxes(</span>
+<span id="cb5-48"><a href="#cb5-48"></a>                            boxes, </span>
+<span id="cb5-49"><a href="#cb5-49"></a>                            <span class="bu">format</span><span class="op">=</span><span class="st">"XYXY"</span>, canvas_size<span class="op">=</span>F.get_size(img))</span>
+<span id="cb5-50"><a href="#cb5-50"></a>        target[<span class="st">"masks"</span>] <span class="op">=</span> tv_tensors.Mask(masks)</span>
+<span id="cb5-51"><a href="#cb5-51"></a>        target[<span class="st">"labels"</span>] <span class="op">=</span> labels</span>
+<span id="cb5-52"><a href="#cb5-52"></a>        target[<span class="st">"image_id"</span>] <span class="op">=</span> image_id</span>
+<span id="cb5-53"><a href="#cb5-53"></a>        target[<span class="st">"area"</span>] <span class="op">=</span> area</span>
+<span id="cb5-54"><a href="#cb5-54"></a>        target[<span class="st">"iscrowd"</span>] <span class="op">=</span> iscrowd</span>
+<span id="cb5-55"><a href="#cb5-55"></a></span>
+<span id="cb5-56"><a href="#cb5-56"></a>        <span class="cf">if</span> <span class="va">self</span>.transforms <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb5-57"><a href="#cb5-57"></a>            img, target <span class="op">=</span> <span class="va">self</span>.transforms(img, target)</span>
+<span id="cb5-58"><a href="#cb5-58"></a></span>
+<span id="cb5-59"><a href="#cb5-59"></a>        <span class="cf">return</span> img, target</span>
+<span id="cb5-60"><a href="#cb5-60"></a></span>
+<span id="cb5-61"><a href="#cb5-61"></a>    <span class="kw">def</span> <span class="fu">__len__</span>(<span class="va">self</span>):</span>
+<span id="cb5-62"><a href="#cb5-62"></a>        <span class="cf">return</span> <span class="bu">len</span>(<span class="va">self</span>.imgs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="모델-선언" class="level3">
+<h3 class="anchored" data-anchor-id="모델-선언">모델 선언</h3>
+<div id="cell-14" class="cell" data-execution_count="49">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="im">import</span> torchvision</span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="im">from</span> torchvision.models.detection.faster_rcnn <span class="im">import</span> FastRCNNPredictor</span>
+<span id="cb6-3"><a href="#cb6-3"></a></span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="co"># load a model pre-trained on COCO; backbone</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a>model <span class="op">=</span> torchvision.models.detection.fasterrcnn_resnet50_fpn(weights<span class="op">=</span><span class="st">"DEFAULT"</span>)</span>
+<span id="cb6-6"><a href="#cb6-6"></a></span>
+<span id="cb6-7"><a href="#cb6-7"></a><span class="co"># replace the classifier with a new one, that has</span></span>
+<span id="cb6-8"><a href="#cb6-8"></a><span class="co"># num_classes which is user-defined</span></span>
+<span id="cb6-9"><a href="#cb6-9"></a>num_classes <span class="op">=</span> <span class="dv">2</span>  <span class="co"># 1 class (person) + background</span></span>
+<span id="cb6-10"><a href="#cb6-10"></a><span class="co"># get number of input features for the classifier</span></span>
+<span id="cb6-11"><a href="#cb6-11"></a>in_features <span class="op">=</span> model.roi_heads.box_predictor.cls_score.in_features</span>
+<span id="cb6-12"><a href="#cb6-12"></a><span class="co"># replace the pre-trained head with a new one</span></span>
+<span id="cb6-13"><a href="#cb6-13"></a>model.roi_heads.box_predictor <span class="op">=</span> FastRCNNPredictor(in_features, num_classes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="backbone" class="level4">
+<h4 class="anchored" data-anchor-id="backbone">backbone</h4>
+<div id="cell-16" class="cell" data-execution_count="50">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="im">import</span> torchvision</span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="im">from</span> torchvision.models.detection <span class="im">import</span> FasterRCNN</span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="co"># AnchorGenerator:</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a><span class="co">#   that generates anchors for a set of feature maps and image sizes.</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a><span class="co">#   The module support computing anchors at multiple sizes </span></span>
+<span id="cb7-6"><a href="#cb7-6"></a><span class="co">#   and aspect ratios per feature map. </span></span>
+<span id="cb7-7"><a href="#cb7-7"></a><span class="im">from</span> torchvision.models.detection.rpn <span class="im">import</span> AnchorGenerator</span>
+<span id="cb7-8"><a href="#cb7-8"></a></span>
+<span id="cb7-9"><a href="#cb7-9"></a></span>
+<span id="cb7-10"><a href="#cb7-10"></a><span class="co"># --- load a pre-trained model for cls --- #</span></span>
+<span id="cb7-11"><a href="#cb7-11"></a><span class="co"># https://github.com/pytorch/vision/blob/main/torchvision/models/mobilenetv2.py</span></span>
+<span id="cb7-12"><a href="#cb7-12"></a><span class="co"># backbone의 결과값은 ordered dict이므로 인덱싱도 가능</span></span>
+<span id="cb7-13"><a href="#cb7-13"></a>backbone <span class="op">=</span> torchvision.models.mobilenet_v3_small(weights<span class="op">=</span><span class="st">"DEFAULT"</span>).features</span>
+<span id="cb7-14"><a href="#cb7-14"></a><span class="co"># ``FasterRCNN`` needs to know the number of output channels in a backbone.</span></span>
+<span id="cb7-15"><a href="#cb7-15"></a><span class="co">#   \because backbone의 output channel이 anchor box가 된다.</span></span>
+<span id="cb7-16"><a href="#cb7-16"></a><span class="co"># torchvision.models.mobilenet_v2(weights="DEFAULT").features 코드로 확인 가능</span></span>
+<span id="cb7-17"><a href="#cb7-17"></a><span class="co"># 설계상 Conv 마지막 레이어를 빠져나오면 last channel이 1280으로 된다.</span></span>
+<span id="cb7-18"><a href="#cb7-18"></a>backbone.out_channels <span class="op">=</span> <span class="dv">1280</span></span>
+<span id="cb7-19"><a href="#cb7-19"></a></span>
+<span id="cb7-20"><a href="#cb7-20"></a><span class="co"># --- RPN anchors: 5 x 3 --- #</span></span>
+<span id="cb7-21"><a href="#cb7-21"></a><span class="co"># 5 different sizes and 3 different aspect(측면 비율)</span></span>
+<span id="cb7-22"><a href="#cb7-22"></a><span class="co"># 각 특징 맵이 잠재적으로 다른 사이즈와 측면 비율을 가질 수 있기 때문</span></span>
+<span id="cb7-23"><a href="#cb7-23"></a>anchor_generator <span class="op">=</span> AnchorGenerator(</span>
+<span id="cb7-24"><a href="#cb7-24"></a>    sizes<span class="op">=</span>((<span class="dv">32</span>, <span class="dv">64</span>, <span class="dv">128</span>, <span class="dv">256</span>, <span class="dv">512</span>)),     <span class="co"># 5</span></span>
+<span id="cb7-25"><a href="#cb7-25"></a>    aspect_ratios<span class="op">=</span>((<span class="fl">0.5</span>, <span class="fl">1.0</span>, <span class="fl">2.0</span>))     <span class="co"># 3</span></span>
+<span id="cb7-26"><a href="#cb7-26"></a>)</span>
+<span id="cb7-27"><a href="#cb7-27"></a></span>
+<span id="cb7-28"><a href="#cb7-28"></a><span class="co"># --- define feature map --- #</span></span>
+<span id="cb7-29"><a href="#cb7-29"></a><span class="co"># backbone이 Tensor를 반환할 때 'feature_names'는 [0]이 될 것으로 가정</span></span>
+<span id="cb7-30"><a href="#cb7-30"></a><span class="co"># 일반적으로 백본은 OrderedDict[Tensor] 이르모 이름을 정할 수 있다.</span></span>
+<span id="cb7-31"><a href="#cb7-31"></a>roi_pooler <span class="op">=</span> torchvision.ops.MultiScaleRoIAlign(</span>
+<span id="cb7-32"><a href="#cb7-32"></a>    featmap_names <span class="op">=</span> [<span class="st">'0'</span>],  <span class="co"># List[str]</span></span>
+<span id="cb7-33"><a href="#cb7-33"></a>    output_size<span class="op">=</span><span class="dv">7</span>,  <span class="co"># 구현된 바 7x7 이었음</span></span>
+<span id="cb7-34"><a href="#cb7-34"></a>    sampling_ratio<span class="op">=</span><span class="dv">2</span></span>
+<span id="cb7-35"><a href="#cb7-35"></a>)   </span>
+<span id="cb7-36"><a href="#cb7-36"></a></span>
+<span id="cb7-37"><a href="#cb7-37"></a><span class="co"># --- define model --- #</span></span>
+<span id="cb7-38"><a href="#cb7-38"></a>model <span class="op">=</span> FasterRCNN(</span>
+<span id="cb7-39"><a href="#cb7-39"></a>    backbone<span class="op">=</span>backbone,</span>
+<span id="cb7-40"><a href="#cb7-40"></a>    num_classes<span class="op">=</span><span class="dv">2</span>,      <span class="co"># binary segmentation</span></span>
+<span id="cb7-41"><a href="#cb7-41"></a>    rpn_anchor_generator<span class="op">=</span>anchor_generator,</span>
+<span id="cb7-42"><a href="#cb7-42"></a>    box_roi_pool<span class="op">=</span>roi_pooler</span>
+<span id="cb7-43"><a href="#cb7-43"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="데이터셋에-맞추어-객체-검출-object-detection-segmentation" class="level4">
+<h4 class="anchored" data-anchor-id="데이터셋에-맞추어-객체-검출-object-detection-segmentation">데이터셋에 맞추어 객체 검출 (object detection, segmentation)</h4>
+<ul>
+<li>1 stage 방법론을 채택</li>
+</ul>
+<div id="cell-18" class="cell" data-execution_count="52">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="im">import</span> torchvision</span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="im">from</span> torchvision.models.detection.faster_rcnn <span class="im">import</span> FastRCNNPredictor</span>
+<span id="cb8-3"><a href="#cb8-3"></a><span class="im">from</span> torchvision.models.detection.mask_rcnn <span class="im">import</span> MaskRCNNPredictor</span>
+<span id="cb8-4"><a href="#cb8-4"></a></span>
+<span id="cb8-5"><a href="#cb8-5"></a><span class="kw">def</span> get_model_instance_segmentation(num_classes):</span>
+<span id="cb8-6"><a href="#cb8-6"></a>    <span class="co"># 사전학습된 모델을 불러올 것</span></span>
+<span id="cb8-7"><a href="#cb8-7"></a>    model <span class="op">=</span> torchvision.models.detection.maskrcnn_resnet50_fpn(weight<span class="op">=</span><span class="st">"DEFAULT"</span>)</span>
+<span id="cb8-8"><a href="#cb8-8"></a></span>
+<span id="cb8-9"><a href="#cb8-9"></a>    <span class="co"># '분류를 위해' 입력 특징을 받아온다.</span></span>
+<span id="cb8-10"><a href="#cb8-10"></a>    in_features <span class="op">=</span> model.roi_heads.box_predictor.cls_score.in_features</span>
+<span id="cb8-11"><a href="#cb8-11"></a>    <span class="co"># 미리 학습된 헤더를 새로운 것으로 바꾸는데, 헤더란?</span></span>
+<span id="cb8-12"><a href="#cb8-12"></a>    model.roi_heads.box_predictor <span class="op">=</span> FastRCNNPredictor(in_features, num_classes)</span>
+<span id="cb8-13"><a href="#cb8-13"></a></span>
+<span id="cb8-14"><a href="#cb8-14"></a>    <span class="co"># mask predictor'를 위한' 입력 특징의 '차원'을 얻는다.</span></span>
+<span id="cb8-15"><a href="#cb8-15"></a>    in_features_mask <span class="op">=</span> model.roi_heads.mask_predictor.conv5_mask.in_channels</span>
+<span id="cb8-16"><a href="#cb8-16"></a>    hidden_layer <span class="op">=</span> <span class="dv">256</span></span>
+<span id="cb8-17"><a href="#cb8-17"></a>    <span class="co"># mask predictor 변경</span></span>
+<span id="cb8-18"><a href="#cb8-18"></a>    model.roi_heads.mask_predictor <span class="op">=</span> MaskRCNNPredictor(in_features_mask,</span>
+<span id="cb8-19"><a href="#cb8-19"></a>                                                        hidden_layer,</span>
+<span id="cb8-20"><a href="#cb8-20"></a>                                                        num_classes)</span>
+<span id="cb8-21"><a href="#cb8-21"></a></span>
+<span id="cb8-22"><a href="#cb8-22"></a>    <span class="cf">return</span> model</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="통합" class="level3">
+<h3 class="anchored" data-anchor-id="통합">통합</h3>
+<div id="cell-20" class="cell" data-execution_count="53">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># #| output: false</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="co"># os.system("wget https://raw.githubusercontent.com/pytorch/vision/main/references/detection/engine.py")</span></span>
+<span id="cb9-3"><a href="#cb9-3"></a><span class="co"># os.system("wget https://raw.githubusercontent.com/pytorch/vision/main/references/detection/utils.py")</span></span>
+<span id="cb9-4"><a href="#cb9-4"></a><span class="co"># os.system("wget https://raw.githubusercontent.com/pytorch/vision/main/references/detection/coco_utils.py")</span></span>
+<span id="cb9-5"><a href="#cb9-5"></a><span class="co"># os.system("wget https://raw.githubusercontent.com/pytorch/vision/main/references/detection/coco_eval.py")</span></span>
+<span id="cb9-6"><a href="#cb9-6"></a><span class="co"># os.system("wget https://raw.githubusercontent.com/pytorch/vision/main/references/detection/transforms.py")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="데이터-증강-및-변환" class="level4">
+<h4 class="anchored" data-anchor-id="데이터-증강-및-변환">데이터 증강 및 변환</h4>
+<div id="cell-22" class="cell" data-execution_count="54">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># import transforms as T  # ModuleNotFoundError: No module named 'sgmllib'</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="im">from</span> torchvision.transforms <span class="im">import</span> v2 <span class="im">as</span> T</span>
+<span id="cb10-3"><a href="#cb10-3"></a></span>
+<span id="cb10-4"><a href="#cb10-4"></a><span class="kw">def</span> get_transform(train):</span>
+<span id="cb10-5"><a href="#cb10-5"></a>    transforms <span class="op">=</span> []</span>
+<span id="cb10-6"><a href="#cb10-6"></a>    transforms.append(T.PILToTensor())</span>
+<span id="cb10-7"><a href="#cb10-7"></a>    transforms.append(T.ToDtype(torch.<span class="bu">float</span>, scale <span class="op">=</span> <span class="va">True</span>))</span>
+<span id="cb10-8"><a href="#cb10-8"></a>    <span class="cf">if</span> train:</span>
+<span id="cb10-9"><a href="#cb10-9"></a>        transforms.append(T.RandomHorizontalFlip(<span class="fl">0.5</span>))</span>
+<span id="cb10-10"><a href="#cb10-10"></a>    <span class="cf">return</span> T.Compose(transforms)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>테스트 코드</p>
+<div id="cell-24" class="cell" data-execution_count="55">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="im">import</span> utils</span>
+<span id="cb11-2"><a href="#cb11-2"></a></span>
+<span id="cb11-3"><a href="#cb11-3"></a>model <span class="op">=</span> torchvision.models.detection.fasterrcnn_resnet50_fpn(weights<span class="op">=</span><span class="st">"DEFAULT"</span>)</span>
+<span id="cb11-4"><a href="#cb11-4"></a>dataset <span class="op">=</span> PennFudanDataset(root<span class="op">=</span><span class="st">'./data/PennFudanPed/'</span>, transforms<span class="op">=</span>get_transform(train<span class="op">=</span><span class="va">True</span>))</span>
+<span id="cb11-5"><a href="#cb11-5"></a>data_loader <span class="op">=</span> torch.utils.data.DataLoader(</span>
+<span id="cb11-6"><a href="#cb11-6"></a>    dataset, batch_size<span class="op">=</span><span class="dv">4</span>, shuffle<span class="op">=</span><span class="va">True</span>, num_workers<span class="op">=</span><span class="dv">0</span>,</span>
+<span id="cb11-7"><a href="#cb11-7"></a>    collate_fn<span class="op">=</span>utils.collate_fn)</span>
+<span id="cb11-8"><a href="#cb11-8"></a>    <span class="co"># num_workers=0 issue &gt;&gt; RuntimeError: DataLoader worker (pid(s) 75278) exited unexpectedly</span></span>
+<span id="cb11-9"><a href="#cb11-9"></a><span class="co"># 학습 시</span></span>
+<span id="cb11-10"><a href="#cb11-10"></a>images,targets <span class="op">=</span> <span class="bu">next</span>(<span class="bu">iter</span>(data_loader))</span>
+<span id="cb11-11"><a href="#cb11-11"></a>images <span class="op">=</span> <span class="bu">list</span>(image <span class="cf">for</span> image <span class="kw">in</span> images)</span>
+<span id="cb11-12"><a href="#cb11-12"></a>targets <span class="op">=</span> [{k: v <span class="cf">for</span> k, v <span class="kw">in</span> t.items()} <span class="cf">for</span> t <span class="kw">in</span> targets]</span>
+<span id="cb11-13"><a href="#cb11-13"></a>output <span class="op">=</span> model(images,targets)   <span class="co"># Returns losses and detections</span></span>
+<span id="cb11-14"><a href="#cb11-14"></a><span class="co"># 추론 시</span></span>
+<span id="cb11-15"><a href="#cb11-15"></a>model.<span class="bu">eval</span>()</span>
+<span id="cb11-16"><a href="#cb11-16"></a>x <span class="op">=</span> [torch.rand(<span class="dv">3</span>, <span class="dv">300</span>, <span class="dv">400</span>), torch.rand(<span class="dv">3</span>, <span class="dv">500</span>, <span class="dv">400</span>)]</span>
+<span id="cb11-17"><a href="#cb11-17"></a>predictions <span class="op">=</span> model(x)           <span class="co"># Returns predictions</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="메인-학습-검증" class="level3">
+<h3 class="anchored" data-anchor-id="메인-학습-검증">메인 학습, 검증</h3>
+<div id="cell-26" class="cell" data-execution_count="56">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="cf">if</span> torch.cuda.is_available() : device <span class="op">=</span> torch.device(<span class="st">'cuda'</span>)</span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="cf">elif</span> torch.backends.mps.is_available() : device <span class="op">=</span> torch.device(<span class="st">'mps'</span>)</span>
+<span id="cb12-3"><a href="#cb12-3"></a><span class="cf">else</span> : device<span class="op">=</span>torch.device(<span class="st">'cpu'</span>)</span>
+<span id="cb12-4"><a href="#cb12-4"></a><span class="bu">print</span>(<span class="ss">f'Using </span><span class="sc">{</span>device<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Using mps</code></pre>
+</div>
+</div>
+<div id="cell-27" class="cell" data-execution_count="57">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="im">from</span> engine <span class="im">import</span> train_one_epoch, evaluate</span>
+<span id="cb14-2"><a href="#cb14-2"></a></span>
+<span id="cb14-3"><a href="#cb14-3"></a><span class="co"># GPU: cuda -&gt; mps</span></span>
+<span id="cb14-4"><a href="#cb14-4"></a>device <span class="op">=</span> torch.device(<span class="st">'mps'</span>) <span class="cf">if</span> torch.backends.mps.is_available() <span class="cf">else</span> torch.device(<span class="st">'cpu'</span>)</span>
+<span id="cb14-5"><a href="#cb14-5"></a><span class="co"># device = 'cpu'</span></span>
+<span id="cb14-6"><a href="#cb14-6"></a><span class="bu">print</span>(<span class="ss">f'Using </span><span class="sc">{</span>device<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb14-7"><a href="#cb14-7"></a></span>
+<span id="cb14-8"><a href="#cb14-8"></a><span class="co"># dataset; 2 classes; background, person</span></span>
+<span id="cb14-9"><a href="#cb14-9"></a>num_classes <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb14-10"><a href="#cb14-10"></a><span class="co"># use PennFundanPed dataset, define transform</span></span>
+<span id="cb14-11"><a href="#cb14-11"></a><span class="co"># get_transform; 위에서 정의함 - 50% 확률로 좌우 flip</span></span>
+<span id="cb14-12"><a href="#cb14-12"></a>dataset <span class="op">=</span> PennFudanDataset(<span class="st">'data/PennFudanPed'</span>, get_transform(train<span class="op">=</span><span class="va">True</span>))</span>
+<span id="cb14-13"><a href="#cb14-13"></a>dataset_test <span class="op">=</span> PennFudanDataset(<span class="st">'data/PennFudanPed'</span>, get_transform(train<span class="op">=</span><span class="va">False</span>))</span>
+<span id="cb14-14"><a href="#cb14-14"></a></span>
+<span id="cb14-15"><a href="#cb14-15"></a><span class="co"># split dataset (train, test)</span></span>
+<span id="cb14-16"><a href="#cb14-16"></a>indices <span class="op">=</span> torch.randperm(<span class="bu">len</span>(dataset)).tolist()</span>
+<span id="cb14-17"><a href="#cb14-17"></a>dataset <span class="op">=</span> torch.utils.data.Subset(dataset, indices[:<span class="op">-</span><span class="dv">50</span>])</span>
+<span id="cb14-18"><a href="#cb14-18"></a>dataset_test <span class="op">=</span> torch.utils.data.Subset(dataset_test, indices[<span class="op">-</span><span class="dv">50</span>:])</span>
+<span id="cb14-19"><a href="#cb14-19"></a></span>
+<span id="cb14-20"><a href="#cb14-20"></a><span class="co"># define dataloaders</span></span>
+<span id="cb14-21"><a href="#cb14-21"></a>data_loader <span class="op">=</span> torch.utils.data.DataLoader(</span>
+<span id="cb14-22"><a href="#cb14-22"></a>    dataset,</span>
+<span id="cb14-23"><a href="#cb14-23"></a>    batch_size<span class="op">=</span><span class="dv">2</span>,</span>
+<span id="cb14-24"><a href="#cb14-24"></a>    shuffle<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb14-25"><a href="#cb14-25"></a>    <span class="co"># num_workers=4,</span></span>
+<span id="cb14-26"><a href="#cb14-26"></a>    collate_fn<span class="op">=</span>utils.collate_fn</span>
+<span id="cb14-27"><a href="#cb14-27"></a>)</span>
+<span id="cb14-28"><a href="#cb14-28"></a></span>
+<span id="cb14-29"><a href="#cb14-29"></a>data_loader_test <span class="op">=</span> torch.utils.data.DataLoader(</span>
+<span id="cb14-30"><a href="#cb14-30"></a>    dataset_test,</span>
+<span id="cb14-31"><a href="#cb14-31"></a>    batch_size<span class="op">=</span><span class="dv">1</span>,</span>
+<span id="cb14-32"><a href="#cb14-32"></a>    shuffle<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb14-33"><a href="#cb14-33"></a>    <span class="co"># num_workers=4,</span></span>
+<span id="cb14-34"><a href="#cb14-34"></a>    collate_fn<span class="op">=</span>utils.collate_fn</span>
+<span id="cb14-35"><a href="#cb14-35"></a>)</span>
+<span id="cb14-36"><a href="#cb14-36"></a></span>
+<span id="cb14-37"><a href="#cb14-37"></a><span class="co"># get model</span></span>
+<span id="cb14-38"><a href="#cb14-38"></a>model <span class="op">=</span> get_model_instance_segmentation(num_classes<span class="op">=</span>num_classes)</span>
+<span id="cb14-39"><a href="#cb14-39"></a></span>
+<span id="cb14-40"><a href="#cb14-40"></a><span class="co"># move model into device; model도 옮겨야 한다.</span></span>
+<span id="cb14-41"><a href="#cb14-41"></a>model.to(device)</span>
+<span id="cb14-42"><a href="#cb14-42"></a><span class="co"># from torch import nn; model = nn.DataParallel(model)</span></span>
+<span id="cb14-43"><a href="#cb14-43"></a></span>
+<span id="cb14-44"><a href="#cb14-44"></a><span class="co"># construct an optimizer</span></span>
+<span id="cb14-45"><a href="#cb14-45"></a>params <span class="op">=</span> [p <span class="cf">for</span> p <span class="kw">in</span> model.parameters() <span class="cf">if</span> p.requires_grad]</span>
+<span id="cb14-46"><a href="#cb14-46"></a>optimizer <span class="op">=</span> torch.optim.SGD(</span>
+<span id="cb14-47"><a href="#cb14-47"></a>    params,</span>
+<span id="cb14-48"><a href="#cb14-48"></a>    lr<span class="op">=</span><span class="fl">0.005</span>,</span>
+<span id="cb14-49"><a href="#cb14-49"></a>    momentum<span class="op">=</span><span class="fl">0.9</span>,</span>
+<span id="cb14-50"><a href="#cb14-50"></a>    weight_decay<span class="op">=</span><span class="fl">0.0005</span></span>
+<span id="cb14-51"><a href="#cb14-51"></a>)</span>
+<span id="cb14-52"><a href="#cb14-52"></a></span>
+<span id="cb14-53"><a href="#cb14-53"></a><span class="co"># and a learning rate scheduler</span></span>
+<span id="cb14-54"><a href="#cb14-54"></a>lr_scheduler <span class="op">=</span> torch.optim.lr_scheduler.StepLR(</span>
+<span id="cb14-55"><a href="#cb14-55"></a>    optimizer,</span>
+<span id="cb14-56"><a href="#cb14-56"></a>    step_size<span class="op">=</span><span class="dv">3</span>,</span>
+<span id="cb14-57"><a href="#cb14-57"></a>    gamma<span class="op">=</span><span class="fl">0.1</span></span>
+<span id="cb14-58"><a href="#cb14-58"></a>)</span>
+<span id="cb14-59"><a href="#cb14-59"></a></span>
+<span id="cb14-60"><a href="#cb14-60"></a><span class="co"># let's train it just for 2 epochs</span></span>
+<span id="cb14-61"><a href="#cb14-61"></a>num_epochs <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb14-62"><a href="#cb14-62"></a></span>
+<span id="cb14-63"><a href="#cb14-63"></a><span class="cf">for</span> epoch <span class="kw">in</span> <span class="bu">range</span>(num_epochs):</span>
+<span id="cb14-64"><a href="#cb14-64"></a>    </span>
+<span id="cb14-65"><a href="#cb14-65"></a>    <span class="co"># train for one epoch, printing every 10 iterations</span></span>
+<span id="cb14-66"><a href="#cb14-66"></a>    train_one_epoch(model, optimizer, data_loader, device, epoch, print_freq<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb14-67"><a href="#cb14-67"></a>    <span class="co"># update the learning rate</span></span>
+<span id="cb14-68"><a href="#cb14-68"></a>    lr_scheduler.step()</span>
+<span id="cb14-69"><a href="#cb14-69"></a>    <span class="co"># evaluate on the test dataset</span></span>
+<span id="cb14-70"><a href="#cb14-70"></a>    evaluate(model, data_loader_test, device<span class="op">=</span>device)</span>
+<span id="cb14-71"><a href="#cb14-71"></a></span>
+<span id="cb14-72"><a href="#cb14-72"></a><span class="bu">print</span>(<span class="st">"That's it!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Using mps
+That's it!</code></pre>
+</div>
+</div>
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>보행자<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Convolution에서 kernel이 특징을 추출하는 과정과 비슷해보이기도 한다. 실제로 개념은 같다.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>e.g.&nbsp;selective search, edge boxes<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>이 다양성이 다양한 bbox를 생성하는데 영향을 미치는 것 같다.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>비효율적이라면 sliding window를 쓰면 됐다.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>‘the creation’?<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>CPU 혹은 GPU 중 하나의 리소스가 부족한 경우 느려지는 현상.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>2012년에 발표된 논문에서 언급한 병목현상이니 해당 알고리즘은 CPU에서 동작할 것으로 보인다.<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p>localize approximately<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10"><p>localize by edging<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11"><p>논문에서는 3x3 filter 사용<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn12"><p>box중앙, x좌표, y좌표, height, width<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn13"><p>그래서 RPN에서 feature map을 사용할 수 있었다.<a href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn14"><p>segmentation 보충<a href="#fnref14" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/dotpyo\.github\.io\/archive");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/dotpyo/archive/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

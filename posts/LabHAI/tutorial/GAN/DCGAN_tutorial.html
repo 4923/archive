@@ -1,0 +1,1358 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.551">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="dotpyo">
+<meta name="description" content="실제 유명인들의 사진들로 적대적 생성 신경망(GAN)을 학습시켜, 새로운 유명인의 사진을 만든다.">
+
+<title>archive - DCGAN face tutorial</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../../">
+<link href="../../../../favicon.ico" rel="icon">
+<script src="../../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-L5Y3XFBP62"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-L5Y3XFBP62', { 'anonymize_ip': true});
+</script>
+<meta name="referrer" content="strict-origin-when-cross-origin">
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../../../index.html">
+    <span class="navbar-title">archive</span>
+    </a>
+  </div>
+        <div class="quarto-navbar-tools tools-wide tools-end">
+    <a href="../../../../CV.html" title="&amp;nbsp;" class="quarto-navigation-tool px-1" aria-label="&amp;nbsp;"><i class="bi bi-person-circle"></i></a>
+    <a href="https://github.com/dotpyo" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+          <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-page">
+      <h1 class="title">DCGAN face tutorial</h1>
+            <p class="subtitle lead">Generating Adversarial Example</p>
+                  <div>
+        <div class="description">
+          실제 유명인들의 사진들로 적대적 생성 신경망(GAN)을 학습시켜, 새로운 유명인의 사진을 만든다.
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">PyTorch</div>
+                <div class="quarto-category">computer vision</div>
+                <div class="quarto-category">tutorial</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta column-page">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>dotpyo <a href="mailto:4923.py@gmail.com" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> </p>
+            </div>
+    </div>
+      
+    
+      <div>
+      <div class="quarto-title-meta-heading">Modified</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date-modified">March 10, 2024</p>
+      </div>
+    </div>
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block column-page" id="quarto-document-content">
+
+
+
+
+
+<!-- WARNING: THIS FILE WAS AUTOGENERATED! DO NOT EDIT! -->
+<section id="gan" class="level2">
+<h2 class="anchored" data-anchor-id="gan">GAN?</h2>
+<ol type="1">
+<li>학습 데이터들의 <em>분포</em>를 학습해</li>
+<li>새로운 데이터를 <em>생성</em></li>
+</ol>
+<ul>
+<li>생성자와 구분자로 구별되는 두 모델을 가지고 있다.
+<ul>
+<li>생성자: 실제 이미지와 유사한 정교한 이미지 생성</li>
+<li>구분자: 실제 이미지인지 생성자의 이미지인지 판별</li>
+</ul></li>
+<li>생성자와 구분자의 상호작용을 통해 실제와 같은 이미지를 만들어낸다.</li>
+<li>구분자가 생성자의 이미지 중 50%를 제대로 판별할 때 <em>균형상태</em>에 도달했다고 말한다.</li>
+</ul>
+<blockquote class="blockquote">
+<p>DGGAN: GAN에서 파생된 모델로 생성자와 구분자에서 ’합성곱 신경망(Convolution)’과 ’전치 합성곱 신경망(Convolution-transpose)’를 사용했다</p>
+</blockquote>
+<div id="cell-4" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">from</span> __future__ <span class="im">import</span> print_function</span>
+<span id="cb1-2"><a href="#cb1-2"></a></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> argparse</span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="im">import</span> os</span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="im">import</span> random</span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="im">import</span> torch</span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="im">import</span> torch.nn <span class="im">as</span> nn </span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="im">import</span> torch.nn.parallel</span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="im">import</span> torch.backends.mps <span class="im">as</span> mps </span>
+<span id="cb1-10"><a href="#cb1-10"></a></span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="im">import</span> torch.optim <span class="im">as</span> optim</span>
+<span id="cb1-12"><a href="#cb1-12"></a><span class="im">import</span> torch.utils.data</span>
+<span id="cb1-13"><a href="#cb1-13"></a><span class="im">import</span> torchvision.datasets <span class="im">as</span> dset</span>
+<span id="cb1-14"><a href="#cb1-14"></a><span class="im">import</span> torchvision.transforms <span class="im">as</span> transforms</span>
+<span id="cb1-15"><a href="#cb1-15"></a><span class="im">import</span> torchvision.utils <span class="im">as</span> vutils</span>
+<span id="cb1-16"><a href="#cb1-16"></a></span>
+<span id="cb1-17"><a href="#cb1-17"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-18"><a href="#cb1-18"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-19"><a href="#cb1-19"></a><span class="im">import</span> matplotlib.animation <span class="im">as</span> animation</span>
+<span id="cb1-20"><a href="#cb1-20"></a><span class="im">from</span> IPython.display <span class="im">import</span> HTML</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-5" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># seed</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>manualSeed <span class="op">=</span> <span class="dv">42</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="bu">print</span>(<span class="st">"Random Seed: "</span>, manualSeed)</span>
+<span id="cb2-4"><a href="#cb2-4"></a>random.seed(manualSeed)</span>
+<span id="cb2-5"><a href="#cb2-5"></a>np.random.seed(manualSeed)</span>
+<span id="cb2-6"><a href="#cb2-6"></a>torch.manual_seed(manualSeed)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Random Seed:  42</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<pre><code>&lt;torch._C.Generator at 0x11820d070&gt;</code></pre>
+</div>
+</div>
+<section id="config" class="level3">
+<h3 class="anchored" data-anchor-id="config">Config</h3>
+<div id="cell-7" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># dataset dir root path</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>dataroot <span class="op">=</span> <span class="st">"./data/celeba"</span> </span>
+<span id="cb5-3"><a href="#cb5-3"></a></span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="co"># dataloader에서 사용할 thread 수</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a>workers <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb5-6"><a href="#cb5-6"></a></span>
+<span id="cb5-7"><a href="#cb5-7"></a>batch_size <span class="op">=</span> <span class="dv">256</span></span>
+<span id="cb5-8"><a href="#cb5-8"></a></span>
+<span id="cb5-9"><a href="#cb5-9"></a><span class="co"># 이미지의 크기; 모든 이미지 변환하여 크기 통일함</span></span>
+<span id="cb5-10"><a href="#cb5-10"></a>image_size <span class="op">=</span> <span class="dv">64</span></span>
+<span id="cb5-11"><a href="#cb5-11"></a></span>
+<span id="cb5-12"><a href="#cb5-12"></a><span class="co"># number channel; RGB이미지이므로 3</span></span>
+<span id="cb5-13"><a href="#cb5-13"></a>nc <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb5-14"><a href="#cb5-14"></a></span>
+<span id="cb5-15"><a href="#cb5-15"></a><span class="co"># latent vector size = 생성자의 입력값 크기</span></span>
+<span id="cb5-16"><a href="#cb5-16"></a>nz <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb5-17"><a href="#cb5-17"></a></span>
+<span id="cb5-18"><a href="#cb5-18"></a><span class="co"># 생성자를 통과하는 특징 데이터의 채널 크기</span></span>
+<span id="cb5-19"><a href="#cb5-19"></a>ngf <span class="op">=</span> <span class="dv">64</span></span>
+<span id="cb5-20"><a href="#cb5-20"></a></span>
+<span id="cb5-21"><a href="#cb5-21"></a><span class="co"># 구분자를 통과하는 특징 데이터의 채널 크기</span></span>
+<span id="cb5-22"><a href="#cb5-22"></a>ndf <span class="op">=</span> <span class="dv">64</span></span>
+<span id="cb5-23"><a href="#cb5-23"></a></span>
+<span id="cb5-24"><a href="#cb5-24"></a>num_epochs <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb5-25"><a href="#cb5-25"></a></span>
+<span id="cb5-26"><a href="#cb5-26"></a>lr <span class="op">=</span> <span class="fl">0.0002</span></span>
+<span id="cb5-27"><a href="#cb5-27"></a></span>
+<span id="cb5-28"><a href="#cb5-28"></a><span class="co"># adam optimizer의 beta1 하이퍼파라미터</span></span>
+<span id="cb5-29"><a href="#cb5-29"></a>beta1 <span class="op">=</span> <span class="fl">0.5</span></span>
+<span id="cb5-30"><a href="#cb5-30"></a></span>
+<span id="cb5-31"><a href="#cb5-31"></a><span class="co"># 사용가능한 gpu 번호; cpu = 0</span></span>
+<span id="cb5-32"><a href="#cb5-32"></a>ngpu <span class="op">=</span> <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="data" class="level3">
+<h3 class="anchored" data-anchor-id="data">Data</h3>
+<div id="cell-9" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>dataset <span class="op">=</span> dset.ImageFolder(root<span class="op">=</span>dataroot,</span>
+<span id="cb6-2"><a href="#cb6-2"></a>                            transform<span class="op">=</span>transforms.Compose([</span>
+<span id="cb6-3"><a href="#cb6-3"></a>                                transforms.Resize(image_size),</span>
+<span id="cb6-4"><a href="#cb6-4"></a>                                transforms.CenterCrop(image_size),</span>
+<span id="cb6-5"><a href="#cb6-5"></a>                                transforms.ToTensor(),</span>
+<span id="cb6-6"><a href="#cb6-6"></a>                                transforms.Normalize((<span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="fl">0.5</span>), (<span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="fl">0.5</span>)),</span>
+<span id="cb6-7"><a href="#cb6-7"></a>                            ]))</span>
+<span id="cb6-8"><a href="#cb6-8"></a></span>
+<span id="cb6-9"><a href="#cb6-9"></a>dataloader <span class="op">=</span> torch.utils.data.DataLoader(dataset, batch_size<span class="op">=</span>batch_size,</span>
+<span id="cb6-10"><a href="#cb6-10"></a>                                            shuffle<span class="op">=</span><span class="va">True</span>, num_workers<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb6-11"><a href="#cb6-11"></a></span>
+<span id="cb6-12"><a href="#cb6-12"></a><span class="co"># 데이터가 너무 커서 샘플로 몇개만 뽑음</span></span>
+<span id="cb6-13"><a href="#cb6-13"></a>sample_size <span class="op">=</span> batch_size<span class="op">*</span><span class="dv">1000</span></span>
+<span id="cb6-14"><a href="#cb6-14"></a>dataset, _dataset <span class="op">=</span> torch.utils.data.random_split(dataset, lengths<span class="op">=</span>[sample_size, <span class="bu">len</span>(dataset)<span class="op">-</span>sample_size])</span>
+<span id="cb6-15"><a href="#cb6-15"></a>dataloader <span class="op">=</span> torch.utils.data.DataLoader(dataset, batch_size<span class="op">=</span>batch_size,</span>
+<span id="cb6-16"><a href="#cb6-16"></a>                                            shuffle<span class="op">=</span><span class="va">True</span>, num_workers<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb6-17"><a href="#cb6-17"></a></span>
+<span id="cb6-18"><a href="#cb6-18"></a><span class="co"># device</span></span>
+<span id="cb6-19"><a href="#cb6-19"></a>device <span class="op">=</span> torch.device(<span class="st">'mps'</span>) <span class="cf">if</span> torch.backends.mps.is_available() <span class="cf">else</span> torch.device(<span class="st">'cpu'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-10" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># real batch check</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a>real_batch <span class="op">=</span> <span class="bu">next</span>(<span class="bu">iter</span>(dataloader))</span>
+<span id="cb7-3"><a href="#cb7-3"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">8</span>))</span>
+<span id="cb7-4"><a href="#cb7-4"></a>plt.axis(<span class="st">"off"</span>)</span>
+<span id="cb7-5"><a href="#cb7-5"></a>plt.title(<span class="st">"Training Image"</span>)</span>
+<span id="cb7-6"><a href="#cb7-6"></a>plt.imshow(np.transpose(vutils.make_grid(real_batch[<span class="dv">0</span>].to(device)[:<span class="dv">64</span>], padding<span class="op">=</span><span class="dv">2</span>, normalize<span class="op">=</span><span class="va">True</span>).cpu(),(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">0</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="DCGAN_tutorial_files/figure-html/cell-6-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="구현" class="level3">
+<h3 class="anchored" data-anchor-id="구현">구현</h3>
+<section id="가중치-초기화" class="level4">
+<h4 class="anchored" data-anchor-id="가중치-초기화">가중치 초기화</h4>
+<ul>
+<li>평균 0, 분산 0.02인 정규분포
+<ul>
+<li><code>mean = 0</code> <code>stdev=0.02</code></li>
+<li>구분자와 생성자 모두 <em>무작위 초기화</em> 진행</li>
+</ul></li>
+</ul>
+<div id="cell-13" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="co"># 매개변수로 '모델'을 받아 합성곱, 전치합성곱, 배치정규화 계층을 초기화</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a></span>
+<span id="cb8-3"><a href="#cb8-3"></a><span class="kw">def</span> weights_init(model):</span>
+<span id="cb8-4"><a href="#cb8-4"></a>    classname <span class="op">=</span> model.__class__.<span class="va">__name__</span></span>
+<span id="cb8-5"><a href="#cb8-5"></a>    <span class="cf">if</span> classname.find(<span class="st">'ConV'</span>) <span class="op">!=</span> <span class="op">-</span><span class="dv">1</span>:</span>
+<span id="cb8-6"><a href="#cb8-6"></a>        nn.init.normal_(model.weight.data, <span class="fl">0.0</span>, <span class="fl">0.02</span>)</span>
+<span id="cb8-7"><a href="#cb8-7"></a>    <span class="cf">elif</span> classname.find(<span class="st">'BatchNorm'</span>) <span class="op">!=</span> <span class="op">-</span><span class="dv">1</span>:</span>
+<span id="cb8-8"><a href="#cb8-8"></a>        nn.init.normal_(model.weight.data, <span class="fl">1.0</span>, <span class="fl">0.02</span>)</span>
+<span id="cb8-9"><a href="#cb8-9"></a>        nn.init.constant_(model.bias.data, <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="생성자" class="level4">
+<h4 class="anchored" data-anchor-id="생성자">생성자</h4>
+<ul>
+<li>잠재공간 <span class="math inline">\(z\)</span>를 데이터공간, 즉 이미지로 변환하는 과정을 거친다 (<span class="math inline">\(3 \times 64 \times 64\)</span>)</li>
+<li>stride 2를 가진 전치 합성곱 계층을 이어서 구성
+<ul>
+<li>각 전치 합성곱 계층 하나당 아래 두개 레이어를 쌍으로 묶어 사용함
+<ul>
+<li>2차 배치 정규화 계층</li>
+<li>relu 활성화 함수</li>
+</ul></li>
+</ul></li>
+<li>마지막 출력 계층에서는 <code>tanh</code> 함수를 사용하는데 이는 <em>출력값을 <span class="math inline">\([-1, 1]\)</span> 사이로 조정하기 위함</em> 이다.</li>
+<li>배치 정규화 계층이 중요한데, 이 계층이 경사 하강법의 흐름에 중요한 역할을 했다고 함 (논문 원문 참조)</li>
+</ul>
+<div id="cell-15" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="kw">class</span> Generator(nn.Module):</span>
+<span id="cb9-2"><a href="#cb9-2"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, ngpu):</span>
+<span id="cb9-3"><a href="#cb9-3"></a>        <span class="bu">super</span>(Generator, <span class="va">self</span>).<span class="fu">__init__</span>()</span>
+<span id="cb9-4"><a href="#cb9-4"></a>        <span class="va">self</span>.ngpu <span class="op">=</span> ngpu</span>
+<span id="cb9-5"><a href="#cb9-5"></a>        <span class="va">self</span>.main <span class="op">=</span> nn.Sequential(</span>
+<span id="cb9-6"><a href="#cb9-6"></a>            <span class="co"># ngf: 생성자를 통과하는 특징 데이터의 채널 크기</span></span>
+<span id="cb9-7"><a href="#cb9-7"></a>            nn.ConvTranspose2d( nz, ngf <span class="op">*</span> <span class="dv">8</span>, <span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">0</span> ),     <span class="co"># 왜 ngf를 8배 하나?</span></span>
+<span id="cb9-8"><a href="#cb9-8"></a>            nn.BatchNorm2d( ngf <span class="op">*</span> <span class="dv">8</span> ),</span>
+<span id="cb9-9"><a href="#cb9-9"></a>            nn.ReLU(<span class="va">True</span>),</span>
+<span id="cb9-10"><a href="#cb9-10"></a>            </span>
+<span id="cb9-11"><a href="#cb9-11"></a>            <span class="co"># 위의 계층을 통과한 데이터의 크기. ``(ngf*8) x 4 x 4``</span></span>
+<span id="cb9-12"><a href="#cb9-12"></a>            nn.ConvTranspose2d( ngf<span class="op">*</span><span class="dv">8</span>, ngf<span class="op">*</span><span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">1</span>, bias<span class="op">=</span><span class="va">False</span>),</span>
+<span id="cb9-13"><a href="#cb9-13"></a>            nn.BatchNorm2d(ngf <span class="op">*</span> <span class="dv">4</span>),</span>
+<span id="cb9-14"><a href="#cb9-14"></a>            nn.ReLU(<span class="va">True</span>),</span>
+<span id="cb9-15"><a href="#cb9-15"></a>            </span>
+<span id="cb9-16"><a href="#cb9-16"></a>            <span class="co"># 위의 계층을 통과한 데이터의 크기. ``(ngf*4) x 8 x 8``</span></span>
+<span id="cb9-17"><a href="#cb9-17"></a>            nn.ConvTranspose2d( ngf <span class="op">*</span> <span class="dv">4</span>, ngf <span class="op">*</span> <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">1</span>, bias<span class="op">=</span><span class="va">False</span>),</span>
+<span id="cb9-18"><a href="#cb9-18"></a>            nn.BatchNorm2d(ngf <span class="op">*</span> <span class="dv">2</span>),</span>
+<span id="cb9-19"><a href="#cb9-19"></a>            nn.ReLU(<span class="va">True</span>),</span>
+<span id="cb9-20"><a href="#cb9-20"></a></span>
+<span id="cb9-21"><a href="#cb9-21"></a>            <span class="co"># 위의 계층을 통과한 데이터의 크기. ``(ngf*2) x 16 x 16``</span></span>
+<span id="cb9-22"><a href="#cb9-22"></a>            nn.ConvTranspose2d( ngf <span class="op">*</span> <span class="dv">2</span>, ngf, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">1</span>, bias<span class="op">=</span><span class="va">False</span>),</span>
+<span id="cb9-23"><a href="#cb9-23"></a>            nn.BatchNorm2d(ngf),</span>
+<span id="cb9-24"><a href="#cb9-24"></a>            nn.ReLU(<span class="va">True</span>),</span>
+<span id="cb9-25"><a href="#cb9-25"></a></span>
+<span id="cb9-26"><a href="#cb9-26"></a>            <span class="co"># 위의 계층을 통과한 데이터의 크기. ``(ngf) x 32 x 32``</span></span>
+<span id="cb9-27"><a href="#cb9-27"></a>            nn.ConvTranspose2d( ngf, nc, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">1</span>, bias<span class="op">=</span><span class="va">False</span>),</span>
+<span id="cb9-28"><a href="#cb9-28"></a>            nn.Tanh()</span>
+<span id="cb9-29"><a href="#cb9-29"></a>        )</span>
+<span id="cb9-30"><a href="#cb9-30"></a>    </span>
+<span id="cb9-31"><a href="#cb9-31"></a>    <span class="kw">def</span> forward(<span class="va">self</span>, <span class="bu">input</span>):</span>
+<span id="cb9-32"><a href="#cb9-32"></a>        <span class="cf">return</span> <span class="va">self</span>.main(<span class="bu">input</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-16" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>netG <span class="op">=</span> Generator(ngpu).to(device)</span>
+<span id="cb10-2"><a href="#cb10-2"></a></span>
+<span id="cb10-3"><a href="#cb10-3"></a><span class="co"># 모든 가중치의 평균을 0, 분산을 0.02로 초기화</span></span>
+<span id="cb10-4"><a href="#cb10-4"></a>netG.<span class="bu">apply</span>(weights_init)</span>
+<span id="cb10-5"><a href="#cb10-5"></a></span>
+<span id="cb10-6"><a href="#cb10-6"></a><span class="co"># 모델 구조 확인</span></span>
+<span id="cb10-7"><a href="#cb10-7"></a>netG</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<pre><code>Generator(
+  (main): Sequential(
+    (0): ConvTranspose2d(100, 512, kernel_size=(4, 4), stride=(1, 1))
+    (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): ReLU(inplace=True)
+    (3): ConvTranspose2d(512, 256, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (4): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (5): ReLU(inplace=True)
+    (6): ConvTranspose2d(256, 128, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (7): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (8): ReLU(inplace=True)
+    (9): ConvTranspose2d(128, 64, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (10): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (11): ReLU(inplace=True)
+    (12): ConvTranspose2d(64, 3, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (13): Tanh()
+  )
+)</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="구분자" class="level3">
+<h3 class="anchored" data-anchor-id="구분자">구분자</h3>
+<ul>
+<li>입력: <span class="math inline">\(3 \times 64 \times 64\)</span></li>
+<li>Conv2d, BatchNorm2d, LeakyReLU로 데이터를 가공
+<ul>
+<li>stride를 합성곱 계층에서 적용하는데 논문에서는 스스로 pooling을 학습하기 때문에 pooling 계층을 넣지 않아도 효과가 좋았다고 한다.</li>
+</ul></li>
+<li>마지막 계층 Sigmoid로 확률값 반환</li>
+</ul>
+<div id="cell-18" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="kw">class</span> Discriminator(nn.Module):</span>
+<span id="cb12-2"><a href="#cb12-2"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, ngpu):</span>
+<span id="cb12-3"><a href="#cb12-3"></a>        <span class="bu">super</span>(Discriminator, <span class="va">self</span>).<span class="fu">__init__</span>()</span>
+<span id="cb12-4"><a href="#cb12-4"></a>        <span class="va">self</span>.ngpu <span class="op">=</span> ngpu</span>
+<span id="cb12-5"><a href="#cb12-5"></a>        <span class="va">self</span>.main <span class="op">=</span> nn.Sequential(</span>
+<span id="cb12-6"><a href="#cb12-6"></a>            <span class="co"># 입력 데이터의 크기는 ``(nc) x 64 x 64``</span></span>
+<span id="cb12-7"><a href="#cb12-7"></a>            nn.Conv2d(nc, ndf, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">1</span>, bias<span class="op">=</span><span class="va">False</span>),</span>
+<span id="cb12-8"><a href="#cb12-8"></a>            nn.LeakyReLU(<span class="fl">0.2</span>, inplace<span class="op">=</span><span class="va">True</span>),</span>
+<span id="cb12-9"><a href="#cb12-9"></a>            </span>
+<span id="cb12-10"><a href="#cb12-10"></a>            <span class="co"># 위의 계층을 통과한 데이터의 크기. ``(ndf) x 32 x 32``</span></span>
+<span id="cb12-11"><a href="#cb12-11"></a>            nn.Conv2d(ndf, ndf <span class="op">*</span> <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">1</span>, bias<span class="op">=</span><span class="va">False</span>),</span>
+<span id="cb12-12"><a href="#cb12-12"></a>            nn.BatchNorm2d(ndf <span class="op">*</span> <span class="dv">2</span>),</span>
+<span id="cb12-13"><a href="#cb12-13"></a>            nn.LeakyReLU(<span class="fl">0.2</span>, inplace<span class="op">=</span><span class="va">True</span>),</span>
+<span id="cb12-14"><a href="#cb12-14"></a>            </span>
+<span id="cb12-15"><a href="#cb12-15"></a>            <span class="co"># 위의 계층을 통과한 데이터의 크기. ``(ndf*2) x 16 x 16``</span></span>
+<span id="cb12-16"><a href="#cb12-16"></a>            nn.Conv2d(ndf <span class="op">*</span> <span class="dv">2</span>, ndf <span class="op">*</span> <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">1</span>, bias<span class="op">=</span><span class="va">False</span>),</span>
+<span id="cb12-17"><a href="#cb12-17"></a>            nn.BatchNorm2d(ndf <span class="op">*</span> <span class="dv">4</span>),</span>
+<span id="cb12-18"><a href="#cb12-18"></a>            nn.LeakyReLU(<span class="fl">0.2</span>, inplace<span class="op">=</span><span class="va">True</span>),</span>
+<span id="cb12-19"><a href="#cb12-19"></a>            </span>
+<span id="cb12-20"><a href="#cb12-20"></a>            <span class="co"># 위의 계층을 통과한 데이터의 크기. ``(ndf*4) x 8 x 8``</span></span>
+<span id="cb12-21"><a href="#cb12-21"></a>            nn.Conv2d(ndf <span class="op">*</span> <span class="dv">4</span>, ndf <span class="op">*</span> <span class="dv">8</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">1</span>, bias<span class="op">=</span><span class="va">False</span>),</span>
+<span id="cb12-22"><a href="#cb12-22"></a>            nn.BatchNorm2d(ndf <span class="op">*</span> <span class="dv">8</span>),</span>
+<span id="cb12-23"><a href="#cb12-23"></a>            nn.LeakyReLU(<span class="fl">0.2</span>, inplace<span class="op">=</span><span class="va">True</span>),</span>
+<span id="cb12-24"><a href="#cb12-24"></a>            </span>
+<span id="cb12-25"><a href="#cb12-25"></a>            <span class="co"># 위의 계층을 통과한 데이터의 크기. ``(ndf*8) x 4 x 4``</span></span>
+<span id="cb12-26"><a href="#cb12-26"></a>            nn.Conv2d(ndf <span class="op">*</span> <span class="dv">8</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">0</span>, bias<span class="op">=</span><span class="va">False</span>),</span>
+<span id="cb12-27"><a href="#cb12-27"></a>            nn.Sigmoid()</span>
+<span id="cb12-28"><a href="#cb12-28"></a>        )</span>
+<span id="cb12-29"><a href="#cb12-29"></a></span>
+<span id="cb12-30"><a href="#cb12-30"></a>    <span class="kw">def</span> forward(<span class="va">self</span>, <span class="bu">input</span>):</span>
+<span id="cb12-31"><a href="#cb12-31"></a>        <span class="cf">return</span> <span class="va">self</span>.main(<span class="bu">input</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-19" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>netD <span class="op">=</span> Discriminator(ngpu).to(device)</span>
+<span id="cb13-2"><a href="#cb13-2"></a>netD.<span class="bu">apply</span>(weights_init)</span>
+<span id="cb13-3"><a href="#cb13-3"></a>netD</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<pre><code>Discriminator(
+  (main): Sequential(
+    (0): Conv2d(3, 64, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (1): LeakyReLU(negative_slope=0.2, inplace=True)
+    (2): Conv2d(64, 128, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (3): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (4): LeakyReLU(negative_slope=0.2, inplace=True)
+    (5): Conv2d(128, 256, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (6): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (7): LeakyReLU(negative_slope=0.2, inplace=True)
+    (8): Conv2d(256, 512, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1), bias=False)
+    (9): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (10): LeakyReLU(negative_slope=0.2, inplace=True)
+    (11): Conv2d(512, 1, kernel_size=(4, 4), stride=(1, 1), bias=False)
+    (12): Sigmoid()
+  )
+)</code></pre>
+</div>
+</div>
+</section>
+<section id="최적화" class="level3">
+<h3 class="anchored" data-anchor-id="최적화">최적화</h3>
+<ul>
+<li><p>손실함수로 <code>BCELoss</code><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> 사용</p>
+<p><span class="math inline">\(\begin{align}\ell(x, y) = L = \{l_1,\dots,l_N\}^\top, \quad l_n = - \left[ y_n \cdot \log x_n + (1 - y_n) \cdot \log (1 - x_n) \right]\end{align}\)</span></p>
+<ul>
+<li>여기서 조정해야하는 <span class="math inline">\(log(D(x))\)</span> 와 <span class="math inline">\(log(1 - D(G(Z)))\)</span> 를 확인할 수 있다.</li>
+</ul></li>
+</ul>
+<blockquote class="blockquote">
+<p>목표: <span class="math inline">\(y\)</span>를 이용하여 손실함수를 최대화하는 방법 찾기</p>
+</blockquote>
+<div id="cell-21" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>criterion <span class="op">=</span> nn.BCELoss()</span>
+<span id="cb15-2"><a href="#cb15-2"></a></span>
+<span id="cb15-3"><a href="#cb15-3"></a><span class="co"># 입력, 잠재공간 벡터 생성</span></span>
+<span id="cb15-4"><a href="#cb15-4"></a><span class="co"># device = device 아니고 device만 넣으면 에러</span></span>
+<span id="cb15-5"><a href="#cb15-5"></a>fixed_noise <span class="op">=</span> torch.randn(<span class="dv">64</span>, nz, <span class="dv">1</span>, <span class="dv">1</span>, device<span class="op">=</span>device)</span>
+<span id="cb15-6"><a href="#cb15-6"></a></span>
+<span id="cb15-7"><a href="#cb15-7"></a><span class="co"># 참 거짓의 라벨</span></span>
+<span id="cb15-8"><a href="#cb15-8"></a>real_label <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb15-9"><a href="#cb15-9"></a>fake_label <span class="op">=</span> <span class="dv">0</span> </span>
+<span id="cb15-10"><a href="#cb15-10"></a></span>
+<span id="cb15-11"><a href="#cb15-11"></a><span class="co"># optimizer 생성</span></span>
+<span id="cb15-12"><a href="#cb15-12"></a>optimizerD <span class="op">=</span> optim.Adam(netD.parameters(), lr<span class="op">=</span>lr, betas<span class="op">=</span>(beta1, <span class="fl">0.999</span>))</span>
+<span id="cb15-13"><a href="#cb15-13"></a>optimizerG <span class="op">=</span> optim.Adam(netG.parameters(), lr<span class="op">=</span>lr, betas<span class="op">=</span>(beta1, <span class="fl">0.999</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="학습" class="level3">
+<h3 class="anchored" data-anchor-id="학습">학습</h3>
+<section id="구분자의-학습" class="level4">
+<h4 class="anchored" data-anchor-id="구분자의-학습">구분자의 학습</h4>
+<blockquote class="blockquote">
+<p>손실함수를 어떻게 최대화 할 것인가?</p>
+</blockquote>
+<ol type="1">
+<li>실제 데이터만 가져와 미니배치를 만든 후 훈련한다: <span class="math inline">\(D\)</span> (학습)
+<ol type="1">
+<li>1의 결과로 얻은 <span class="math inline">\(log(D(x))\)</span> 의 손실값을 계산한다. (수식 계산)</li>
+<li>역전파 과정에서의 변화도를 계산한다.</li>
+</ol>
+<ul>
+<li>이들 변화값은 축적(accumulate)시켜야 한다.</li>
+<li>이후 최적화 함수를 사용한다.</li>
+</ul></li>
+<li><span class="math inline">\(log(D(G(z)))\)</span> 를 최대화 하는 방식으로 학습<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>
+<ul>
+<li>진짜 이미지들에서 <code>G</code>의 손실값을 구하고 가짜이미지에서도 같은 방식을 적용한다.</li>
+<li>이 과정에서 <code>BCELoss</code>의 일부인 <span class="math inline">\(log(x)\)</span>를 일부 사용할 수 있다.</li>
+</ul></li>
+</ol>
+<blockquote class="blockquote">
+<p>실제값과 거짓값의 학습에서 나타나는 차이점을 통해 손실함수를 분리한다.</p>
+</blockquote>
+<p>튜토리얼에서는 다음과 같이 사용한다.</p>
+<ul>
+<li><strong>Loss_D</strong> - 진짜 데이터와 가짜 데이터들 모두에서 구해진 손실값. (<span class="math inline">\(log(D(x)) + log(1 - D(G(z)))\)</span>).</li>
+<li><strong>Loss_G</strong> - 생성자의 손실값. <span class="math inline">\(log(D(G(z)))\)</span></li>
+<li><strong>D(x)</strong> - 구분자가 데이터를 판별한 확률값입니다. 처음에는 1에 가까운 값이다가, G가 학습할수록 0.5값에 수렴하게 됩니다.</li>
+<li><strong>D(G(z))</strong> - 가짜데이터들에 대한 구분자의 출력값입니다. 처음에는 0에 가까운 값이다가, G가 학습할수록 0.5에 수렴하게 됩니다</li>
+</ul>
+<div id="cell-25" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># 손실값들을 저장</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a></span>
+<span id="cb16-3"><a href="#cb16-3"></a>img_list, G_losses, D_losses <span class="op">=</span> [], [], []</span>
+<span id="cb16-4"><a href="#cb16-4"></a>iters <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb16-5"><a href="#cb16-5"></a></span>
+<span id="cb16-6"><a href="#cb16-6"></a><span class="co"># `배치` 반복</span></span>
+<span id="cb16-7"><a href="#cb16-7"></a><span class="kw">def</span> batch_loop(dataloader, netD, netG, criterion, epoch):</span>
+<span id="cb16-8"><a href="#cb16-8"></a>    <span class="cf">for</span> i, data <span class="kw">in</span> <span class="bu">enumerate</span>(dataloader, <span class="dv">0</span>):</span>
+<span id="cb16-9"><a href="#cb16-9"></a>        <span class="co">##################################</span></span>
+<span id="cb16-10"><a href="#cb16-10"></a>        <span class="co"># (1) D 신경망 업데이트</span></span>
+<span id="cb16-11"><a href="#cb16-11"></a>        <span class="co"># 실제 데이터로 학습</span></span>
+<span id="cb16-12"><a href="#cb16-12"></a>        <span class="co"># 전체 손실함수 값을 최대화</span></span>
+<span id="cb16-13"><a href="#cb16-13"></a>        <span class="co">##################################</span></span>
+<span id="cb16-14"><a href="#cb16-14"></a></span>
+<span id="cb16-15"><a href="#cb16-15"></a>        <span class="co"># --- 실제 데이터 학습 --- #</span></span>
+<span id="cb16-16"><a href="#cb16-16"></a>        netD.zero_grad()</span>
+<span id="cb16-17"><a href="#cb16-17"></a></span>
+<span id="cb16-18"><a href="#cb16-18"></a>        <span class="co"># 배치의 사이즈나 사용할 디바이스에 맞게 조정하는 이유? </span></span>
+<span id="cb16-19"><a href="#cb16-19"></a>        <span class="co"># &gt;&gt; 효율성?</span></span>
+<span id="cb16-20"><a href="#cb16-20"></a>        real_cpu <span class="op">=</span> data[<span class="dv">0</span>].to(device)</span>
+<span id="cb16-21"><a href="#cb16-21"></a>        b_size <span class="op">=</span> real_cpu.size(<span class="dv">0</span>)</span>
+<span id="cb16-22"><a href="#cb16-22"></a>        label <span class="op">=</span> torch.full((b_size,), real_label,</span>
+<span id="cb16-23"><a href="#cb16-23"></a>                            dtype<span class="op">=</span>torch.<span class="bu">float</span>, device<span class="op">=</span>device)</span>
+<span id="cb16-24"><a href="#cb16-24"></a>        </span>
+<span id="cb16-25"><a href="#cb16-25"></a>        <span class="co"># 실제 데이터 투입</span></span>
+<span id="cb16-26"><a href="#cb16-26"></a>        output <span class="op">=</span> netD(real_cpu).view(<span class="op">-</span><span class="dv">1</span>)</span>
+<span id="cb16-27"><a href="#cb16-27"></a>        <span class="co"># 손실값</span></span>
+<span id="cb16-28"><a href="#cb16-28"></a>        errD_real <span class="op">=</span> criterion(output, label)</span>
+<span id="cb16-29"><a href="#cb16-29"></a>        <span class="co"># print("errD_real: ", errD_real)</span></span>
+<span id="cb16-30"><a href="#cb16-30"></a>        <span class="co"># 역전파 하며 변화도 계산</span></span>
+<span id="cb16-31"><a href="#cb16-31"></a>        errD_real.backward()</span>
+<span id="cb16-32"><a href="#cb16-32"></a>        D_x <span class="op">=</span> output.mean().item()</span>
+<span id="cb16-33"><a href="#cb16-33"></a>        <span class="co"># print("D_x: ", D_x)</span></span>
+<span id="cb16-34"><a href="#cb16-34"></a>        </span>
+<span id="cb16-35"><a href="#cb16-35"></a></span>
+<span id="cb16-36"><a href="#cb16-36"></a>        <span class="co"># --- 가짜 데이터 학습 --- #</span></span>
+<span id="cb16-37"><a href="#cb16-37"></a>        <span class="co"># 생성자에 사용할 잠재공간 벡터</span></span>
+<span id="cb16-38"><a href="#cb16-38"></a>        noise <span class="op">=</span> torch.randn(b_size, nz, <span class="dv">1</span>, <span class="dv">1</span>, device<span class="op">=</span>device)</span>
+<span id="cb16-39"><a href="#cb16-39"></a>        <span class="co"># 가짜 이미지 생성</span></span>
+<span id="cb16-40"><a href="#cb16-40"></a>        fake <span class="op">=</span> netG(noise)</span>
+<span id="cb16-41"><a href="#cb16-41"></a>        <span class="co"># fill_ ?</span></span>
+<span id="cb16-42"><a href="#cb16-42"></a>        label.fill_(fake_label)</span>
+<span id="cb16-43"><a href="#cb16-43"></a>        </span>
+<span id="cb16-44"><a href="#cb16-44"></a>        <span class="co"># D를 이용해 데이터 진위여부 판별</span></span>
+<span id="cb16-45"><a href="#cb16-45"></a>        output <span class="op">=</span> netD(fake.detach()).view(<span class="op">-</span><span class="dv">1</span>)</span>
+<span id="cb16-46"><a href="#cb16-46"></a>        <span class="co"># D의 손실값 계산</span></span>
+<span id="cb16-47"><a href="#cb16-47"></a>        errD_fake <span class="op">=</span> criterion(output, label)</span>
+<span id="cb16-48"><a href="#cb16-48"></a>        <span class="co"># 가짜 이미지의 변화도를 계산한 후 변화도에 더한다 (accumulate)</span></span>
+<span id="cb16-49"><a href="#cb16-49"></a>        errD_fake.backward()</span>
+<span id="cb16-50"><a href="#cb16-50"></a>        D_G_z1 <span class="op">=</span> output.mean().item()</span>
+<span id="cb16-51"><a href="#cb16-51"></a>        <span class="co"># 손실값들을 모두 더한다.</span></span>
+<span id="cb16-52"><a href="#cb16-52"></a>        <span class="co"># errD는 학습 상태를 리포팅 할 때 사용한다! &gt; 임의로 생성한 결과니</span></span>
+<span id="cb16-53"><a href="#cb16-53"></a>        errD <span class="op">=</span> errD_real <span class="op">+</span> errD_fake </span>
+<span id="cb16-54"><a href="#cb16-54"></a></span>
+<span id="cb16-55"><a href="#cb16-55"></a>        <span class="co"># D업데이트</span></span>
+<span id="cb16-56"><a href="#cb16-56"></a>        optimizerD.step()</span>
+<span id="cb16-57"><a href="#cb16-57"></a>        <span class="co"># print("errD: ", errD)</span></span>
+<span id="cb16-58"><a href="#cb16-58"></a></span>
+<span id="cb16-59"><a href="#cb16-59"></a></span>
+<span id="cb16-60"><a href="#cb16-60"></a>        <span class="co">##################################</span></span>
+<span id="cb16-61"><a href="#cb16-61"></a>        <span class="co"># (1) G 신경망 업데이트</span></span>
+<span id="cb16-62"><a href="#cb16-62"></a>        <span class="co"># 실제 데이터를 생성</span></span>
+<span id="cb16-63"><a href="#cb16-63"></a>        <span class="co"># log(D(G(z))) 값을 최대화</span></span>
+<span id="cb16-64"><a href="#cb16-64"></a>        <span class="co">##################################</span></span>
+<span id="cb16-65"><a href="#cb16-65"></a>        netG.zero_grad()</span>
+<span id="cb16-66"><a href="#cb16-66"></a>        label.fill_(real_label)     <span class="co"># 생성자의 손실값을 위해</span></span>
+<span id="cb16-67"><a href="#cb16-67"></a>        <span class="co"># D를 제대로 업데이트했으므로 다시 가짜데이터 투입</span></span>
+<span id="cb16-68"><a href="#cb16-68"></a>        output <span class="op">=</span> netD(fake).view(<span class="op">-</span><span class="dv">1</span>)</span>
+<span id="cb16-69"><a href="#cb16-69"></a>        <span class="co"># G의 손실값 계산</span></span>
+<span id="cb16-70"><a href="#cb16-70"></a>        errG <span class="op">=</span> criterion(output, label)</span>
+<span id="cb16-71"><a href="#cb16-71"></a>        <span class="co"># G의 변화도 계산</span></span>
+<span id="cb16-72"><a href="#cb16-72"></a>        errG.backward()</span>
+<span id="cb16-73"><a href="#cb16-73"></a>        D_G_z2 <span class="op">=</span> output.mean().item()</span>
+<span id="cb16-74"><a href="#cb16-74"></a>        <span class="co"># G 업데이트</span></span>
+<span id="cb16-75"><a href="#cb16-75"></a>        optimizerG.step()</span>
+<span id="cb16-76"><a href="#cb16-76"></a></span>
+<span id="cb16-77"><a href="#cb16-77"></a>        <span class="co"># ---------------------------------</span></span>
+<span id="cb16-78"><a href="#cb16-78"></a>        <span class="co"># 훈련 상태를 출력합니다</span></span>
+<span id="cb16-79"><a href="#cb16-79"></a>        <span class="cf">if</span> i <span class="op">%</span> <span class="dv">50</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb16-80"><a href="#cb16-80"></a>            <span class="bu">print</span>(<span class="st">'[</span><span class="sc">%d</span><span class="st">/</span><span class="sc">%d</span><span class="st">][</span><span class="sc">%d</span><span class="st">/</span><span class="sc">%d</span><span class="st">]</span><span class="ch">\t</span><span class="st">Loss_D: </span><span class="sc">%.4f</span><span class="ch">\t</span><span class="st">Loss_G: </span><span class="sc">%.4f</span><span class="ch">\t</span><span class="st">D(x): </span><span class="sc">%.4f</span><span class="ch">\t</span><span class="st">D(G(z)): </span><span class="sc">%.4f</span><span class="st"> / </span><span class="sc">%.4f</span><span class="st">'</span></span>
+<span id="cb16-81"><a href="#cb16-81"></a></span>
+<span id="cb16-82"><a href="#cb16-82"></a>                        errD.item(), errG.item(), D_x, D_G_z1, D_G_z2))</span>
+<span id="cb16-83"><a href="#cb16-83"></a></span>
+<span id="cb16-84"><a href="#cb16-84"></a>        <span class="co"># 이후 그래프를 그리기 위해 손실값들을 저장해둡니다</span></span>
+<span id="cb16-85"><a href="#cb16-85"></a>        G_losses.append(errG.item())</span>
+<span id="cb16-86"><a href="#cb16-86"></a>        D_losses.append(errD.item())</span>
+<span id="cb16-87"><a href="#cb16-87"></a></span>
+<span id="cb16-88"><a href="#cb16-88"></a>        <span class="co"># fixed_noise를 통과시킨 G의 출력값을 저장해둡니다</span></span>
+<span id="cb16-89"><a href="#cb16-89"></a>        <span class="cf">if</span> (iters <span class="op">%</span> <span class="dv">500</span> <span class="op">==</span> <span class="dv">0</span>) <span class="kw">or</span> ((epoch <span class="op">==</span> num_epochs<span class="op">-</span><span class="dv">1</span>) <span class="kw">and</span> (i <span class="op">==</span> <span class="bu">len</span>(dataloader)<span class="op">-</span><span class="dv">1</span>)):</span>
+<span id="cb16-90"><a href="#cb16-90"></a>            <span class="cf">with</span> torch.no_grad():</span>
+<span id="cb16-91"><a href="#cb16-91"></a>                fake <span class="op">=</span> netG(fixed_noise).detach().cpu()</span>
+<span id="cb16-92"><a href="#cb16-92"></a>            img_list.append(vutils.make_grid(fake, padding<span class="op">=</span><span class="dv">2</span>, normalize<span class="op">=</span><span class="va">True</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-26" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a><span class="co"># print("Starting Training Loop...")</span></span>
+<span id="cb17-2"><a href="#cb17-2"></a><span class="co"># for epoch in range(num_epochs):</span></span>
+<span id="cb17-3"><a href="#cb17-3"></a><span class="co">#     batch_loop(dataloader, netD, netG, criterion, epoch)</span></span>
+<span id="cb17-4"><a href="#cb17-4"></a></span>
+<span id="cb17-5"><a href="#cb17-5"></a><span class="co">#     iters += 1</span></span>
+<span id="cb17-6"><a href="#cb17-6"></a></span>
+<span id="cb17-7"><a href="#cb17-7"></a><span class="co">'''</span></span>
+<span id="cb17-8"><a href="#cb17-8"></a><span class="co">Starting Training Loop...</span></span>
+<span id="cb17-9"><a href="#cb17-9"></a><span class="co">[0/1][0/792]    Loss_D: 1.3083  Loss_G: 3.2819  D(x): 0.5943    D(G(z)): 0.5336 / 0.0397</span></span>
+<span id="cb17-10"><a href="#cb17-10"></a><span class="co">[0/1][50/792]   Loss_D: 0.2891  Loss_G: 15.2257 D(x): 0.8146    D(G(z)): 0.0000 / 0.0000</span></span>
+<span id="cb17-11"><a href="#cb17-11"></a><span class="co">[0/1][100/792]  Loss_D: 0.2566  Loss_G: 4.2529  D(x): 0.8360    D(G(z)): 0.0341 / 0.0382</span></span>
+<span id="cb17-12"><a href="#cb17-12"></a><span class="co">[0/1][150/792]  Loss_D: 1.1949  Loss_G: 1.6857  D(x): 0.3761    D(G(z)): 0.0447 / 0.2113</span></span>
+<span id="cb17-13"><a href="#cb17-13"></a><span class="co">[0/1][200/792]  Loss_D: 0.9831  Loss_G: 2.3191  D(x): 0.4773    D(G(z)): 0.0473 / 0.1316</span></span>
+<span id="cb17-14"><a href="#cb17-14"></a><span class="co">[0/1][250/792]  Loss_D: 0.9653  Loss_G: 4.5867  D(x): 0.8587    D(G(z)): 0.5122 / 0.0142</span></span>
+<span id="cb17-15"><a href="#cb17-15"></a><span class="co">[0/1][300/792]  Loss_D: 0.7742  Loss_G: 2.0908  D(x): 0.5511    D(G(z)): 0.0705 / 0.1749</span></span>
+<span id="cb17-16"><a href="#cb17-16"></a><span class="co">[0/1][350/792]  Loss_D: 0.7144  Loss_G: 5.1598  D(x): 0.8541    D(G(z)): 0.3957 / 0.0082</span></span>
+<span id="cb17-17"><a href="#cb17-17"></a><span class="co">[0/1][400/792]  Loss_D: 1.8883  Loss_G: 1.6982  D(x): 0.2203    D(G(z)): 0.0174 / 0.2421</span></span>
+<span id="cb17-18"><a href="#cb17-18"></a><span class="co">[0/1][450/792]  Loss_D: 0.7316  Loss_G: 5.0640  D(x): 0.8330    D(G(z)): 0.3798 / 0.0097</span></span>
+<span id="cb17-19"><a href="#cb17-19"></a><span class="co">[0/1][500/792]  Loss_D: 0.4904  Loss_G: 3.8918  D(x): 0.8738    D(G(z)): 0.2750 / 0.0271</span></span>
+<span id="cb17-20"><a href="#cb17-20"></a><span class="co">[0/1][550/792]  Loss_D: 0.3976  Loss_G: 3.4012  D(x): 0.7631    D(G(z)): 0.0879 / 0.0493</span></span>
+<span id="cb17-21"><a href="#cb17-21"></a><span class="co">[0/1][600/792]  Loss_D: 1.3403  Loss_G: 7.2067  D(x): 0.9398    D(G(z)): 0.6828 / 0.0012</span></span>
+<span id="cb17-22"><a href="#cb17-22"></a><span class="co">[0/1][650/792]  Loss_D: 0.5217  Loss_G: 3.1440  D(x): 0.8256    D(G(z)): 0.2559 / 0.0536</span></span>
+<span id="cb17-23"><a href="#cb17-23"></a><span class="co">[0/1][700/792]  Loss_D: 0.3997  Loss_G: 3.3902  D(x): 0.8364    D(G(z)): 0.1774 / 0.0445</span></span>
+<span id="cb17-24"><a href="#cb17-24"></a><span class="co">[0/1][750/792]  Loss_D: 0.4414  Loss_G: 3.4481  D(x): 0.8536    D(G(z)): 0.2275 / 0.0386</span></span>
+<span id="cb17-25"><a href="#cb17-25"></a><span class="co">'''</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="결과-확인" class="level3">
+<h3 class="anchored" data-anchor-id="결과-확인">결과 확인</h3>
+<div id="cell-28" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="co"># dataloader에서 진짜 데이터들을 가져옵니다</span></span>
+<span id="cb18-2"><a href="#cb18-2"></a>real_batch <span class="op">=</span> <span class="bu">next</span>(<span class="bu">iter</span>(dataloader))</span>
+<span id="cb18-3"><a href="#cb18-3"></a></span>
+<span id="cb18-4"><a href="#cb18-4"></a><span class="co"># 진짜 이미지들을 화면에 출력합니다</span></span>
+<span id="cb18-5"><a href="#cb18-5"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">15</span>,<span class="dv">15</span>))</span>
+<span id="cb18-6"><a href="#cb18-6"></a>plt.subplot(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>)</span>
+<span id="cb18-7"><a href="#cb18-7"></a>plt.axis(<span class="st">"off"</span>)</span>
+<span id="cb18-8"><a href="#cb18-8"></a>plt.title(<span class="st">"Real Images"</span>)</span>
+<span id="cb18-9"><a href="#cb18-9"></a>plt.imshow(np.transpose(vutils.make_grid(real_batch[<span class="dv">0</span>].to(device)[:<span class="dv">64</span>], padding<span class="op">=</span><span class="dv">5</span>, normalize<span class="op">=</span><span class="va">True</span>).cpu(),(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">0</span>)))</span>
+<span id="cb18-10"><a href="#cb18-10"></a></span>
+<span id="cb18-11"><a href="#cb18-11"></a><span class="co"># 가짜 이미지들을 화면에 출력합니다</span></span>
+<span id="cb18-12"><a href="#cb18-12"></a>plt.subplot(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>)</span>
+<span id="cb18-13"><a href="#cb18-13"></a>plt.axis(<span class="st">"off"</span>)</span>
+<span id="cb18-14"><a href="#cb18-14"></a>plt.title(<span class="st">"Fake Images"</span>)</span>
+<span id="cb18-15"><a href="#cb18-15"></a>plt.imshow(np.transpose(img_list[<span class="op">-</span><span class="dv">1</span>],(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">0</span>)))</span>
+<span id="cb18-16"><a href="#cb18-16"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="DCGAN_tutorial_files/figure-html/cell-15-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+
+
+</section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>Binary Cross Entropy loss<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p><span class="math inline">\(log(1 - D(G(z)))\)</span> 최소화는 원문 논문에서 효율적이지 못하다고 언급함<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/dotpyo\.github\.io\/archive");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/dotpyo/archive/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

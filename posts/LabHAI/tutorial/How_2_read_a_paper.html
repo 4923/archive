@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.551">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="S. Keshav">
+<meta name="keywords" content="paper, reading, hints">
+<meta name="description" content="논문을 읽는 방법에 대하여">
+
+<title>archive - How to read a paper</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../favicon.ico" rel="icon">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-L5Y3XFBP62"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-L5Y3XFBP62', { 'anonymize_ip': true});
+</script>
+<meta name="referrer" content="strict-origin-when-cross-origin">
+
+
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">archive</span>
+    </a>
+  </div>
+        <div class="quarto-navbar-tools tools-wide tools-end">
+    <a href="../../../CV.html" title="&amp;nbsp;" class="quarto-navigation-tool px-1" aria-label="&amp;nbsp;"><i class="bi bi-person-circle"></i></a>
+    <a href="https://github.com/dotpyo" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+          <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-page-left">
+      <h1 class="title">How to read a paper</h1>
+            <p class="subtitle lead">S. Keshav, University of Waterloo</p>
+                  <div>
+        <div class="description">
+          논문을 읽는 방법에 대하여
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">tutorial</div>
+              </div>
+                  </div>
+  </div>
+    
+  <div class="quarto-title-meta-author column-page-left">
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-heading">Affiliations</div>
+    
+      <div class="quarto-title-meta-contents">
+      <p class="author">S. Keshav <a href="mailto:keshav@uwaterloo.ca" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> </p>
+    </div>
+    <div class="quarto-title-meta-contents">
+          <p class="affiliation">
+              David R. Cheriton School of Computer Science
+            </p>
+          <p class="affiliation">
+              University of Waterloo
+            </p>
+        </div>
+    </div>
+
+  <div class="quarto-title-meta column-page-left">
+
+        
+    
+      <div>
+      <div class="quarto-title-meta-heading">Modified</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date-modified">March 10, 2024</p>
+      </div>
+    </div>
+      
+    </div>
+    
+
+  <div>
+    <div class="keywords">
+      <div class="block-title">Keywords</div>
+      <p>paper, reading, hints</p>
+    </div>
+  </div>
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#abstract" id="toc-abstract" class="nav-link active" data-scroll-target="#abstract">Abstract</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#the-three-pass-approach" id="toc-the-three-pass-approach" class="nav-link" data-scroll-target="#the-three-pass-approach">The Three-pass approach</a>
+  <ul>
+  <li><a href="#the-first-pass" id="toc-the-first-pass" class="nav-link" data-scroll-target="#the-first-pass">The first pass</a></li>
+  <li><a href="#the-second-pass" id="toc-the-second-pass" class="nav-link" data-scroll-target="#the-second-pass">The second pass</a></li>
+  <li><a href="#the-third-pass" id="toc-the-third-pass" class="nav-link" data-scroll-target="#the-third-pass">The third pass</a></li>
+  </ul></li>
+  <li><a href="#doing-a-literature-survey" id="toc-doing-a-literature-survey" class="nav-link" data-scroll-target="#doing-a-literature-survey">Doing A Literature survey</a></li>
+  <li><a href="#experience-related-work" id="toc-experience-related-work" class="nav-link" data-scroll-target="#experience-related-work">4~5 experience, related work</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/dotpyo/archive/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block page-columns page-full column-page-left" id="quarto-document-content">
+
+
+
+
+
+<!-- WARNING: THIS FILE WAS AUTOGENERATED! DO NOT EDIT! -->
+<p>처음부터 정독하며 필요한 부분을 발췌 혹은 보충한다.</p>
+<blockquote class="blockquote">
+<h3 id="tldr" class="anchored">TL;DR</h3>
+<ol type="1">
+<li>논문의 전반적인 핵심 논제를 파악할 것</li>
+<li>실제 논문의 내용을 이해할 것, 그러나 모든 세부 내용까지 알 필요는 없다.</li>
+<li>깊이 읽으며 앞선 pass에서 읽어내지 못한 부분까지 파악한다.</li>
+</ol>
+</blockquote>
+<ul>
+<li>General Terms: Documentation</li>
+<li>Keywords: Paper, Reading, Hints</li>
+</ul>
+<section id="abstract" class="level2">
+<h2 class="anchored" data-anchor-id="abstract">Abstract</h2>
+<p>연구자들이 논문을 읽는데 사용하는 시간에 비하여 그것을 읽는 방법은 충분히 가르쳐지지 않고 있으며 이는 상당한 손실을 야기한다. 본 논문은 논문을 읽을 때에 실용적이고 효과적인 <code>three-pass method</code> 개요를 서술할 것이며 포괄적 문헌 조사 (literature survey)에서 이를 어떻게 사용하는지 보이려 한다.</p>
+</section>
+<section id="introduction" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>연구자들은 논문을 여러가지 이유로 읽는다.</p>
+<ul>
+<li>최신 동향을 살피기 위해</li>
+<li>새로운 분야로의 진출을 위해</li>
+<li>컨퍼런스나 수업의 리뷰를 위함
+<ul>
+<li>리뷰란 정확히 무엇을 말하는가?: 전반적으로 검토하는 행위 혹은 리뷰 논문을 읽는 행위 등을 말할 수 있으나 본 맥락에서는 피어리뷰(peer review)<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>를 말하는 것 같다.</li>
+</ul></li>
+</ul>
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;동료 평가로, 타 연구자의 연구를 객관적으로 분석하고 저널에 실리기 적합한지 판정하는 과정이다. 저널의 영역, 목적, 독자층을 살피는 과정이 수반되며 논문의 가치를 판정하기 위해 몇 가지 항목을 검토하게 된다.</p></div><div class="margin-aside">
+<p>검토되는 항목은 다음과 같다.</p>
+<ul>
+<li>보존 가치</li>
+<li>참신성</li>
+<li>연구 윤리/직업적 무결성</li>
+<li>글의 완성도</li>
+<li>데이터의 질과 분석의 타당성</li>
+<li>결론의 타당성</li>
+</ul>
+</div></div>
+<div class="callout callout-style-simple callout-tip callout-titled" title="Reviewer Guidelines for Journal Selections">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Reviewer Guidelines for Journal Selections
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>논문 작성 시 유념할 것</li>
+</ul>
+<ol type="1">
+<li><strong>보존가치 Archival</strong>: 저널에 싣는다는 것은 어떤 형태로든 해당 연구가 기록되고 외부에 퍼진다는 의미다. 따라서 저널에 실릴 논문은 결과나 해석의 가치가 있는 결과를 포함해야 한다.
+<ul>
+<li>논문의 내용이 과거의 연구와 관계있거나 향후 연구의 초석이 될 가능성이 있는가?</li>
+<li>결과나 해석이 지속 가능한 과학적 가치를 가지고 있는가?</li>
+<li>해당 주제가 연구 분야에서 중요한가?</li>
+<li>SOTA (State Of The Art) 를 넘어서는 성능 혹은 강점을 가지고 있는가?</li>
+</ul></li>
+<li><strong>참신성 Innovative</strong>: 기술적으로 새롭거나, 혁신적이거나, 구조적인 리뷰여야 한다. 연구의 가치를 판정함에 있어 가장 중요한 지표로 보인다.
+<ul>
+<li>주제가 오늘날의 청중에게 흥미로운 내용이거나 중요한 내용인가?</li>
+<li>아이디어/정보/방법이 가치있거나 새롭거나 창의적인가?</li>
+<li>저자가 제시한 정보가 완전히 새로운 것인가?</li>
+<li>분석적이거나, 수치적이거나, 실험적인 결과 혹은 해석이 독창적인가? (Are ~ original 에서 original을 독창적으로 해석)</li>
+<li>결과가 미칠 영향이 선명하게 기술되어 있는가?</li>
+</ul></li>
+<li><strong>직업적 무결성 Professional Integrity</strong>: 기본적인 윤리에 대한 문제다. 연구자로서 개인의 사적 이익과 견해를 최대한 배제하고 객관적이고 공정하게 연구에 임했는지 확인한다.
+<ul>
+<li>특정 자본과 밀접한 관계를 맺고 있지 않은가?</li>
+<li>개인적이거나 편향된 관점을 가지지는 않았는가?</li>
+<li>선행연구가 적절히 인용되어 있는가?</li>
+<li>(만약 그렇게 주장할 경우) 실제로 최초로 사용된 기술인가?</li>
+<li>반대되는 주장이나 경쟁 구도에 있는 연구 등을 폄하하지 않는가?</li>
+<li>선행연구를 공정하고 건설적인 방식으로 참조하고 있는가?</li>
+<li>연구자로서 적절한 규정 및 윤리 지침을 따랐는가?</li>
+</ul></li>
+<li><strong>발표 Presentation</strong>: 논문도 글이다. 읽히기에 적합한 글인지, 연구의 내용을 명료하고 병확하게 기술했는지 판정한다.
+<ul>
+<li>서론에서 동기를 설명하고 독자의 방향을 제시하는가?</li>
+<li>논문에 수행 작업, 방법, 주된 결과가 설명되어 있는가?</li>
+<li>주제에서 벗어나지 않았는가?</li>
+<li>표와 그림이 명확하고 정확한가?</li>
+<li>논문에서 사용한 개념이 명확히 제시되어 있는가?</li>
+<li>제목과 주요 단어가 오용되지 않았는가?</li>
+<li>논문의 길이가 논문의 범위에 적합한지까지 살피는 줄 몰랐는데 그렇다고 한다.</li>
+<li>기본적인 작문 기술을 갖추었는가?; 단어 선택, 문장 구조, 단락 구성, 참고 문헌 인용 등</li>
+</ul></li>
+<li><strong>질 Quality</strong>: 데이터의 질과 분석과 기술의 타당성을 확인한다. 아무리 좋은 데이터라도 적합한 분석 과정을 거치지 않는다면 무의미하며, 아무리 좋은 기술이라도 적절한 데이터를 사용하지 않는다면 적합한 결과를 확인할 수 없다.
+<ul>
+<li>기술적으로 건전한가?</li>
+<li>강점 뿐 아니라 그 한계까지 평가하고 있는가?</li>
+<li>평가 지표가 명시되어 있는가?</li>
+<li>선행 연구를 충분히 검토하였는가?</li>
+<li>선행 연구에서 이어지는 연구인가? 즉, 이전에 입증된 연구에서 참조된 가정으로부터 비롯된 연구인가?</li>
+</ul></li>
+<li><strong>결론의 타당성 Soundness of conclusions</strong>: 글과 주장을 올바르게 맺었는지 확인한다.
+<ul>
+<li>주장이 확고한가?</li>
+<li>결론이 이론적, 실험적으로 타당한가?</li>
+<li>제시한 사실이 충분히 결론을 뒷받침 할 수 있는가?</li>
+</ul></li>
+</ol>
+<ul>
+<li>출처: <a href="https://www.sae.org/binaries/content/assets/cm/content/publications/journals/resources/reviewerrubricresourcepage.pdf">SAE International</a></li>
+</ul>
+</div>
+</div>
+</div>
+<p>이와 같은 이유로 연구자들은 매년 수백시간을 논문을 읽는데 사용한다. 당연히 논문을 읽는 방법이 중요할 수 밖에 없는데, 적절하게 논문을 읽는 방법이 가르쳐지지 않은 실정이다. 대학원생들은 스스로 시행착오를 겪으며 ’논문 읽기’를 습득해야 하는데 이는 노력을 낭비하는 일이 아닐 수 없다.</p>
+<p>여러해 동안 저자는 쉽고 효율적으로 논문에 접근하는 방법을 사용해왔는데, 이를 이 논문에서 제시하겠다고 한다.</p>
+<p>여기까지가 도입부의 내용이다. callout으로 정리한 내용에 따르면 일반적으로 introduction 에는 ‘동기’ 및 ’연구의 방향’을 제시하는 과정이 필요하다. 이번 논문의 내용을 살펴보자. 서론은 세줄로 요약이 가능하다. (1) 연구자들은 논문을 많이 읽는다/읽어야 한다. (2) 그러나 도움을 받을 방법이 없기에 그 접근 장벽은 상당히 높아졌다. (3) 저자는 이를 쉽게 해결할 방법(three-pass approach)을 알고 있다.</p>
+<p>짧은 도입부지만 여기에는 동기 (1~2) 와 연구의 방향 (3) 이 모두 제시되어 있다. 도입부로써 적절하다고 판단할 수 있겠다.</p>
+</section>
+<section id="the-three-pass-approach" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="the-three-pass-approach">The Three-pass approach</h2>
+<p>주요 아이디어는: 처음부터 끝까지 냅다 읽어내리지 말고, 세번정도에 나누어 읽으라는 것이다. 각각의 ’pass’에는 성취해야 할 목표들이 있는데 이를 나열하면 다음과 같다.</p>
+<ol type="1">
+<li>논문의 전반적인 핵심 논제를 파악할 것</li>
+<li>실제 논문의 내용을 이해할 것, 그러나 모든 세부 내용까지 알 필요는 없다.</li>
+<li>깊이 읽으며 앞선 pass에서 읽어내지 못한 부분까지 파악한다.</li>
+</ol>
+<section id="the-first-pass" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="the-first-pass">The first pass</h3>
+<p>읽어볼만 한지, 그렇다면 얼마나 깊게 읽어야 하는지 전반적으로 판단하는 단계다. 5분에서 10분을 들여 빠르게 스키밍 한다. 단계는 다음과 같다.</p>
+<ol type="1">
+<li>제목, 초록, 소개를 읽고</li>
+<li>섹션과 하위섹션의 <strong>제목</strong>을 읽으며 무슨 내용일지 파악한다.</li>
+<li>결론을 확인한다.</li>
+<li>참고문헌을 훑어보며<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> 읽은 내용을 전반적으로 검토한다.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></li>
+</ol>
+<div class="no-row-height column-margin column-container"><div id="fn2"><p><sup>2</sup>&nbsp;glance: 흘낏 보다, 휙휙 훑어보다.</p></div><div id="fn3"><p><sup>3</sup>&nbsp;tick sbd/sth off: (이미 처리했음을 나타내기 위해) ~에 체크 표시(✓)를 하다</p></div></div><p>해당 단계가 제대로 진행 되었다면 다음 항목에 대답할 수 있어야 한다.</p>
+<ul class="task-list">
+<li><label><input type="checkbox">범주: 어떤 종류의 논문인가? - 주제, 연구방법 등</label></li>
+<li><label><input type="checkbox">맥락: 다른 논문과의 연관성은 어떠한가?</label></li>
+<li><label><input type="checkbox">정확도: 가정은 타당해 보이는가?</label></li>
+<li><label><input type="checkbox">기여도: 주된 기여도는 무엇인가? - novelty 등을 말하는 것으로 보임</label></li>
+<li><label><input type="checkbox">명확성: 논문은 잘 쓰여졌는가?</label></li>
+</ul>
+<p>위 질문에 대답함으로써 이해도를 파악하고, 그 대답을 통해 논문을 마저 읽을지 말지 결정할 수 있는데 배경 지식이 부족해 충분히 이해하지 못했거나, 논문의 주장이 빈약하거나, 논문의 질 자체가 좋지 않은 경우 더 읽지 않아도 좋다. 다만 연구 분야가 아니더라도 향후 도움이 될 것으로 판단되면 첫번째 단계는 통과한 것으로 본다.</p>
+<div class="callout callout-style-simple callout-note callout-titled" title="제목과 소제목들은 이래서 중요하다.">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+제목과 소제목들은 이래서 중요하다.
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>첫번째 단계에서 더 읽을지 말지가 결정된다. 작성한 논문이 읽힐지 말지 결정되는건 이 짧은 5~10분 사이의 시간이므로 섹션 제목을 <strong>일관성 있게</strong> 선택하고 <strong>간결하며 포괄적인 초록</strong>을 작성하는데 주의를 기울여라.</p>
+<ul>
+<li>리뷰 통과 뿐 아니라, 일반 연구자들을 위해서도 그렇게 해야 한다.</li>
+<li>5분이 지나도 논문의 핵심을 이해하지 못하면 논문이 읽히지 않을 가능성이 높다.</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="the-second-pass" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="the-second-pass">The second pass</h3>
+<p>첫번째 단계를 통과했다면 더 주의깊게 읽을 때가 됐다. 세부사항은 잠시 넘겨두고 논문을 이해하는데 초점을 맞추자. 메모하거나 의견을 정리하는 것도 도움이 된다.</p>
+<ol type="1">
+<li><p>시각자료 검토</p>
+<p>특히 논문의 그림, 도표 등 시각 자료를 시간들여 살피는 것이 좋은데, 이는 논문의 질을 판단하는 주요한 요소가 되기 때문이다. 예를 들어; 축에 레이블이 제대로 붙어있는지, 결과가 오차 막대와 함께 포함되어 있는지<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> 결론이 통계적으로 유효한지 확인할 수 있는 방법이다.] 등을 확인하는 것이 좋다.</p></li>
+<li><p>참고문헌 검토</p>
+<p>또한, 참고문헌의 경우 나중에 읽을 것을 분류하는게 좋은데 이는 논문의 배경에 대해 알 수 있는 좋은 방법이기 때문이다. 읽지 않은 참고 문헌을 나중에 읽을 수 있게 표시하라고 명시해 두었으니, 참고문헌을 찾아 읽는 습관도 함께 들여두자.</p></li>
+</ol>
+<div class="no-row-height column-margin column-container"><div id="fn4"></div></div><p>그렇다면 두번째 단계를 통과했는지 알아보는 척도는 무엇일까. 아마도 내용의 이해일 것이다.</p>
+<blockquote class="blockquote">
+<p>After this pass, you should be able to grasp the content of the paper. <strong>You should be able to summarize the main thrust of the paper, with supporting evidence, to someone else.</strong> This level of detail is appropriate for a paper in which you are interested, but does not lie in your research speciality.</p>
+</blockquote>
+<p>한시간 안에 이 단계를 끝마치는게 좋다.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> 만약 한시간이 지나도 논문을 이해하지 못한다면 우리에겐 세가지 선택지가 남는다.</p>
+<div class="no-row-height column-margin column-container"><div id="fn5"><p><sup>5</sup>&nbsp;전문 분야는 한시간 이내에 끝내야 한다는 의미일까? 아니면 더 오랜 시간을 들여서 검토해야 한다는 의미일까? 전자인것 같긴 하다.</p></div></div><ol type="1">
+<li>포기한다.</li>
+<li>미뤄둔다.</li>
+<li>계속한다.</li>
+</ol>
+<p>포기한다고 해서 세상이 끝나는건 아니다. 미룬다고 해서 큰일이 당장 벌어지는 것도 아닐 것이다. 특히 두번째 선택지는, 전진을 위한 후퇴에 가깝다. 배경지식을 습득하고 보는 것이기 때문이다. 하지만 언제나 준비만 할 수는 없는 것 같다.</p>
+<p>대개 나는 두번째 방법을 선택하는데, 지난한 시간 끝에 때로 3번을 강행하는게 좋다는 결론을 내리게 되었다. 모르면 모르는대로 실험해보자. 그 과정에서 얻은 것이 배경지식보다 더 빠른 길을 제시할 수 있다.</p>
+</section>
+<section id="the-third-pass" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="the-third-pass">The third pass</h3>
+<p>이제 논문을 완전히 이해할 때가 됐다. 완전히 이해했다는 건 어떤 의미일까? 전 단계에서 다른 사람에게 설명할 수 있을 정도로 충분히 이해했다면, 다시말해 이해의 수준이 ’다른 사람에게 내보일만큼’에 도달했다면 마지막은 나에게 떳떳할만큼의 수준을 갖추는 것이 순서일 것이다.</p>
+<blockquote class="blockquote">
+<p>The key to the third pass is to attempt to virtually re-implement the paper: that is, making the same assumptions as the authors, re-create the work.</p>
+</blockquote>
+<p>재현이다. 이 과정과 실제 논문을 비교하면 첫번째 단계에서 가늠해보았던 논문의 혁신적인 부분을 직접 체험할 수 있을 뿐 아니라 두번째 단계에서 찾아내지 못했던 실험의 미비함이나 가정의 불완전함 또한 발견할 수 있다. 그 과정에서 새로운 연구 주제를 찾을 수 있게 된다.</p>
+<p>이 과정은 까다롭게 진행해야 한다. 모든 가정을 파악하고, 모든 요소에 이의를 제기하며, 본인이라면 어떻게 증명했을지 생각한 후에 논문과 비교하는 과정을 거쳐야한다. 이 과정은 초심자에겐 네다섯시간, 숙련자에겐 한시간정도 소요된다.</p>
+<p>세번째 단계를 거쳤다면 다음을 해낼 수 있어야 한다. 거의 해당 논문을 리뷰하는 수준까지 가야 하는 것 같다.</p>
+<blockquote class="blockquote">
+<p>At the end of this pass, you should be able to reconstruct the entire structure of the paper from memory, as well as be able to identify its strong and weak points.</p>
+</blockquote>
+<p>특히 논문에 직접적으로 드러나지 않은 <strong>암시적인 가정</strong><a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>, 인용의 누락, 분석 기법의 잠재적 문제점까지 찾아내는 것이 목표다.</p>
+<div class="no-row-height column-margin column-container"><div id="fn6"><p><sup>6</sup>&nbsp;implicit assumptions</p></div></div></section>
+</section>
+<section id="doing-a-literature-survey" class="level2">
+<h2 class="anchored" data-anchor-id="doing-a-literature-survey">Doing A Literature survey</h2>
+<p>실제로 논문을 찾아보는 단계다. 간단히 방법만 기록하겠다.</p>
+<ol type="1">
+<li>Google Scholar, CiteSeer 등의 학술 검색 엔진에서 키워드를 잘 선택하여 최신 논문 세개에서 다섯개를 찾을 것</li>
+<li>논문을 훑어보며 내용을 파악하고 관련 내용을 검토할 것
+<ul>
+<li>이때 서베이 논문을 찾을 수도 있는데, 그렇다면 기뻐하며 끝내자.</li>
+</ul></li>
+<li><strong>참고문헌</strong>에서 반복되는 저자 이름을 찾을 것.
+<ul>
+<li>이때 반복되는 논문과 주요 저자의 최근 연구 이력을 잘 살피자.</li>
+</ul></li>
+<li>영향력이 큰 컨퍼런스의 최근 발표 내용을 살펴보고, 수준 높은 연구를 익힐 것.</li>
+<li>3번에서 모아둔 주요 연구자료와 4번에서 찾은 연구들을 함께 살피고, 반복해서 읽는다.</li>
+</ol>
+</section>
+<section id="experience-related-work" class="level2">
+<h2 class="anchored" data-anchor-id="experience-related-work">4~5 experience, related work</h2>
+<p>경험에 근거하여 숲을 보기 전에 나무부터 살피고 있지 말라는 조언을 전한다.</p>
+<p>또한</p>
+<ul>
+<li>리뷰 논문을 작성하는 중이라면 아래 논문을 참고하라
+<ul>
+<li>S. Peyton Jones, “Research Skills,”
+<ul>
+<li><a href="http://research.microsoft.com/%20simonpj/Papers/giving-%20a-talk/giving-a-talk.html">http://research.microsoft.com/ simonpj/Papers/giving- a-talk/giving-a-talk.html</a></li>
+</ul></li>
+</ul></li>
+<li>기술 논문을 작성하는 중이라면 아래 웹 사이트와 프로세스 개요를 탐독하라
+<ul>
+<li>H. Schulzrinne, “Writing Technical Articles,”
+<ul>
+<li><a href="http://www.cs.columbia.edu/%20hgs/etc/writing-%20style.html">http://www.cs.columbia.edu/ hgs/etc/writing- style.html</a></li>
+</ul></li>
+<li>G.M. Whitesides, “Whitesides’ Group: Writing a Paper,”
+<ul>
+<li><a href="http://www.che.iitm.ac.in/misc/dd/writepaper.pdf">http://www.che.iitm.ac.in/misc/dd/writepaper.pdf</a></li>
+</ul></li>
+</ul></li>
+<li>이 모든 연구 기술의 스펙트럼을 다루는 웹 사이트도 하나 추천한다.
+<ul>
+<li>ACM SIGCOMM Computer Communication Review Online
+<ul>
+<li><a href="http://www.sigcomm.org/ccr/drupal/">http://www.sigcomm.org/ccr/drupal/</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+
+</section>
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/dotpyo\.github\.io\/archive");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/dotpyo/archive/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
