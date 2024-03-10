@@ -162,7 +162,7 @@ window.Quarto = {
     </a>
   </div>
         <div class="quarto-navbar-tools tools-wide tools-end">
-    <a href="../../CV.html" title="&amp;nbsp;" class="quarto-navigation-tool px-1" aria-label="&amp;nbsp;"><i class="bi bi-person-circle"></i></a>
+    <a href="../../CV.html" title="YeEun Hong" class="quarto-navigation-tool px-1" aria-label="YeEun Hong"><i class="bi bi-person-circle"></i></a>
     <a href="https://github.com/dotpyo" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
@@ -287,29 +287,12 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="what-is-a-graph">1.1 What is a graph</h2>
 <p>그래프에서의 머신러닝을 논하기 이전에 ’그래프 데이터’가 정확히 무엇을 의미하는지 나타내는 공적인 표현에 대해 조금 알아둘 필요가 있다. 공식적으로, 그래프 <span class="math inline">\(\cal{G} = (\cal{V, E})\)</span> 는 정점의 집합인 <span class="math inline">\(\cal{V}\)</span> 와 정점 사이의 간선의 집합인 <span class="math inline">\(\cal{E}\)</span> 로 정의된다. 정점 <span class="math inline">\(u \in \cal{V}\)</span> 와 <span class="math inline">\(v \in \cal{V}\)</span> 로 이루어진 간선은 다음과 같이 정의한다: <span class="math inline">\((u, v) \in \cal{E}\)</span>. 많은 경우에 (우리는) 단순 그래프 (<em>simple graph</em>) 만을 고려하는데, 단순 그래프는 대부분 하나의 간선이 각 정점의 쌍 사이에 존재하는 집합으로 어떤 간선도 정점 하나에 존재하지는 않는 그래프이다.</p>
 <p>그래프를 편리하게 표현하는 방법은 <strong><em>adjacency matrix (인접행렬)</em></strong> <span class="math inline">\(A \in \mathbb{R}^{|\cal{V}|*|\cal{V}|}\)</span> 를 사용하는 방법이다.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> <span class="math inline">\(A\)</span> 로 그래프를 표현하기 위해서는 그래프의 정점을 순서대로 배열함으로써 모든 정점의 색인들(indexes)이 인접행렬 <span class="math inline">\(A\)</span>의 각각의 행과 열이 되게 해야 한다. 그렇게 하면 다음 조건의 행렬에서의 모든 간선의 존재를 표현할 수 있다: <span class="math inline">\(A[u, v] = 1\)</span> if <span class="math inline">\((u,v) \in \cal(E)\)</span> and <span class="math inline">\(A[u, v] = 0\)</span> otherwise <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> 만약 그래프가 방향이 없는 간선 (undirected edge)으로만 구성된 경우 인접행렬 <span class="math inline">\(A\)</span>는 대칭행렬이 된다. 하지만 간선들이 방향성이 있다면 (edge direction matters) <span class="math inline">\(A\)</span>는 대칭이지 않아도 된다. 몇몇 그래프들은 가중치를 가질 수도 있는데 (weighted edges) 그 경우 그래프에 기재되는 값이 {0, 1}이 아닌 임의의 실수가 된다. 예를 들어 가중 그래프 중 단백질간 상호작용 그래프는 두 단백질 사이의 연관된 힘을 나타내는 그래프로 쓰일 수 있다.</p>
-<aside id="footnotes" class="footnotes footnotes-end-of-block" role="doc-footnote">
-<ol>
-<li id="fn1"><p><span class="math inline">\(\cal{V = V_1} \cup \cal{V_2} \cup \dots \cup \cal{V_k}\)</span> where <span class="math inline">\(\cal{V_i} \cap \cal{V_j} = \emptyset, \forall_i \neq j\)</span><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p><span class="math inline">\(A[u, v] = 1\)</span> if <span class="math inline">\((u,v) \in \cal(E)\)</span> and <span class="math inline">\(A[u, v] = 0\)</span> - <span class="math inline">\(A[u, v] = 1\)</span>: <span class="math inline">\(u\)</span>와 <span class="math inline">\(v\)</span> 사이에 간선이 존재할 때 (<span class="math inline">\(A[u, v] = 0\)</span>: 존재하지 않을 때) - <span class="math inline">\((u, v)\)</span> 가 그래프 안에 있고 간선 집합 <span class="math inline">\(\cal{E}\)</span> 안에 존재할 때 <span class="math inline">\(A\)</span>의 위치 <span class="math inline">\((u, v)\)</span>에 올 수 있는 값은 간선이 존재하거나 (1) 존재하지 않는 (0) 두 가지 경우의 수 뿐이다.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</aside>
 <section id="multi-relational-graph" class="level3">
 <h3 class="anchored" data-anchor-id="multi-relational-graph">1.1.1 Multi-relational Graph</h3>
 <p><em>multi-relational graph</em>는 방향이 있는 간선, 없는 간선, 가중치가 있는 간선을 넘어 다양한 종류의 간선이 있는 그래프를 고려한다. 예를 들어, 약물과 약물의 상호작용 그래프에서 각 간선이 두 약물을 동시에 복용할 때 발생할 수 있는 부작용에 대하여 서로 두가지의 간선이 필요할 수 있다. 이 예에서 간선 표기법을 확장하여 다음을 표현할 수 있다:</p>
 <p>간선 또는 관계 유형 <span class="math inline">\(\tau\)</span>, (<span class="math inline">\(u\)</span>, <span class="math inline">\(\tau\)</span>, <span class="math inline">\(v\)</span>) <span class="math inline">\(\in\)</span> <span class="math inline">\(\cal{E}\)</span>, 그리고 하나의 인접행렬 <span class="math inline">\(A_{\tau}\)</span> 를 간선 종류마다 정의할 수 있다. 이러한 그래프를 <em>multi-relational</em> 하다고 말하며 전체의 그래프는 인접 텐서 <span class="math inline">\(\cal{A} \in \mathbb{R}^{\cal{|V| * |R| * |V|}}\)</span> 로 정의된다.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> <em>multi-relational graph</em>의 두가지 중요한 부분집합은 1. <code>heterogenous</code>, 2. <code>multiplex</code> 그래프로 나뉜다. <em>tau</em> (<span class="math inline">\(\tau\)</span>)는 간선의 타입을 의미하며, 간선의 종류에는 위에 기술한 바와 같이 방향이 있는 것, 없는 것, 가중치가 있는 것 등이 포함된다. 이렇게 간선의 종류가 달라지면 Adjacency Matrix <span class="math inline">\(A\)</span>도 따로 정의해야 한다.</p>
-<aside id="footnotes" class="footnotes footnotes-end-of-block" role="doc-footnote">
-<ol start="3">
-<li id="fn3"><p><span class="math inline">\(\cal{V = V_1} \cup \cal{V_2} \cup \dots \cup \cal{V_k}\)</span> where <span class="math inline">\(\cal{V_i} \cap \cal{V_j} = \emptyset, \forall_i \neq j\)</span><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</aside>
 <p><strong>Heterogeneous graph</strong></p>
 <p>Heterogeneous graph에서, 정점들은 <em>type</em>에 물들어있다. 다시 말해, 정점 집합의 일부는 다음과 같이 해체될 수 있다: <span class="math inline">\(\cal{V = V_1} \cup \cal{V_2} \cup \dots \cup \cal{V_k}\)</span> where <span class="math inline">\(\cal{V_i} \cap \cal{V_j} = \emptyset, \forall_i \neq j\)</span> <a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>. heterogeneous graph의 간선은 일반적으로 제한이 걸려있는데 이는 집합 <span class="math inline">\(\cal{V}\)</span>가 서로 겹치지 않는 부분집합 <span class="math inline">\(\cal{V_1}\)</span> 부터 <span class="math inline">\(\cal{V_k}\)</span><a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> 의 합집합이다.</p>
-<aside id="footnotes" class="footnotes footnotes-end-of-block" role="doc-footnote">
-<ol start="4">
-<li id="fn4"><p><span class="math inline">\(\cal{V = V_1} \cup \cal{V_2} \cup \dots \cup \cal{V_k}\)</span> where <span class="math inline">\(\cal{V_i} \cap \cal{V_j} = \emptyset, \forall_i \neq j\)</span><a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn5"><p><span class="math inline">\(\forall\)</span> : forall<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</aside>
 
 
 <!-- -->
@@ -318,7 +301,17 @@ window.Quarto = {
 </section>
 </section>
 
-</main> <!-- /main -->
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p><span class="math inline">\(\cal{V = V_1} \cup \cal{V_2} \cup \dots \cup \cal{V_k}\)</span> where <span class="math inline">\(\cal{V_i} \cap \cal{V_j} = \emptyset, \forall_i \neq j\)</span><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p><span class="math inline">\(A[u, v] = 1\)</span> if <span class="math inline">\((u,v) \in \cal(E)\)</span> and <span class="math inline">\(A[u, v] = 0\)</span> - <span class="math inline">\(A[u, v] = 1\)</span>: <span class="math inline">\(u\)</span>와 <span class="math inline">\(v\)</span> 사이에 간선이 존재할 때 (<span class="math inline">\(A[u, v] = 0\)</span>: 존재하지 않을 때) - <span class="math inline">\((u, v)\)</span> 가 그래프 안에 있고 간선 집합 <span class="math inline">\(\cal{E}\)</span> 안에 존재할 때 <span class="math inline">\(A\)</span>의 위치 <span class="math inline">\((u, v)\)</span>에 올 수 있는 값은 간선이 존재하거나 (1) 존재하지 않는 (0) 두 가지 경우의 수 뿐이다.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p><span class="math inline">\(\cal{V = V_1} \cup \cal{V_2} \cup \dots \cup \cal{V_k}\)</span> where <span class="math inline">\(\cal{V_i} \cap \cal{V_j} = \emptyset, \forall_i \neq j\)</span><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p><span class="math inline">\(\cal{V = V_1} \cup \cal{V_2} \cup \dots \cup \cal{V_k}\)</span> where <span class="math inline">\(\cal{V_i} \cap \cal{V_j} = \emptyset, \forall_i \neq j\)</span><a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p><span class="math inline">\(\forall\)</span> : forall<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -933,62 +926,63 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-8"><a href="#cb1-8"></a><span class="an">sidebar:</span><span class="co"> false</span></span>
 <span id="cb1-9"><a href="#cb1-9"></a><span class="an">categories:</span></span>
 <span id="cb1-10"><a href="#cb1-10"></a><span class="co">    - graph</span></span>
-<span id="cb1-11"><a href="#cb1-11"></a></span>
-<span id="cb1-12"><a href="#cb1-12"></a><span class="an">date:</span><span class="co"> 2024/03/08</span></span>
-<span id="cb1-13"><a href="#cb1-13"></a><span class="co">---</span></span>
-<span id="cb1-14"><a href="#cb1-14"></a></span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="an">reference-location:</span><span class="co"> document</span></span>
+<span id="cb1-12"><a href="#cb1-12"></a></span>
+<span id="cb1-13"><a href="#cb1-13"></a><span class="an">date:</span><span class="co"> 2024/03/08</span></span>
+<span id="cb1-14"><a href="#cb1-14"></a><span class="co">---</span></span>
 <span id="cb1-15"><a href="#cb1-15"></a></span>
-<span id="cb1-16"><a href="#cb1-16"></a><span class="fu">## General Notation</span></span>
-<span id="cb1-17"><a href="#cb1-17"></a></span>
+<span id="cb1-16"><a href="#cb1-16"></a></span>
+<span id="cb1-17"><a href="#cb1-17"></a><span class="fu">## General Notation</span></span>
 <span id="cb1-18"><a href="#cb1-18"></a></span>
-<span id="cb1-19"><a href="#cb1-19"></a>| denote | meaning | note |</span>
-<span id="cb1-20"><a href="#cb1-20"></a>| :--------: | :------ | :--- |</span>
-<span id="cb1-21"><a href="#cb1-21"></a>| $\cal{G} = (\cal{V, E})$ | formal definition of graph | calligraphic font used |</span>
-<span id="cb1-22"><a href="#cb1-22"></a>| $\cal{V}$ | a set of nodes | node = vertex |</span>
-<span id="cb1-23"><a href="#cb1-23"></a>| $\cal{E}$ | a set of edges, edges between nodes | $\therefore$ edge needs coordinate-likely information to denote each one |</span>
-<span id="cb1-24"><a href="#cb1-24"></a>| $u \in \cal{V}$ | a node of node set $\cal{V}$ | normally node denoted by $\cal{u}$ or $\cal{v}$ |</span>
-<span id="cb1-25"><a href="#cb1-25"></a>| $(u, v) \in \cal{E}$ | when u, v in $\cal{V}$, it means an edge from u to v vice versa | check it is direct graph or not |</span>
-<span id="cb1-26"><a href="#cb1-26"></a></span>
-<span id="cb1-27"><a href="#cb1-27"></a><span class="fu"># 1. Introduction</span></span>
-<span id="cb1-28"><a href="#cb1-28"></a></span>
-<span id="cb1-29"><a href="#cb1-29"></a>그래프는 어디에나 있는 데이터 구조이며 복잡한 시스템을 묘사하는 일반적인 언어이다. 대부분의 일반적인 관점에서 그래프는 정점(<span class="in">`node`</span>)들과 그 상호작용 집합인 간선(<span class="in">`edge`</span>)와 같은 단순한 객체들의 집합이었다. 예를 들어 사회 관계망을 그래프로 부호화(encode) 하는 경우 우리는 아마 개인을 표현하기 위해 정점을, 개인이 친구임을 표현하기 위해서는 간선를 사용할 것이다. 생물학 도메인에서는 그래프의 정점을 단백질을 표현하는데 사용할 수 있으며 간선은 다양한 생물학적 연관관계; 예를들어 단백질 사이의 운동관계를 표현하는데 사용할 수 있다.</span>
-<span id="cb1-30"><a href="#cb1-30"></a></span>
-<span id="cb1-31"><a href="#cb1-31"></a>|&lt;img a="Zachary Karate Club Network" src="https://github.com/dotpyo/archive/assets/60145951/344c9b97-9d0d-46c6-89fa-c3cbb19b3ba2" width="100%" &gt;</span>
-<span id="cb1-32"><a href="#cb1-32"></a>|:-:|</span>
-<span id="cb1-33"><a href="#cb1-33"></a>|Zachary Karate Club Network|</span>
-<span id="cb1-34"><a href="#cb1-34"></a></span>
-<span id="cb1-35"><a href="#cb1-35"></a>위는 유명한 자카리 가라테 클럽 네트워크로 가라테 클럽 멤버 사이의 친밀도를 나타내는 사회 관계망 그래프이며 웨인 W 자카리가 190-1972 사이에 연구한 결과다. 간선은 두 개인이 클럽 바깥에서 아는 사이이면 연결된다. 연구동안 클럽은 0번과 33번 정점을 중심으로 양분되었는데 연구자는 어떤 정점(회원)이 어디로 나뉠지 그래프 구조를 기반으로 정확하게 예측한 바 있다.</span>
-<span id="cb1-36"><a href="#cb1-36"></a></span>
-<span id="cb1-37"><a href="#cb1-37"></a>그래프 형식의 강점은 관계와 (개별 지점 대신에) 각 지점 '사이'에 초점을 맞추는데 있으며 그 일반화 능력을 빠트릴 수 없다. 같은 그래프 형태는 사회 관계망, 약물과 단백질 사이의 상호작용, 원자와 분자간 상호작용 등... 을 표현할 수 있다. 다시말해, 정점을 정의하는것이 무엇이냐에 따라 같은 그래프도 다르게 사용될 수 있다.</span>
-<span id="cb1-38"><a href="#cb1-38"></a></span>
+<span id="cb1-19"><a href="#cb1-19"></a></span>
+<span id="cb1-20"><a href="#cb1-20"></a>| denote | meaning | note |</span>
+<span id="cb1-21"><a href="#cb1-21"></a>| :--------: | :------ | :--- |</span>
+<span id="cb1-22"><a href="#cb1-22"></a>| $\cal{G} = (\cal{V, E})$ | formal definition of graph | calligraphic font used |</span>
+<span id="cb1-23"><a href="#cb1-23"></a>| $\cal{V}$ | a set of nodes | node = vertex |</span>
+<span id="cb1-24"><a href="#cb1-24"></a>| $\cal{E}$ | a set of edges, edges between nodes | $\therefore$ edge needs coordinate-likely information to denote each one |</span>
+<span id="cb1-25"><a href="#cb1-25"></a>| $u \in \cal{V}$ | a node of node set $\cal{V}$ | normally node denoted by $\cal{u}$ or $\cal{v}$ |</span>
+<span id="cb1-26"><a href="#cb1-26"></a>| $(u, v) \in \cal{E}$ | when u, v in $\cal{V}$, it means an edge from u to v vice versa | check it is direct graph or not |</span>
+<span id="cb1-27"><a href="#cb1-27"></a></span>
+<span id="cb1-28"><a href="#cb1-28"></a><span class="fu"># 1. Introduction</span></span>
+<span id="cb1-29"><a href="#cb1-29"></a></span>
+<span id="cb1-30"><a href="#cb1-30"></a>그래프는 어디에나 있는 데이터 구조이며 복잡한 시스템을 묘사하는 일반적인 언어이다. 대부분의 일반적인 관점에서 그래프는 정점(<span class="in">`node`</span>)들과 그 상호작용 집합인 간선(<span class="in">`edge`</span>)와 같은 단순한 객체들의 집합이었다. 예를 들어 사회 관계망을 그래프로 부호화(encode) 하는 경우 우리는 아마 개인을 표현하기 위해 정점을, 개인이 친구임을 표현하기 위해서는 간선를 사용할 것이다. 생물학 도메인에서는 그래프의 정점을 단백질을 표현하는데 사용할 수 있으며 간선은 다양한 생물학적 연관관계; 예를들어 단백질 사이의 운동관계를 표현하는데 사용할 수 있다.</span>
+<span id="cb1-31"><a href="#cb1-31"></a></span>
+<span id="cb1-32"><a href="#cb1-32"></a>|&lt;img a="Zachary Karate Club Network" src="https://github.com/dotpyo/archive/assets/60145951/344c9b97-9d0d-46c6-89fa-c3cbb19b3ba2" width="100%" &gt;</span>
+<span id="cb1-33"><a href="#cb1-33"></a>|:-:|</span>
+<span id="cb1-34"><a href="#cb1-34"></a>|Zachary Karate Club Network|</span>
+<span id="cb1-35"><a href="#cb1-35"></a></span>
+<span id="cb1-36"><a href="#cb1-36"></a>위는 유명한 자카리 가라테 클럽 네트워크로 가라테 클럽 멤버 사이의 친밀도를 나타내는 사회 관계망 그래프이며 웨인 W 자카리가 190-1972 사이에 연구한 결과다. 간선은 두 개인이 클럽 바깥에서 아는 사이이면 연결된다. 연구동안 클럽은 0번과 33번 정점을 중심으로 양분되었는데 연구자는 어떤 정점(회원)이 어디로 나뉠지 그래프 구조를 기반으로 정확하게 예측한 바 있다.</span>
+<span id="cb1-37"><a href="#cb1-37"></a></span>
+<span id="cb1-38"><a href="#cb1-38"></a>그래프 형식의 강점은 관계와 (개별 지점 대신에) 각 지점 '사이'에 초점을 맞추는데 있으며 그 일반화 능력을 빠트릴 수 없다. 같은 그래프 형태는 사회 관계망, 약물과 단백질 사이의 상호작용, 원자와 분자간 상호작용 등... 을 표현할 수 있다. 다시말해, 정점을 정의하는것이 무엇이냐에 따라 같은 그래프도 다르게 사용될 수 있다.</span>
 <span id="cb1-39"><a href="#cb1-39"></a></span>
-<span id="cb1-40"><a href="#cb1-40"></a><span class="fu">## 1.1 What is a graph</span></span>
-<span id="cb1-41"><a href="#cb1-41"></a></span>
-<span id="cb1-42"><a href="#cb1-42"></a>그래프에서의 머신러닝을 논하기 이전에 '그래프 데이터'가 정확히 무엇을 의미하는지 나타내는 공적인 표현에 대해 조금 알아둘 필요가 있다. 공식적으로, 그래프 $\cal{G} = (\cal{V, E})$ 는 정점의 집합인 $\cal{V}$ 와 정점 사이의 간선의 집합인 $\cal{E}$ 로 정의된다. 정점 $u \in \cal{V}$ 와 $v \in \cal{V}$ 로 이루어진 간선은 다음과 같이 정의한다: $(u, v) \in \cal{E}$. 많은 경우에 (우리는) 단순 그래프 (*simple graph*) 만을 고려하는데, 단순 그래프는 대부분 하나의 간선이 각 정점의 쌍 사이에 존재하는 집합으로 어떤 간선도 정점 하나에 존재하지는 않는 그래프이다.</span>
-<span id="cb1-43"><a href="#cb1-43"></a></span>
-<span id="cb1-44"><a href="#cb1-44"></a>그래프를 편리하게 표현하는 방법은 ***adjacency matrix (인접행렬)*** $A \in \mathbb{R}^{|\cal{V}|*|\cal{V}|}$  를 사용하는 방법이다.<span class="ot">[^1]</span> $A$ 로 그래프를 표현하기 위해서는 그래프의 정점을 순서대로 배열함으로써 모든 정점의 색인들(indexes)이 인접행렬 $A$의 각각의 행과 열이 되게 해야 한다. </span>
-<span id="cb1-45"><a href="#cb1-45"></a>그렇게 하면 다음 조건의 행렬에서의 모든 간선의 존재를 표현할 수 있다: $A<span class="co">[</span><span class="ot">u, v</span><span class="co">]</span> = 1$ if $(u,v) \in \cal(E)$ and $A<span class="co">[</span><span class="ot">u, v</span><span class="co">]</span> = 0$ otherwise <span class="ot">[^2]</span> 만약 그래프가 방향이 없는 간선 (undirected edge)으로만 구성된 경우 인접행렬 $A$는 대칭행렬이 된다. 하지만 간선들이 방향성이 있다면 (edge direction matters) $A$는 대칭이지 않아도 된다.</span>
-<span id="cb1-46"><a href="#cb1-46"></a>몇몇 그래프들은 가중치를 가질 수도 있는데 (weighted edges) 그 경우 그래프에 기재되는 값이 {0, 1}이 아닌 임의의 실수가 된다. 예를 들어 가중 그래프 중 단백질간 상호작용 그래프는 두 단백질 사이의 연관된 힘을 나타내는 그래프로 쓰일 수 있다.</span>
-<span id="cb1-47"><a href="#cb1-47"></a></span>
-<span id="cb1-48"><a href="#cb1-48"></a><span class="ot">[^1]: </span>$\mathbb{R}$ : (<span class="in">`$\mathbb{R}$`</span>) Real number set</span>
-<span id="cb1-49"><a href="#cb1-49"></a><span class="ot">[^2]: </span>$A<span class="co">[</span><span class="ot">u, v</span><span class="co">]</span> = 1$ if $(u,v) \in \cal(E)$ and $A<span class="co">[</span><span class="ot">u, v</span><span class="co">]</span> = 0$</span>
-<span id="cb1-50"><a href="#cb1-50"></a><span class="ss">    - </span>$A<span class="co">[</span><span class="ot">u, v</span><span class="co">]</span> = 1$: $u$와 $v$ 사이에 간선이 존재할 때 ($A<span class="co">[</span><span class="ot">u, v</span><span class="co">]</span> = 0$: 존재하지 않을 때)</span>
-<span id="cb1-51"><a href="#cb1-51"></a><span class="ss">    - </span>$(u, v)$ 가 그래프 안에 있고 간선 집합 $\cal{E}$ 안에 존재할 때 $A$의 위치 $(u, v)$에 올 수 있는 값은 간선이 존재하거나 (1) 존재하지 않는 (0) 두 가지 경우의 수 뿐이다. </span>
-<span id="cb1-52"><a href="#cb1-52"></a></span>
+<span id="cb1-40"><a href="#cb1-40"></a></span>
+<span id="cb1-41"><a href="#cb1-41"></a><span class="fu">## 1.1 What is a graph</span></span>
+<span id="cb1-42"><a href="#cb1-42"></a></span>
+<span id="cb1-43"><a href="#cb1-43"></a>그래프에서의 머신러닝을 논하기 이전에 '그래프 데이터'가 정확히 무엇을 의미하는지 나타내는 공적인 표현에 대해 조금 알아둘 필요가 있다. 공식적으로, 그래프 $\cal{G} = (\cal{V, E})$ 는 정점의 집합인 $\cal{V}$ 와 정점 사이의 간선의 집합인 $\cal{E}$ 로 정의된다. 정점 $u \in \cal{V}$ 와 $v \in \cal{V}$ 로 이루어진 간선은 다음과 같이 정의한다: $(u, v) \in \cal{E}$. 많은 경우에 (우리는) 단순 그래프 (*simple graph*) 만을 고려하는데, 단순 그래프는 대부분 하나의 간선이 각 정점의 쌍 사이에 존재하는 집합으로 어떤 간선도 정점 하나에 존재하지는 않는 그래프이다.</span>
+<span id="cb1-44"><a href="#cb1-44"></a></span>
+<span id="cb1-45"><a href="#cb1-45"></a>그래프를 편리하게 표현하는 방법은 ***adjacency matrix (인접행렬)*** $A \in \mathbb{R}^{|\cal{V}|*|\cal{V}|}$  를 사용하는 방법이다.<span class="ot">[^1]</span> $A$ 로 그래프를 표현하기 위해서는 그래프의 정점을 순서대로 배열함으로써 모든 정점의 색인들(indexes)이 인접행렬 $A$의 각각의 행과 열이 되게 해야 한다. </span>
+<span id="cb1-46"><a href="#cb1-46"></a>그렇게 하면 다음 조건의 행렬에서의 모든 간선의 존재를 표현할 수 있다: $A<span class="co">[</span><span class="ot">u, v</span><span class="co">]</span> = 1$ if $(u,v) \in \cal(E)$ and $A<span class="co">[</span><span class="ot">u, v</span><span class="co">]</span> = 0$ otherwise <span class="ot">[^2]</span> 만약 그래프가 방향이 없는 간선 (undirected edge)으로만 구성된 경우 인접행렬 $A$는 대칭행렬이 된다. 하지만 간선들이 방향성이 있다면 (edge direction matters) $A$는 대칭이지 않아도 된다.</span>
+<span id="cb1-47"><a href="#cb1-47"></a>몇몇 그래프들은 가중치를 가질 수도 있는데 (weighted edges) 그 경우 그래프에 기재되는 값이 {0, 1}이 아닌 임의의 실수가 된다. 예를 들어 가중 그래프 중 단백질간 상호작용 그래프는 두 단백질 사이의 연관된 힘을 나타내는 그래프로 쓰일 수 있다.</span>
+<span id="cb1-48"><a href="#cb1-48"></a></span>
+<span id="cb1-49"><a href="#cb1-49"></a><span class="ot">[^1]: </span>$\mathbb{R}$ : (<span class="in">`$\mathbb{R}$`</span>) Real number set</span>
+<span id="cb1-50"><a href="#cb1-50"></a><span class="ot">[^2]: </span>$A<span class="co">[</span><span class="ot">u, v</span><span class="co">]</span> = 1$ if $(u,v) \in \cal(E)$ and $A<span class="co">[</span><span class="ot">u, v</span><span class="co">]</span> = 0$</span>
+<span id="cb1-51"><a href="#cb1-51"></a><span class="ss">    - </span>$A<span class="co">[</span><span class="ot">u, v</span><span class="co">]</span> = 1$: $u$와 $v$ 사이에 간선이 존재할 때 ($A<span class="co">[</span><span class="ot">u, v</span><span class="co">]</span> = 0$: 존재하지 않을 때)</span>
+<span id="cb1-52"><a href="#cb1-52"></a><span class="ss">    - </span>$(u, v)$ 가 그래프 안에 있고 간선 집합 $\cal{E}$ 안에 존재할 때 $A$의 위치 $(u, v)$에 올 수 있는 값은 간선이 존재하거나 (1) 존재하지 않는 (0) 두 가지 경우의 수 뿐이다. </span>
 <span id="cb1-53"><a href="#cb1-53"></a></span>
-<span id="cb1-54"><a href="#cb1-54"></a><span class="fu">### 1.1.1 Multi-relational Graph</span></span>
-<span id="cb1-55"><a href="#cb1-55"></a></span>
-<span id="cb1-56"><a href="#cb1-56"></a>*multi-relational graph*는 방향이 있는 간선, 없는 간선, 가중치가 있는 간선을 넘어 다양한 종류의 간선이 있는 그래프를 고려한다. 예를 들어, 약물과 약물의 상호작용 그래프에서 각 간선이 두 약물을 동시에 복용할 때 발생할 수 있는 부작용에 대하여 서로 두가지의 간선이 필요할 수 있다. 이 예에서 간선 표기법을 확장하여 다음을 표현할 수 있다: </span>
-<span id="cb1-57"><a href="#cb1-57"></a></span>
-<span id="cb1-58"><a href="#cb1-58"></a>간선 또는 관계 유형 $\tau$, ($u$, $\tau$, $v$) $\in$ $\cal{E}$, 그리고 하나의 인접행렬 $A_{\tau}$ 를 간선 종류마다 정의할 수 있다. 이러한 그래프를 *multi-relational* 하다고 말하며 전체의 그래프는 인접 텐서 $\cal{A} \in \mathbb{R}^{\cal{|V| * |R| * |V|}}$ 로 정의된다.[^1] *multi-relational graph*의 두가지 중요한 부분집합은 1. `heterogenous`, 2. `multiplex` 그래프로 나뉜다. *tau* ($\tau$)는 간선의 타입을 의미하며, 간선의 종류에는 위에 기술한 바와 같이 방향이 있는 것, 없는 것, 가중치가 있는 것 등이 포함된다. 이렇게 간선의 종류가 달라지면 Adjacency Matrix $A$도 따로 정의해야 한다.</span>
-<span id="cb1-59"><a href="#cb1-59"></a></span>
-<span id="cb1-60"><a href="#cb1-60"></a><span class="ot">[^1]: </span>$\cal{A} \in \mathbb{R}^{\cal{|V| * |R| * |V|}}$ : 행렬 A가 실수 집합 V, R의 계량수^<span class="co">[</span><span class="ot">cardinality, cardinal number</span><span class="co">]</span>로 결정되는 차원으로 구성된다.</span>
-<span id="cb1-61"><a href="#cb1-61"></a></span>
-<span id="cb1-62"><a href="#cb1-62"></a>**Heterogeneous graph**</span>
-<span id="cb1-63"><a href="#cb1-63"></a></span>
-<span id="cb1-64"><a href="#cb1-64"></a>Heterogeneous graph에서, 정점들은 *type*에 물들어있다. 다시 말해, 정점 집합의 일부는 다음과 같이 해체될 수 있다: $\cal{V = V_1} \cup \cal{V_2} \cup \dots \cup \cal{V_k}$ where $\cal{V_i} \cap \cal{V_j} = \emptyset, \forall_i \neq j$ <span class="ot">[^1]</span>. heterogeneous graph의 간선은 일반적으로 제한이 걸려있는데 이는 집합 $\cal{V}$가 서로 겹치지 않는 부분집합 $\cal{V_1}$ 부터 $\cal{V_k}$^<span class="co">[</span><span class="ot">$\forall$ : forall</span><span class="co">]</span> 의 합집합이다.</span>
-<span id="cb1-65"><a href="#cb1-65"></a></span>
-<span id="cb1-66"><a href="#cb1-66"></a><span class="ot">[^1]: </span>$\cal{V = V_1} \cup \cal{V_2} \cup \dots \cup \cal{V_k}$ where $\cal{V_i} \cap \cal{V_j} = \emptyset, \forall_i \neq j$ </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-54"><a href="#cb1-54"></a></span>
+<span id="cb1-55"><a href="#cb1-55"></a><span class="fu">### 1.1.1 Multi-relational Graph</span></span>
+<span id="cb1-56"><a href="#cb1-56"></a></span>
+<span id="cb1-57"><a href="#cb1-57"></a>*multi-relational graph*는 방향이 있는 간선, 없는 간선, 가중치가 있는 간선을 넘어 다양한 종류의 간선이 있는 그래프를 고려한다. 예를 들어, 약물과 약물의 상호작용 그래프에서 각 간선이 두 약물을 동시에 복용할 때 발생할 수 있는 부작용에 대하여 서로 두가지의 간선이 필요할 수 있다. 이 예에서 간선 표기법을 확장하여 다음을 표현할 수 있다: </span>
+<span id="cb1-58"><a href="#cb1-58"></a></span>
+<span id="cb1-59"><a href="#cb1-59"></a>간선 또는 관계 유형 $\tau$, ($u$, $\tau$, $v$) $\in$ $\cal{E}$, 그리고 하나의 인접행렬 $A_{\tau}$ 를 간선 종류마다 정의할 수 있다. 이러한 그래프를 *multi-relational* 하다고 말하며 전체의 그래프는 인접 텐서 $\cal{A} \in \mathbb{R}^{\cal{|V| * |R| * |V|}}$ 로 정의된다.[^1] *multi-relational graph*의 두가지 중요한 부분집합은 1. `heterogenous`, 2. `multiplex` 그래프로 나뉜다. *tau* ($\tau$)는 간선의 타입을 의미하며, 간선의 종류에는 위에 기술한 바와 같이 방향이 있는 것, 없는 것, 가중치가 있는 것 등이 포함된다. 이렇게 간선의 종류가 달라지면 Adjacency Matrix $A$도 따로 정의해야 한다.</span>
+<span id="cb1-60"><a href="#cb1-60"></a></span>
+<span id="cb1-61"><a href="#cb1-61"></a><span class="ot">[^1]: </span>$\cal{A} \in \mathbb{R}^{\cal{|V| * |R| * |V|}}$ : 행렬 A가 실수 집합 V, R의 계량수^<span class="co">[</span><span class="ot">cardinality, cardinal number</span><span class="co">]</span>로 결정되는 차원으로 구성된다.</span>
+<span id="cb1-62"><a href="#cb1-62"></a></span>
+<span id="cb1-63"><a href="#cb1-63"></a>**Heterogeneous graph**</span>
+<span id="cb1-64"><a href="#cb1-64"></a></span>
+<span id="cb1-65"><a href="#cb1-65"></a>Heterogeneous graph에서, 정점들은 *type*에 물들어있다. 다시 말해, 정점 집합의 일부는 다음과 같이 해체될 수 있다: $\cal{V = V_1} \cup \cal{V_2} \cup \dots \cup \cal{V_k}$ where $\cal{V_i} \cap \cal{V_j} = \emptyset, \forall_i \neq j$ <span class="ot">[^1]</span>. heterogeneous graph의 간선은 일반적으로 제한이 걸려있는데 이는 집합 $\cal{V}$가 서로 겹치지 않는 부분집합 $\cal{V_1}$ 부터 $\cal{V_k}$^<span class="co">[</span><span class="ot">$\forall$ : forall</span><span class="co">]</span> 의 합집합이다.</span>
+<span id="cb1-66"><a href="#cb1-66"></a></span>
+<span id="cb1-67"><a href="#cb1-67"></a><span class="ot">[^1]: </span>$\cal{V = V_1} \cup \cal{V_2} \cup \dots \cup \cal{V_k}$ where $\cal{V_i} \cap \cal{V_j} = \emptyset, \forall_i \neq j$ </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 
