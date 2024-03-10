@@ -91,13 +91,13 @@ website:
       - icon: github
         href: https://github.com/dotpyo
 
-  sidebar:            # https://quarto.org/docs/websites/website-navigation.html#side-navigation 
-    contents: auto    # https://quarto.org/docs/websites/website-navigation.html#auto-generation
-    style: floating
-    # border: true
-    collapse-level: 2
-    # search: true
-    navbar: false # Hides the navbar on this page
+  # sidebar:          # https://quarto.org/docs/websites/website-navigation.html#side-navigation 
+  #   contents: auto    # https://quarto.org/docs/websites/website-navigation.html#auto-generation
+  #   style: floating
+  #   # border: true
+  #   collapse-level: 2
+  #   # search: true
+  #   navbar: false # Hides the navbar on this page
 
   favicon: favicon.ico
   
