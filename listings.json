@@ -2,26 +2,27 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/papers/2310.07820.html",
+      "/posts/papers/2106.09685.html",
       "/posts/HAR/mmlab.html",
       "/posts/HAR/ntu-skl-plotting.html",
       "/posts/HAR/modalities.html",
-      "/posts/papers/2310.07820.html",
-      "/posts/papers/2106.09685.html",
-      "/posts/techniques/zero_shot.html",
+      "/posts/NLP/encoding.html",
       "/posts/NLP/ptuning.html",
       "/posts/NLP/LoRA.html",
-      "/posts/NLP/encoding.html",
       "/posts/NLP/huggingface/tips.html",
       "/posts/NLP/huggingface/PEFT.html",
       "/posts/techniques/freezing.html",
+      "/posts/techniques/handling_imbalanced_data.html",
+      "/posts/techniques/zero_shot.html",
+      "/posts/LabHAI/tutorial/pytorch101.html",
+      "/posts/LabHAI/tutorial/How_2_read_a_paper.html",
+      "/posts/LabHAI/tutorial/maskrcnn/torchvision_finetuning_instance_segmentation.html",
       "/posts/LabHAI/tutorial/transfer_learning/transfer_learning_tutorial.html",
       "/posts/LabHAI/tutorial/GAN/fgsm_tutorial.html",
-      "/posts/LabHAI/tutorial/GAN/DCGAN_tutorial.html",
-      "/posts/LabHAI/tutorial/maskrcnn/torchvision_finetuning_instance_segmentation.html",
-      "/posts/LabHAI/tutorial/pytorch101.html",
       "/posts/Graph/GNN101.html",
-      "/posts/techniques/handling_imbalanced_data.html",
-      "/posts/LabHAI/tutorial/How_2_read_a_paper.html"
+      "/posts/LabHAI/tutorial/GAN/DCGAN_tutorial.html",
+      "/posts/LabHAI/papers/2201.01266.html"
     ]
   }
 ]

@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="dotpyo">
-<meta name="dcterms.date" content="2023-10-18">
-<meta name="description" content="huggingface를 사용하며 알게 된 것들.">
+<meta name="dcterms.date" content="2024-03-11">
+<meta name="description" content="3D Image Segmentation">
 
-<title>archive - tips</title>
+<title>archive - Swin UNETR: Swin Transformers for Semantic Segmentation of Brain Tumors in MRI Images</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -111,16 +111,16 @@ gtag('config', 'G-L5Y3XFBP62', { 'anonymize_ip': true});
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-page-left">
-      <h1 class="title">tips</h1>
-            <p class="subtitle lead">huggingface 알아보기</p>
+      <h1 class="title">Swin UNETR: Swin Transformers for Semantic Segmentation of Brain Tumors in MRI Images</h1>
+            <p class="subtitle lead"><a href="https://arxiv.org/abs/2201.01266">2201.01266</a></p>
                   <div>
         <div class="description">
-          huggingface를 사용하며 알게 된 것들.
+          3D Image Segmentation
         </div>
       </div>
                           <div class="quarto-categories">
-                <div class="quarto-category">NLP</div>
-                <div class="quarto-category">huggingface</div>
+                <div class="quarto-category">tutorial</div>
+                <div class="quarto-category">paper review</div>
               </div>
                   </div>
   </div>
@@ -138,7 +138,7 @@ gtag('config', 'G-L5Y3XFBP62', { 'anonymize_ip': true});
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">October 18, 2023</p>
+        <p class="date">March 11, 2024</p>
       </div>
     </div>
     
@@ -154,36 +154,56 @@ gtag('config', 'G-L5Y3XFBP62', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#다운로드-받은-모델-삭제하는-방법-cache-cli에서-지우기" id="toc-다운로드-받은-모델-삭제하는-방법-cache-cli에서-지우기" class="nav-link active" data-scroll-target="#다운로드-받은-모델-삭제하는-방법-cache-cli에서-지우기">다운로드 받은 모델 삭제하는 방법 (cache cli에서 지우기)</a></li>
+  <li><a href="#abstract" id="toc-abstract" class="nav-link active" data-scroll-target="#abstract">Abstract</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/dotpyo/archive/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content quarto-banner-title-block page-columns page-full column-page-left" id="quarto-document-content">
 
 
 
 
 
-<section id="다운로드-받은-모델-삭제하는-방법-cache-cli에서-지우기" class="level3">
-<h3 class="anchored" data-anchor-id="다운로드-받은-모델-삭제하는-방법-cache-cli에서-지우기">다운로드 받은 모델 삭제하는 방법 (cache cli에서 지우기)</h3>
-<pre><code>➜ huggingface-cli scan-cache
-REPO ID                     REPO TYPE SIZE ON DISK NB FILES LAST_ACCESSED LAST_MODIFIED REFS                LOCAL PATH
---------------------------- --------- ------------ -------- ------------- ------------- ------------------- -------------------------------------------------------------------------
-glue                        dataset         116.3K       15 4 days ago    4 days ago    2.4.0, main, 1.17.0 /home/wauplin/.cache/huggingface/hub/datasets--glue
-google/fleurs               dataset          64.9M        6 1 week ago    1 week ago    refs/pr/1, main     /home/wauplin/.cache/huggingface/hub/datasets--google--fleurs
-Jean-Baptiste/camembert-ner model           441.0M        7 2 weeks ago   16 hours ago  main                /home/wauplin/.cache/huggingface/hub/models--Jean-Baptiste--camembert-ner
-bert-base-cased             model             1.9G       13 1 week ago    2 years ago                       /home/wauplin/.cache/huggingface/hub/models--bert-base-cased
-t5-base                     model            10.1K        3 3 months ago  3 months ago  main                /home/wauplin/.cache/huggingface/hub/models--t5-base
-t5-small                    model           970.7M       11 3 days ago    3 days ago    refs/pr/1, main     /home/wauplin/.cache/huggingface/hub/models--t5-small
-
-Done in 0.0s. Scanned 6 repo(s) for a total of 3.4G.
-Got 1 warning(s) while scanning. Use -vvv to print details.</code></pre>
-<p>삭제 : <code>rm -r {LOCAL PATH}</code></p>
-<p>ref : <a href="https://huggingface.co/docs/huggingface_hub/guides/manage-cache">https://huggingface.co/docs/huggingface_hub/guides/manage-cache</a></p>
+<blockquote class="blockquote">
+<p>이해할 수 있는데까지 이해하기</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>코드를 이용한 재구현: <a href="https://monai.io/research/swin-unetr">https://monai.io/research/swin-unetr</a></p>
+</blockquote>
+<ul>
+<li>General Terms: Image Segmenatation</li>
+<li>Keywords: Image Segmentation, Vision Transformer, Swin Transformer, UNETR, Swin UNETR, BRATS, Brain Tumor Segmentation</li>
+</ul>
+<section id="abstract" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="abstract">Abstract</h2>
+<ul>
+<li>뇌종양의 semantic segmentation<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>은 근본적으로 <strong>multiple MRI imaging</strong>을 이용한 의료이미지 분석 과제다.</li>
+<li>3D 의료 영상 세그멘테이션에서는 FCNNs <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> 방식이 사실상의 표준 <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>으로 자리잡았다.
+<ul>
+<li>FCNNs는 GNN의 특수한 경우로 볼 수 있다.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></li>
+</ul></li>
+<li><code>U-shaped</code> 네트워크이며 다음 과제에서 SOTA를 달성했다.
+<ol type="1">
+<li>2D semantic segmentation</li>
+<li>3D semantic segmentation</li>
+</ol>
+<ul>
+<li>across various imaging modalities</li>
+</ul></li>
+<li><code>U-shaped</code> 의 한계는 이러하다.
+<ul>
+<li></li>
+</ul></li>
+</ul>
+<div class="no-row-height column-margin column-container"><div id="fn1"></div><div id="fn2"><p><sup>2</sup>&nbsp;Fully Convolutional Neural Networks</p></div><div id="fn3"><p><sup>3</sup>&nbsp;de facto standard</p></div><div id="fn4"><p><sup>4</sup>&nbsp;<a href="https://www.youtube.com/watch?v=JxSq_QvGLLg">https://www.youtube.com/watch?v=JxSq_QvGLLg</a></p></div></div></section>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
 
 
 </section>
+
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
