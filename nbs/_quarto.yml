@@ -49,8 +49,8 @@ format:
     # layout
     page-layout: full # article
     theme:  # https://bootswatch.com/
-      light: flatly
-      dark: darkly
+      light: [flatly, theme-light.scss]
+      dark: [darkly, theme-dark.scss]
     css: styles.css
     title-block-style: default
     title-block-banner: true
@@ -109,7 +109,7 @@ website:
   page-navigation: false
 
 # Footnotes
-reference-location: block     # [document | section | block | margin ]
+reference-location: margin     # [document | section | block | margin ]
 # citation-location: margin   # [document | margin ]
 callout-appearance: simple
 

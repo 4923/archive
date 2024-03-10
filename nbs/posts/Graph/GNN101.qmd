@@ -8,6 +8,7 @@ toc: false
 sidebar: false
 categories:
     - graph
+reference-location: document
 
 date: 2024/03/08
 ---
