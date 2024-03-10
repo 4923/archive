@@ -10,7 +10,7 @@
 <atom:link href="https://dotpyo.github.io/archive/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.4.551</generator>
-<lastBuildDate>Sun, 10 Mar 2024 12:58:01 GMT</lastBuildDate>
+<lastBuildDate>Sun, 10 Mar 2024 13:04:04 GMT</lastBuildDate>
 <item>
   <title>MMLAB</title>
   <dc:creator>dotpyo </dc:creator>
@@ -479,7 +479,7 @@ font-style: inherit;">└──</span> yolov3_mobilenetv2_320_300e_coco_20210719
  ]]></description>
   <category>Computer Vision</category>
   <guid>https://dotpyo.github.io/archive/posts/HAR/mmlab.html</guid>
-  <pubDate>Sun, 10 Mar 2024 12:58:01 GMT</pubDate>
+  <pubDate>Sun, 10 Mar 2024 13:04:04 GMT</pubDate>
 </item>
 <item>
   <title>skeleton data plotting</title>
@@ -2550,7 +2550,7 @@ font-style: inherit;">5</span>)</span></code></pre></div>
   <category>HAR</category>
   <category>dataset</category>
   <guid>https://dotpyo.github.io/archive/posts/HAR/ntu-skl-plotting.html</guid>
-  <pubDate>Sun, 10 Mar 2024 12:58:01 GMT</pubDate>
+  <pubDate>Sun, 10 Mar 2024 13:04:04 GMT</pubDate>
 </item>
 <item>
   <title>Modalities</title>
@@ -3165,7 +3165,7 @@ active sensor는 방사선을 물체에 방출하여 <strong>반사되는 에너
   <category>HAR</category>
   <category>paper review</category>
   <guid>https://dotpyo.github.io/archive/posts/HAR/modalities.html</guid>
-  <pubDate>Sun, 10 Mar 2024 12:58:01 GMT</pubDate>
+  <pubDate>Sun, 10 Mar 2024 13:04:04 GMT</pubDate>
 </item>
 <item>
   <title>LLMs Are Zero-Shot Time Series Forecasters</title>
@@ -3256,7 +3256,7 @@ RLHF, alignment method
   <category>time series forecast</category>
   <category>paper review</category>
   <guid>https://dotpyo.github.io/archive/posts/papers/2310.07820.html</guid>
-  <pubDate>Sun, 10 Mar 2024 12:58:01 GMT</pubDate>
+  <pubDate>Sun, 10 Mar 2024 13:04:04 GMT</pubDate>
 </item>
 <item>
   <title>LoRA: Low-Rank Adaptation of Large Language Models</title>
@@ -3321,7 +3321,7 @@ fine tuning에 최적화 함수가 필요한 이유
   <category>LLM</category>
   <category>paper review</category>
   <guid>https://dotpyo.github.io/archive/posts/papers/2106.09685.html</guid>
-  <pubDate>Sun, 10 Mar 2024 12:58:01 GMT</pubDate>
+  <pubDate>Sun, 10 Mar 2024 13:04:04 GMT</pubDate>
 </item>
 <item>
   <title>test</title>
@@ -3471,7 +3471,7 @@ font-style: inherit;">"bigcode/starcoder"</span>, peft_model_path)</span>
   <category>LLM</category>
   <category>paper review</category>
   <guid>https://dotpyo.github.io/archive/posts/NLP/LoRA.html</guid>
-  <pubDate>Sun, 10 Mar 2024 12:58:01 GMT</pubDate>
+  <pubDate>Sun, 10 Mar 2024 13:04:04 GMT</pubDate>
 </item>
 <item>
   <title>Zero-shot Learning</title>
@@ -3535,7 +3535,7 @@ Few-shot learning task with meta-learning
   <category>Meta learning</category>
   <category>theory</category>
   <guid>https://dotpyo.github.io/archive/posts/techniques/zero_shot.html</guid>
-  <pubDate>Sun, 10 Mar 2024 12:58:01 GMT</pubDate>
+  <pubDate>Sun, 10 Mar 2024 13:04:04 GMT</pubDate>
 </item>
 <item>
   <title>p tuning</title>
@@ -3568,7 +3568,7 @@ Few-shot learning task with meta-learning
   <category>LLM</category>
   <category>technique</category>
   <guid>https://dotpyo.github.io/archive/posts/NLP/ptuning.html</guid>
-  <pubDate>Sun, 10 Mar 2024 12:58:01 GMT</pubDate>
+  <pubDate>Sun, 10 Mar 2024 13:04:04 GMT</pubDate>
 </item>
 <item>
   <title>encoding</title>
@@ -4217,7 +4217,7 @@ font-style: inherit;">                     'norm_type', 'scale_grad_by_freq', 's
   <category>NLP</category>
   <category>PyTorch</category>
   <guid>https://dotpyo.github.io/archive/posts/NLP/encoding.html</guid>
-  <pubDate>Sun, 10 Mar 2024 12:58:01 GMT</pubDate>
+  <pubDate>Sun, 10 Mar 2024 13:04:04 GMT</pubDate>
 </item>
 <item>
   <title>tips</title>
@@ -4253,7 +4253,7 @@ Got 1 warning(s) while scanning. Use -vvv to print details.</code></pre>
   <category>NLP</category>
   <category>huggingface</category>
   <guid>https://dotpyo.github.io/archive/posts/NLP/huggingface/tips.html</guid>
-  <pubDate>Sun, 10 Mar 2024 12:58:01 GMT</pubDate>
+  <pubDate>Sun, 10 Mar 2024 13:04:04 GMT</pubDate>
 </item>
 <item>
   <title>PEFT</title>
@@ -4434,7 +4434,7 @@ font-style: inherit;">"output: trainable params: 2359296 || all params: 12319406
   <category>huggingface</category>
   <category>tutorial</category>
   <guid>https://dotpyo.github.io/archive/posts/NLP/huggingface/PEFT.html</guid>
-  <pubDate>Sun, 10 Mar 2024 12:58:01 GMT</pubDate>
+  <pubDate>Sun, 10 Mar 2024 13:04:04 GMT</pubDate>
 </item>
 <item>
   <title>Model freezing</title>
@@ -4452,7 +4452,7 @@ font-style: inherit;">"output: trainable params: 2359296 || all params: 12319406
  ]]></description>
   <category>PyTorch</category>
   <guid>https://dotpyo.github.io/archive/posts/techniques/freezing.html</guid>
-  <pubDate>Sun, 10 Mar 2024 12:58:01 GMT</pubDate>
+  <pubDate>Sun, 10 Mar 2024 13:04:04 GMT</pubDate>
 </item>
 <item>
   <title>DCGAN face tutorial</title>
@@ -5989,7 +5989,7 @@ font-style: inherit;">0</span>)))</span>
   <category>computer vision</category>
   <category>tutorial</category>
   <guid>https://dotpyo.github.io/archive/posts/LabHAI/tutorial/GAN/DCGAN_tutorial.html</guid>
-  <pubDate>Sun, 10 Mar 2024 12:58:01 GMT</pubDate>
+  <pubDate>Sun, 10 Mar 2024 13:04:04 GMT</pubDate>
 </item>
 <item>
   <title>fgsm tutorial</title>
@@ -6777,7 +6777,7 @@ font-style: inherit;">"Accuracy"</span>)</span>
   <category>computer vision</category>
   <category>tutorial</category>
   <guid>https://dotpyo.github.io/archive/posts/LabHAI/tutorial/GAN/fgsm_tutorial.html</guid>
-  <pubDate>Sun, 10 Mar 2024 12:58:01 GMT</pubDate>
+  <pubDate>Sun, 10 Mar 2024 13:04:04 GMT</pubDate>
 </item>
 <item>
   <title>finetuning tutorial</title>
@@ -8223,7 +8223,7 @@ Error: command buffer exited with error status.
   <category>computer vision</category>
   <category>tutorial</category>
   <guid>https://dotpyo.github.io/archive/posts/LabHAI/tutorial/maskrcnn/torchvision_finetuning_instance_segmentation.html</guid>
-  <pubDate>Sun, 10 Mar 2024 12:58:01 GMT</pubDate>
+  <pubDate>Sun, 10 Mar 2024 13:04:04 GMT</pubDate>
 </item>
 <item>
   <title>transfer learning tutorial</title>
@@ -9142,7 +9142,7 @@ Best val Acc: 0.960784</code></pre>
   <category>computer vision</category>
   <category>tutorial</category>
   <guid>https://dotpyo.github.io/archive/posts/LabHAI/tutorial/transfer_learning/transfer_learning_tutorial.html</guid>
-  <pubDate>Sun, 10 Mar 2024 12:58:01 GMT</pubDate>
+  <pubDate>Sun, 10 Mar 2024 13:04:04 GMT</pubDate>
 </item>
 <item>
   <title>PyTorch101</title>
@@ -9964,7 +9964,7 @@ font-style: inherit;">eval</span>()</span></code></pre></div>
   <category>PyTorch</category>
   <category>tutorial</category>
   <guid>https://dotpyo.github.io/archive/posts/LabHAI/tutorial/pytorch101.html</guid>
-  <pubDate>Sun, 10 Mar 2024 12:58:01 GMT</pubDate>
+  <pubDate>Sun, 10 Mar 2024 13:04:04 GMT</pubDate>
 </item>
 <item>
   <title>Graph 101</title>
@@ -10078,7 +10078,7 @@ font-style: inherit;">eval</span>()</span></code></pre></div>
  ]]></description>
   <category>graph</category>
   <guid>https://dotpyo.github.io/archive/posts/Graph/GNN101.html</guid>
-  <pubDate>Sun, 10 Mar 2024 12:58:01 GMT</pubDate>
+  <pubDate>Sun, 10 Mar 2024 13:04:04 GMT</pubDate>
 </item>
 <item>
   <title>Handling imbalanced Data</title>
@@ -10223,7 +10223,7 @@ replacement = False -&gt;  [0, 1, 2, 4, 5]</code></pre>
  ]]></description>
   <category>technique</category>
   <guid>https://dotpyo.github.io/archive/posts/techniques/handling_imbalanced_data.html</guid>
-  <pubDate>Sun, 10 Mar 2024 12:58:01 GMT</pubDate>
+  <pubDate>Sun, 10 Mar 2024 13:04:04 GMT</pubDate>
 </item>
 <item>
   <title>How to read a paper</title>
@@ -10492,7 +10492,7 @@ Reviewer Guidelines for Journal Selections
  ]]></description>
   <category>tutorial</category>
   <guid>https://dotpyo.github.io/archive/posts/LabHAI/tutorial/How_2_read_a_paper.html</guid>
-  <pubDate>Sun, 10 Mar 2024 12:58:01 GMT</pubDate>
+  <pubDate>Sun, 10 Mar 2024 13:04:04 GMT</pubDate>
 </item>
 </channel>
 </rss>
