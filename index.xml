@@ -10,7 +10,7 @@
 <atom:link href="https://dotpyo.github.io/archive/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.4.551</generator>
-<lastBuildDate>Sun, 10 Mar 2024 13:05:16 GMT</lastBuildDate>
+<lastBuildDate>Sun, 10 Mar 2024 13:35:24 GMT</lastBuildDate>
 <item>
   <title>MMLAB</title>
   <dc:creator>dotpyo </dc:creator>
@@ -479,7 +479,7 @@ font-style: inherit;">└──</span> yolov3_mobilenetv2_320_300e_coco_20210719
  ]]></description>
   <category>Computer Vision</category>
   <guid>https://dotpyo.github.io/archive/posts/HAR/mmlab.html</guid>
-  <pubDate>Sun, 10 Mar 2024 13:05:16 GMT</pubDate>
+  <pubDate>Sun, 10 Mar 2024 13:35:24 GMT</pubDate>
 </item>
 <item>
   <title>skeleton data plotting</title>
@@ -2550,7 +2550,7 @@ font-style: inherit;">5</span>)</span></code></pre></div>
   <category>HAR</category>
   <category>dataset</category>
   <guid>https://dotpyo.github.io/archive/posts/HAR/ntu-skl-plotting.html</guid>
-  <pubDate>Sun, 10 Mar 2024 13:05:16 GMT</pubDate>
+  <pubDate>Sun, 10 Mar 2024 13:35:24 GMT</pubDate>
 </item>
 <item>
   <title>Modalities</title>
@@ -3165,7 +3165,7 @@ active sensor는 방사선을 물체에 방출하여 <strong>반사되는 에너
   <category>HAR</category>
   <category>paper review</category>
   <guid>https://dotpyo.github.io/archive/posts/HAR/modalities.html</guid>
-  <pubDate>Sun, 10 Mar 2024 13:05:16 GMT</pubDate>
+  <pubDate>Sun, 10 Mar 2024 13:35:24 GMT</pubDate>
 </item>
 <item>
   <title>LLMs Are Zero-Shot Time Series Forecasters</title>
@@ -3256,7 +3256,7 @@ RLHF, alignment method
   <category>time series forecast</category>
   <category>paper review</category>
   <guid>https://dotpyo.github.io/archive/posts/papers/2310.07820.html</guid>
-  <pubDate>Sun, 10 Mar 2024 13:05:16 GMT</pubDate>
+  <pubDate>Sun, 10 Mar 2024 13:35:24 GMT</pubDate>
 </item>
 <item>
   <title>LoRA: Low-Rank Adaptation of Large Language Models</title>
@@ -3321,7 +3321,7 @@ fine tuning에 최적화 함수가 필요한 이유
   <category>LLM</category>
   <category>paper review</category>
   <guid>https://dotpyo.github.io/archive/posts/papers/2106.09685.html</guid>
-  <pubDate>Sun, 10 Mar 2024 13:05:16 GMT</pubDate>
+  <pubDate>Sun, 10 Mar 2024 13:35:24 GMT</pubDate>
 </item>
 <item>
   <title>Zero-shot Learning</title>
@@ -3385,7 +3385,40 @@ Few-shot learning task with meta-learning
   <category>Meta learning</category>
   <category>theory</category>
   <guid>https://dotpyo.github.io/archive/posts/techniques/zero_shot.html</guid>
-  <pubDate>Sun, 10 Mar 2024 13:05:16 GMT</pubDate>
+  <pubDate>Sun, 10 Mar 2024 13:35:24 GMT</pubDate>
+</item>
+<item>
+  <title>p tuning</title>
+  <dc:creator>dotpyo </dc:creator>
+  <link>https://dotpyo.github.io/archive/posts/NLP/ptuning.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="p-tuning" class="level4">
+<h4 class="anchored" data-anchor-id="p-tuning">p tuning</h4>
+<p>“P-tuning is a method for automatically searching and optimizing for better prompts in a continuous space.”</p>
+<ul>
+<li>PLM의 일부 가중치만 미세조정하여 <code>continuous prompt emobedding</code>만 tuninng한다.</li>
+</ul>
+</section>
+<section id="reference" class="level4">
+<h4 class="anchored" data-anchor-id="reference">Reference</h4>
+<ul>
+<li><a href="https://huggingface.co/blog/peft">https://huggingface.co/blog/peft</a></li>
+</ul>
+
+
+</section>
+
+ ]]></description>
+  <category>NLP</category>
+  <category>LLM</category>
+  <category>technique</category>
+  <guid>https://dotpyo.github.io/archive/posts/NLP/ptuning.html</guid>
+  <pubDate>Sun, 10 Mar 2024 13:35:24 GMT</pubDate>
 </item>
 <item>
   <title>LoRA</title>
@@ -3527,40 +3560,7 @@ font-style: inherit;">"bigcode/starcoder"</span>, peft_model_path)</span>
   <category>LLM</category>
   <category>technique</category>
   <guid>https://dotpyo.github.io/archive/posts/NLP/LoRA.html</guid>
-  <pubDate>Sun, 10 Mar 2024 13:05:16 GMT</pubDate>
-</item>
-<item>
-  <title>p tuning</title>
-  <dc:creator>dotpyo </dc:creator>
-  <link>https://dotpyo.github.io/archive/posts/NLP/ptuning.html</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<section id="p-tuning" class="level4">
-<h4 class="anchored" data-anchor-id="p-tuning">p tuning</h4>
-<p>“P-tuning is a method for automatically searching and optimizing for better prompts in a continuous space.”</p>
-<ul>
-<li>PLM의 일부 가중치만 미세조정하여 <code>continuous prompt emobedding</code>만 tuninng한다.</li>
-</ul>
-</section>
-<section id="reference" class="level4">
-<h4 class="anchored" data-anchor-id="reference">Reference</h4>
-<ul>
-<li><a href="https://huggingface.co/blog/peft">https://huggingface.co/blog/peft</a></li>
-</ul>
-
-
-</section>
-
- ]]></description>
-  <category>NLP</category>
-  <category>LLM</category>
-  <category>technique</category>
-  <guid>https://dotpyo.github.io/archive/posts/NLP/ptuning.html</guid>
-  <pubDate>Sun, 10 Mar 2024 13:05:16 GMT</pubDate>
+  <pubDate>Sun, 10 Mar 2024 13:35:24 GMT</pubDate>
 </item>
 <item>
   <title>encoding</title>
@@ -4209,7 +4209,7 @@ font-style: inherit;">                     'norm_type', 'scale_grad_by_freq', 's
   <category>NLP</category>
   <category>PyTorch</category>
   <guid>https://dotpyo.github.io/archive/posts/NLP/encoding.html</guid>
-  <pubDate>Sun, 10 Mar 2024 13:05:16 GMT</pubDate>
+  <pubDate>Sun, 10 Mar 2024 13:35:24 GMT</pubDate>
 </item>
 <item>
   <title>tips</title>
@@ -4245,7 +4245,7 @@ Got 1 warning(s) while scanning. Use -vvv to print details.</code></pre>
   <category>NLP</category>
   <category>huggingface</category>
   <guid>https://dotpyo.github.io/archive/posts/NLP/huggingface/tips.html</guid>
-  <pubDate>Sun, 10 Mar 2024 13:05:16 GMT</pubDate>
+  <pubDate>Sun, 10 Mar 2024 13:35:24 GMT</pubDate>
 </item>
 <item>
   <title>PEFT</title>
@@ -4426,7 +4426,7 @@ font-style: inherit;">"output: trainable params: 2359296 || all params: 12319406
   <category>huggingface</category>
   <category>tutorial</category>
   <guid>https://dotpyo.github.io/archive/posts/NLP/huggingface/PEFT.html</guid>
-  <pubDate>Sun, 10 Mar 2024 13:05:16 GMT</pubDate>
+  <pubDate>Sun, 10 Mar 2024 13:35:24 GMT</pubDate>
 </item>
 <item>
   <title>Model freezing</title>
@@ -4444,7 +4444,1714 @@ font-style: inherit;">"output: trainable params: 2359296 || all params: 12319406
  ]]></description>
   <category>PyTorch</category>
   <guid>https://dotpyo.github.io/archive/posts/techniques/freezing.html</guid>
-  <pubDate>Sun, 10 Mar 2024 13:05:16 GMT</pubDate>
+  <pubDate>Sun, 10 Mar 2024 13:35:24 GMT</pubDate>
+</item>
+<item>
+  <title>transfer learning tutorial</title>
+  <dc:creator>dotpyo </dc:creator>
+  <link>https://dotpyo.github.io/archive/posts/LabHAI/tutorial/transfer_learning/transfer_learning_tutorial.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<div id="cell-1" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> __future__ <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> print_function, division</span>
+<span id="cb1-2"></span>
+<span id="cb1-3"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> torch</span>
+<span id="cb1-4"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> torch.nn <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> nn</span>
+<span id="cb1-5"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> torch.optim <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> optim</span>
+<span id="cb1-6"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> torch.optim <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> lr_scheduler</span>
+<span id="cb1-7"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># import torch.backends.cudnn as cudnn</span></span>
+<span id="cb1-8"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> numpy <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> np</span>
+<span id="cb1-9"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> torchvision</span>
+<span id="cb1-10"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> torchvision <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> datasets, models, transforms</span>
+<span id="cb1-11"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> matplotlib.pyplot <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> plt</span>
+<span id="cb1-12"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> time</span>
+<span id="cb1-13"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> os</span>
+<span id="cb1-14"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> copy</span>
+<span id="cb1-15"></span>
+<span id="cb1-16"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># cudnn.benchmark = True</span></span>
+<span id="cb1-17">plt.ion()   <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 대화형 모드</span></span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>&lt;contextlib.ExitStack at 0x10465a1a0&gt;</code></pre>
+</div>
+</div>
+<section id="데이터-불러오기" class="level3">
+<h3 class="anchored" data-anchor-id="데이터-불러오기">데이터 불러오기</h3>
+<div id="cell-3" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># augmentation</span></span>
+<span id="cb3-2"></span>
+<span id="cb3-3">data_transforms <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> {</span>
+<span id="cb3-4">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'train'</span>: transforms.Compose([</span>
+<span id="cb3-5">        transforms.RandomResizedCrop(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">224</span>),   <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 왜 224?</span></span>
+<span id="cb3-6">        transforms.RandomHorizontalFlip(),   <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># default=0.5</span></span>
+<span id="cb3-7">        transforms.ToTensor(),</span>
+<span id="cb3-8">        transforms.Normalize(</span>
+<span id="cb3-9">            [<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.485</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.456</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.406</span>],</span>
+<span id="cb3-10">            [<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.229</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.224</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.225</span>]</span>
+<span id="cb3-11">        )</span>
+<span id="cb3-12">    ]),</span>
+<span id="cb3-13">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'val'</span>: transforms.Compose([</span>
+<span id="cb3-14">        transforms.Resize(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">256</span>),</span>
+<span id="cb3-15">        transforms.CenterCrop(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">224</span>),</span>
+<span id="cb3-16">        transforms.ToTensor(),</span>
+<span id="cb3-17">        transforms.Normalize([<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.485</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.456</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.406</span>], [<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.229</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.224</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.225</span>])</span>
+<span id="cb3-18">    ]),</span>
+<span id="cb3-19">}</span></code></pre></div>
+</div>
+<div id="cell-4" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1">data_dir <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"data/hymenoptera_data"</span></span>
+<span id="cb4-2"></span>
+<span id="cb4-3">image_datasets <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> {x: datasets.ImageFolder(os.path.join(data_dir, x),</span>
+<span id="cb4-4">                    data_transforms[x])</span>
+<span id="cb4-5">                    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">for</span> x <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">in</span> [<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'train'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'val'</span>]}</span>
+<span id="cb4-6"></span>
+<span id="cb4-7">batch_size <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">8</span></span>
+<span id="cb4-8">dataloaders <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> {x: torch.utils.data.DataLoader(image_datasets[x], batch_size<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>batch_size,</span>
+<span id="cb4-9">                                                shuffle<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">True</span>, num_workers<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>)</span>
+<span id="cb4-10">                                                <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">for</span> x <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">in</span> [<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'train'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'val'</span>]}</span>
+<span id="cb4-11">dataset_sizes <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> {x: <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">len</span>(image_datasets[x]) <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">for</span> x <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">in</span> [<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'train'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'val'</span>]}</span>
+<span id="cb4-12">class_names <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> image_datasets[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'train'</span>].classes </span>
+<span id="cb4-13"></span>
+<span id="cb4-14">device <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> torch.device(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'mps'</span>) <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> torch.backends.mps.is_available() <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">else</span> torch.device(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'cpu'</span>)</span></code></pre></div>
+</div>
+<p>이미지 시각화해서 확인</p>
+<div id="cell-6" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">def</span> imshow(inp, title<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>):</span>
+<span id="cb5-2">    inp <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> inp.numpy().transpose((<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>))</span>
+<span id="cb5-3">    mean <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> np.array([<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.485</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.456</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.406</span>])</span>
+<span id="cb5-4">    std <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> np.array([<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.229</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.224</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.225</span>])</span>
+<span id="cb5-5">    inp <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> std <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> inp <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> mean</span>
+<span id="cb5-6">    inp <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> np.clip(inp, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)</span>
+<span id="cb5-7">    plt.imshow(inp)</span>
+<span id="cb5-8">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> title <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">is</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">not</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>:</span>
+<span id="cb5-9">        plt.title(title)</span>
+<span id="cb5-10"></span>
+<span id="cb5-11"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 학습 데이터의 배치를 얻고, 매번 다른 배치를 보여준다.</span></span>
+<span id="cb5-12">inputs, classes <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">next</span>(<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">iter</span>(dataloaders[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'train'</span>]))</span>
+<span id="cb5-13">out <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> torchvision.utils.make_grid(inputs)</span>
+<span id="cb5-14"></span>
+<span id="cb5-15">imshow(out, title<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>[class_names[x] <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">for</span> x <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">in</span> classes])</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://dotpyo.github.io/archive/posts/LabHAI/tutorial/transfer_learning/transfer_learning_tutorial_files/figure-html/cell-5-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="학습" class="level3">
+<h3 class="anchored" data-anchor-id="학습">학습</h3>
+<div id="cell-8" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">def</span> train_model(model, criterion, optimizer, scheduler, num_epochs<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>):</span>
+<span id="cb6-2">    since <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> time.time()</span>
+<span id="cb6-3"></span>
+<span id="cb6-4">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 여기서 최고 성능의 모델을 판별하므로 함수 안에서 반복을 해야한다.</span></span>
+<span id="cb6-5">    best_model_wts <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> copy.deepcopy(model.state_dict())</span>
+<span id="cb6-6">    best_acc <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.0</span></span>
+<span id="cb6-7"></span>
+<span id="cb6-8">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 학습</span></span>
+<span id="cb6-9">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">for</span> epoch <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">in</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">range</span>(num_epochs):</span>
+<span id="cb6-10">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> epoch <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>:</span>
+<span id="cb6-11">            <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'-'</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>)</span>
+<span id="cb6-12">            <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f'Epoch </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>epoch<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">/</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>num_epochs <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'</span>)</span>
+<span id="cb6-13">            <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'-'</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>)</span>
+<span id="cb6-14"></span>
+<span id="cb6-15">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">for</span> phase <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">in</span> [<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'train'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'val'</span>]:  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># epoch당 두번 돈다.</span></span>
+<span id="cb6-16">            <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> phase <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"train"</span>:</span>
+<span id="cb6-17">                model.train()</span>
+<span id="cb6-18">            <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">else</span>:</span>
+<span id="cb6-19">                model.<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">eval</span>()    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 평가모드로 전환</span></span>
+<span id="cb6-20">            </span>
+<span id="cb6-21">            <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 먼저 선언</span></span>
+<span id="cb6-22">            running_loss <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.0</span></span>
+<span id="cb6-23">            running_corrects <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span></span>
+<span id="cb6-24"></span>
+<span id="cb6-25">            <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 학습/검증 데이터를 가져온다.</span></span>
+<span id="cb6-26">            <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">for</span> inputs, labels <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">in</span> dataloaders[phase]:</span>
+<span id="cb6-27">                inputs <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> inputs.to(device)</span>
+<span id="cb6-28">                labels <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> labels.to(device)</span>
+<span id="cb6-29"></span>
+<span id="cb6-30">                <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 최적화를 위해 경사도를 0으로 선언</span></span>
+<span id="cb6-31">                optimizer.zero_grad()</span>
+<span id="cb6-32"></span>
+<span id="cb6-33">                <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># forward</span></span>
+<span id="cb6-34">                <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 학습때만 연산</span></span>
+<span id="cb6-35">                <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">with</span> torch.set_grad_enabled(phase <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'train'</span>):</span>
+<span id="cb6-36">                    outputs <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> model(inputs)</span>
+<span id="cb6-37">                    _, preds <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> torch.<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">max</span>(outputs, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)</span>
+<span id="cb6-38">                    loss <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> criterion(outputs, labels)</span>
+<span id="cb6-39"></span>
+<span id="cb6-40">                    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 학습 단계인 경우 역전파 + 최적화</span></span>
+<span id="cb6-41">                    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> phase <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'train'</span>:</span>
+<span id="cb6-42">                        loss.backward()</span>
+<span id="cb6-43">                        optimizer.step()</span>
+<span id="cb6-44">                <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 연산 결과</span></span>
+<span id="cb6-45">                running_loss <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+=</span> loss.item() <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> inputs.size(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>)</span>
+<span id="cb6-46">                running_corrects <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+=</span> torch.<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">sum</span>(preds <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> labels.data)</span>
+<span id="cb6-47">                </span>
+<span id="cb6-48">            <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 이건 또 뭐야</span></span>
+<span id="cb6-49">            <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> phase <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'train'</span>:</span>
+<span id="cb6-50">                scheduler.step()</span>
+<span id="cb6-51">            </span>
+<span id="cb6-52">            epoch_loss <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> running_loss <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> dataset_sizes[phase]</span>
+<span id="cb6-53">            <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 원래 .double() 로 데이터형태를 맞춰줬었다.</span></span>
+<span id="cb6-54">            <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># TypeError: Cannot convert a MPS Tensor to float64 dtype </span></span>
+<span id="cb6-55">            <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># as the MPS framework doesn't support float64. </span></span>
+<span id="cb6-56">            <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Please use float32 instead.</span></span>
+<span id="cb6-57">            <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># default 값이 float() 다. </span></span>
+<span id="cb6-58">            epoch_acc <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> running_corrects.<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">float</span>() <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> dataset_sizes[phase]</span>
+<span id="cb6-59"></span>
+<span id="cb6-60">            <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> epoch <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>:</span>
+<span id="cb6-61">                <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f'</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>phase<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;"> Loss: </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>epoch_loss<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:.4f}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;"> Acc: </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>epoch_acc<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:.4f}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'</span>)</span>
+<span id="cb6-62"></span>
+<span id="cb6-63">            <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 모델을 깊은 복사(deep copy)함</span></span>
+<span id="cb6-64">            <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> phase <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'val'</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">and</span> epoch_acc <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> best_acc:</span>
+<span id="cb6-65">                best_acc <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> epoch_acc</span>
+<span id="cb6-66">                best_model_wts <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> copy.deepcopy(model.state_dict())</span>
+<span id="cb6-67"></span>
+<span id="cb6-68"></span>
+<span id="cb6-69">    time_elapsed <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> time.time() <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> since</span>
+<span id="cb6-70">    <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f'</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\n</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">Training complete in </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>time_elapsed <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">//</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">60</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:.0f}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">m </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>time_elapsed <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">60</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:.0f}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">s'</span>)</span>
+<span id="cb6-71">    <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f'Best val Acc: </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>best_acc<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:4f}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'</span>)</span>
+<span id="cb6-72"></span>
+<span id="cb6-73">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 가장 나은 모델 가중치를 불러옴</span></span>
+<span id="cb6-74">    model.load_state_dict(best_model_wts)</span>
+<span id="cb6-75">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">return</span> model</span></code></pre></div>
+</div>
+</section>
+<section id="시각화" class="level3">
+<h3 class="anchored" data-anchor-id="시각화">시각화</h3>
+<div id="cell-10" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">def</span> visualize_model(model, num_images<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">6</span>):</span>
+<span id="cb7-2">    was_training <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> model.training</span>
+<span id="cb7-3">    model.<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">eval</span>()</span>
+<span id="cb7-4">    images_so_far <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span></span>
+<span id="cb7-5">    fig <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> plt.figure()</span>
+<span id="cb7-6"></span>
+<span id="cb7-7">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">with</span> torch.no_grad():</span>
+<span id="cb7-8">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">for</span> i, (inputs, labels) <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">in</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">enumerate</span>(dataloaders[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'val'</span>]):</span>
+<span id="cb7-9">            inputs <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> inputs.to(device)</span>
+<span id="cb7-10">            labels <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> labels.to(device)</span>
+<span id="cb7-11"></span>
+<span id="cb7-12">            <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 결과값과 예측값</span></span>
+<span id="cb7-13">            outputs <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> model(inputs)</span>
+<span id="cb7-14">            _, preds <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> torch.<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">max</span>(outputs, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)</span>
+<span id="cb7-15"></span>
+<span id="cb7-16">            <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">for</span> j <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">in</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">range</span>(inputs.size()[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>]):</span>
+<span id="cb7-17">                images_so_far <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span></span>
+<span id="cb7-18">                ax <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> plt.subplot(num_images<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">//</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>, images_so_far)</span>
+<span id="cb7-19">                ax.axis(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'off'</span>)</span>
+<span id="cb7-20">                ax.set_title(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f'predicted: </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>class_names[preds[j]]<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'</span>)</span>
+<span id="cb7-21">                imshow(inputs.cpu().data[j])</span>
+<span id="cb7-22"></span>
+<span id="cb7-23">                <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> images_so_far <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> num_images:</span>
+<span id="cb7-24">                    model.train(mode<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>was_training)</span>
+<span id="cb7-25">                    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">return</span></span>
+<span id="cb7-26">        model.train(mode<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>was_training)</span></code></pre></div>
+</div>
+</section>
+<section id="미세조정" class="level3">
+<h3 class="anchored" data-anchor-id="미세조정">미세조정</h3>
+<p>마지막 계층을 초기화하는 단계다.</p>
+<div id="cell-13" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 사전학습모델 resnet</span></span>
+<span id="cb8-2"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># FineTuning의 약자로 ft를 사용하는 것 같음</span></span>
+<span id="cb8-3">model_ft <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> models.resnet18(weights<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'IMAGENET1K_V1'</span>)</span>
+<span id="cb8-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 사전학습모델로부터 fc layer 입력 채널 수를 얻음</span></span>
+<span id="cb8-5">num_ftrs <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> model_ft.fc.in_features  </span>
+<span id="cb8-6"></span>
+<span id="cb8-7"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 사전학습의 FC layer를 nn.Linear~ 로 교체하는 작업</span></span>
+<span id="cb8-8"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 출력 샘플의 크기: ``nn.Linear(num_ftrs, len (class_names))`` 로 일반화</span></span>
+<span id="cb8-9"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Linear(in_features=512, out_features=8, bias=True)</span></span>
+<span id="cb8-10">model_ft.fc <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> nn.Linear(num_ftrs, <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">len</span>(class_names))</span>
+<span id="cb8-11"></span>
+<span id="cb8-12">model_ft <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> model_ft.to(device)</span>
+<span id="cb8-13"></span>
+<span id="cb8-14"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># (역전파) 손실함수 지정</span></span>
+<span id="cb8-15">criterion <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> nn.CrossEntropyLoss()</span>
+<span id="cb8-16"></span>
+<span id="cb8-17"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># (최적화) 모든 매개변수들이 최적화되었는지 관찰</span></span>
+<span id="cb8-18">optimizer_ft <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> optim.SGD(model_ft.parameters(), lr<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.001</span>, momentum<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.9</span>)</span>
+<span id="cb8-19"></span>
+<span id="cb8-20"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 7 에폭마다 0.1씩 학습률 감소</span></span>
+<span id="cb8-21">exp_lr_scheduler <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> lr_scheduler.StepLR(optimizer_ft, step_size<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">7</span>, gamma<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.1</span>)</span></code></pre></div>
+</div>
+<div id="cell-14" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1">model_ft.fc</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<pre><code>Linear(in_features=512, out_features=2, bias=True)</code></pre>
+</div>
+</div>
+<div id="cell-15" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># model_ft = train_model(model_ft, criterion, optimizer_ft, exp_lr_scheduler,</span></span>
+<span id="cb11-2"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#                         num_epochs=25)</span></span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>----------
+Epoch 0/24
+----------
+train Loss: 0.5382 Acc: 0.7172
+val Loss: 0.2261 Acc: 0.9216
+----------
+Epoch 10/24
+----------
+train Loss: 0.1790 Acc: 0.9303
+val Loss: 0.1501 Acc: 0.9608
+----------
+Epoch 20/24
+----------
+train Loss: 0.1212 Acc: 0.9467
+val Loss: 0.1478 Acc: 0.9477
+
+Training complete in 1m 36s
+Best val Acc: 0.960784</code></pre>
+</div>
+</div>
+<div id="cell-16" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1">visualize_model(model_ft)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://dotpyo.github.io/archive/posts/LabHAI/tutorial/transfer_learning/transfer_learning_tutorial_files/figure-html/cell-11-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+
+
+</section>
+
+ ]]></description>
+  <category>PyTorch</category>
+  <category>computer vision</category>
+  <category>tutorial</category>
+  <guid>https://dotpyo.github.io/archive/posts/LabHAI/tutorial/transfer_learning/transfer_learning_tutorial.html</guid>
+  <pubDate>Sun, 10 Mar 2024 13:35:24 GMT</pubDate>
+</item>
+<item>
+  <title>fgsm tutorial</title>
+  <dc:creator>dotpyo </dc:creator>
+  <link>https://dotpyo.github.io/archive/posts/LabHAI/tutorial/GAN/fgsm_tutorial.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<blockquote class="blockquote">
+<p>FGSM<sup>1</sup> 으로 MNIST를 속여보자.</p>
+</blockquote>
+<ul>
+<li>입력 데이터에 최소한의 변화를 추가하여 ’잘못 분류되게 하는 것’이 공격자의 목표다.</li>
+<li>공격의 종류
+<ul>
+<li>화이트박스: 공격자가 모델의 구조 (입출력, 가중치) 모두를 알고 접근할 수 있다고 가정한다.</li>
+<li>블랙박스: 공격자가 모델의 입력과 출력단에 접근 가능하고, 모델의 내부는 모른다고 가정한다.</li>
+</ul></li>
+</ul>
+<p>여기서 FGSM은 <em>오분류</em>를 목표로 하는 화이트박스 공격이다.</p>
+<section id="fgsm" class="level3">
+<h3 class="anchored" data-anchor-id="fgsm">FGSM</h3>
+<blockquote class="blockquote">
+<p>역전파에서 가중치를 조정하여 손실을 ‘최<strong>대</strong>화’ 하도록 입력 데이터를 조정한다.</p>
+</blockquote>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://github.com/dotpyo/archive/assets/60145951/adf238c7-f050-4e4d-9a02-04fe806e558a" class="img-fluid figure-img"></p>
+<figcaption>fgsm_panda_image</figcaption>
+</figure>
+</div>
+</section>
+<section id="구현" class="level3">
+<h3 class="anchored" data-anchor-id="구현">구현</h3>
+<div id="cell-5" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> __future__ <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> print_function</span>
+<span id="cb1-2"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> torch</span>
+<span id="cb1-3"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> torch.nn <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> nn</span>
+<span id="cb1-4"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> torch.nn.functional <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> F</span>
+<span id="cb1-5"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> torch.optim <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> optim</span>
+<span id="cb1-6"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> torchvision <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> datasets, transforms</span>
+<span id="cb1-7"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> numpy <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> np</span>
+<span id="cb1-8"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> matplotlib.pyplot <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> plt</span>
+<span id="cb1-9"></span>
+<span id="cb1-10"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 출처: fgsm tutorial 공식 colab</span></span>
+<span id="cb1-11"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># </span><span class="al" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">NOTE</span><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">: 아래는 MNIST 데이터셋을 내려받을 때 "User-agent" 관련한 제한을 푸는 코드입니다.</span></span>
+<span id="cb1-12"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#       더 자세한 내용은 https://github.com/pytorch/vision/issues/3497 을 참고해주세요.</span></span>
+<span id="cb1-13"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> six.moves <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> urllib</span>
+<span id="cb1-14">opener <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> urllib.request.build_opener()</span>
+<span id="cb1-15">opener.addheaders <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'User-agent'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Mozilla/5.0'</span>)]</span>
+<span id="cb1-16">urllib.request.install_opener(opener)</span></code></pre></div>
+</div>
+<ol type="1">
+<li>입력 매개변수를 파악한다.</li>
+<li>공격할, 공격 중인 모델을 정의한다.</li>
+<li>공격, 테스트를 진행한다.</li>
+</ol>
+<section id="입력-매개변수" class="level4">
+<h4 class="anchored" data-anchor-id="입력-매개변수">입력 매개변수</h4>
+<div id="cell-8" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 1. 실행에 사용할 엡실론 리스트. 0값은 원래 테스트 셋의 모델 성능이므로 반드시 포함시켜야 한다.</span></span>
+<span id="cb2-2"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 엡실론이 클수록 모델 정확도를 저하시키는데 효과가 있으며 값은 0~1 사이다.</span></span>
+<span id="cb2-3">epsilons:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">list</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">.05</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">.1</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">.15</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">.2</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">.25</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">.3</span>]</span>
+<span id="cb2-4"></span>
+<span id="cb2-5"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 2. MNIST 모델을 사용한다.</span></span>
+<span id="cb2-6">pretrained_model:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"data/lenet_mnist_model.pth"</span></span>
+<span id="cb2-7"></span>
+<span id="cb2-8"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 3. 이 튜토리얼에선 학습 시간 오래 걸리지 않으므로 CPU 써도 무관하다.</span></span>
+<span id="cb2-9">use_cuda<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">False</span></span></code></pre></div>
+</div>
+</section>
+</section>
+<section id="공격을-받는-모델" class="level3">
+<h3 class="anchored" data-anchor-id="공격을-받는-모델">공격을 받는 모델</h3>
+<p>MNIST 예제에서 복사해온다. - 모델과 데이터로더 정의 - 모델 초기화 - 학습된 가중치 로드</p>
+<div id="cell-11" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># LeNet 모델 정의</span></span>
+<span id="cb3-2"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">class</span> Net(nn.Module):</span>
+<span id="cb3-3">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 네트워크 구조 정의</span></span>
+<span id="cb3-4">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">def</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">__init__</span>(<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>):</span>
+<span id="cb3-5">        <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">super</span>(Net, <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>).<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">__init__</span>()</span>
+<span id="cb3-6">        <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>.conv1 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> nn.Conv2d(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>, kernel_size<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>)</span>
+<span id="cb3-7">        <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>.conv2 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> nn.Conv2d(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">20</span>, kernel_size<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>)</span>
+<span id="cb3-8">        <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>.conv2_drop <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> nn.Dropout2d()</span>
+<span id="cb3-9">        <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>.fc1 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> nn.Linear(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">320</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">50</span>)</span>
+<span id="cb3-10">        <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>.fc2 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> nn.Linear(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">50</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>)</span>
+<span id="cb3-11"></span>
+<span id="cb3-12">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 학습 방법 정의</span></span>
+<span id="cb3-13">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">def</span> forward(<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>, x):</span>
+<span id="cb3-14">        x <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> F.relu(F.max_pool2d(<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>.conv1(x), <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>))</span>
+<span id="cb3-15">        x <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> F.relu(F.max_pool2d(<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>.conv2_drop(<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>.conv2(x)), <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>))</span>
+<span id="cb3-16">        x <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> x.view(<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">320</span>)</span>
+<span id="cb3-17">        x <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> F.relu(<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>.fc1(x))</span>
+<span id="cb3-18">        x <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> F.dropout(x, training<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>.training)</span>
+<span id="cb3-19">        x <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>.fc2(x)</span>
+<span id="cb3-20">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">return</span> F.log_softmax(x, dim<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)</span>
+<span id="cb3-21"></span>
+<span id="cb3-22"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># MNIST 테스트 데이터셋과 데이터로더 선언</span></span>
+<span id="cb3-23">test_loader <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> torch.utils.data.DataLoader(</span>
+<span id="cb3-24">    datasets.MNIST(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'../data'</span>, train<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">False</span>, download<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">True</span>, transform<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>transforms.Compose([</span>
+<span id="cb3-25">            transforms.ToTensor(),</span>
+<span id="cb3-26">            ])),</span>
+<span id="cb3-27">        batch_size<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, shuffle<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">True</span>)</span>
+<span id="cb3-28"></span>
+<span id="cb3-29"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 어떤 디바이스를 사용할지 정의 &gt;&gt; CPU 사용 예정</span></span>
+<span id="cb3-30"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"CUDA Available: "</span>,torch.cuda.is_available())</span>
+<span id="cb3-31">device <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> torch.device(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"cuda"</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> (use_cuda <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">and</span> torch.cuda.is_available()) <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">else</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"cpu"</span>)</span>
+<span id="cb3-32"></span>
+<span id="cb3-33"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 모델 초기화하기</span></span>
+<span id="cb3-34">model <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> Net().to(device)</span>
+<span id="cb3-35"></span>
+<span id="cb3-36"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 미리 학습된 모델 읽어오기</span></span>
+<span id="cb3-37">model.load_state_dict(torch.load(pretrained_model, map_location<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'cpu'</span>))</span>
+<span id="cb3-38"></span>
+<span id="cb3-39"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 모델을 평가 모드로 설정하기. 드롭아웃 레이어들을 위해 사용됨</span></span>
+<span id="cb3-40">model.<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">eval</span>()</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>CUDA Available:  False</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<pre><code>Net(
+  (conv1): Conv2d(1, 10, kernel_size=(5, 5), stride=(1, 1))
+  (conv2): Conv2d(10, 20, kernel_size=(5, 5), stride=(1, 1))
+  (conv2_drop): Dropout2d(p=0.5, inplace=False)
+  (fc1): Linear(in_features=320, out_features=50, bias=True)
+  (fc2): Linear(in_features=50, out_features=10, bias=True)
+)</code></pre>
+</div>
+</div>
+</section>
+<section id="fgsm-공격" class="level3">
+<h3 class="anchored" data-anchor-id="fgsm-공격">FGSM 공격</h3>
+<ul>
+<li><code>fgsm_attack</code> 함수를 만들어 사용하는데, 이때 입력 파라미터로 위에서 정의한 값들을 넣는다.</li>
+</ul>
+<ol type="1">
+<li>원본 이미지 <img src="https://latex.codecogs.com/png.latex?x"></li>
+<li>epsilon; pixel 단위의 변화 <img src="https://latex.codecogs.com/png.latex?%5Cepsilon"></li>
+<li>data_grad; 입력 영상에 대한 변화도 손실값</li>
+</ol>
+<div id="cell-14" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># FGSM 공격 코드</span></span>
+<span id="cb6-2"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">def</span> fgsm_attack(image, epsilon, data_grad):</span>
+<span id="cb6-3">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># data_grad 의 요소별 부호 값을 얻어옵니다</span></span>
+<span id="cb6-4">    sign_data_grad <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> data_grad.sign()</span>
+<span id="cb6-5">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 입력 이미지의 각 픽셀에 sign_data_grad 를 적용해 작은 변화가 적용된 이미지를 생성합니다</span></span>
+<span id="cb6-6">    perturbed_image <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> image <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> epsilon<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span>sign_data_grad</span>
+<span id="cb6-7">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 값 범위를 [0,1]로 유지하기 위해 자르기(clipping)를 추가합니다</span></span>
+<span id="cb6-8">    perturbed_image <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> torch.clamp(perturbed_image, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)</span>
+<span id="cb6-9">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 작은 변화가 적용된 이미지를 리턴합니다</span></span>
+<span id="cb6-10">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">return</span> perturbed_image</span></code></pre></div>
+</div>
+</section>
+<section id="테스트" class="level3">
+<h3 class="anchored" data-anchor-id="테스트">테스트 (*)</h3>
+<p>테스트 기능을 호출할 때마다 1. 데이터셋에서 전체 테스트 단계를 수행한 후 2. 최종 정확도를 보고한다.</p>
+<ul>
+<li>여기서도 <img src="https://latex.codecogs.com/png.latex?%5Cepsilon"> 을 사용하는데, 테스트 함수가 이에 따라 모델의 정확도를 보고하기 때문이다. (픽셀단위의 변화이므로)</li>
+<li>공격을 받은 이미지가 작은 변화가 적용된 이미지를 확인한 후 &gt;&gt; 그 이미지의 변화가 <strong>적대적</strong>인지 확인한다.</li>
+</ul>
+<div id="cell-17" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">def</span> test( model, device, test_loader, epsilon ):</span>
+<span id="cb7-2"></span>
+<span id="cb7-3">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 정확도 카운터</span></span>
+<span id="cb7-4">    correct <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span></span>
+<span id="cb7-5">    adv_examples <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> []</span>
+<span id="cb7-6"></span>
+<span id="cb7-7">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 테스트 셋의 모든 예제에 대해 루프를 돕니다</span></span>
+<span id="cb7-8">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">for</span> data, target <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">in</span> test_loader:</span>
+<span id="cb7-9"></span>
+<span id="cb7-10">        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 디바이스(CPU or GPU) 에 데이터와 라벨 값을 보냅니다</span></span>
+<span id="cb7-11">        data, target <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> data.to(device), target.to(device)</span>
+<span id="cb7-12"></span>
+<span id="cb7-13">        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 텐서의 속성 중 requires_grad 를 설정합니다. 공격에서 중요한 부분입니다 &gt;&gt; 증가시켜야하므로</span></span>
+<span id="cb7-14">        data.requires_grad <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">True</span></span>
+<span id="cb7-15"></span>
+<span id="cb7-16">        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 데이터를 모델에 통과시킵니다</span></span>
+<span id="cb7-17">        output <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> model(data)</span>
+<span id="cb7-18">        init_pred <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> output.<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">max</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, keepdim<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">True</span>)[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>] <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 로그 확률의 최대값을 가지는 인덱스를 얻습니다</span></span>
+<span id="cb7-19"></span>
+<span id="cb7-20">        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 만약 초기 예측이 틀리면, 공격하지 않도록 하고 계속 진행합니다</span></span>
+<span id="cb7-21">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> init_pred.item() <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">!=</span> target.item():</span>
+<span id="cb7-22">            <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">continue</span></span>
+<span id="cb7-23"></span>
+<span id="cb7-24">        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 손실을 계산합니다</span></span>
+<span id="cb7-25">        loss <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> F.nll_loss(output, target)</span>
+<span id="cb7-26"></span>
+<span id="cb7-27">        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 모델의 변화도들을 전부 0으로 설정합니다</span></span>
+<span id="cb7-28">        model.zero_grad()</span>
+<span id="cb7-29"></span>
+<span id="cb7-30">        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 후방 전달을 통해 모델의 변화도를 계산합니다</span></span>
+<span id="cb7-31">        loss.backward()</span>
+<span id="cb7-32"></span>
+<span id="cb7-33">        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 변화도 값을 모읍니다</span></span>
+<span id="cb7-34">        data_grad <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> data.grad.data</span>
+<span id="cb7-35"></span>
+<span id="cb7-36">        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># FGSM 공격을 호출합니다</span></span>
+<span id="cb7-37">        perturbed_data <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> fgsm_attack(data, epsilon, data_grad)</span>
+<span id="cb7-38"></span>
+<span id="cb7-39">        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 작은 변화가 적용된 이미지에 대해 재분류합니다</span></span>
+<span id="cb7-40">        output <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> model(perturbed_data)</span>
+<span id="cb7-41"></span>
+<span id="cb7-42">        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 올바른지 확인합니다</span></span>
+<span id="cb7-43">        final_pred <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> output.<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">max</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, keepdim<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">True</span>)[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>] <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 로그 확률의 최대값을 가지는 인덱스를 얻습니다</span></span>
+<span id="cb7-44">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> final_pred.item() <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> target.item():</span>
+<span id="cb7-45">            correct <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span></span>
+<span id="cb7-46">            <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 0 엡실론 예제에 대해서 저장합니다</span></span>
+<span id="cb7-47">            <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> (epsilon <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>) <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">and</span> (<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">len</span>(adv_examples) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>):</span>
+<span id="cb7-48">                adv_ex <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> perturbed_data.squeeze().detach().cpu().numpy()</span>
+<span id="cb7-49">                adv_examples.append( (init_pred.item(), final_pred.item(), adv_ex) )</span>
+<span id="cb7-50">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">else</span>:</span>
+<span id="cb7-51">            <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 추후 시각화를 위하 다른 예제들을 저장합니다</span></span>
+<span id="cb7-52">            <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">len</span>(adv_examples) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>:</span>
+<span id="cb7-53">                adv_ex <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> perturbed_data.squeeze().detach().cpu().numpy()</span>
+<span id="cb7-54">                adv_examples.append( (init_pred.item(), final_pred.item(), adv_ex) )</span>
+<span id="cb7-55"></span>
+<span id="cb7-56">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 해당 엡실론에서의 최종 정확도를 계산합니다</span></span>
+<span id="cb7-57">    final_acc <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> correct<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">float</span>(<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">len</span>(test_loader))</span>
+<span id="cb7-58">    <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Epsilon: </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{}</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\t</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">Test Accuracy = </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{}</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;"> / </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{}</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;"> = </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{}</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>.<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">format</span>(epsilon, correct, <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">len</span>(test_loader), final_acc))</span>
+<span id="cb7-59"></span>
+<span id="cb7-60">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 정확도와 적대적 예제를 리턴합니다</span></span>
+<span id="cb7-61">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">return</span> final_acc, adv_examples</span></code></pre></div>
+</div>
+</section>
+<section id="공격-실행" class="level3">
+<h3 class="anchored" data-anchor-id="공격-실행">공격 실행</h3>
+<div id="cell-19" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1">accuracies <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> []</span>
+<span id="cb8-2">examples <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> []</span>
+<span id="cb8-3"></span>
+<span id="cb8-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 각 엡실론에 대해 테스트 함수를 실행합니다</span></span>
+<span id="cb8-5"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">for</span> eps <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">in</span> epsilons:</span>
+<span id="cb8-6">    acc, ex <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> test(model, device, test_loader, eps)</span>
+<span id="cb8-7">    accuracies.append(acc)</span>
+<span id="cb8-8">    examples.append(ex)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Epsilon: 0  Test Accuracy = 9810 / 10000 = 0.981
+Epsilon: 0.05   Test Accuracy = 9426 / 10000 = 0.9426
+Epsilon: 0.1    Test Accuracy = 8510 / 10000 = 0.851
+Epsilon: 0.15   Test Accuracy = 6826 / 10000 = 0.6826
+Epsilon: 0.2    Test Accuracy = 4301 / 10000 = 0.4301
+Epsilon: 0.25   Test Accuracy = 2082 / 10000 = 0.2082
+Epsilon: 0.3    Test Accuracy = 869 / 10000 = 0.0869</code></pre>
+</div>
+</div>
+</section>
+<section id="결과" class="level3">
+<h3 class="anchored" data-anchor-id="결과">결과</h3>
+<p>시각화를 진행한다.</p>
+<blockquote class="blockquote">
+<p>엡실론이 증가함에 따라 테스트 정확도가 감소해야 한다.</p>
+</blockquote>
+<p><img src="https://latex.codecogs.com/png.latex?%5Ctherefore"> 엡실론 값이 선형적이더라도 곡선의 추세는 선형적이지 않다.</p>
+<div id="cell-22" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1">plt.figure(figsize<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>))</span>
+<span id="cb10-2">plt.plot(epsilons, accuracies, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"*-"</span>)</span>
+<span id="cb10-3">plt.yticks(np.arange(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1.1</span>, step<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.1</span>))</span>
+<span id="cb10-4">plt.xticks(np.arange(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">.35</span>, step<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.05</span>))</span>
+<span id="cb10-5">plt.title(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Accuracy vs Epsilon"</span>)</span>
+<span id="cb10-6">plt.xlabel(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Epsilon"</span>)</span>
+<span id="cb10-7">plt.ylabel(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Accuracy"</span>)</span>
+<span id="cb10-8">plt.show()</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://dotpyo.github.io/archive/posts/LabHAI/tutorial/GAN/fgsm_tutorial_files/figure-html/cell-8-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="문제" class="level3">
+<h3 class="anchored" data-anchor-id="문제">문제</h3>
+<ul>
+<li>엡실론이 증가할수록 정확도는 떨어지지만: 작은 변화는 더 쉽게 인식한다.</li>
+<li>노이즈가 추가되었더라도 작은 객체는 제대로 선별할 수 있는 경우도 있다.</li>
+</ul>
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>Fast Gradient Sign Attack↩︎</p></li>
+</ol>
+</section></div> ]]></description>
+  <category>PyTorch</category>
+  <category>computer vision</category>
+  <category>tutorial</category>
+  <guid>https://dotpyo.github.io/archive/posts/LabHAI/tutorial/GAN/fgsm_tutorial.html</guid>
+  <pubDate>Sun, 10 Mar 2024 13:35:24 GMT</pubDate>
 </item>
 <item>
   <title>DCGAN face tutorial</title>
@@ -5981,795 +7688,7 @@ font-style: inherit;">0</span>)))</span>
   <category>computer vision</category>
   <category>tutorial</category>
   <guid>https://dotpyo.github.io/archive/posts/LabHAI/tutorial/GAN/DCGAN_tutorial.html</guid>
-  <pubDate>Sun, 10 Mar 2024 13:05:16 GMT</pubDate>
-</item>
-<item>
-  <title>fgsm tutorial</title>
-  <dc:creator>dotpyo </dc:creator>
-  <link>https://dotpyo.github.io/archive/posts/LabHAI/tutorial/GAN/fgsm_tutorial.html</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<blockquote class="blockquote">
-<p>FGSM<sup>1</sup> 으로 MNIST를 속여보자.</p>
-</blockquote>
-<ul>
-<li>입력 데이터에 최소한의 변화를 추가하여 ’잘못 분류되게 하는 것’이 공격자의 목표다.</li>
-<li>공격의 종류
-<ul>
-<li>화이트박스: 공격자가 모델의 구조 (입출력, 가중치) 모두를 알고 접근할 수 있다고 가정한다.</li>
-<li>블랙박스: 공격자가 모델의 입력과 출력단에 접근 가능하고, 모델의 내부는 모른다고 가정한다.</li>
-</ul></li>
-</ul>
-<p>여기서 FGSM은 <em>오분류</em>를 목표로 하는 화이트박스 공격이다.</p>
-<section id="fgsm" class="level3">
-<h3 class="anchored" data-anchor-id="fgsm">FGSM</h3>
-<blockquote class="blockquote">
-<p>역전파에서 가중치를 조정하여 손실을 ‘최<strong>대</strong>화’ 하도록 입력 데이터를 조정한다.</p>
-</blockquote>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://github.com/dotpyo/archive/assets/60145951/adf238c7-f050-4e4d-9a02-04fe806e558a" class="img-fluid figure-img"></p>
-<figcaption>fgsm_panda_image</figcaption>
-</figure>
-</div>
-</section>
-<section id="구현" class="level3">
-<h3 class="anchored" data-anchor-id="구현">구현</h3>
-<div id="cell-5" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">from</span> __future__ <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> print_function</span>
-<span id="cb1-2"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> torch</span>
-<span id="cb1-3"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> torch.nn <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">as</span> nn</span>
-<span id="cb1-4"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> torch.nn.functional <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">as</span> F</span>
-<span id="cb1-5"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> torch.optim <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">as</span> optim</span>
-<span id="cb1-6"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">from</span> torchvision <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> datasets, transforms</span>
-<span id="cb1-7"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> numpy <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">as</span> np</span>
-<span id="cb1-8"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> matplotlib.pyplot <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">as</span> plt</span>
-<span id="cb1-9"></span>
-<span id="cb1-10"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># 출처: fgsm tutorial 공식 colab</span></span>
-<span id="cb1-11"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># </span><span class="al" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">NOTE</span><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">: 아래는 MNIST 데이터셋을 내려받을 때 "User-agent" 관련한 제한을 푸는 코드입니다.</span></span>
-<span id="cb1-12"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#       더 자세한 내용은 https://github.com/pytorch/vision/issues/3497 을 참고해주세요.</span></span>
-<span id="cb1-13"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">from</span> six.moves <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> urllib</span>
-<span id="cb1-14">opener <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> urllib.request.build_opener()</span>
-<span id="cb1-15">opener.addheaders <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> [(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'User-agent'</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'Mozilla/5.0'</span>)]</span>
-<span id="cb1-16">urllib.request.install_opener(opener)</span></code></pre></div>
-</div>
-<ol type="1">
-<li>입력 매개변수를 파악한다.</li>
-<li>공격할, 공격 중인 모델을 정의한다.</li>
-<li>공격, 테스트를 진행한다.</li>
-</ol>
-<section id="입력-매개변수" class="level4">
-<h4 class="anchored" data-anchor-id="입력-매개변수">입력 매개변수</h4>
-<div id="cell-8" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># 1. 실행에 사용할 엡실론 리스트. 0값은 원래 테스트 셋의 모델 성능이므로 반드시 포함시켜야 한다.</span></span>
-<span id="cb2-2"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># 엡실론이 클수록 모델 정확도를 저하시키는데 효과가 있으며 값은 0~1 사이다.</span></span>
-<span id="cb2-3">epsilons:<span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">list</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> [<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">.05</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">.1</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">.15</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">.2</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">.25</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">.3</span>]</span>
-<span id="cb2-4"></span>
-<span id="cb2-5"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># 2. MNIST 모델을 사용한다.</span></span>
-<span id="cb2-6">pretrained_model:<span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">str</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"data/lenet_mnist_model.pth"</span></span>
-<span id="cb2-7"></span>
-<span id="cb2-8"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># 3. 이 튜토리얼에선 학습 시간 오래 걸리지 않으므로 CPU 써도 무관하다.</span></span>
-<span id="cb2-9">use_cuda<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">False</span></span></code></pre></div>
-</div>
-</section>
-</section>
-<section id="공격을-받는-모델" class="level3">
-<h3 class="anchored" data-anchor-id="공격을-받는-모델">공격을 받는 모델</h3>
-<p>MNIST 예제에서 복사해온다. - 모델과 데이터로더 정의 - 모델 초기화 - 학습된 가중치 로드</p>
-<div id="cell-11" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># LeNet 모델 정의</span></span>
-<span id="cb3-2"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">class</span> Net(nn.Module):</span>
-<span id="cb3-3">    <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># 네트워크 구조 정의</span></span>
-<span id="cb3-4">    <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">def</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">__init__</span>(<span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">self</span>):</span>
-<span id="cb3-5">        <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">super</span>(Net, <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">self</span>).<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">__init__</span>()</span>
-<span id="cb3-6">        <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">self</span>.conv1 <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> nn.Conv2d(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">10</span>, kernel_size<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">5</span>)</span>
-<span id="cb3-7">        <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">self</span>.conv2 <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> nn.Conv2d(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">10</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">20</span>, kernel_size<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">5</span>)</span>
-<span id="cb3-8">        <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">self</span>.conv2_drop <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> nn.Dropout2d()</span>
-<span id="cb3-9">        <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">self</span>.fc1 <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> nn.Linear(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">320</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">50</span>)</span>
-<span id="cb3-10">        <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">self</span>.fc2 <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> nn.Linear(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">50</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">10</span>)</span>
-<span id="cb3-11"></span>
-<span id="cb3-12">    <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># 학습 방법 정의</span></span>
-<span id="cb3-13">    <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">def</span> forward(<span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">self</span>, x):</span>
-<span id="cb3-14">        x <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> F.relu(F.max_pool2d(<span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">self</span>.conv1(x), <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">2</span>))</span>
-<span id="cb3-15">        x <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> F.relu(F.max_pool2d(<span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">self</span>.conv2_drop(<span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">self</span>.conv2(x)), <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">2</span>))</span>
-<span id="cb3-16">        x <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> x.view(<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">320</span>)</span>
-<span id="cb3-17">        x <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> F.relu(<span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">self</span>.fc1(x))</span>
-<span id="cb3-18">        x <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> F.dropout(x, training<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">self</span>.training)</span>
-<span id="cb3-19">        x <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">self</span>.fc2(x)</span>
-<span id="cb3-20">        <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">return</span> F.log_softmax(x, dim<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>)</span>
-<span id="cb3-21"></span>
-<span id="cb3-22"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># MNIST 테스트 데이터셋과 데이터로더 선언</span></span>
-<span id="cb3-23">test_loader <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> torch.utils.data.DataLoader(</span>
-<span id="cb3-24">    datasets.MNIST(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'../data'</span>, train<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">False</span>, download<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">True</span>, transform<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>transforms.Compose([</span>
-<span id="cb3-25">            transforms.ToTensor(),</span>
-<span id="cb3-26">            ])),</span>
-<span id="cb3-27">        batch_size<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>, shuffle<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">True</span>)</span>
-<span id="cb3-28"></span>
-<span id="cb3-29"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># 어떤 디바이스를 사용할지 정의 &gt;&gt; CPU 사용 예정</span></span>
-<span id="cb3-30"><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"CUDA Available: "</span>,torch.cuda.is_available())</span>
-<span id="cb3-31">device <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> torch.device(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"cuda"</span> <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">if</span> (use_cuda <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">and</span> torch.cuda.is_available()) <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">else</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"cpu"</span>)</span>
-<span id="cb3-32"></span>
-<span id="cb3-33"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># 모델 초기화하기</span></span>
-<span id="cb3-34">model <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> Net().to(device)</span>
-<span id="cb3-35"></span>
-<span id="cb3-36"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># 미리 학습된 모델 읽어오기</span></span>
-<span id="cb3-37">model.load_state_dict(torch.load(pretrained_model, map_location<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'cpu'</span>))</span>
-<span id="cb3-38"></span>
-<span id="cb3-39"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># 모델을 평가 모드로 설정하기. 드롭아웃 레이어들을 위해 사용됨</span></span>
-<span id="cb3-40">model.<span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">eval</span>()</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>CUDA Available:  False</code></pre>
-</div>
-<div class="cell-output cell-output-display" data-execution_count="5">
-<pre><code>Net(
-  (conv1): Conv2d(1, 10, kernel_size=(5, 5), stride=(1, 1))
-  (conv2): Conv2d(10, 20, kernel_size=(5, 5), stride=(1, 1))
-  (conv2_drop): Dropout2d(p=0.5, inplace=False)
-  (fc1): Linear(in_features=320, out_features=50, bias=True)
-  (fc2): Linear(in_features=50, out_features=10, bias=True)
-)</code></pre>
-</div>
-</div>
-</section>
-<section id="fgsm-공격" class="level3">
-<h3 class="anchored" data-anchor-id="fgsm-공격">FGSM 공격</h3>
-<ul>
-<li><code>fgsm_attack</code> 함수를 만들어 사용하는데, 이때 입력 파라미터로 위에서 정의한 값들을 넣는다.</li>
-</ul>
-<ol type="1">
-<li>원본 이미지 <img src="https://latex.codecogs.com/png.latex?x"></li>
-<li>epsilon; pixel 단위의 변화 <img src="https://latex.codecogs.com/png.latex?%5Cepsilon"></li>
-<li>data_grad; 입력 영상에 대한 변화도 손실값</li>
-</ol>
-<div id="cell-14" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># FGSM 공격 코드</span></span>
-<span id="cb6-2"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">def</span> fgsm_attack(image, epsilon, data_grad):</span>
-<span id="cb6-3">    <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># data_grad 의 요소별 부호 값을 얻어옵니다</span></span>
-<span id="cb6-4">    sign_data_grad <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> data_grad.sign()</span>
-<span id="cb6-5">    <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># 입력 이미지의 각 픽셀에 sign_data_grad 를 적용해 작은 변화가 적용된 이미지를 생성합니다</span></span>
-<span id="cb6-6">    perturbed_image <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> image <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span> epsilon<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">*</span>sign_data_grad</span>
-<span id="cb6-7">    <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># 값 범위를 [0,1]로 유지하기 위해 자르기(clipping)를 추가합니다</span></span>
-<span id="cb6-8">    perturbed_image <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> torch.clamp(perturbed_image, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>)</span>
-<span id="cb6-9">    <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># 작은 변화가 적용된 이미지를 리턴합니다</span></span>
-<span id="cb6-10">    <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">return</span> perturbed_image</span></code></pre></div>
-</div>
-</section>
-<section id="테스트" class="level3">
-<h3 class="anchored" data-anchor-id="테스트">테스트 (*)</h3>
-<p>테스트 기능을 호출할 때마다 1. 데이터셋에서 전체 테스트 단계를 수행한 후 2. 최종 정확도를 보고한다.</p>
-<ul>
-<li>여기서도 <img src="https://latex.codecogs.com/png.latex?%5Cepsilon"> 을 사용하는데, 테스트 함수가 이에 따라 모델의 정확도를 보고하기 때문이다. (픽셀단위의 변화이므로)</li>
-<li>공격을 받은 이미지가 작은 변화가 적용된 이미지를 확인한 후 &gt;&gt; 그 이미지의 변화가 <strong>적대적</strong>인지 확인한다.</li>
-</ul>
-<div id="cell-17" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">def</span> test( model, device, test_loader, epsilon ):</span>
-<span id="cb7-2"></span>
-<span id="cb7-3">    <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># 정확도 카운터</span></span>
-<span id="cb7-4">    correct <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span></span>
-<span id="cb7-5">    adv_examples <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> []</span>
-<span id="cb7-6"></span>
-<span id="cb7-7">    <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># 테스트 셋의 모든 예제에 대해 루프를 돕니다</span></span>
-<span id="cb7-8">    <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">for</span> data, target <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">in</span> test_loader:</span>
-<span id="cb7-9"></span>
-<span id="cb7-10">        <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># 디바이스(CPU or GPU) 에 데이터와 라벨 값을 보냅니다</span></span>
-<span id="cb7-11">        data, target <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> data.to(device), target.to(device)</span>
-<span id="cb7-12"></span>
-<span id="cb7-13">        <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># 텐서의 속성 중 requires_grad 를 설정합니다. 공격에서 중요한 부분입니다 &gt;&gt; 증가시켜야하므로</span></span>
-<span id="cb7-14">        data.requires_grad <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">True</span></span>
-<span id="cb7-15"></span>
-<span id="cb7-16">        <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># 데이터를 모델에 통과시킵니다</span></span>
-<span id="cb7-17">        output <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> model(data)</span>
-<span id="cb7-18">        init_pred <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> output.<span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">max</span>(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>, keepdim<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">True</span>)[<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>] <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># 로그 확률의 최대값을 가지는 인덱스를 얻습니다</span></span>
-<span id="cb7-19"></span>
-<span id="cb7-20">        <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># 만약 초기 예측이 틀리면, 공격하지 않도록 하고 계속 진행합니다</span></span>
-<span id="cb7-21">        <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">if</span> init_pred.item() <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">!=</span> target.item():</span>
-<span id="cb7-22">            <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">continue</span></span>
-<span id="cb7-23"></span>
-<span id="cb7-24">        <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># 손실을 계산합니다</span></span>
-<span id="cb7-25">        loss <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> F.nll_loss(output, target)</span>
-<span id="cb7-26"></span>
-<span id="cb7-27">        <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># 모델의 변화도들을 전부 0으로 설정합니다</span></span>
-<span id="cb7-28">        model.zero_grad()</span>
-<span id="cb7-29"></span>
-<span id="cb7-30">        <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># 후방 전달을 통해 모델의 변화도를 계산합니다</span></span>
-<span id="cb7-31">        loss.backward()</span>
-<span id="cb7-32"></span>
-<span id="cb7-33">        <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># 변화도 값을 모읍니다</span></span>
-<span id="cb7-34">        data_grad <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> data.grad.data</span>
-<span id="cb7-35"></span>
-<span id="cb7-36">        <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># FGSM 공격을 호출합니다</span></span>
-<span id="cb7-37">        perturbed_data <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> fgsm_attack(data, epsilon, data_grad)</span>
-<span id="cb7-38"></span>
-<span id="cb7-39">        <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># 작은 변화가 적용된 이미지에 대해 재분류합니다</span></span>
-<span id="cb7-40">        output <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> model(perturbed_data)</span>
-<span id="cb7-41"></span>
-<span id="cb7-42">        <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># 올바른지 확인합니다</span></span>
-<span id="cb7-43">        final_pred <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> output.<span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">max</span>(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>, keepdim<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">True</span>)[<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>] <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># 로그 확률의 최대값을 가지는 인덱스를 얻습니다</span></span>
-<span id="cb7-44">        <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">if</span> final_pred.item() <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">==</span> target.item():</span>
-<span id="cb7-45">            correct <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+=</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span></span>
-<span id="cb7-46">            <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># 0 엡실론 예제에 대해서 저장합니다</span></span>
-<span id="cb7-47">            <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">if</span> (epsilon <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span>) <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">and</span> (<span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">len</span>(adv_examples) <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&lt;</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">5</span>):</span>
-<span id="cb7-48">                adv_ex <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> perturbed_data.squeeze().detach().cpu().numpy()</span>
-<span id="cb7-49">                adv_examples.append( (init_pred.item(), final_pred.item(), adv_ex) )</span>
-<span id="cb7-50">        <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">else</span>:</span>
-<span id="cb7-51">            <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># 추후 시각화를 위하 다른 예제들을 저장합니다</span></span>
-<span id="cb7-52">            <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">if</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">len</span>(adv_examples) <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&lt;</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">5</span>:</span>
-<span id="cb7-53">                adv_ex <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> perturbed_data.squeeze().detach().cpu().numpy()</span>
-<span id="cb7-54">                adv_examples.append( (init_pred.item(), final_pred.item(), adv_ex) )</span>
-<span id="cb7-55"></span>
-<span id="cb7-56">    <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># 해당 엡실론에서의 최종 정확도를 계산합니다</span></span>
-<span id="cb7-57">    final_acc <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> correct<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">/</span><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">float</span>(<span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">len</span>(test_loader))</span>
-<span id="cb7-58">    <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Epsilon: </span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">{}</span><span class="ch" style="color: #20794D;
-background-color: null;
-font-style: inherit;">\t</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">Test Accuracy = </span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">{}</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;"> / </span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">{}</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;"> = </span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">{}</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span>.<span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">format</span>(epsilon, correct, <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">len</span>(test_loader), final_acc))</span>
-<span id="cb7-59"></span>
-<span id="cb7-60">    <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># 정확도와 적대적 예제를 리턴합니다</span></span>
-<span id="cb7-61">    <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">return</span> final_acc, adv_examples</span></code></pre></div>
-</div>
-</section>
-<section id="공격-실행" class="level3">
-<h3 class="anchored" data-anchor-id="공격-실행">공격 실행</h3>
-<div id="cell-19" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1">accuracies <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> []</span>
-<span id="cb8-2">examples <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> []</span>
-<span id="cb8-3"></span>
-<span id="cb8-4"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># 각 엡실론에 대해 테스트 함수를 실행합니다</span></span>
-<span id="cb8-5"><span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">for</span> eps <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">in</span> epsilons:</span>
-<span id="cb8-6">    acc, ex <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> test(model, device, test_loader, eps)</span>
-<span id="cb8-7">    accuracies.append(acc)</span>
-<span id="cb8-8">    examples.append(ex)</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Epsilon: 0  Test Accuracy = 9810 / 10000 = 0.981
-Epsilon: 0.05   Test Accuracy = 9426 / 10000 = 0.9426
-Epsilon: 0.1    Test Accuracy = 8510 / 10000 = 0.851
-Epsilon: 0.15   Test Accuracy = 6826 / 10000 = 0.6826
-Epsilon: 0.2    Test Accuracy = 4301 / 10000 = 0.4301
-Epsilon: 0.25   Test Accuracy = 2082 / 10000 = 0.2082
-Epsilon: 0.3    Test Accuracy = 869 / 10000 = 0.0869</code></pre>
-</div>
-</div>
-</section>
-<section id="결과" class="level3">
-<h3 class="anchored" data-anchor-id="결과">결과</h3>
-<p>시각화를 진행한다.</p>
-<blockquote class="blockquote">
-<p>엡실론이 증가함에 따라 테스트 정확도가 감소해야 한다.</p>
-</blockquote>
-<p><img src="https://latex.codecogs.com/png.latex?%5Ctherefore"> 엡실론 값이 선형적이더라도 곡선의 추세는 선형적이지 않다.</p>
-<div id="cell-22" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1">plt.figure(figsize<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">5</span>,<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">5</span>))</span>
-<span id="cb10-2">plt.plot(epsilons, accuracies, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"*-"</span>)</span>
-<span id="cb10-3">plt.yticks(np.arange(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1.1</span>, step<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.1</span>))</span>
-<span id="cb10-4">plt.xticks(np.arange(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">.35</span>, step<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.05</span>))</span>
-<span id="cb10-5">plt.title(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Accuracy vs Epsilon"</span>)</span>
-<span id="cb10-6">plt.xlabel(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Epsilon"</span>)</span>
-<span id="cb10-7">plt.ylabel(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Accuracy"</span>)</span>
-<span id="cb10-8">plt.show()</span></code></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="https://dotpyo.github.io/archive/posts/LabHAI/tutorial/GAN/fgsm_tutorial_files/figure-html/cell-8-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="문제" class="level3">
-<h3 class="anchored" data-anchor-id="문제">문제</h3>
-<ul>
-<li>엡실론이 증가할수록 정확도는 떨어지지만: 작은 변화는 더 쉽게 인식한다.</li>
-<li>노이즈가 추가되었더라도 작은 객체는 제대로 선별할 수 있는 경우도 있다.</li>
-</ul>
-
-
-</section>
-
-
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
-<ol>
-<li id="fn1"><p>Fast Gradient Sign Attack↩︎</p></li>
-</ol>
-</section></div> ]]></description>
-  <category>PyTorch</category>
-  <category>computer vision</category>
-  <category>tutorial</category>
-  <guid>https://dotpyo.github.io/archive/posts/LabHAI/tutorial/GAN/fgsm_tutorial.html</guid>
-  <pubDate>Sun, 10 Mar 2024 13:05:16 GMT</pubDate>
+  <pubDate>Sun, 10 Mar 2024 13:35:24 GMT</pubDate>
 </item>
 <item>
   <title>finetuning tutorial</title>
@@ -8215,926 +9134,7 @@ Error: command buffer exited with error status.
   <category>computer vision</category>
   <category>tutorial</category>
   <guid>https://dotpyo.github.io/archive/posts/LabHAI/tutorial/maskrcnn/torchvision_finetuning_instance_segmentation.html</guid>
-  <pubDate>Sun, 10 Mar 2024 13:05:16 GMT</pubDate>
-</item>
-<item>
-  <title>transfer learning tutorial</title>
-  <dc:creator>dotpyo </dc:creator>
-  <link>https://dotpyo.github.io/archive/posts/LabHAI/tutorial/transfer_learning/transfer_learning_tutorial.html</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<div id="cell-1" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">from</span> __future__ <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> print_function, division</span>
-<span id="cb1-2"></span>
-<span id="cb1-3"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> torch</span>
-<span id="cb1-4"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> torch.nn <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">as</span> nn</span>
-<span id="cb1-5"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> torch.optim <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">as</span> optim</span>
-<span id="cb1-6"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">from</span> torch.optim <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> lr_scheduler</span>
-<span id="cb1-7"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># import torch.backends.cudnn as cudnn</span></span>
-<span id="cb1-8"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> numpy <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">as</span> np</span>
-<span id="cb1-9"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> torchvision</span>
-<span id="cb1-10"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">from</span> torchvision <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> datasets, models, transforms</span>
-<span id="cb1-11"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> matplotlib.pyplot <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">as</span> plt</span>
-<span id="cb1-12"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> time</span>
-<span id="cb1-13"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> os</span>
-<span id="cb1-14"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> copy</span>
-<span id="cb1-15"></span>
-<span id="cb1-16"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># cudnn.benchmark = True</span></span>
-<span id="cb1-17">plt.ion()   <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># 대화형 모드</span></span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="1">
-<pre><code>&lt;contextlib.ExitStack at 0x10465a1a0&gt;</code></pre>
-</div>
-</div>
-<section id="데이터-불러오기" class="level3">
-<h3 class="anchored" data-anchor-id="데이터-불러오기">데이터 불러오기</h3>
-<div id="cell-3" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># augmentation</span></span>
-<span id="cb3-2"></span>
-<span id="cb3-3">data_transforms <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> {</span>
-<span id="cb3-4">    <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'train'</span>: transforms.Compose([</span>
-<span id="cb3-5">        transforms.RandomResizedCrop(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">224</span>),   <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># 왜 224?</span></span>
-<span id="cb3-6">        transforms.RandomHorizontalFlip(),   <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># default=0.5</span></span>
-<span id="cb3-7">        transforms.ToTensor(),</span>
-<span id="cb3-8">        transforms.Normalize(</span>
-<span id="cb3-9">            [<span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.485</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.456</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.406</span>],</span>
-<span id="cb3-10">            [<span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.229</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.224</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.225</span>]</span>
-<span id="cb3-11">        )</span>
-<span id="cb3-12">    ]),</span>
-<span id="cb3-13">    <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'val'</span>: transforms.Compose([</span>
-<span id="cb3-14">        transforms.Resize(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">256</span>),</span>
-<span id="cb3-15">        transforms.CenterCrop(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">224</span>),</span>
-<span id="cb3-16">        transforms.ToTensor(),</span>
-<span id="cb3-17">        transforms.Normalize([<span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.485</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.456</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.406</span>], [<span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.229</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.224</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.225</span>])</span>
-<span id="cb3-18">    ]),</span>
-<span id="cb3-19">}</span></code></pre></div>
-</div>
-<div id="cell-4" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1">data_dir <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"data/hymenoptera_data"</span></span>
-<span id="cb4-2"></span>
-<span id="cb4-3">image_datasets <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> {x: datasets.ImageFolder(os.path.join(data_dir, x),</span>
-<span id="cb4-4">                    data_transforms[x])</span>
-<span id="cb4-5">                    <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">for</span> x <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">in</span> [<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'train'</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'val'</span>]}</span>
-<span id="cb4-6"></span>
-<span id="cb4-7">batch_size <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">8</span></span>
-<span id="cb4-8">dataloaders <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> {x: torch.utils.data.DataLoader(image_datasets[x], batch_size<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>batch_size,</span>
-<span id="cb4-9">                                                shuffle<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">True</span>, num_workers<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span>)</span>
-<span id="cb4-10">                                                <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">for</span> x <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">in</span> [<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'train'</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'val'</span>]}</span>
-<span id="cb4-11">dataset_sizes <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> {x: <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">len</span>(image_datasets[x]) <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">for</span> x <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">in</span> [<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'train'</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'val'</span>]}</span>
-<span id="cb4-12">class_names <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> image_datasets[<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'train'</span>].classes </span>
-<span id="cb4-13"></span>
-<span id="cb4-14">device <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> torch.device(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'mps'</span>) <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">if</span> torch.backends.mps.is_available() <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">else</span> torch.device(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'cpu'</span>)</span></code></pre></div>
-</div>
-<p>이미지 시각화해서 확인</p>
-<div id="cell-6" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">def</span> imshow(inp, title<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">None</span>):</span>
-<span id="cb5-2">    inp <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> inp.numpy().transpose((<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">2</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span>))</span>
-<span id="cb5-3">    mean <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> np.array([<span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.485</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.456</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.406</span>])</span>
-<span id="cb5-4">    std <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> np.array([<span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.229</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.224</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.225</span>])</span>
-<span id="cb5-5">    inp <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> std <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">*</span> inp <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span> mean</span>
-<span id="cb5-6">    inp <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> np.clip(inp, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>)</span>
-<span id="cb5-7">    plt.imshow(inp)</span>
-<span id="cb5-8">    <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">if</span> title <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">is</span> <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">not</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">None</span>:</span>
-<span id="cb5-9">        plt.title(title)</span>
-<span id="cb5-10"></span>
-<span id="cb5-11"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># 학습 데이터의 배치를 얻고, 매번 다른 배치를 보여준다.</span></span>
-<span id="cb5-12">inputs, classes <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">next</span>(<span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">iter</span>(dataloaders[<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'train'</span>]))</span>
-<span id="cb5-13">out <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> torchvision.utils.make_grid(inputs)</span>
-<span id="cb5-14"></span>
-<span id="cb5-15">imshow(out, title<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>[class_names[x] <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">for</span> x <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">in</span> classes])</span></code></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="https://dotpyo.github.io/archive/posts/LabHAI/tutorial/transfer_learning/transfer_learning_tutorial_files/figure-html/cell-5-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="학습" class="level3">
-<h3 class="anchored" data-anchor-id="학습">학습</h3>
-<div id="cell-8" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">def</span> train_model(model, criterion, optimizer, scheduler, num_epochs<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span>):</span>
-<span id="cb6-2">    since <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> time.time()</span>
-<span id="cb6-3"></span>
-<span id="cb6-4">    <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># 여기서 최고 성능의 모델을 판별하므로 함수 안에서 반복을 해야한다.</span></span>
-<span id="cb6-5">    best_model_wts <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> copy.deepcopy(model.state_dict())</span>
-<span id="cb6-6">    best_acc <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.0</span></span>
-<span id="cb6-7"></span>
-<span id="cb6-8">    <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># 학습</span></span>
-<span id="cb6-9">    <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">for</span> epoch <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">in</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">range</span>(num_epochs):</span>
-<span id="cb6-10">        <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">if</span> epoch <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">10</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span>:</span>
-<span id="cb6-11">            <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'-'</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">*</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">10</span>)</span>
-<span id="cb6-12">            <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
-background-color: null;
-font-style: inherit;">f'Epoch </span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">{</span>epoch<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">}</span><span class="ss" style="color: #20794D;
-background-color: null;
-font-style: inherit;">/</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">{</span>num_epochs <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">}</span><span class="ss" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'</span>)</span>
-<span id="cb6-13">            <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'-'</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">*</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">10</span>)</span>
-<span id="cb6-14"></span>
-<span id="cb6-15">        <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">for</span> phase <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">in</span> [<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'train'</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'val'</span>]:  <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># epoch당 두번 돈다.</span></span>
-<span id="cb6-16">            <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">if</span> phase <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">==</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"train"</span>:</span>
-<span id="cb6-17">                model.train()</span>
-<span id="cb6-18">            <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">else</span>:</span>
-<span id="cb6-19">                model.<span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">eval</span>()    <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># 평가모드로 전환</span></span>
-<span id="cb6-20">            </span>
-<span id="cb6-21">            <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># 먼저 선언</span></span>
-<span id="cb6-22">            running_loss <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.0</span></span>
-<span id="cb6-23">            running_corrects <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span></span>
-<span id="cb6-24"></span>
-<span id="cb6-25">            <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># 학습/검증 데이터를 가져온다.</span></span>
-<span id="cb6-26">            <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">for</span> inputs, labels <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">in</span> dataloaders[phase]:</span>
-<span id="cb6-27">                inputs <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> inputs.to(device)</span>
-<span id="cb6-28">                labels <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> labels.to(device)</span>
-<span id="cb6-29"></span>
-<span id="cb6-30">                <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># 최적화를 위해 경사도를 0으로 선언</span></span>
-<span id="cb6-31">                optimizer.zero_grad()</span>
-<span id="cb6-32"></span>
-<span id="cb6-33">                <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># forward</span></span>
-<span id="cb6-34">                <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># 학습때만 연산</span></span>
-<span id="cb6-35">                <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">with</span> torch.set_grad_enabled(phase <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">==</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'train'</span>):</span>
-<span id="cb6-36">                    outputs <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> model(inputs)</span>
-<span id="cb6-37">                    _, preds <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> torch.<span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">max</span>(outputs, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>)</span>
-<span id="cb6-38">                    loss <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> criterion(outputs, labels)</span>
-<span id="cb6-39"></span>
-<span id="cb6-40">                    <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># 학습 단계인 경우 역전파 + 최적화</span></span>
-<span id="cb6-41">                    <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">if</span> phase <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">==</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'train'</span>:</span>
-<span id="cb6-42">                        loss.backward()</span>
-<span id="cb6-43">                        optimizer.step()</span>
-<span id="cb6-44">                <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># 연산 결과</span></span>
-<span id="cb6-45">                running_loss <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+=</span> loss.item() <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">*</span> inputs.size(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span>)</span>
-<span id="cb6-46">                running_corrects <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+=</span> torch.<span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">sum</span>(preds <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">==</span> labels.data)</span>
-<span id="cb6-47">                </span>
-<span id="cb6-48">            <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># 이건 또 뭐야</span></span>
-<span id="cb6-49">            <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">if</span> phase <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">==</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'train'</span>:</span>
-<span id="cb6-50">                scheduler.step()</span>
-<span id="cb6-51">            </span>
-<span id="cb6-52">            epoch_loss <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> running_loss <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">/</span> dataset_sizes[phase]</span>
-<span id="cb6-53">            <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># 원래 .double() 로 데이터형태를 맞춰줬었다.</span></span>
-<span id="cb6-54">            <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># TypeError: Cannot convert a MPS Tensor to float64 dtype </span></span>
-<span id="cb6-55">            <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># as the MPS framework doesn't support float64. </span></span>
-<span id="cb6-56">            <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Please use float32 instead.</span></span>
-<span id="cb6-57">            <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># default 값이 float() 다. </span></span>
-<span id="cb6-58">            epoch_acc <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> running_corrects.<span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">float</span>() <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">/</span> dataset_sizes[phase]</span>
-<span id="cb6-59"></span>
-<span id="cb6-60">            <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">if</span> epoch <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">10</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span>:</span>
-<span id="cb6-61">                <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
-background-color: null;
-font-style: inherit;">f'</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">{</span>phase<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">}</span><span class="ss" style="color: #20794D;
-background-color: null;
-font-style: inherit;"> Loss: </span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">{</span>epoch_loss<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:.4f}</span><span class="ss" style="color: #20794D;
-background-color: null;
-font-style: inherit;"> Acc: </span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">{</span>epoch_acc<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:.4f}</span><span class="ss" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'</span>)</span>
-<span id="cb6-62"></span>
-<span id="cb6-63">            <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># 모델을 깊은 복사(deep copy)함</span></span>
-<span id="cb6-64">            <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">if</span> phase <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">==</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'val'</span> <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">and</span> epoch_acc <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&gt;</span> best_acc:</span>
-<span id="cb6-65">                best_acc <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> epoch_acc</span>
-<span id="cb6-66">                best_model_wts <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> copy.deepcopy(model.state_dict())</span>
-<span id="cb6-67"></span>
-<span id="cb6-68"></span>
-<span id="cb6-69">    time_elapsed <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> time.time() <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-</span> since</span>
-<span id="cb6-70">    <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
-background-color: null;
-font-style: inherit;">f'</span><span class="ch" style="color: #20794D;
-background-color: null;
-font-style: inherit;">\n</span><span class="ss" style="color: #20794D;
-background-color: null;
-font-style: inherit;">Training complete in </span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">{</span>time_elapsed <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">//</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">60</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:.0f}</span><span class="ss" style="color: #20794D;
-background-color: null;
-font-style: inherit;">m </span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">{</span>time_elapsed <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">%</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">60</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:.0f}</span><span class="ss" style="color: #20794D;
-background-color: null;
-font-style: inherit;">s'</span>)</span>
-<span id="cb6-71">    <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
-background-color: null;
-font-style: inherit;">f'Best val Acc: </span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">{</span>best_acc<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:4f}</span><span class="ss" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'</span>)</span>
-<span id="cb6-72"></span>
-<span id="cb6-73">    <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># 가장 나은 모델 가중치를 불러옴</span></span>
-<span id="cb6-74">    model.load_state_dict(best_model_wts)</span>
-<span id="cb6-75">    <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">return</span> model</span></code></pre></div>
-</div>
-</section>
-<section id="시각화" class="level3">
-<h3 class="anchored" data-anchor-id="시각화">시각화</h3>
-<div id="cell-10" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">def</span> visualize_model(model, num_images<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">6</span>):</span>
-<span id="cb7-2">    was_training <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> model.training</span>
-<span id="cb7-3">    model.<span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">eval</span>()</span>
-<span id="cb7-4">    images_so_far <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span></span>
-<span id="cb7-5">    fig <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> plt.figure()</span>
-<span id="cb7-6"></span>
-<span id="cb7-7">    <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">with</span> torch.no_grad():</span>
-<span id="cb7-8">        <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">for</span> i, (inputs, labels) <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">in</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">enumerate</span>(dataloaders[<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'val'</span>]):</span>
-<span id="cb7-9">            inputs <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> inputs.to(device)</span>
-<span id="cb7-10">            labels <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> labels.to(device)</span>
-<span id="cb7-11"></span>
-<span id="cb7-12">            <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># 결과값과 예측값</span></span>
-<span id="cb7-13">            outputs <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> model(inputs)</span>
-<span id="cb7-14">            _, preds <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> torch.<span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">max</span>(outputs, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>)</span>
-<span id="cb7-15"></span>
-<span id="cb7-16">            <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">for</span> j <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">in</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">range</span>(inputs.size()[<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span>]):</span>
-<span id="cb7-17">                images_so_far <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+=</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span></span>
-<span id="cb7-18">                ax <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> plt.subplot(num_images<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">//</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">2</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">2</span>, images_so_far)</span>
-<span id="cb7-19">                ax.axis(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'off'</span>)</span>
-<span id="cb7-20">                ax.set_title(<span class="ss" style="color: #20794D;
-background-color: null;
-font-style: inherit;">f'predicted: </span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">{</span>class_names[preds[j]]<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">}</span><span class="ss" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'</span>)</span>
-<span id="cb7-21">                imshow(inputs.cpu().data[j])</span>
-<span id="cb7-22"></span>
-<span id="cb7-23">                <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">if</span> images_so_far <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">==</span> num_images:</span>
-<span id="cb7-24">                    model.train(mode<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>was_training)</span>
-<span id="cb7-25">                    <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">return</span></span>
-<span id="cb7-26">        model.train(mode<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>was_training)</span></code></pre></div>
-</div>
-</section>
-<section id="미세조정" class="level3">
-<h3 class="anchored" data-anchor-id="미세조정">미세조정</h3>
-<p>마지막 계층을 초기화하는 단계다.</p>
-<div id="cell-13" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># 사전학습모델 resnet</span></span>
-<span id="cb8-2"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># FineTuning의 약자로 ft를 사용하는 것 같음</span></span>
-<span id="cb8-3">model_ft <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> models.resnet18(weights<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'IMAGENET1K_V1'</span>)</span>
-<span id="cb8-4"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># 사전학습모델로부터 fc layer 입력 채널 수를 얻음</span></span>
-<span id="cb8-5">num_ftrs <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> model_ft.fc.in_features  </span>
-<span id="cb8-6"></span>
-<span id="cb8-7"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># 사전학습의 FC layer를 nn.Linear~ 로 교체하는 작업</span></span>
-<span id="cb8-8"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># 출력 샘플의 크기: ``nn.Linear(num_ftrs, len (class_names))`` 로 일반화</span></span>
-<span id="cb8-9"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Linear(in_features=512, out_features=8, bias=True)</span></span>
-<span id="cb8-10">model_ft.fc <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> nn.Linear(num_ftrs, <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">len</span>(class_names))</span>
-<span id="cb8-11"></span>
-<span id="cb8-12">model_ft <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> model_ft.to(device)</span>
-<span id="cb8-13"></span>
-<span id="cb8-14"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># (역전파) 손실함수 지정</span></span>
-<span id="cb8-15">criterion <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> nn.CrossEntropyLoss()</span>
-<span id="cb8-16"></span>
-<span id="cb8-17"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># (최적화) 모든 매개변수들이 최적화되었는지 관찰</span></span>
-<span id="cb8-18">optimizer_ft <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> optim.SGD(model_ft.parameters(), lr<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.001</span>, momentum<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.9</span>)</span>
-<span id="cb8-19"></span>
-<span id="cb8-20"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># 7 에폭마다 0.1씩 학습률 감소</span></span>
-<span id="cb8-21">exp_lr_scheduler <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> lr_scheduler.StepLR(optimizer_ft, step_size<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">7</span>, gamma<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.1</span>)</span></code></pre></div>
-</div>
-<div id="cell-14" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1">model_ft.fc</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="8">
-<pre><code>Linear(in_features=512, out_features=2, bias=True)</code></pre>
-</div>
-</div>
-<div id="cell-15" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># model_ft = train_model(model_ft, criterion, optimizer_ft, exp_lr_scheduler,</span></span>
-<span id="cb11-2"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#                         num_epochs=25)</span></span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>----------
-Epoch 0/24
-----------
-train Loss: 0.5382 Acc: 0.7172
-val Loss: 0.2261 Acc: 0.9216
-----------
-Epoch 10/24
-----------
-train Loss: 0.1790 Acc: 0.9303
-val Loss: 0.1501 Acc: 0.9608
-----------
-Epoch 20/24
-----------
-train Loss: 0.1212 Acc: 0.9467
-val Loss: 0.1478 Acc: 0.9477
-
-Training complete in 1m 36s
-Best val Acc: 0.960784</code></pre>
-</div>
-</div>
-<div id="cell-16" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1">visualize_model(model_ft)</span></code></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="https://dotpyo.github.io/archive/posts/LabHAI/tutorial/transfer_learning/transfer_learning_tutorial_files/figure-html/cell-11-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-
-
-</section>
-
- ]]></description>
-  <category>PyTorch</category>
-  <category>computer vision</category>
-  <category>tutorial</category>
-  <guid>https://dotpyo.github.io/archive/posts/LabHAI/tutorial/transfer_learning/transfer_learning_tutorial.html</guid>
-  <pubDate>Sun, 10 Mar 2024 13:05:16 GMT</pubDate>
+  <pubDate>Sun, 10 Mar 2024 13:35:24 GMT</pubDate>
 </item>
 <item>
   <title>PyTorch101</title>
@@ -9956,7 +9956,7 @@ font-style: inherit;">eval</span>()</span></code></pre></div>
   <category>PyTorch</category>
   <category>tutorial</category>
   <guid>https://dotpyo.github.io/archive/posts/LabHAI/tutorial/pytorch101.html</guid>
-  <pubDate>Sun, 10 Mar 2024 13:05:16 GMT</pubDate>
+  <pubDate>Sun, 10 Mar 2024 13:35:24 GMT</pubDate>
 </item>
 <item>
   <title>Graph 101</title>
@@ -10070,7 +10070,7 @@ font-style: inherit;">eval</span>()</span></code></pre></div>
  ]]></description>
   <category>graph</category>
   <guid>https://dotpyo.github.io/archive/posts/Graph/GNN101.html</guid>
-  <pubDate>Sun, 10 Mar 2024 13:05:16 GMT</pubDate>
+  <pubDate>Sun, 10 Mar 2024 13:35:24 GMT</pubDate>
 </item>
 <item>
   <title>Handling imbalanced Data</title>
@@ -10215,7 +10215,7 @@ replacement = False -&gt;  [0, 1, 2, 4, 5]</code></pre>
  ]]></description>
   <category>technique</category>
   <guid>https://dotpyo.github.io/archive/posts/techniques/handling_imbalanced_data.html</guid>
-  <pubDate>Sun, 10 Mar 2024 13:05:16 GMT</pubDate>
+  <pubDate>Sun, 10 Mar 2024 13:35:24 GMT</pubDate>
 </item>
 <item>
   <title>How to read a paper</title>
@@ -10484,7 +10484,7 @@ Reviewer Guidelines for Journal Selections
  ]]></description>
   <category>tutorial</category>
   <guid>https://dotpyo.github.io/archive/posts/LabHAI/tutorial/How_2_read_a_paper.html</guid>
-  <pubDate>Sun, 10 Mar 2024 13:05:16 GMT</pubDate>
+  <pubDate>Sun, 10 Mar 2024 13:35:24 GMT</pubDate>
 </item>
 </channel>
 </rss>
