@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="dotpyo">
-<meta name="description" content="test">
+<meta name="description" content="Low-Rank Adaptation from the first principle를 번역하고 요약한 글이다.">
 
-<title>archive - test</title>
+<title>archive - LoRA</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -173,16 +173,17 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-page-left">
-      <h1 class="title">test</h1>
-            <p class="subtitle lead"><a href="https://arxiv.org/abs/2106.09685">2106.09685</a></p>
+      <h1 class="title">LoRA</h1>
+            <p class="subtitle lead">PEFT: Low Rank Adaption</p>
                   <div>
         <div class="description">
-          test
+          <a href="https://medium.com/@Shrishml/lora-low-rank-adaptation-from-the-first-principle-7e1adec71541">Low-Rank Adaptation from the first principle</a>를 번역하고 요약한 글이다.
         </div>
       </div>
                           <div class="quarto-categories">
+                <div class="quarto-category">NLP</div>
                 <div class="quarto-category">LLM</div>
-                <div class="quarto-category">paper review</div>
+                <div class="quarto-category">technique</div>
               </div>
                   </div>
   </div>
@@ -231,15 +232,6 @@ window.Quarto = {
 
 
 
-<!-- ---
-title: LoRA
-subtitle: 'PEFT: Low Rank Adaption'
-description: '[Low-Rank Adaptation from the first principle](https://medium.com/@Shrishml/lora-low-rank-adaptation-from-the-first-principle-7e1adec71541)를 번역하고 요약한 글이다.'
-categories:
-    - NLP
-    - LLM
-    - technique
---- -->
 <section id="lora" class="level2">
 <h2 class="anchored" data-anchor-id="lora">LoRA</h2>
 <p>사전 학습된 모델 가중치를 동결하고 학습 가능한 순위 분해 행렬을 트랜스포머 아키텍처의 각 계층에 주입함으로써 LLM이 제기하는 비용 및 효율성 문제에 대한 해결책을 제시한다. 이 혁신적인 접근 방식은 다운스트림 작업에서 학습 가능한 파라미터의 수를 획기적으로 줄여 GPU 메모리 요구 사항을 크게 줄이고 학습 처리량을 개선한다. 여기서 ’Low Rank matrix’는 왜 중요할까? ’extensive deep learning model’의 가중치 행렬이 low rank matrix에 존재한다는 연구결과가 있었기 때문이다.</p>

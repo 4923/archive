@@ -10,7 +10,7 @@
 <atom:link href="https://dotpyo.github.io/archive/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.4.551</generator>
-<lastBuildDate>Sun, 10 Mar 2024 13:04:04 GMT</lastBuildDate>
+<lastBuildDate>Sun, 10 Mar 2024 13:05:16 GMT</lastBuildDate>
 <item>
   <title>MMLAB</title>
   <dc:creator>dotpyo </dc:creator>
@@ -479,7 +479,7 @@ font-style: inherit;">└──</span> yolov3_mobilenetv2_320_300e_coco_20210719
  ]]></description>
   <category>Computer Vision</category>
   <guid>https://dotpyo.github.io/archive/posts/HAR/mmlab.html</guid>
-  <pubDate>Sun, 10 Mar 2024 13:04:04 GMT</pubDate>
+  <pubDate>Sun, 10 Mar 2024 13:05:16 GMT</pubDate>
 </item>
 <item>
   <title>skeleton data plotting</title>
@@ -2550,7 +2550,7 @@ font-style: inherit;">5</span>)</span></code></pre></div>
   <category>HAR</category>
   <category>dataset</category>
   <guid>https://dotpyo.github.io/archive/posts/HAR/ntu-skl-plotting.html</guid>
-  <pubDate>Sun, 10 Mar 2024 13:04:04 GMT</pubDate>
+  <pubDate>Sun, 10 Mar 2024 13:05:16 GMT</pubDate>
 </item>
 <item>
   <title>Modalities</title>
@@ -3165,7 +3165,7 @@ active sensor는 방사선을 물체에 방출하여 <strong>반사되는 에너
   <category>HAR</category>
   <category>paper review</category>
   <guid>https://dotpyo.github.io/archive/posts/HAR/modalities.html</guid>
-  <pubDate>Sun, 10 Mar 2024 13:04:04 GMT</pubDate>
+  <pubDate>Sun, 10 Mar 2024 13:05:16 GMT</pubDate>
 </item>
 <item>
   <title>LLMs Are Zero-Shot Time Series Forecasters</title>
@@ -3256,7 +3256,7 @@ RLHF, alignment method
   <category>time series forecast</category>
   <category>paper review</category>
   <guid>https://dotpyo.github.io/archive/posts/papers/2310.07820.html</guid>
-  <pubDate>Sun, 10 Mar 2024 13:04:04 GMT</pubDate>
+  <pubDate>Sun, 10 Mar 2024 13:05:16 GMT</pubDate>
 </item>
 <item>
   <title>LoRA: Low-Rank Adaptation of Large Language Models</title>
@@ -3321,10 +3321,74 @@ fine tuning에 최적화 함수가 필요한 이유
   <category>LLM</category>
   <category>paper review</category>
   <guid>https://dotpyo.github.io/archive/posts/papers/2106.09685.html</guid>
-  <pubDate>Sun, 10 Mar 2024 13:04:04 GMT</pubDate>
+  <pubDate>Sun, 10 Mar 2024 13:05:16 GMT</pubDate>
 </item>
 <item>
-  <title>test</title>
+  <title>Zero-shot Learning</title>
+  <dc:creator>dotpyo </dc:creator>
+  <link>https://dotpyo.github.io/archive/posts/techniques/zero_shot.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>딥러닝의 성능은 데이터의 질, 양과 정비례하는데 데이터 수집의 어려움, 레이블링의 까다로움, 레이블링의 시간 및 금전적 비용 부담으로 더 이상 데이터에 의존하기엔 어려운 단계에 이르렀다. 이러한 수렴단계에서 데이터의 절대량에 구애받지 않는 모델의 중요성이 대두되었고 데이터의 context를 읽어내는 이른바 meta learning이 발전하게 되었다. Zero-shot Learning은 그 중 한 방법론으로 한 번도 본 적 없는 레이블을 구분해 낼 수 있는 모델이다.</p>
+<blockquote class="blockquote">
+<p>Zero-shot learning 이란: label이 지정된 소수의 클래스 집합 데이터와 클래스에 대한 ‘추가 정보만을’ 사용하여 한 번도 본 적 없는 많은 클래스까지 잘 예측하도록 학습한 모델.</p>
+</blockquote>
+<p>그렇다면 어떤 추가정보를 사용해 학습했기에 본 적 없는 데이터까지 추론할 수 있을까? 얼룩말을 학습한 모델에게 호랑이 이미지를 주고 어떤 동물인지 알아내라는 질문을 했다고 하자.</p>
+<br>
+<center>
+<img src="https://github.com/dotpyo/archive/assets/60145951/76d655d6-a81f-4d9b-bea2-bb45e1aa9c42" width="600"> <img src="https://github.com/dotpyo/archive/assets/60145951/368f0152-5969-4ea0-81d4-e4b033618b4c" width="600">
+</center>
+<p><br></p>
+<p>얼룩말을 학습한 모델이 호랑이를 본다면 먼저 얼룩말에서 학습한 특성을 살필 것이다. 꼬리가 있는가, 줄무늬가 있는가, 갈기가 있는가. 이러한 정보를 살핀 모델은 호랑이를 ‘꼬리가 있고 검은 줄무늬가 있으나 갈기는 없는 주황색 가죽을 가진 동물’ 로 설명할 수 있을 것이다. 기존처럼 이미지 모델을 이용해 분류 문제를 풀면 이 동물이 얼룩말이 아니라는 결론만 얻을 수 있지만 Zero-shot learning은 이미지를 묘사한 context를 얻을 수 있음에 주목한다. 이렇게 얻어낸 호랑이를 설명한 묘사를 언어 모델에 넣는다면 어떨까? 언어모델은 위키피디아를 포함한 다량의 언어를 학습한 모델이므로, 이미지 모델에서 동물의 종류를 찾기엔 부족했던 ‘갈기가 없고 주황색 가죽을 가진’ 특징을 찾아낼 수 있을 것이다. 주황색 바탕에 검은 줄무늬를 가진 얼룩말 크기의 동물은 무엇일까? 호랑이다.</p>
+<p>이렇게 이미지 모델에서 이미지의 특성을 찾아내고, 그 특성을 언어모델에 물어 학습하지 않았던 label을 분류하는 모델이 Zero-shot model이다.</p>
+<p>그런데 이미지 모델에서 이미지의 특성은 어떻게 찾아낼까?</p>
+<br>
+<center>
+<img src="https://github.com/dotpyo/archive/assets/60145951/e2610724-f239-43af-b336-9fa351fa562b" width="600">
+</center>
+<p><br></p>
+<p>이미지 모델은 이미지를 이미지가 아닌 행렬로 받아들인다. 이미지의 특성은 숫자로 표현되어 행렬이 되는데, 이렇게 특성을 반영하는 방식을 ’(semantic) embedding’이라고 한다. 임베딩 된 두 이미지를 비교하면 공통된 특성은 유사한 숫자로 표현되어 있을 것이다. 이렇게 학습되지 않은 특성도 임베딩 벡터 값으로 보존할 수 있다.</p>
+<br>
+<center>
+<img src="https://github.com/dotpyo/archive/assets/60145951/faa2e767-c41c-44f6-bd3f-285a3f851bbc" width="600">
+</center>
+<p><br></p>
+<p>이렇게 Zero-shot learning의 직관을 얻을 수 있었다. 추후 모델이 작용하는 구체적인 기작과 Meta Learning에 대해 알아보도록 하겠다.</p>
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Few-shot learning task with meta-learning
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>DMQM 연구실의 세미나 기록은 청자들의 후기에서도 사고를 확장할 수 있는데 이번에 눈에 들어온 부분은 아래와 같다.</p>
+<blockquote class="blockquote">
+<p>Few-shot learning task with meta-learning Meta learning은 Meta training(경험을 쌓고)과 Meta testing(관심 대상의 소수데이터로 다수데이터를 잘 예측)으로 이루어진다. Meta training을 위해 확보된 데이터 셋에서 여러 개의 과업을 나눈다. 즉, 각 과업은 예측하고자 하는 클래스, 소수데이터, 다수데이터가 서로 다르다. 이렇게 여러 과업으로 나누어 학습하는 방법을 에피소딕 학습(episodic training)으로 말한다. 이렇게 얻어낸 “경험”으로 부터 관심 대상이 되는 과업(task new)을 잘 수행해야 하는데 어떤 “경험”을 반영할 지 선택하는 게 중요하다.</p>
+</blockquote>
+<p>메타러닝은 배우는 방법을 배우는 방법이라고 간략하게 알고 있다. 조금 더 사람의 이해에 가까운 학습 방법으로 느껴져 흥미가 간다.</p>
+</div>
+</div>
+</div>
+
+
+
+ ]]></description>
+  <category>Meta learning</category>
+  <category>theory</category>
+  <guid>https://dotpyo.github.io/archive/posts/techniques/zero_shot.html</guid>
+  <pubDate>Sun, 10 Mar 2024 13:05:16 GMT</pubDate>
+</item>
+<item>
+  <title>LoRA</title>
   <dc:creator>dotpyo </dc:creator>
   <link>https://dotpyo.github.io/archive/posts/NLP/LoRA.html</link>
   <description><![CDATA[ 
@@ -3333,15 +3397,6 @@ fine tuning에 최적화 함수가 필요한 이유
 
 
 
-<!-- ---
-title: LoRA
-subtitle: 'PEFT: Low Rank Adaption'
-description: '[Low-Rank Adaptation from the first principle](https://medium.com/@Shrishml/lora-low-rank-adaptation-from-the-first-principle-7e1adec71541)를 번역하고 요약한 글이다.'
-categories:
-    - NLP
-    - LLM
-    - technique
---- -->
 <section id="lora" class="level2">
 <h2 class="anchored" data-anchor-id="lora">LoRA</h2>
 <p>사전 학습된 모델 가중치를 동결하고 학습 가능한 순위 분해 행렬을 트랜스포머 아키텍처의 각 계층에 주입함으로써 LLM이 제기하는 비용 및 효율성 문제에 대한 해결책을 제시한다. 이 혁신적인 접근 방식은 다운스트림 작업에서 학습 가능한 파라미터의 수를 획기적으로 줄여 GPU 메모리 요구 사항을 크게 줄이고 학습 처리량을 개선한다. 여기서 ’Low Rank matrix’는 왜 중요할까? ’extensive deep learning model’의 가중치 행렬이 low rank matrix에 존재한다는 연구결과가 있었기 때문이다.</p>
@@ -3468,74 +3523,11 @@ font-style: inherit;">"bigcode/starcoder"</span>, peft_model_path)</span>
 </section>
 
  ]]></description>
+  <category>NLP</category>
   <category>LLM</category>
-  <category>paper review</category>
+  <category>technique</category>
   <guid>https://dotpyo.github.io/archive/posts/NLP/LoRA.html</guid>
-  <pubDate>Sun, 10 Mar 2024 13:04:04 GMT</pubDate>
-</item>
-<item>
-  <title>Zero-shot Learning</title>
-  <dc:creator>dotpyo </dc:creator>
-  <link>https://dotpyo.github.io/archive/posts/techniques/zero_shot.html</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>딥러닝의 성능은 데이터의 질, 양과 정비례하는데 데이터 수집의 어려움, 레이블링의 까다로움, 레이블링의 시간 및 금전적 비용 부담으로 더 이상 데이터에 의존하기엔 어려운 단계에 이르렀다. 이러한 수렴단계에서 데이터의 절대량에 구애받지 않는 모델의 중요성이 대두되었고 데이터의 context를 읽어내는 이른바 meta learning이 발전하게 되었다. Zero-shot Learning은 그 중 한 방법론으로 한 번도 본 적 없는 레이블을 구분해 낼 수 있는 모델이다.</p>
-<blockquote class="blockquote">
-<p>Zero-shot learning 이란: label이 지정된 소수의 클래스 집합 데이터와 클래스에 대한 ‘추가 정보만을’ 사용하여 한 번도 본 적 없는 많은 클래스까지 잘 예측하도록 학습한 모델.</p>
-</blockquote>
-<p>그렇다면 어떤 추가정보를 사용해 학습했기에 본 적 없는 데이터까지 추론할 수 있을까? 얼룩말을 학습한 모델에게 호랑이 이미지를 주고 어떤 동물인지 알아내라는 질문을 했다고 하자.</p>
-<br>
-<center>
-<img src="https://github.com/dotpyo/archive/assets/60145951/76d655d6-a81f-4d9b-bea2-bb45e1aa9c42" width="600"> <img src="https://github.com/dotpyo/archive/assets/60145951/368f0152-5969-4ea0-81d4-e4b033618b4c" width="600">
-</center>
-<p><br></p>
-<p>얼룩말을 학습한 모델이 호랑이를 본다면 먼저 얼룩말에서 학습한 특성을 살필 것이다. 꼬리가 있는가, 줄무늬가 있는가, 갈기가 있는가. 이러한 정보를 살핀 모델은 호랑이를 ‘꼬리가 있고 검은 줄무늬가 있으나 갈기는 없는 주황색 가죽을 가진 동물’ 로 설명할 수 있을 것이다. 기존처럼 이미지 모델을 이용해 분류 문제를 풀면 이 동물이 얼룩말이 아니라는 결론만 얻을 수 있지만 Zero-shot learning은 이미지를 묘사한 context를 얻을 수 있음에 주목한다. 이렇게 얻어낸 호랑이를 설명한 묘사를 언어 모델에 넣는다면 어떨까? 언어모델은 위키피디아를 포함한 다량의 언어를 학습한 모델이므로, 이미지 모델에서 동물의 종류를 찾기엔 부족했던 ‘갈기가 없고 주황색 가죽을 가진’ 특징을 찾아낼 수 있을 것이다. 주황색 바탕에 검은 줄무늬를 가진 얼룩말 크기의 동물은 무엇일까? 호랑이다.</p>
-<p>이렇게 이미지 모델에서 이미지의 특성을 찾아내고, 그 특성을 언어모델에 물어 학습하지 않았던 label을 분류하는 모델이 Zero-shot model이다.</p>
-<p>그런데 이미지 모델에서 이미지의 특성은 어떻게 찾아낼까?</p>
-<br>
-<center>
-<img src="https://github.com/dotpyo/archive/assets/60145951/e2610724-f239-43af-b336-9fa351fa562b" width="600">
-</center>
-<p><br></p>
-<p>이미지 모델은 이미지를 이미지가 아닌 행렬로 받아들인다. 이미지의 특성은 숫자로 표현되어 행렬이 되는데, 이렇게 특성을 반영하는 방식을 ’(semantic) embedding’이라고 한다. 임베딩 된 두 이미지를 비교하면 공통된 특성은 유사한 숫자로 표현되어 있을 것이다. 이렇게 학습되지 않은 특성도 임베딩 벡터 값으로 보존할 수 있다.</p>
-<br>
-<center>
-<img src="https://github.com/dotpyo/archive/assets/60145951/faa2e767-c41c-44f6-bd3f-285a3f851bbc" width="600">
-</center>
-<p><br></p>
-<p>이렇게 Zero-shot learning의 직관을 얻을 수 있었다. 추후 모델이 작용하는 구체적인 기작과 Meta Learning에 대해 알아보도록 하겠다.</p>
-<div class="callout callout-style-simple callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Few-shot learning task with meta-learning
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>DMQM 연구실의 세미나 기록은 청자들의 후기에서도 사고를 확장할 수 있는데 이번에 눈에 들어온 부분은 아래와 같다.</p>
-<blockquote class="blockquote">
-<p>Few-shot learning task with meta-learning Meta learning은 Meta training(경험을 쌓고)과 Meta testing(관심 대상의 소수데이터로 다수데이터를 잘 예측)으로 이루어진다. Meta training을 위해 확보된 데이터 셋에서 여러 개의 과업을 나눈다. 즉, 각 과업은 예측하고자 하는 클래스, 소수데이터, 다수데이터가 서로 다르다. 이렇게 여러 과업으로 나누어 학습하는 방법을 에피소딕 학습(episodic training)으로 말한다. 이렇게 얻어낸 “경험”으로 부터 관심 대상이 되는 과업(task new)을 잘 수행해야 하는데 어떤 “경험”을 반영할 지 선택하는 게 중요하다.</p>
-</blockquote>
-<p>메타러닝은 배우는 방법을 배우는 방법이라고 간략하게 알고 있다. 조금 더 사람의 이해에 가까운 학습 방법으로 느껴져 흥미가 간다.</p>
-</div>
-</div>
-</div>
-
-
-
- ]]></description>
-  <category>Meta learning</category>
-  <category>theory</category>
-  <guid>https://dotpyo.github.io/archive/posts/techniques/zero_shot.html</guid>
-  <pubDate>Sun, 10 Mar 2024 13:04:04 GMT</pubDate>
+  <pubDate>Sun, 10 Mar 2024 13:05:16 GMT</pubDate>
 </item>
 <item>
   <title>p tuning</title>
@@ -3568,7 +3560,7 @@ Few-shot learning task with meta-learning
   <category>LLM</category>
   <category>technique</category>
   <guid>https://dotpyo.github.io/archive/posts/NLP/ptuning.html</guid>
-  <pubDate>Sun, 10 Mar 2024 13:04:04 GMT</pubDate>
+  <pubDate>Sun, 10 Mar 2024 13:05:16 GMT</pubDate>
 </item>
 <item>
   <title>encoding</title>
@@ -4217,7 +4209,7 @@ font-style: inherit;">                     'norm_type', 'scale_grad_by_freq', 's
   <category>NLP</category>
   <category>PyTorch</category>
   <guid>https://dotpyo.github.io/archive/posts/NLP/encoding.html</guid>
-  <pubDate>Sun, 10 Mar 2024 13:04:04 GMT</pubDate>
+  <pubDate>Sun, 10 Mar 2024 13:05:16 GMT</pubDate>
 </item>
 <item>
   <title>tips</title>
@@ -4253,7 +4245,7 @@ Got 1 warning(s) while scanning. Use -vvv to print details.</code></pre>
   <category>NLP</category>
   <category>huggingface</category>
   <guid>https://dotpyo.github.io/archive/posts/NLP/huggingface/tips.html</guid>
-  <pubDate>Sun, 10 Mar 2024 13:04:04 GMT</pubDate>
+  <pubDate>Sun, 10 Mar 2024 13:05:16 GMT</pubDate>
 </item>
 <item>
   <title>PEFT</title>
@@ -4434,7 +4426,7 @@ font-style: inherit;">"output: trainable params: 2359296 || all params: 12319406
   <category>huggingface</category>
   <category>tutorial</category>
   <guid>https://dotpyo.github.io/archive/posts/NLP/huggingface/PEFT.html</guid>
-  <pubDate>Sun, 10 Mar 2024 13:04:04 GMT</pubDate>
+  <pubDate>Sun, 10 Mar 2024 13:05:16 GMT</pubDate>
 </item>
 <item>
   <title>Model freezing</title>
@@ -4452,7 +4444,7 @@ font-style: inherit;">"output: trainable params: 2359296 || all params: 12319406
  ]]></description>
   <category>PyTorch</category>
   <guid>https://dotpyo.github.io/archive/posts/techniques/freezing.html</guid>
-  <pubDate>Sun, 10 Mar 2024 13:04:04 GMT</pubDate>
+  <pubDate>Sun, 10 Mar 2024 13:05:16 GMT</pubDate>
 </item>
 <item>
   <title>DCGAN face tutorial</title>
@@ -5989,7 +5981,7 @@ font-style: inherit;">0</span>)))</span>
   <category>computer vision</category>
   <category>tutorial</category>
   <guid>https://dotpyo.github.io/archive/posts/LabHAI/tutorial/GAN/DCGAN_tutorial.html</guid>
-  <pubDate>Sun, 10 Mar 2024 13:04:04 GMT</pubDate>
+  <pubDate>Sun, 10 Mar 2024 13:05:16 GMT</pubDate>
 </item>
 <item>
   <title>fgsm tutorial</title>
@@ -6777,7 +6769,7 @@ font-style: inherit;">"Accuracy"</span>)</span>
   <category>computer vision</category>
   <category>tutorial</category>
   <guid>https://dotpyo.github.io/archive/posts/LabHAI/tutorial/GAN/fgsm_tutorial.html</guid>
-  <pubDate>Sun, 10 Mar 2024 13:04:04 GMT</pubDate>
+  <pubDate>Sun, 10 Mar 2024 13:05:16 GMT</pubDate>
 </item>
 <item>
   <title>finetuning tutorial</title>
@@ -8223,7 +8215,7 @@ Error: command buffer exited with error status.
   <category>computer vision</category>
   <category>tutorial</category>
   <guid>https://dotpyo.github.io/archive/posts/LabHAI/tutorial/maskrcnn/torchvision_finetuning_instance_segmentation.html</guid>
-  <pubDate>Sun, 10 Mar 2024 13:04:04 GMT</pubDate>
+  <pubDate>Sun, 10 Mar 2024 13:05:16 GMT</pubDate>
 </item>
 <item>
   <title>transfer learning tutorial</title>
@@ -9142,7 +9134,7 @@ Best val Acc: 0.960784</code></pre>
   <category>computer vision</category>
   <category>tutorial</category>
   <guid>https://dotpyo.github.io/archive/posts/LabHAI/tutorial/transfer_learning/transfer_learning_tutorial.html</guid>
-  <pubDate>Sun, 10 Mar 2024 13:04:04 GMT</pubDate>
+  <pubDate>Sun, 10 Mar 2024 13:05:16 GMT</pubDate>
 </item>
 <item>
   <title>PyTorch101</title>
@@ -9964,7 +9956,7 @@ font-style: inherit;">eval</span>()</span></code></pre></div>
   <category>PyTorch</category>
   <category>tutorial</category>
   <guid>https://dotpyo.github.io/archive/posts/LabHAI/tutorial/pytorch101.html</guid>
-  <pubDate>Sun, 10 Mar 2024 13:04:04 GMT</pubDate>
+  <pubDate>Sun, 10 Mar 2024 13:05:16 GMT</pubDate>
 </item>
 <item>
   <title>Graph 101</title>
@@ -10078,7 +10070,7 @@ font-style: inherit;">eval</span>()</span></code></pre></div>
  ]]></description>
   <category>graph</category>
   <guid>https://dotpyo.github.io/archive/posts/Graph/GNN101.html</guid>
-  <pubDate>Sun, 10 Mar 2024 13:04:04 GMT</pubDate>
+  <pubDate>Sun, 10 Mar 2024 13:05:16 GMT</pubDate>
 </item>
 <item>
   <title>Handling imbalanced Data</title>
@@ -10223,7 +10215,7 @@ replacement = False -&gt;  [0, 1, 2, 4, 5]</code></pre>
  ]]></description>
   <category>technique</category>
   <guid>https://dotpyo.github.io/archive/posts/techniques/handling_imbalanced_data.html</guid>
-  <pubDate>Sun, 10 Mar 2024 13:04:04 GMT</pubDate>
+  <pubDate>Sun, 10 Mar 2024 13:05:16 GMT</pubDate>
 </item>
 <item>
   <title>How to read a paper</title>
@@ -10492,7 +10484,7 @@ Reviewer Guidelines for Journal Selections
  ]]></description>
   <category>tutorial</category>
   <guid>https://dotpyo.github.io/archive/posts/LabHAI/tutorial/How_2_read_a_paper.html</guid>
-  <pubDate>Sun, 10 Mar 2024 13:04:04 GMT</pubDate>
+  <pubDate>Sun, 10 Mar 2024 13:05:16 GMT</pubDate>
 </item>
 </channel>
 </rss>
