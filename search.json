@@ -46,7 +46,7 @@
     "href": "posts/Graph/GNN101.html#footnotes",
     "title": "Graph 101 (작성중)",
     "section": "Footnotes",
-    "text": "Footnotes\n\n\n\\(\\mathbb{R}\\) : (\\(\\mathbb{R}\\)) Real number set↩︎\n\\(A[u, v] = 1\\): \\(u\\)와 \\(v\\) 사이에 간선이 존재할 때 (\\(A[u, v] = 0\\): 존재하지 않을 때)↩︎\n\\((u, v)\\) 가 그래프 안에 있고 간선 집합 \\(\\cal{E}\\) 안에 존재할 때 \\(A\\)의 위치 \\((u, v)\\)에 올 수 있는 값은 간선이 존재하거나 (1) 존재하지 않는 (0) 두 가지 경우의 수 뿐이다. ↩︎\n행렬 A가 실수 집합 V, R의 계량수(cardinality, cardinal number)로 결정되는 차원으로 구성된다.↩︎\n\\(\\forall\\) : forall↩︎"
+    "text": "Footnotes\n\n\n\\(\\mathbb{R}\\) : Real number set ($\\mathbb{R}$ in TeX)↩︎\n\\(A[u, v] = 1\\): \\(u\\)와 \\(v\\) 사이에 간선이 존재할 때 (\\(A[u, v] = 0\\): 존재하지 않을 때)↩︎\n\\((u, v)\\) 가 그래프 안에 있고 간선 집합 \\(\\cal{E}\\) 안에 존재할 때 \\(A\\)의 위치 \\((u, v)\\)에 올 수 있는 값은 간선이 존재하거나 (1) 존재하지 않는 (0) 두 가지 경우의 수 뿐이다. ↩︎\n행렬 A가 실수 집합 V, R의 계량수(cardinality, cardinal number)로 결정되는 차원으로 구성된다.↩︎\n\\(\\forall\\) : forall↩︎"
   },
   {
     "objectID": "posts/LabHAI/tutorial/transfer_learning/transfer_learning_tutorial.html",
