@@ -369,6 +369,9 @@ Faster R-CNN, Mask R-CNN; Image Segmentation
 </blockquote>
 <p>Faster R-CNN의 한 종류 중 하나다. 분기점은 어디에 있을까? R-CNN이 ’potential object in the image’를 찾아내는 과정이었다면 Mask R-CNN은 그 범주를 <code>bounding box</code><a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a> 와 <code>segmentation</code><a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a> 하여 구체화한다. 같은 class여도 다른 객체로 인식하는 instance segmentation task에서 사용하기 위해 개발되었다.</p>
 <p><strong><a href="https://arxiv.org/pdf/1506.01497.pdf">Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks</a></strong></p>
+<blockquote class="blockquote">
+<p>RPN</p>
+</blockquote>
 <ul>
 <li>Region Proposal Network, RPN
 <ul>
@@ -399,6 +402,9 @@ Faster R-CNN, Mask R-CNN; Image Segmentation
 </ul></li>
 </ul>
 <p><strong><a href="https://arxiv.org/pdf/1703.06870.pdf">Mask R-CNN</a></strong></p>
+<blockquote class="blockquote">
+<p>RoIAlign</p>
+</blockquote>
 <ul>
 <li>Mask R-CNN
 <ul>
@@ -412,11 +418,26 @@ Faster R-CNN, Mask R-CNN; Image Segmentation
 <li>RoI: R-CNN에서 사용하는 RoIPool 대신 RoIAlign을 사용한다.
 <ul>
 <li>RoIPool: RoI로부터 작은 크기의 feature map을 추출한다.<a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a></li>
-<li>RoIAlign: RoIPool에서의 양자화를 제거하고 bilinear interpolation을 통해 <em>추출된 특징에 맞게</em> align되게 한다. 즉, 위치정보를 보존할 수 있다.</li>
+<li>RoIAlign: RoIPool에서의 양자화를 제거하고 <strong>bilinear interpolation</strong>을 통해 <em>추출된 특징에 맞게</em> align되게 한다. 즉, 위치정보를 보존할 수 있다.</li>
 </ul></li>
 <li>mask branch: segmentation은 픽셀 단위의 이미지 classification이다. 공간 정보가 보존된 RoI map이 있으므로 binary mask를 출력할 수 있다.<a href="#fn14" class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a></li>
 </ol></li>
 </ul>
+<table class="table">
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/0*EUJOm7bE0zM6FxFE.png" class="img-fluid" alt="roi pooling &amp; roi align"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">RoI Pooling &amp; RoI Align image</td>
+</tr>
+</tbody>
+</table>
 <p><br></p>
 <ul>
 <li>출처
@@ -425,8 +446,62 @@ Faster R-CNN, Mask R-CNN; Image Segmentation
 <li><a href="https://herbwood.tistory.com/10">https://herbwood.tistory.com/10</a></li>
 <li><a href="https://ropiens.tistory.com/76">https://ropiens.tistory.com/76</a></li>
 <li><a href="https://velog.io/@skhim520/Mask-R-CNN-%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0">https://velog.io/<span class="citation" data-cites="skhim520/Mask-R-CNN">@skhim520/Mask-R-CNN</span>-%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0</a></li>
-<li><a href="https://medium.com/@parkie0517/mask-r-cnn-%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-roialign-mask-prediction-branch%EC%97%90-%EA%B4%80%ED%95%B4%EC%84%9C-%EC%82%B4%ED%8E%B4%EB%B3%B4%EA%B8%B0-1b1fc2715600">RoI Align</a></li>
+<li><a href="https://towardsdatascience.com/understanding-region-of-interest-part-1-roi-pooling-e4f5dd65bb44">RoI 이미지 출처</a></li>
 </ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Bilinear interpolation at RoI Align example
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<table class="table">
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*J7VPE_DrDTwSluzN_8RJKQ.png" class="img-fluid" alt="equation"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">interpolation equation</td>
+</tr>
+</tbody>
+</table>
+<table class="table">
+<colgroup>
+<col style="width: 23%">
+<col style="width: 30%">
+<col style="width: 46%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><img src="https://miro.medium.com/v2/resize:fit/format:webp/0*JXAuro-N0Nl4zDt_.png" class="img-fluid" alt="RoI placement"></th>
+<th style="text-align: center;"><img src="https://miro.medium.com/v2/resize:fit/format:webp/0*J78DE2M7QdwNns_T.png" class="img-fluid" alt="bilinear interpolation"></th>
+<th style="text-align: center;"><img src="https://miro.medium.com/v2/resize:fit:720/format:webp/0*7WFmQBxoOCPu2BDJ.gif" class="img-fluid" alt="bilinear max pooling"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">RoI placement</td>
+<td style="text-align: center;">bilinear interpolation</td>
+<td style="text-align: center;">max pooling</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><a href="https://towardsdatascience.com/understanding-region-of-interest-part-2-roi-align-and-roi-warp-f795196fc193">RoI 이미지 출처</a></li>
 </ul>
 </div>
 </div>
@@ -766,7 +841,7 @@ That's it!</code></pre>
 </div>
 </div>
 <div class="callout callout-style-simple callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -775,7 +850,7 @@ That's it!</code></pre>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><code>Loss is nan, stopping training</code></p>
 <blockquote class="blockquote">
