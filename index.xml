@@ -3617,6 +3617,11 @@ font-style: inherit;">"Accuracy"</span>)</span>
 </ul></li>
 <li>Model: pretrained Mask R-CNN</li>
 </ul>
+<aside id="footnotes" class="footnotes footnotes-end-of-block">
+<ol>
+<li id="fn1"><p>보행자↩︎</p></li>
+</ol>
+</aside>
 <div id="cell-3" class="cell" data-execution_count="44">
 <div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="im" style="color: #00769E;
 background-color: null;
@@ -3679,6 +3684,17 @@ Object detection history
 </div>
 </div>
 </div>
+<aside id="footnotes" class="footnotes footnotes-end-of-block">
+<ol start="2">
+<li id="fn2"><p>Convolution에서 kernel이 특징을 추출하는 과정과 비슷해보이기도 한다. 실제로 개념은 같다.↩︎</p></li>
+<li id="fn3"><p>e.g.&nbsp;selective search, edge boxes↩︎</p></li>
+<li id="fn4"><p>이 다양성이 다양한 bbox를 생성하는데 영향을 미치는 것 같다.↩︎</p></li>
+<li id="fn5"><p>비효율적이라면 sliding window를 쓰면 됐다.↩︎</p></li>
+<li id="fn6"><p>‘the creation’?↩︎</p></li>
+<li id="fn7"><p>CPU 혹은 GPU 중 하나의 리소스가 부족한 경우 느려지는 현상.↩︎</p></li>
+<li id="fn8"><p>2012년에 발표된 논문에서 언급한 병목현상이니 해당 알고리즘은 CPU에서 동작할 것으로 보인다.↩︎</p></li>
+</ol>
+</aside>
 <div class="callout callout-style-simple callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -3735,17 +3751,20 @@ Faster R-CNN, Mask R-CNN; Image Segmentation
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <blockquote class="blockquote">
-<p>based on top of Faster R-CNN; a model that predict both bounding boxes and class scores for potential objects in the image</p>
+<p>Mask R-CNN은 Faster R-CNN의 한 종류 중 하나다.<sup>9</sup></p>
 </blockquote>
-<blockquote class="blockquote">
-<p>regional proposal에서 selective search가 <strong>아닌</strong> CNN을 사용한다. (=<code>RPN</code>)</p>
-</blockquote>
-<p>Faster R-CNN의 한 종류 중 하나다. 분기점은 어디에 있을까? R-CNN이 ’potential object in the image’를 찾아내는 과정이었다면 Mask R-CNN은 그 범주를 <code>bounding box</code><sup>9</sup> 와 <code>segmentation</code><sup>10</sup> 하여 구체화한다. 같은 class여도 다른 객체로 인식하는 instance segmentation task에서 사용하기 위해 개발되었다.</p>
 <p><strong><a href="https://arxiv.org/pdf/1506.01497.pdf">Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks</a></strong></p>
-<blockquote class="blockquote">
-<p>RPN</p>
-</blockquote>
 <ul>
+<li>why?
+<ul>
+<li>Fast R-CNN이 실시간 탐지가 가능한 속도를 이뤄냈으나 하드웨어의 차이가 분명히 존재한다; GPU, CPU</li>
+<li>따라서 알고리즘을 통해 속도 향상을 이뤄내보려고 한다.</li>
+</ul></li>
+<li>novelty?
+<ul>
+<li>regional proposal에서 selective search가 <strong>아닌</strong> CNN을 사용한다. (=<code>RPN</code>)</li>
+<li>convolution layer를 공유한다는 점<sup>10</sup>으로 인해 속도가 굉장히 빠르다.</li>
+</ul></li>
 <li>Region Proposal Network, RPN
 <ul>
 <li>앞서 언급한 것과 같이 CNN으로 이루어져 있다.</li>
@@ -3775,11 +3794,21 @@ Faster R-CNN, Mask R-CNN; Image Segmentation
 </ul></li>
 </ul>
 <p><strong><a href="https://arxiv.org/pdf/1703.06870.pdf">Mask R-CNN</a></strong></p>
-<blockquote class="blockquote">
-<p>RoIAlign</p>
-</blockquote>
 <ul>
-<li>Mask R-CNN
+<li>why?
+<ul>
+<li>instance segmentation: <strong>같은 class여도 다른 객체로 인식</strong>하는 task에서 사용하기 위해 개발되었다.</li>
+<li>선행연구: Faster R-CNN은 pixel to pixel 대응이 되지 않는다.<sup>13</sup></li>
+</ul></li>
+<li>novelty?
+<ul>
+<li>RoI Align이 추가되어 pixelwise segmentation이 가능하다.</li>
+<li>mask branch 로 segmentation단을 분리했다. FCN에서 진행하던 픽셀당 클래스 분류는 적합하지 않다고 한다.<sup>14</sup>
+<ul>
+<li>“RoIAlign has a large impact: it improves mask accuracy by relative 10% to 50%, showing bigger gains under stricter localization metrics. Second, we found it essential to decouple mask and class prediction: we predict a binary mask for each class independently, without competition among classes, and rely on the network’s RoI classification branch to predict the category. In contrast, FCNs usually perform per-pixel multi-class categorization, which couples segmentation and classification, and based on our experiments works poorly for instance segmentation”</li>
+</ul></li>
+</ul></li>
+<li>Architecture
 <ul>
 <li>RPN에서 RoI를 가져오고, mask branch를 추가한 형태다.
 <ul>
@@ -3788,12 +3817,33 @@ Faster R-CNN, Mask R-CNN; Image Segmentation
 </ul></li>
 </ul>
 <ol type="1">
-<li>RoI: R-CNN에서 사용하는 RoIPool 대신 RoIAlign을 사용한다.
+<li><p>RoI: R-CNN에서 사용하는 RoIPool 대신 <strong>RoIAlign</strong>을 사용한다.</p>
 <ul>
-<li>RoIPool: RoI로부터 작은 크기의 feature map을 추출한다.<sup>13</sup></li>
-<li>RoIAlign: RoIPool에서의 양자화를 제거하고 <strong>bilinear interpolation</strong>을 통해 <em>추출된 특징에 맞게</em> align되게 한다. 즉, 위치정보를 보존할 수 있다.</li>
+<li>RoIPool: 좌표를 정수로 양자화 한다.<sup>15</sup> 그리드에 알맞은 위치로 RoI의 윤곽을 맞춰주는 방식이다.
+<ul>
+<li>bounding box는 어느정도 오차가 허용되니 좌표가 소수점 단위로 이동하는건 괜찮지만 segmentation에서는 위치정보를 엄밀하게 다뤄야 한다.</li>
 </ul></li>
-<li>mask branch: segmentation은 픽셀 단위의 이미지 classification이다. 공간 정보가 보존된 RoI map이 있으므로 binary mask를 출력할 수 있다.<sup>14</sup></li>
+<li>RoIAlign: RoIPool에서의 양자화를 제거하고 <strong>bilinear interpolation</strong>을 통해 <em>추출된 특징에 맞게</em> align되게 한다. 즉, 위치정보를 픽셀단위로 보존한다.</li>
+</ul></li>
+<li><p>mask branch: classification을 위한 branch가 아닌 공간 정보가 보존된 RoI map이 있으므로 binary mask를 출력할 수 있다.<sup>16</sup></p>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><img src="https://github.com/dotpyo/archive/assets/60145951/399c803d-2550-40d7-9c79-eb55b2e3dbba" class="img-fluid" alt="align"></th>
+<th style="text-align: center;"><img src="https://github.com/dotpyo/archive/assets/60145951/e242cb92-d47a-4568-a683-63ef12ac2928" class="img-fluid" alt="mask branch"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Align</td>
+<td style="text-align: center;">mask branch</td>
+</tr>
+</tbody>
+</table></li>
 </ol></li>
 </ul>
 <table class="table">
@@ -3825,6 +3875,18 @@ Faster R-CNN, Mask R-CNN; Image Segmentation
 </div>
 </div>
 </div>
+<aside id="footnotes" class="footnotes footnotes-end-of-block">
+<ol start="9">
+<li id="fn9"><p>based on top of Faster R-CNN; a model that predict both bounding boxes and class scores for potential objects in the image↩︎</p></li>
+<li id="fn10"><p>By sharing convolutions at test-time, the marginal cost for computing proposals is small (e.g., 10ms per image).↩︎</p></li>
+<li id="fn11"><p>논문에서는 3x3 filter 사용↩︎</p></li>
+<li id="fn12"><p>box중앙, x좌표, y좌표, height, width↩︎</p></li>
+<li id="fn13"><p>segmentation을 수행할때 양자화 등으로 인해 공간 정보를 잃는다.↩︎</p></li>
+<li id="fn14"><p>보충 필요↩︎</p></li>
+<li id="fn15"><p>float -&gt; int↩︎</p></li>
+<li id="fn16"><p>segmentation 보충↩︎</p></li>
+</ol>
+</aside>
 <div class="callout callout-style-simple callout-note callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -5071,26 +5133,7 @@ Error: command buffer exited with error status.
 
 </section>
 
-
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
-<ol>
-<li id="fn1"><p>보행자↩︎</p></li>
-<li id="fn2"><p>Convolution에서 kernel이 특징을 추출하는 과정과 비슷해보이기도 한다. 실제로 개념은 같다.↩︎</p></li>
-<li id="fn3"><p>e.g.&nbsp;selective search, edge boxes↩︎</p></li>
-<li id="fn4"><p>이 다양성이 다양한 bbox를 생성하는데 영향을 미치는 것 같다.↩︎</p></li>
-<li id="fn5"><p>비효율적이라면 sliding window를 쓰면 됐다.↩︎</p></li>
-<li id="fn6"><p>‘the creation’?↩︎</p></li>
-<li id="fn7"><p>CPU 혹은 GPU 중 하나의 리소스가 부족한 경우 느려지는 현상.↩︎</p></li>
-<li id="fn8"><p>2012년에 발표된 논문에서 언급한 병목현상이니 해당 알고리즘은 CPU에서 동작할 것으로 보인다.↩︎</p></li>
-<li id="fn9"><p>localize approximately↩︎</p></li>
-<li id="fn10"><p>localize by edging↩︎</p></li>
-<li id="fn11"><p>논문에서는 3x3 filter 사용↩︎</p></li>
-<li id="fn12"><p>box중앙, x좌표, y좌표, height, width↩︎</p></li>
-<li id="fn13"><p>그래서 RPN에서 feature map을 사용할 수 있었다.↩︎</p></li>
-<li id="fn14"><p>segmentation 보충↩︎</p></li>
-</ol>
-</section></div> ]]></description>
+ ]]></description>
   <category>PyTorch</category>
   <category>computer vision</category>
   <category>tutorial</category>
