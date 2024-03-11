@@ -3577,113 +3577,6 @@ font-style: inherit;">"Accuracy"</span>)</span>
   <pubDate>Fri, 08 Mar 2024 00:00:00 GMT</pubDate>
 </item>
 <item>
-  <title>Graph 101</title>
-  <dc:creator>dotpyo </dc:creator>
-  <link>https://dotpyo.github.io/archive/posts/Graph/GNN101.html</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<section id="general-notation" class="level2">
-<h2 class="anchored" data-anchor-id="general-notation">General Notation</h2>
-<table class="table">
-<colgroup>
-<col style="width: 47%">
-<col style="width: 33%">
-<col style="width: 19%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: center;">denote</th>
-<th style="text-align: left;">meaning</th>
-<th style="text-align: left;">note</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;"><img src="https://latex.codecogs.com/png.latex?%5Ccal%7BG%7D%20=%20(%5Ccal%7BV,%20E%7D)"></td>
-<td style="text-align: left;">formal definition of graph</td>
-<td style="text-align: left;">calligraphic font used</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><img src="https://latex.codecogs.com/png.latex?%5Ccal%7BV%7D"></td>
-<td style="text-align: left;">a set of nodes</td>
-<td style="text-align: left;">node = vertex</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><img src="https://latex.codecogs.com/png.latex?%5Ccal%7BE%7D"></td>
-<td style="text-align: left;">a set of edges, edges between nodes</td>
-<td style="text-align: left;"><img src="https://latex.codecogs.com/png.latex?%5Ctherefore"> edge needs coordinate-likely information to denote each one</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><img src="https://latex.codecogs.com/png.latex?u%20%5Cin%20%5Ccal%7BV%7D"></td>
-<td style="text-align: left;">a node of node set <img src="https://latex.codecogs.com/png.latex?%5Ccal%7BV%7D"></td>
-<td style="text-align: left;">normally node denoted by <img src="https://latex.codecogs.com/png.latex?%5Ccal%7Bu%7D"> or <img src="https://latex.codecogs.com/png.latex?%5Ccal%7Bv%7D"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><img src="https://latex.codecogs.com/png.latex?(u,%20v)%20%5Cin%20%5Ccal%7BE%7D"></td>
-<td style="text-align: left;">when u, v in <img src="https://latex.codecogs.com/png.latex?%5Ccal%7BV%7D">, it means an edge from u to v vice versa</td>
-<td style="text-align: left;">check it is direct graph or not</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="introduction" class="level1">
-<h1>1. Introduction</h1>
-<p>그래프는 어디에나 있는 데이터 구조이며 복잡한 시스템을 묘사하는 일반적인 언어이다. 대부분의 일반적인 관점에서 그래프는 정점(<code>node</code>)들과 그 상호작용 집합인 간선(<code>edge</code>)와 같은 단순한 객체들의 집합이었다. 예를 들어 사회 관계망을 그래프로 부호화(encode) 하는 경우 우리는 아마 개인을 표현하기 위해 정점을, 개인이 친구임을 표현하기 위해서는 간선를 사용할 것이다. 생물학 도메인에서는 그래프의 정점을 단백질을 표현하는데 사용할 수 있으며 간선은 다양한 생물학적 연관관계; 예를들어 단백질 사이의 운동관계를 표현하는데 사용할 수 있다.</p>
-<table class="table">
-<colgroup>
-<col style="width: 100%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: center;"><img a="Zachary Karate Club Network" src="https://github.com/dotpyo/archive/assets/60145951/344c9b97-9d0d-46c6-89fa-c3cbb19b3ba2" width="100%"></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">Zachary Karate Club Network</td>
-</tr>
-</tbody>
-</table>
-<p>위는 유명한 자카리 가라테 클럽 네트워크로 가라테 클럽 멤버 사이의 친밀도를 나타내는 사회 관계망 그래프이며 웨인 W 자카리가 190-1972 사이에 연구한 결과다. 간선은 두 개인이 클럽 바깥에서 아는 사이이면 연결된다. 연구동안 클럽은 0번과 33번 정점을 중심으로 양분되었는데 연구자는 어떤 정점(회원)이 어디로 나뉠지 그래프 구조를 기반으로 정확하게 예측한 바 있다.</p>
-<p>그래프 형식의 강점은 관계와 (개별 지점 대신에) 각 지점 ’사이’에 초점을 맞추는데 있으며 그 일반화 능력을 빠트릴 수 없다. 같은 그래프 형태는 사회 관계망, 약물과 단백질 사이의 상호작용, 원자와 분자간 상호작용 등… 을 표현할 수 있다. 다시말해, 정점을 정의하는것이 무엇이냐에 따라 같은 그래프도 다르게 사용될 수 있다.</p>
-<section id="what-is-a-graph" class="level2">
-<h2 class="anchored" data-anchor-id="what-is-a-graph">1.1 What is a graph</h2>
-<p>그래프에서의 머신러닝을 논하기 이전에 ’그래프 데이터’가 정확히 무엇을 의미하는지 나타내는 공적인 표현에 대해 조금 알아둘 필요가 있다. 공식적으로, 그래프 <img src="https://latex.codecogs.com/png.latex?%5Ccal%7BG%7D%20=%20(%5Ccal%7BV,%20E%7D)"> 는 정점의 집합인 <img src="https://latex.codecogs.com/png.latex?%5Ccal%7BV%7D"> 와 정점 사이의 간선의 집합인 <img src="https://latex.codecogs.com/png.latex?%5Ccal%7BE%7D"> 로 정의된다. 정점 <img src="https://latex.codecogs.com/png.latex?u%20%5Cin%20%5Ccal%7BV%7D"> 와 <img src="https://latex.codecogs.com/png.latex?v%20%5Cin%20%5Ccal%7BV%7D"> 로 이루어진 간선은 다음과 같이 정의한다: <img src="https://latex.codecogs.com/png.latex?(u,%20v)%20%5Cin%20%5Ccal%7BE%7D">. 많은 경우에 (우리는) 단순 그래프 (<em>simple graph</em>) 만을 고려하는데, 단순 그래프는 대부분 하나의 간선이 각 정점의 쌍 사이에 존재하는 집합으로 어떤 간선도 정점 하나에 존재하지는 않는 그래프이다.</p>
-<p>그래프를 편리하게 표현하는 방법은 <strong><em>adjacency matrix (인접행렬)</em></strong> <img src="https://latex.codecogs.com/png.latex?A%20%5Cin%20%5Cmathbb%7BR%7D%5E%7B%7C%5Ccal%7BV%7D%7C*%7C%5Ccal%7BV%7D%7C%7D"> 를 사용하는 방법이다.<sup>1</sup> <img src="https://latex.codecogs.com/png.latex?A"> 로 그래프를 표현하기 위해서는 그래프의 정점을 순서대로 배열함으로써 모든 정점의 색인들(indexes)이 인접행렬 <img src="https://latex.codecogs.com/png.latex?A">의 각각의 행과 열이 되게 해야 한다. 그렇게 하면 다음 조건의 행렬에서의 모든 간선의 존재를 표현할 수 있다: <img src="https://latex.codecogs.com/png.latex?A%5Bu,%20v%5D%20=%201"> if <img src="https://latex.codecogs.com/png.latex?(u,v)%20%5Cin%20%5Ccal(E)"> and <img src="https://latex.codecogs.com/png.latex?A%5Bu,%20v%5D%20=%200"> otherwise <sup>2</sup> 만약 그래프가 방향이 없는 간선 (undirected edge)으로만 구성된 경우 인접행렬 <img src="https://latex.codecogs.com/png.latex?A">는 대칭행렬이 된다. 하지만 간선들이 방향성이 있다면 (edge direction matters) <img src="https://latex.codecogs.com/png.latex?A">는 대칭이지 않아도 된다. 몇몇 그래프들은 가중치를 가질 수도 있는데 (weighted edges) 그 경우 그래프에 기재되는 값이 {0, 1}이 아닌 임의의 실수가 된다. 예를 들어 가중 그래프 중 단백질간 상호작용 그래프는 두 단백질 사이의 연관된 힘을 나타내는 그래프로 쓰일 수 있다.</p>
-<section id="multi-relational-graph" class="level3">
-<h3 class="anchored" data-anchor-id="multi-relational-graph">1.1.1 Multi-relational Graph</h3>
-<p><em>multi-relational graph</em>는 방향이 있는 간선, 없는 간선, 가중치가 있는 간선을 넘어 다양한 종류의 간선이 있는 그래프를 고려한다. 예를 들어, 약물과 약물의 상호작용 그래프에서 각 간선이 두 약물을 동시에 복용할 때 발생할 수 있는 부작용에 대하여 서로 두가지의 간선이 필요할 수 있다. 이 예에서 간선 표기법을 확장하여 다음을 표현할 수 있다:</p>
-<p>간선 또는 관계 유형 <img src="https://latex.codecogs.com/png.latex?%5Ctau">, (<img src="https://latex.codecogs.com/png.latex?u">, <img src="https://latex.codecogs.com/png.latex?%5Ctau">, <img src="https://latex.codecogs.com/png.latex?v">) <img src="https://latex.codecogs.com/png.latex?%5Cin"> <img src="https://latex.codecogs.com/png.latex?%5Ccal%7BE%7D">, 그리고 하나의 인접행렬 <img src="https://latex.codecogs.com/png.latex?A_%7B%5Ctau%7D"> 를 간선 종류마다 정의할 수 있다. 이러한 그래프를 <em>multi-relational</em> 하다고 말하며 전체의 그래프는 인접 텐서 <img src="https://latex.codecogs.com/png.latex?%5Ccal%7BA%7D%20%5Cin%20%5Cmathbb%7BR%7D%5E%7B%5Ccal%7B%7CV%7C%20*%20%7CR%7C%20*%20%7CV%7C%7D%7D"> 로 정의된다.<sup>3</sup> <em>multi-relational graph</em>의 두가지 중요한 부분집합은 1. <code>heterogenous</code>, 2. <code>multiplex</code> 그래프로 나뉜다. <em>tau</em> (<img src="https://latex.codecogs.com/png.latex?%5Ctau">)는 간선의 타입을 의미하며, 간선의 종류에는 위에 기술한 바와 같이 방향이 있는 것, 없는 것, 가중치가 있는 것 등이 포함된다. 이렇게 간선의 종류가 달라지면 Adjacency Matrix <img src="https://latex.codecogs.com/png.latex?A">도 따로 정의해야 한다.</p>
-<p><strong>Heterogeneous graph</strong></p>
-<p>Heterogeneous graph에서, 정점들은 <em>type</em>에 물들어있다. 다시 말해, 정점 집합의 일부는 다음과 같이 해체될 수 있다: <img src="https://latex.codecogs.com/png.latex?%5Ccal%7BV%20=%20V_1%7D%20%5Ccup%20%5Ccal%7BV_2%7D%20%5Ccup%20%5Cdots%20%5Ccup%20%5Ccal%7BV_k%7D"> where <img src="https://latex.codecogs.com/png.latex?%5Ccal%7BV_i%7D%20%5Ccap%20%5Ccal%7BV_j%7D%20=%20%5Cemptyset,%20%5Cforall_i%20%5Cneq%20j"> <sup>4</sup>. heterogeneous graph의 간선은 일반적으로 제한이 걸려있는데 이는 집합 <img src="https://latex.codecogs.com/png.latex?%5Ccal%7BV%7D">가 서로 겹치지 않는 부분집합 <img src="https://latex.codecogs.com/png.latex?%5Ccal%7BV_1%7D"> 부터 <img src="https://latex.codecogs.com/png.latex?%5Ccal%7BV_k%7D"><sup>5</sup> 의 합집합이다.</p>
-
-
-<!-- -->
-
-</section>
-</section>
-</section>
-
-
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
-<ol>
-<li id="fn1"><p><img src="https://latex.codecogs.com/png.latex?%5Ccal%7BV%20=%20V_1%7D%20%5Ccup%20%5Ccal%7BV_2%7D%20%5Ccup%20%5Cdots%20%5Ccup%20%5Ccal%7BV_k%7D"> where <img src="https://latex.codecogs.com/png.latex?%5Ccal%7BV_i%7D%20%5Ccap%20%5Ccal%7BV_j%7D%20=%20%5Cemptyset,%20%5Cforall_i%20%5Cneq%20j">↩︎</p></li>
-<li id="fn2"><p><img src="https://latex.codecogs.com/png.latex?A%5Bu,%20v%5D%20=%201"> if <img src="https://latex.codecogs.com/png.latex?(u,v)%20%5Cin%20%5Ccal(E)"> and <img src="https://latex.codecogs.com/png.latex?A%5Bu,%20v%5D%20=%200"> - <img src="https://latex.codecogs.com/png.latex?A%5Bu,%20v%5D%20=%201">: <img src="https://latex.codecogs.com/png.latex?u">와 <img src="https://latex.codecogs.com/png.latex?v"> 사이에 간선이 존재할 때 (<img src="https://latex.codecogs.com/png.latex?A%5Bu,%20v%5D%20=%200">: 존재하지 않을 때) - <img src="https://latex.codecogs.com/png.latex?(u,%20v)"> 가 그래프 안에 있고 간선 집합 <img src="https://latex.codecogs.com/png.latex?%5Ccal%7BE%7D"> 안에 존재할 때 <img src="https://latex.codecogs.com/png.latex?A">의 위치 <img src="https://latex.codecogs.com/png.latex?(u,%20v)">에 올 수 있는 값은 간선이 존재하거나 (1) 존재하지 않는 (0) 두 가지 경우의 수 뿐이다.↩︎</p></li>
-<li id="fn3"><p><img src="https://latex.codecogs.com/png.latex?%5Ccal%7BV%20=%20V_1%7D%20%5Ccup%20%5Ccal%7BV_2%7D%20%5Ccup%20%5Cdots%20%5Ccup%20%5Ccal%7BV_k%7D"> where <img src="https://latex.codecogs.com/png.latex?%5Ccal%7BV_i%7D%20%5Ccap%20%5Ccal%7BV_j%7D%20=%20%5Cemptyset,%20%5Cforall_i%20%5Cneq%20j">↩︎</p></li>
-<li id="fn4"><p><img src="https://latex.codecogs.com/png.latex?%5Ccal%7BV%20=%20V_1%7D%20%5Ccup%20%5Ccal%7BV_2%7D%20%5Ccup%20%5Cdots%20%5Ccup%20%5Ccal%7BV_k%7D"> where <img src="https://latex.codecogs.com/png.latex?%5Ccal%7BV_i%7D%20%5Ccap%20%5Ccal%7BV_j%7D%20=%20%5Cemptyset,%20%5Cforall_i%20%5Cneq%20j">↩︎</p></li>
-<li id="fn5"><p><img src="https://latex.codecogs.com/png.latex?%5Cforall"> : forall↩︎</p></li>
-</ol>
-</section></div> ]]></description>
-  <category>graph</category>
-  <guid>https://dotpyo.github.io/archive/posts/Graph/GNN101.html</guid>
-  <pubDate>Fri, 08 Mar 2024 00:00:00 GMT</pubDate>
-</item>
-<item>
   <title>finetuning tutorial</title>
   <dc:creator>dotpyo </dc:creator>
   <link>https://dotpyo.github.io/archive/posts/LabHAI/tutorial/maskrcnn/torchvision_finetuning_instance_segmentation.html</link>
@@ -10716,6 +10609,71 @@ RLHF, alignment method
   <category>Zero Shot</category>
   <category>paper review</category>
   <guid>https://dotpyo.github.io/archive/posts/papers/2310.07820.html</guid>
+  <pubDate>Sat, 23 Sep 2023 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>LoRA: Low-Rank Adaptation of Large Language Models</title>
+  <dc:creator>dotpyo </dc:creator>
+  <link>https://dotpyo.github.io/archive/posts/papers/2106.09685.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<ul>
+<li><a href="https://github.com/microsoft/LoRA">github</a></li>
+</ul>
+<section id="abstract" class="level3">
+<h3 class="anchored" data-anchor-id="abstract">Abstract</h3>
+<p>MS사에서 진행한 연구. 자연어 처리에서의 중요한 패러다임 중 하나는 일반적인 도메인에서 학습된 대규모 사전학습 모델을 특정 과업이나 도메인에 적용시키는 것이다. 이 작업을 fine tuning이라고 하는데 더 큰 사전학습 모델을 사용할수록 모델의 매개변수를 유지하는 것은 더욱 어려워진다. 이는 더 많은 컴퓨팅 파워를 요구하고, 더 많은 비용을 야기하므로 현재 패러다임에서 큰 모델을 효과적으로 fine tuning 하는 방법을 찾는 것은 중요하다.</p>
+<p>이에 연구진은 <strong>L</strong>ow <strong>R</strong>ank <strong>A</strong>daption (<code>LoRA</code>)를 제안한다. LoRA는 사전학습 모델의 가중치를 freeze하고 학습 가능한 rank decomposition matrices를 각 레이어에 끼워넣는 방식이다. 이는 downstream 작업에서 학습 가능한 매개변수의 개수를 크게 줄일 수 있다.</p>
+<p>연구진이 예시로 든 GPT-3 175B 모델은 매개변수가 175 Billion 개라는 의미로 수많은 매개변수가 모델 안에 내재되어있음을 이름으로 알 수 있다. 해당 모델을 비롯하여 현재의 LLM 모델들은 billion 단위의 매개변수를 기본적으로 탑재하고 있고 이는 자연히 막대한 컴퓨팅 자원을 필요로 하게 된다.</p>
+<p>예시 모델을 LoRA와 Adam으로 fine tuning한 경우 학습 가능한 매개변수는 10,000배 줄어들고 GPU memory 크기는 3배 줄어들게 된다. LoRA는 fine tuning된 RoBERTa, DeBERTa, GPT-2, GPT-3의 능력 동급 혹은 그 이상으로 기능한다. 더 적은 개수의 학습 가능 매개변수를 가졌음에도 불구하고 더 많은 학습 처리량을 보이며, adapter와는 다르게 추론 지연(<em>inference latency</em>)이 일어나지 않는다는 장점이 있다.</p>
+<p>연구진은 또한 경험적 조사를 통해 language model adaptation의 낮은 계수(rank of matrix)가 모델의 효과를 조명함을 알아냈다.</p>
+<p>이에 연구진은 RoBERTa, DeBERTa, GPT-2의 checkpoints와 LoRA를 PyTorch로 구현한 통합 구현체를 배포한다. : <a href="https://github.com/microsoft/LoRA">https://github.com/microsoft/LoRA</a></p>
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+fine tuning에 최적화 함수가 필요한 이유
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol start="17" type="A">
+<li><p>fine tuning은 새로운 데이터로 모델을 학습하여 일반적인 과제를 수행하는 대형 모델을 특수한 도메인에 정착시키는 과정이다. 이 과정은 단순 학습인데 왜 최적화 함수가 필요한가? 이전에 사용했던 최적화 함수를 다시 사용하면 되지 않나?</p></li>
+<li><p>fine tuning도 결과적으로 ’학습’을 하는 과정이다. 학습 과정에서 optimizer는 최적화 함수로 loss function의 값이 가장 작은 값으로 수렴하도록 돕는 역할을 한다. 즉, loss function을 최적화하는 것이 optimizer의 목표다. optimizer 함수는 모델의 매개변수(parameter)를 매번 조절하여 손실함수의 값을 최소화하는데, 이를 통해 fine tuning에서도 tuning이 제대로 되고 있는지 확인할 수 있다. 최적화는 모델 성능에도 영향을 미치므로 단순히 이전에 사용했던 최적화 함수를 재사용하기보다는 새로운 전략을 모색하는 것이 효과적이다. 최적화 전략은 데이터셋의 크기, 사용 가능한 계산 리소스를 포함한 여러가지 요소를 고려하기 때문이다.</p></li>
+</ol>
+<table class="table">
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><img a="optimization process" src="https://velog.velcdn.com/images/freesky/post/762c7c9b-6276-4343-aa9d-9fda9684cb3f/image.gif" width="80%"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">optimization process</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+</section>
+
+ ]]></description>
+  <category>LLM</category>
+  <category>paper review</category>
+  <guid>https://dotpyo.github.io/archive/posts/papers/2106.09685.html</guid>
   <pubDate>Sat, 23 Sep 2023 00:00:00 GMT</pubDate>
 </item>
 </channel>

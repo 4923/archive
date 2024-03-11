@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/Graph/GNN101.html",
       "/posts/papers/2310.07820.html",
       "/posts/papers/2106.09685.html",
       "/posts/HAR/mmlab.html",
@@ -20,7 +21,6 @@
       "/posts/LabHAI/tutorial/maskrcnn/torchvision_finetuning_instance_segmentation.html",
       "/posts/LabHAI/tutorial/transfer_learning/transfer_learning_tutorial.html",
       "/posts/LabHAI/tutorial/GAN/fgsm_tutorial.html",
-      "/posts/Graph/GNN101.html",
       "/posts/LabHAI/tutorial/GAN/DCGAN_tutorial.html",
       "/posts/LabHAI/papers/2201.01266.html"
     ]
