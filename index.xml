@@ -10107,7 +10107,7 @@ font-style: inherit;">5</span>)</span></code></pre></div>
 <p>two 2D CNN branches taking different input features extracted from RGB video for HAR and the <strong>final result</strong> is usually obtained through <strong>fusion strategy</strong></p>
 </blockquote>
 <section id="classical-approach" class="level5">
-<h5 class="anchored" data-anchor-id="classical-approach"><strong>classical approach</strong></h5>
+<h5 class="anchored" data-anchor-id="classical-approach">classical approach</h5>
 <p>고전적으로 two stream network는 각 network를 병렬적으로 학습시킨 후 결과를 융합 <code>fusion</code> 하여 최종 결과를 추론했다. 예를들어, input이 video이면 video에 내재된 정보들을 크게 1) rgb 프레임들은 공간 네트워크의, 2) multi-frame-based optical flow는 시간 네트워크의 학습 정보가 된다. 각 stream은 아래 특성을 각각 학습한다.</p>
 <ol type="1">
 <li>모양 특성, appearance feature</li>
@@ -10121,11 +10121,11 @@ font-style: inherit;">5</span>)</span></code></pre></div>
 </ul>
 </section>
 <section id="overcome-limitation" class="level5">
-<h5 class="anchored" data-anchor-id="overcome-limitation"><strong>overcome limitation</strong></h5>
+<h5 class="anchored" data-anchor-id="overcome-limitation">overcome limitation</h5>
 <p>RGB 양식 데이터를 사용함에 있어 주된 문제로 지적되는 점은 ’큰 데이터 용량으로 인한 computing resource 부담과 연산 속도 저하’이므로 연산 속도를 높이기 위해 해상도를 낮추거나, 고해상도 데이터에서 center crop을 하는 기법을 적용했다.</p>
 </section>
 <section id="better-data-representation" class="level5 page-columns page-full">
-<h5 class="anchored" data-anchor-id="better-data-representation"><strong>better data representation</strong></h5>
+<h5 class="anchored" data-anchor-id="better-data-representation">better data representation</h5>
 <p>모델의 성능은 데이터의 양과 <strong>질</strong>에 좌우된다. 따라서 더 나은 video representation 에 눈을 돌리게 된다. Wang은 multi-scale video frames, optical flow를 각 CNN stream에 넣어 특성맵 feature map을 추출했고 이에서 trajectories에 중심을 둔 <strong>spatio-temporal tubes</strong><sup>5</sup> or <strong>action tube</strong><sup>6</sup>를 샘플링했다. 이렇게 한 결과, Fisher Vector representation<sup>7</sup>과 SVM을 통해 분류했다.</p>
 <div class="no-row-height column-margin column-container"><div id="fn5"><p><sup>5</sup>&nbsp;Discovering Spatio-Temporal Action Tubes (2018), https://arxiv.org/abs/1811.12248</p></div><div id="fn6"><p><sup>6</sup>&nbsp;Finding action tubes, https://ieeexplore.ieee.org/document/7298676</p></div><div id="fn7"><p><sup>7</sup>&nbsp;https://zlthinker.github.io/Fisher-Vector</p></div></div><ul>
 <li>왜 튜브일까? : Finding action tubes (Georgia Gkioxari, 2015) 가 시기상 더 먼저 나온 논문이므로 후자에서 제시된 개념일 것으로 추정된다.</li>
@@ -10157,7 +10157,7 @@ font-style: inherit;">5</span>)</span></code></pre></div>
 </ul>
 </section>
 <section id="long-term-video-level-information" class="level5 page-columns page-full">
-<h5 class="anchored" data-anchor-id="long-term-video-level-information"><strong>Long term video level information</strong></h5>
+<h5 class="anchored" data-anchor-id="long-term-video-level-information">Long term video level information</h5>
 <blockquote class="blockquote">
 <p>정보를 mean pooling하거나 누적하여 단일한 움직임이 아닌 움직임의 연속; 좀 더 복잡한 행동을 인식</p>
 </blockquote>
@@ -10179,7 +10179,7 @@ font-style: inherit;">5</span>)</span></code></pre></div>
 </table>
 </section>
 <section id="extension-of-two-stream-cnn-based-method" class="level5">
-<h5 class="anchored" data-anchor-id="extension-of-two-stream-cnn-based-method"><strong>EXTENSION of two stream CNN based method</strong></h5>
+<h5 class="anchored" data-anchor-id="extension-of-two-stream-cnn-based-method">EXTENSION of two stream CNN based method*</h5>
 <p>3 stream 으로 확장하는 등, “움직임” 또는 “프레임간 연속성”을 학습시키기 위해 다양한 방법론을 도입했다. 이후 2 stream siamese network (SNN) 로 확장되었는데 이는 동작 발생 <strong>전</strong>과 동작 <strong>후</strong> 프레임에서 특징을 추출하는 <code>one shot learning</code>의 일종으로 연속성이 아닌 동작 시작, 전, 후를 구분하여 학습하는 발상의 전환을 꾀한다.</p>
 <ul>
 <li>one shot learning : 소량의 데이터로 학습할 수 있게 하는 방법이 few shot learning이라면 one shot은 그 극한으로 이미지 한장을 학습 데이터로 삼는 방법론이다. 사람은 물체간의 유사성을 학습하는데, 이 유사성은 물체를 배우고 물체간의 유사성을 또 다시 배우는 과정으로 나뉠 수 있다. 다시말해, <strong>물체의 특성을 학습하고 이를 일반화</strong>할 줄 아는 능력을 학습시키는 방법이 one/few shot learning이다.
@@ -10194,11 +10194,11 @@ font-style: inherit;">5</span>)</span></code></pre></div>
 </ul>
 </section>
 <section id="tackle-high-computational-cost" class="level5 page-columns page-full">
-<h5 class="anchored" data-anchor-id="tackle-high-computational-cost"><strong>Tackle high computational cost</strong></h5>
+<h5 class="anchored" data-anchor-id="tackle-high-computational-cost">Tackle high computational cost</h5>
 <p>Knowledge distillation <sup>9</sup>이 사용된다. “<a href="https://velog.io/@dldydldy75/%EC%A7%80%EC%8B%9D-%EC%A6%9D%EB%A5%98-Knowledge-Distillation">Data 에서 의미를 파악하면 Information 이 되고, Information 에서 문맥을 파악하면 Knowledge 이 되고, Knowledge 를 활용하면 Wisdom 이 된다.</a>” 모델 압축을 위한 절차로, soft label과 hard label을 일치시키는 것이 목적이며 soft label에는 temperature scaling function을 적용하여 확률 분포를 부드럽게 만든다. 예를 들어 feature들의 label이 <img src="https://latex.codecogs.com/png.latex?%5B0,%201,%200%5D%5E%7BT%7D"> 이면 Hard label, <img src="https://latex.codecogs.com/png.latex?%5B0.05,%200.75,%200.2%5D%5E%7BT%7D"> 이면 soft label이다.</p>
 <div class="no-row-height column-margin column-container"><div id="fn9"><p><sup>9</sup>&nbsp;Distilling the Knowledge in a Neural Network(2015), https://arxiv.org/abs/1503.02531</p></div></div><p>각 feature들은 서로 다른 특성을 가지고 있지만 공통된 특성 또한 가지고 있기 때문에, 이 공통 요소를 포함하는 class score를 날려버리면 (hard label) 정보가 손실되는 셈이다. 이렇게 정보가 손실되지 않게 Teacher network를 구성하고 Student network가 teacher network에 최대한 가까운 정답을 반환하도록 학습시킨다. 위에서 언급한 <code>temperature</code>는 그 값이 낮을 때 입력값의 출력을 크게 만들어주는 등 필요에 따라 값에 가중치를 둠으로써 Soft label의 이점을 최대화 한다.</p>
 <ul>
-<li><a href="https://light-tree.tistory.com/196">참고</a></li>
+<li>참고: <a href="https://light-tree.tistory.com/196">https://light-tree.tistory.com/196</a></li>
 </ul>
 <table class="table">
 <thead>
@@ -10235,7 +10235,7 @@ font-style: inherit;">5</span>)</span></code></pre></div>
 </table>
 </section>
 <section id="in-conclusion" class="level5">
-<h5 class="anchored" data-anchor-id="in-conclusion"><strong>In Conclusion</strong></h5>
+<h5 class="anchored" data-anchor-id="in-conclusion">In Conclusion</h5>
 <p>여러개의 stream으로 CNN architecture들을 확장하거나 더 깊게 레이어를 쌓는 등 여러 시도를 해보았으나 수많은 video의 frame 개수를 고려할 때 깊이는 오히려 HAR에 방해가 될 수 있다. 선행 연구를 통해 ’차별화된 특징’을 예측하는 것이 중요함을 파악하게 되었다. 이 외에도, fusion strategy research의 마지막 conv layer에서 공간과 시간 네트워크를 융합하는 방법이 위에서 지적된 컴퓨팅 자원을 절약하면서 (params를 줄이면서) 정확도를 유지하는 효과적인 방법임을 알아냈다.</p>
 </section>
 </section>
@@ -10245,7 +10245,7 @@ font-style: inherit;">5</span>)</span></code></pre></div>
 <p>feature extractor 로 CNN을 사용한 hybrid architecture</p>
 </blockquote>
 <section id="lstm-based-model" class="level5">
-<h5 class="anchored" data-anchor-id="lstm-based-model"><strong>LSTM based model</strong></h5>
+<h5 class="anchored" data-anchor-id="lstm-based-model">LSTM based model</h5>
 <p>Vanilla Recurrent Neural Network의 gradient vanishing 문제로 인해 RNN based solution은 gate 를 포함하는 RNN Architecture를 채택한다. (e.g.&nbsp;LSTM)</p>
 <table class="table">
 <colgroup>
@@ -10265,7 +10265,7 @@ font-style: inherit;">5</span>)</span></code></pre></div>
 <p>물론 ‘이미지’에서 공간적 요소를 빠트릴 수 없기 때문에 특징 추출은 여전히 <strong>2D CNN</strong>으로 진행하고, 시간요소를 LSTM에서 차용한 구조를 통해 모델링한다. 이를 <code>LRCN</code> (Long Term Recurrent Convolutional Network, Jeff Donahue et al.&nbsp;in 2016) 라고 하며 이는 ’2D CNN; 프레임 단위 RGB feature 추출’ + ’label 생성 LSTM’으로 구성된다.</p>
 </section>
 <section id="attention-mechanism" class="level5">
-<h5 class="anchored" data-anchor-id="attention-mechanism"><strong>attention mechanism</strong></h5>
+<h5 class="anchored" data-anchor-id="attention-mechanism">attention mechanism</h5>
 <p>multi layer LSTM model 설계 후 다음 프레임에 가중치를 부여한 Attention map 을 <strong>재귀적으로</strong> 출력함으로써 공간적 특성에 집중할 수 있게 되었다.</p>
 <ul>
 <li><p>recap : main idea of attention; decoder에서 출력 단어를 추론하는 매 순간마다 encoder에서의 전체 문장을 참고한다는 점. 단, ’해당 시점에서 예측에 필요한 부분에 집중(attention)’해서 구한다. <img src="https://latex.codecogs.com/png.latex?Attention%20(Q,%20K,%20V)%20=%20Attention%20%5C%20Value"> 로, Query에 대해 모든 Key와의 유사도를 구한 후 이에 관계된 Value에 반영한다. 유사도가 반영된 값, value는 attention value라고도 한다.</p>
@@ -10293,8 +10293,8 @@ font-style: inherit;">5</span>)</span></code></pre></div>
 </section>
 <section id="skeleton" class="level3">
 <h3 class="anchored" data-anchor-id="skeleton">2.2 Skeleton</h3>
-<p>시점 변화에 민감한 pose estimation에서 motion capture system으로 수집한 데이터셋은 신뢰할 수 있다. (“Ntu rgb+d 120: A large-scale benchmark for 3d human activity understanding,” TPAMI, 2020.) 최근의 많은 연구는 Ntu의 depth map, 또는 RGB video를 사용한다 (st-gcn).</p>
-<p>RGB video만 사용할 경우 옷 또는 신체의 부피를 포함해 RGB data의 문제였던 다양한 변수 (e.g.&nbsp;background, illumination environment) 로부터 상당부 자유로울 수 있다. 초기에는 수작업으로 특징을 추출하여 관절 또는 신체 부위 기반의 방법이 제안되었는데 딥러닝의 발전에 따라 RNn, CNN, GNN, GCN을 적용하게 되었다.</p>
+<p>시점 변화에 민감한 pose estimation에서는 <strong>motion capture system으로 수집한 데이터셋</strong>만 신뢰할 수 있다. (“NTU RGB+D 120: A large-scale benchmark for 3d human activity understanding,” TPAMI, 2020.) 최근의 많은 연구는 NTU Dataset의 depth map, 또는 RGB video를 사용한다.</p>
+<p>RGB video만 사용할 경우 옷 또는 신체의 부피를 포함해 RGB data의 문제였던 다양한 변수 (e.g.&nbsp;background, illumination environment) 로부터 상당부 자유로울 수 있다. 초기에는 수작업으로 특징을 추출하여 관절 또는 신체 부위 기반의 방법이 제안되었는데 딥러닝의 발전에 따라 RNN, CNN, GNN, GCN을 적용하게 되었다.</p>
 <table class="table">
 <colgroup>
 <col style="width: 100%">
@@ -10316,11 +10316,15 @@ font-style: inherit;">5</span>)</span></code></pre></div>
 <blockquote class="blockquote">
 <p>Depth maps refer to images where the pixel values represent the distance information from a given viewpoint to the points in the scene.</p>
 </blockquote>
-<p>색상, 질감 등의 변화에 강건하며 3차원 상의 정보이므로 신뢰할 수 있는 3D 구조 및 기하학적 정보를 제공한다. depth map은 왜 필요한가? 3D 데이터를 2D 이미지로 변환하기 위함이다: depth 정보는 특수한 센서를 필요로 하는데, 이는 active sensors (e.g., Time-of-Flight and structured-light-based cameras) and pas- sive sensors (e.g., stereo cameras) 로 나뉜다.<br>
-active sensor는 방사선을 물체에 방출하여 <strong>반사되는 에너지를 측정</strong>하여 깊이정보를 얻는, 말그대로 능동적인 행동에 의해 발생하는 정보를 수집하는 센서다. Kinect, RealSense3D 등의 특수한 장치를 포함하는 센서가 포함된다. passive sensor는 물체가 방출하거나 반사하는 <strong>자연적인 에너지</strong> 를 말한다. 수동센서의 예인 stereo camera는 인간의 양안을 시뮬레이션 하는 카메라로 are recovered by seek- ing image point correspondences between stereo pairs 한다.</p>
+<p>색상, 질감 등의 변화에 강건하며 3차원 상의 정보이므로 신뢰할 수 있는 3D 구조 및 기하학적 정보를 제공한다.</p>
+<p>depth map은 왜 필요한가? 3D 데이터를 2D 이미지로 변환하기 위함이다: depth 정보는 특수한 센서를 필요로 하는데, 이는 active sensors (e.g., Time-of-Flight and structured-light-based cameras) and pas- sive sensors (e.g., stereo cameras) 로 나뉜다.</p>
+<ul>
+<li>active sensor는 방사선을 물체에 방출하여 <strong>반사되는 에너지를 측정</strong>하여 깊이정보를 얻는, 말그대로 능동적인 행동에 의해 발생하는 정보를 수집하는 센서다. Kinect, RealSense3D 등의 특수한 장치를 포함하는 센서가 포함된다.</li>
+<li>passive sensor는 물체가 방출하거나 반사하는 <strong>자연적인 에너지</strong> 를 말한다. 수동센서의 예인 stereo camera는 인간의 양안을 시뮬레이션 하는 카메라로 are recovered by seek- ing image point correspondences between stereo pairs 한다.</li>
+</ul>
 <p>둘을 비교했을 때, passive depth map generation은 RGB 이미지 사이에서 깊이를 연산해내는 과정이 포함되므로 계산 비용이 많이 들 뿐 아니라 질감이 없거나 반복 패턴이 있는; view point에 따라 크게 달라지지 않는 대상에는 효과를 보이지 않을 수 있다. 따라서 대부분의 연구는 active sensor를 이용한 depth map에 초점을 맞추고 있다. (“only a few works used depth maps captured by stereo cameras”)</p>
 <section id="datasets-and-methods" class="level4">
-<h4 class="anchored" data-anchor-id="datasets-and-methods"><strong>datasets and methods</strong></h4>
+<h4 class="anchored" data-anchor-id="datasets-and-methods">datasets and methods</h4>
 <p>데이터셋으로는 Deep Learning methods가 도래하기 전까지 사용했던 hand-crafted Depth Motion Map (DMM) features가 있다. 딥러닝 프레임워크도 이 DMM을 활용하는데, <code>weighted hierarchial DMMs</code> 이 제안되었다. 그러나 기존의 DMMs가 구체적인 시간정보를 포착하지 못하는 한계를 직면하자 Wang et.al 은 dynamic images at the body, body part, joint level 총 세가지를 짝지은 <code>depth sequences</code> 를 CNNs에 먹이는 방식을 제안했다.</p>
 <p>depth modality의 성능은 아래의 발견에 힘입어 크게 성장했다.</p>
 <ol type="1">
@@ -10331,7 +10335,7 @@ active sensor는 방사선을 물체에 방출하여 <strong>반사되는 에너
 <p>발전을 위해 제안된 아이디어는 <code>view invarient</code> 을 이용한 방법론들이 다수인데, 다른 시각에서 본 이미지들을 high-level space로 옮김으로써 입체감을 부여하고 (Rahmani et al.&nbsp;[9]) CNN 모델이 human pose model과 Fourier Temporal Pyramids를 학습하게 하여 시점에 따른 행동 변화를 학습하게 하는 방식이 있다.</p>
 </section>
 <section id="estimate-without-depth-sensor" class="level4 page-columns page-full">
-<h4 class="anchored" data-anchor-id="estimate-without-depth-sensor"><strong>estimate without depth sensor</strong></h4>
+<h4 class="anchored" data-anchor-id="estimate-without-depth-sensor">estimate without depth sensor</h4>
 <blockquote class="blockquote">
 <p>Newer methods can directly estimate depth by minimizing the regression loss, or by learning to generate a novel view from a sequence.</p>
 </blockquote>
@@ -10356,7 +10360,7 @@ active sensor는 방사선을 물체에 방출하여 <strong>반사되는 에너
 </ul>
 <div class="no-row-height column-margin column-container"><div id="fn11"><p><sup>11</sup>&nbsp;differentiable diffusion for dense depth estimation from multi-view images (CVPR, 2021)</p></div></div></section>
 <section id="limitation" class="level4">
-<h4 class="anchored" data-anchor-id="limitation"><strong>limitation</strong></h4>
+<h4 class="anchored" data-anchor-id="limitation">limitation</h4>
 <p>그러나 일반적으로 depth information은 외형정보가 부족하므로 다른 data modality와 융합하여 사용된다. - section 3 에서 더 살펴볼 수 있으나, 본 포스트에서는 single modality까지만 다루겠다.</p>
 </section>
 </section>
@@ -10365,23 +10369,29 @@ active sensor는 방사선을 물체에 방출하여 <strong>반사되는 에너
 <div class="page-columns page-full"><blockquote class="blockquote">
 <p>Infrared radiation is emitted from all surfaces that have a temperature above 0 K (−273.15 °C) and the strength of emitted radiation depends on the surface temperature higher temperatures have greater radiant energy <sup>12</sup></p>
 </blockquote><div class="no-row-height column-margin column-container"><div id="fn12"><p><sup>12</sup>&nbsp;sciencedirect/infrared-radiation, https://www.sciencedirect.com/topics/physics-and-astronomy/infrared-radiation</p></div></div></div>
-<p>주변광에 의지하지 않아도 되므로 야간 HAR에 적합하다. depth sensor와 마찬가지로 반사광선을 활용하여 물체를 인식하는데, 적외선을 내보내는 센서가 active sensor라면 대상에서 방출되는 광선 (열 에너지 등) 을 인식하는 방법은 수동 인식이다.</p>
+<p>주변광에 의지하지 않아도 되므로 야간 HAR에 적합하다. depth sensor와 마찬가지로 반사광선을 활용하여 물체를 인식하는데, 적외선을 내보내는 센서가 active sensor라면 대상에서 방출되는 광선 (열 에너지 등) 을 인식하는 방법은 passive sensor를 이용한 인식이다.</p>
 <section id="methods" class="level4 page-columns page-full">
-<h4 class="anchored" data-anchor-id="methods"><strong>methods</strong></h4>
+<h4 class="anchored" data-anchor-id="methods">methods</h4>
 <p>신호에서 minimum하게 구분할 수 있는 간격으로 탐지하기 위해 받아들이는게 신호라고 할 때 서로 다른 신호의 간격이 얼마나 가까이까지 구분해낼 수 있는가를 해상도라고 말한다. 즉, 실제로 서로 다른걸 다르다고 말할 수 있는 거리가 해상도다. 해상도가 높으면 같은 이미지도 높은 픽셀로 표현할 수 있다. 극히 낮은 해상도의 row resolution thermal images에서 먼저 사람의 무게중심을 기반으로 사람 부분만 추출하고, 다음으로 cropped sequences들과 frame간 차이를 LSTM기반의 CNN에 입력해 시공간 정보를 담은 모델을 생성할 수 있다. (Kawashima et.al, 2017)<sup>13</sup></p>
-<div class="no-row-height column-margin column-container"><div id="fn13"><p><sup>13</sup>&nbsp;Action recognition from extremely low-resolution thermal image sequence</p></div></div><section id="왜-굳이-저해상도-이미지를-사용하는가" class="level5">
-<h5 class="anchored" data-anchor-id="왜-굳이-저해상도-이미지를-사용하는가"><strong>왜 굳이 저해상도 이미지를 사용하는가?</strong></h5>
+<div class="no-row-height column-margin column-container"><div id="fn13"><p><sup>13</sup>&nbsp;Action recognition from extremely low-resolution thermal image sequence</p></div></div><ol type="1">
+<li>왜 굳이 저해상도 이미지를 사용하는가?
 <ul>
 <li>적외선 이미지(InfraRed)는 해상도가 rgb 이미지보다 훨씬 낮다.</li>
-<li>적외선 방사선 검출기의 단점이자 한계, 해상도를 개선한 센서도 있다: High Resolution infrared Radiation Sounder (HIRS)</li>
-</ul>
-</section>
-<section id="저해상도면-저해상도지-초저해상도-이미지를-굳이-사용하는-이유는" class="level5 page-columns page-full">
-<h5 class="anchored" data-anchor-id="저해상도면-저해상도지-초저해상도-이미지를-굳이-사용하는-이유는"><strong>저해상도면 저해상도지 <em>초</em>저해상도 이미지를 굳이 사용하는 이유는?</strong></h5>
-<div class="page-columns page-full"><blockquote class="blockquote">
-<p>절대적인 위치 정보인 픽셀값이 아니라 상대적인 위치에 집중할 것이니 해상도 자체가 크게 의미있지 않다. <sup>14</sup></p>
-</blockquote><div class="no-row-height column-margin column-container"><div id="fn14"><p><sup>14</sup>&nbsp;Action recognition from extremely low-resolution thermal image sequence.(2017)</p></div></div></div>
-<table class="table">
+<li>적외선 방사선 검출기의 단점이자 한계, 해상도를 개선한 센서도 있다: High Resolution infrared Radiation Sounder<sup>14</sup></li>
+</ul></li>
+<li>저해상도면 저해상도지 <em>초</em>저해상도 이미지를 굳이 사용하는 이유는?
+<ul>
+<li>절대적인 위치 정보인 픽셀값이 아니라 상대적인 위치에 집중할 것이니 해상도 자체가 크게 의미있지 않다. <sup>15</sup></li>
+<li>초저해상도 이미지를 사용할 수 있는 이유는 다음과 같이 정리된다
+<ul>
+<li>RGB high resolution image 도 <strong>human body edge를 명확하게 연산하기는 어려우며</strong> pixel values들은 사람의 움직임, 센서와의 거리 등에 크게 영향을 받는다.</li>
+<li>따라서 high resolution image가 집중하는 human body edge가 연산해내기 어려운 특성이라면 아예 이를 제외하고 다른 부분에 초점을 맞추겠다는 선언으로 보인다.</li>
+<li>대신 대략적인 범위를 알 수 있으니 결국 <strong>얼만큼 움직이는지만 감지</strong>해내면 되고, 그 움직임은 pixel 값으로 표현되니 optical image 를 대신할 수 있다.</li>
+<li>이는 ’초’저해상도 이미지로도 가능하기 때문에 연산량 등의 이점을 얻기 위해 해상도를 최대한 내린 것으로 유추된다.</li>
+</ul></li>
+</ul></li>
+</ol>
+<div class="no-row-height column-margin column-container"><div id="fn14"><p><sup>14</sup>&nbsp;HIRS</p></div><div id="fn15"><p><sup>15</sup>&nbsp;Action recognition from extremely low-resolution thermal image sequence.(2017)</p></div></div><table class="table">
 <colgroup>
 <col style="width: 50%">
 <col style="width: 50%">
@@ -10399,32 +10409,8 @@ active sensor는 방사선을 물체에 방출하여 <strong>반사되는 에너
 </tr>
 </tbody>
 </table>
-</section>
-<section id="따라서-초저해상도-이미지를-사용할-수-있는-이유는-다음과-같다." class="level5">
-<h5 class="anchored" data-anchor-id="따라서-초저해상도-이미지를-사용할-수-있는-이유는-다음과-같다."><strong>따라서 초저해상도 이미지를 사용할 수 있는 이유는 다음과 같다.</strong></h5>
-<ol type="1">
-<li>edge of the human body does not appear clearly
-<ul>
-<li>RGB high resolution image 도 <strong>human body edge를 명확하게 연산하기는 어려우며</strong> pixel values들은 사람의 움직임, 센서와의 거리 등에 크게 영향을 받는다.</li>
-<li>high resolution image가 집중하는 human body edge가 연산해내기 어려운 특성이라면 아예 이를 제외하고 다른 부분에 초점을 맞추겠다는 선언으로 보인다.</li>
-</ul></li>
-<li>The motion of a person changes the pixel values of both the human body and its surrounding region
-<ul>
-<li>1이 low resolution image sequence를 사용해야 하는 이유와 관계가 있다면 이 항목은 edge를 명확하게 찾을 수 없는 대신 얻을 수 있는 정보를 말한다.</li>
-<li>대략적인 범위를 알 수 있으니 결국 <strong>얼만큼 움직이는지만 감지</strong>해내면 되고, 그 움직임은 pixel 값으로 표현되니 optical image 를 대신할 수 있다.</li>
-</ul></li>
-<li>When the distance between the sensor and the human body changes, the pixel values also change
-<ul>
-<li>또 다른 RGB image approach의 한계였던 센서와의 거리가 thermal image에도 영향을 미치지만 이것은 pixel value에 영향을 미치므로 연산으로 보완할 수 있을 것으로 보인다.</li>
-</ul></li>
-<li>A pixel value changes depending on the occupancy area ratio of the human body in the observation range of a thermopile infrared sensor
-<ul>
-<li>결과적으로 센서와의 거리 (view point) 등의 변수도 pixel에 반영이 되므로 적외선 센서의 특징을 고려할 때 기존 접근법의 한계를 극복할 수 있다.</li>
-</ul></li>
-</ol>
-</section>
 <section id="thermal-images와-thermal-sequence의-차이는" class="level5 page-columns page-full">
-<h5 class="anchored" data-anchor-id="thermal-images와-thermal-sequence의-차이는"><strong>thermal images와 thermal sequence의 차이는?</strong></h5>
+<h5 class="anchored" data-anchor-id="thermal-images와-thermal-sequence의-차이는">thermal images와 thermal sequence의 차이는?</h5>
 <ul>
 <li>이미지간 차이를 추출해낸 결과다. 이후 열화상 비디오들에서 학습된 시공간 정보를 동시에 학습하기 위해 3D CNN을 적용한 Shah et al의 연구가 이어졌고, Meglouli et al는 raw thermal images를 사용하는 대신 raw thermal sequences를 3D CNN에 적용하여 optical flow information를 연산해냈다.</li>
 </ul>
@@ -10441,12 +10427,12 @@ active sensor는 방사선을 물체에 방출하여 <strong>반사되는 에너
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">Example of a thermal image sequence<sup>15</sup></td>
-<td style="text-align: center;">Example of RGB and InfRared<sup>16</sup></td>
+<td style="text-align: center;">Example of a thermal image sequence<sup>16</sup></td>
+<td style="text-align: center;">Example of RGB and InfRared<sup>17</sup></td>
 </tr>
 </tbody>
 </table>
-<div class="no-row-height column-margin column-container"><div id="fn15"><p><sup>15</sup>&nbsp;Action Recognition from Extremely Low-Resolution Thermal Image Sequence</p></div><div id="fn16"><p><sup>16</sup>&nbsp;IR pair images in real maritime dataset</p></div></div></section>
+<div class="no-row-height column-margin column-container"><div id="fn16"><p><sup>16</sup>&nbsp;Action Recognition from Extremely Low-Resolution Thermal Image Sequence</p></div><div id="fn17"><p><sup>17</sup>&nbsp;IR pair images in real maritime dataset</p></div></div></section>
 </section>
 </section>
 <section id="point-cloud" class="level3 page-columns page-full">
@@ -10471,13 +10457,13 @@ active sensor는 방사선을 물체에 방출하여 <strong>반사되는 에너
 </tbody>
 </table>
 <section id="using-point-cloud-sequence-by-voxel" class="level5 page-columns page-full">
-<h5 class="anchored" data-anchor-id="using-point-cloud-sequence-by-voxel"><strong>Using point cloud sequence by Voxel</strong></h5>
+<h5 class="anchored" data-anchor-id="using-point-cloud-sequence-by-voxel">Using point cloud sequence by Voxel</h5>
 <p>또한 딥러닝의 발전으로 딥러닝 방법론이 주목받았고, 일반적으로 더 나은 성능을 보였다. 2020년 CVPR에서 “3dv: 3d dynamic voxel for action recognition in depth video,” 발표되어 raw point cloud sequence를 일반적으로 사용할 수 있는 3D 화소 집합 (<code>voxel sets</code>) 으로 변환한 바 있다.</p>
 <ul>
 <li>voxel : 입체 화상을 구성하는 3D 화소로 volume element를 말한다. 데이터 포인트로 구성되는데 이는 하나 또는 여러개의 데이터 조각으로 구성된다. (e.g.&nbsp;불투명도, 색상 …) 따라서 Vector (or Tensor) 데이터로 구성되며 다양한 속성을 표현할 수 있다. (e.g.&nbsp;CT에서 재료의 불투명도를 부여하는 Hounsfield scale: 방사선의 밀도를 표현)
 <ul>
 <li>pixel (<em>pic</em>ture + <em>el</em>ement): raster image를 구성하는 가장 작은 단위 또는 display에서 접근 가능한 모든 점들의 집합을 말하며 대부분 digital display 에서 표현되는 그래픽들의 가장 작은 단위로 사용된다.</li>
-<li>voxel (<em>vo</em>lume + <em>el</em>ement): 3D Computer graphic에서 3차원 상의 일반 격자(regular grid)를 나타내기 위한 단위로, 고유한 state parameter를 가지며 모델 객체에 종속된다. <sup>17</sup>
+<li>voxel (<em>vo</em>lume + <em>el</em>ement): 3D Computer graphic에서 3차원 상의 일반 격자(regular grid)를 나타내기 위한 단위로, 고유한 state parameter를 가지며 모델 객체에 종속된다. <sup>18</sup>
 <ul>
 <li><em>regular grid?</em> : grid는 regular grid와 irregular grid로 구분되는데 일반 격자는 테셀레이션(tesselation)의 n차원 유클리디안 공간으로 규칙적인 간격을 가진다.</li>
 <li><em>tesselation?</em> : 테셀레이션은 computer graphic 용어로 장면의 객체를 렌더링하기에 적합하도록 나타내는 다각형 데이터 집합 또는 vertex sets 이다.*</li>
@@ -10486,16 +10472,16 @@ active sensor는 방사선을 물체에 방출하여 <strong>반사되는 에너
 <li>resel (<em>res</em>olution + <em>el</em>ement ): 실제 공간 해상도에서 이미지 또는 부피데이터셋이 차지하는 비율을 나타낸다. resels per pixel, resels per voxel 등으로 표현한다.</li>
 </ul></li>
 </ul>
-<div class="no-row-height column-margin column-container"><div id="fn17"><p><sup>17</sup>&nbsp;어쩔 수 없이 wikipedia Voxel 결과</p></div></div><p>이렇듯 voxel에는 다양한 속성을 표현할 수 있으므로 voxel sets 을 3D action information으로 인코딩할 수 있다. 이러한 추상화 과정을 통해 학습한 모델이 <code>PointNet++</code>다.</p>
-<p>물론, point cloud를 voxel로 변환하는 과정에서 다량의 양자화 오차(quantization errors)<sup>18</sup>가 발생하여 효력면에서 충분히 효과적이지 않은데 이를 해결하기 위해 제안된 모델이 <code>MeteorNet</code>이다. 해당 모델은 여러 프레임의 point cloud들을 local 특성으로 합산하는데 이 때 spatio-temporal neighboring point 들을 사용한다. 다시 말해, 모든 point cloud를 voxel로 변환할 때 유실되는 값이 많으므로 국소 범위에서 관계가 있을 것으로 추정되는 주변 값을 변환하고, 또 변환하여 오차를 줄이는 방식을 채용한 셈이다.</p>
-<div class="no-row-height column-margin column-container"><div id="fn18"><p><sup>18</sup>&nbsp;ADC (Analog to Digital Converter) 에서 입력 아날로그 신호가 출력 디지털 신호로 변환될 때 유실되는 값이다.</p></div></div><p>이와 반대로 점의 공간적 불규칙성이 정보값에 혼란을 줄 것을 우려한 <code>PSTNet</code>은 시공간 정보를 분리하기도 했다.</p>
+<div class="no-row-height column-margin column-container"><div id="fn18"><p><sup>18</sup>&nbsp;어쩔 수 없이 wikipedia Voxel 결과</p></div></div><p>이렇듯 voxel에는 다양한 속성을 표현할 수 있으므로 voxel sets 을 3D action information으로 인코딩할 수 있다. 이러한 추상화 과정을 통해 학습한 모델이 <code>PointNet++</code>다.</p>
+<p>물론, point cloud를 voxel로 변환하는 과정에서 다량의 양자화 오차(quantization errors)<sup>19</sup>가 발생하여 효력면에서 충분히 효과적이지 않은데 이를 해결하기 위해 제안된 모델이 <code>MeteorNet</code>이다. 해당 모델은 여러 프레임의 point cloud들을 local 특성으로 합산하는데 이 때 spatio-temporal neighboring point 들을 사용한다. 다시 말해, 모든 point cloud를 voxel로 변환할 때 유실되는 값이 많으므로 국소 범위에서 관계가 있을 것으로 추정되는 주변 값을 변환하고, 또 변환하여 오차를 줄이는 방식을 채용한 셈이다.</p>
+<div class="no-row-height column-margin column-container"><div id="fn19"><p><sup>19</sup>&nbsp;ADC (Analog to Digital Converter) 에서 입력 아날로그 신호가 출력 디지털 신호로 변환될 때 유실되는 값이다.</p></div></div><p>이와 반대로 점의 공간적 불규칙성이 정보값에 혼란을 줄 것을 우려한 <code>PSTNet</code>은 시공간 정보를 분리하기도 했다.</p>
 </section>
 <section id="modeling" class="level5 page-columns page-full">
-<h5 class="anchored" data-anchor-id="modeling"><strong>Modeling</strong></h5>
-<p>이렇게 재구성된 Point Cloud로 수행해야하는 바는 다른 modality와 동일하게, 시공간을 동시에 고려고 그 특성을 파악하는 작업이다. 3차원 공간의 정보의 누수를 막고 voxel sets을 구해낸 후의 연구는 시간을 모델링하는데 초점을 맞추는데 이는 여타 방법론과 유사하다. RNN 기반의 모델인 LSTM을 적용한다. 눈여겨 볼 점은 4D CNN이 도입되었다는 점인데, 이는 LSTM 도입의 연장선으로 이미 3차원인 공간 모델링에 시간 차원을 추가하는 방식이다. <sup>19</sup></p>
+<h5 class="anchored" data-anchor-id="modeling">Modeling</h5>
+<p>이렇게 재구성된 Point Cloud로 수행해야하는 바는 다른 modality와 동일하게, 시공간을 동시에 고려고 그 특성을 파악하는 작업이다. 3차원 공간의 정보의 누수를 막고 voxel sets을 구해낸 후의 연구는 시간을 모델링하는데 초점을 맞추는데 이는 여타 방법론과 유사하다. RNN 기반의 모델인 LSTM을 적용한다. 눈여겨 볼 점은 4D CNN이 도입되었다는 점인데, 이는 LSTM 도입의 연장선으로 이미 3차원인 공간 모델링에 시간 차원을 추가하는 방식이다. <sup>20</sup></p>
 
 
-<div class="no-row-height column-margin column-container"><div id="fn19"><p><sup>19</sup>&nbsp;self-supervised modeling이 상대적으로 자주 언급되는데 point cloud 특성 때문인지 확인이 필요하다.</p></div></div></section>
+<div class="no-row-height column-margin column-container"><div id="fn20"><p><sup>20</sup>&nbsp;self-supervised modeling이 상대적으로 자주 언급되는데 point cloud 특성 때문인지 확인이 필요하다.</p></div></div></section>
 </section>
 </section>
 
