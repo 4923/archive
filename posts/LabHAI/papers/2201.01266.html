@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.551">
+<meta name="generator" content="quarto-1.4.552">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -183,12 +183,20 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#abstract" id="toc-abstract" class="nav-link active" data-scroll-target="#abstract">Abstract</a></li>
+  <li><a href="#abstract" id="toc-abstract" class="nav-link active" data-scroll-target="#abstract">Abstract</a>
+  <ul>
+  <li><a href="#background" id="toc-background" class="nav-link" data-scroll-target="#background">Background</a></li>
+  </ul></li>
   <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#related-work" id="toc-related-work" class="nav-link" data-scroll-target="#related-work">Related work</a></li>
   <li><a href="#swin-unetr" id="toc-swin-unetr" class="nav-link" data-scroll-target="#swin-unetr">Swin UNETR</a>
   <ul>
-  <li><a href="#encoder" id="toc-encoder" class="nav-link" data-scroll-target="#encoder">Encoder</a></li>
+  <li><a href="#encoder" id="toc-encoder" class="nav-link" data-scroll-target="#encoder">Encoder</a>
+  <ul class="collapse">
+  <li><a href="#입력" id="toc-입력" class="nav-link" data-scroll-target="#입력">입력</a></li>
+  </ul></li>
+  <li><a href="#decoder" id="toc-decoder" class="nav-link" data-scroll-target="#decoder">Decoder</a></li>
+  <li><a href="#architecture" id="toc-architecture" class="nav-link" data-scroll-target="#architecture">Architecture</a></li>
+  <li><a href="#참고" id="toc-참고" class="nav-link" data-scroll-target="#참고">참고</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/dotpyo/archive/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
@@ -215,11 +223,8 @@ window.Quarto = {
 <ul>
 <li><p>뇌종양의 semantic segmentation<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>은 근본적으로 <strong>multiple MRI imaging</strong>을 이용한 의료이미지 분석 과제다.</p></li>
 <li><p>3D 의료 영상 세그멘테이션에서는 FCNNs <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> 방식이 사실상의 표준 <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>으로 자리잡았다.</p>
-<blockquote class="blockquote">
-<p><code>U-net</code><a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>: U shape Convolution Network of Biomedical domain for Image segmentation</p>
-</blockquote>
 <ul>
-<li><strong><a href="https://arxiv.org/abs/1505.04597v1">U-Net: Convolutional Networks for Biomedical Image Segmentation</a></strong> 에서 발표되었으며 네트워크의 크기가 U모양이다.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></li>
+<li><strong><a href="https://arxiv.org/abs/1505.04597v1">U-Net: Convolutional Networks for Biomedical Image Segmentation</a></strong> 에서 발표되었으며 네트워크의 크기가 U모양이다.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></li>
 <li><code>U-net</code>은 다음 과제에서 SOTA를 달성했다.
 <ol type="1">
 <li>2D semantic segmentation</li>
@@ -230,26 +235,25 @@ window.Quarto = {
 </ul></li>
 <li><code>U-net</code> 의 한계는 이러하다: long range dependency
 <ul>
-<li>convolution layers의 제한된 kernel 사이즈<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>로 인한 장거리 예측에 어려움이 있다.<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></li>
-<li><span class="math inline">\(\therefore\)</span> 다양한 크기의 종양을 분할하는데 어려움이 있다.<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a></li>
+<li>convolution layers의 제한된 kernel 사이즈<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>로 인한 장거리 예측에 어려움이 있다.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></li>
+<li><span class="math inline">\(\therefore\)</span> 다양한 크기의 종양을 분할하는데 어려움이 있다.<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></li>
 </ul></li>
 <li>반면 transformer 계열 모델에서는 long range 문제가 희박하게 일어나고, 이것을 medical domain에 적용한 것이 <code>Swin UNEt TRansformers</code>다.</li>
 </ul></li>
 <li><p>UNETR 에서는 FCNNs이 아닌 tranformer를 적용했다.</p>
-<blockquote class="blockquote">
-<p><code>UNETR</code>: 3D brain tumor semantic segmentation transformer model</p>
-</blockquote>
 <ul>
 <li>UNETR의 특징 또는 기여점
 <ul>
 <li>3D brain tumor semantic segmentation task를 seq2seq 과제로 재구성했다</li>
 <li>multi model 입력 데이터를 1D sequence에 embedding 했다.</li>
 <li>해당 데이터를 계층적 UNETR의 인코더에 입력으로 사용했다.</li>
-<li>encoder: 5개의 다른 해상도의 특징 추출<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a> &gt;&gt; decoder: FCNN기반, 해상도 특징이 각각 연결된다. (via skip connection)</li>
+<li>encoder: 5개의 다른 해상도의 특징 추출<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a> &gt;&gt; decoder: FCNN기반, 해상도 특징이 각각 연결된다. (via skip connection)</li>
 </ul></li>
 </ul></li>
 </ul>
-<div class="no-row-height column-margin column-container"><div id="fn1"></div><div id="fn2"><p><sup>2</sup>&nbsp;Fully Convolutional Neural Networks</p></div><div id="fn3"><p><sup>3</sup>&nbsp;de facto standard</p></div><div id="fn4"><p><sup>4</sup>&nbsp;U-shaped net</p></div><div id="fn5"><p><sup>5</sup>&nbsp;the expansive path is more or less symmetric to the contracting path, and yields a u-shaped architecture</p></div><div id="fn6"><p><sup>6</sup>&nbsp;이후 맥락에 따라 kernel크기에 따라 이미지 크기가 작아지는 문제로 보인다.</p></div><div id="fn7"><p><sup>7</sup>&nbsp;long-range information is sub-optimal</p></div><div id="fn8"><p><sup>8</sup>&nbsp;멀리 떨어질수록 관계가 줄어드는 지역적 특성을 살린 것이 CNN이다. 이게 다양한 크기의 종양 판별과 무슨 관계가 있는지 확인 필요.</p></div><div id="fn9"><p><sup>9</sup>&nbsp;각각 다른 해상도가 시사하는 바는?</p></div></div><div class="callout callout-style-simple callout-note callout-titled">
+<div class="no-row-height column-margin column-container"><div id="fn1"></div><div id="fn2"><p><sup>2</sup>&nbsp;Fully Convolutional Neural Networks</p></div><div id="fn3"><p><sup>3</sup>&nbsp;de facto standard</p></div><div id="fn4"><p><sup>4</sup>&nbsp;the expansive path is more or less symmetric to the contracting path, and yields a u-shaped architecture</p></div><div id="fn5"><p><sup>5</sup>&nbsp;이후 맥락에 따라 kernel크기에 따라 이미지 크기가 작아지는 문제로 보인다.</p></div><div id="fn6"><p><sup>6</sup>&nbsp;long-range information is sub-optimal</p></div><div id="fn7"><p><sup>7</sup>&nbsp;멀리 떨어질수록 관계가 줄어드는 지역적 특성을 살린 것이 CNN이다. 이게 다양한 크기의 종양 판별과 무슨 관계가 있는지 확인 필요.</p></div><div id="fn8"><p><sup>8</sup>&nbsp;각각 다른 해상도가 시사하는 바는?</p></div></div><section id="background" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="background">Background</h3>
+<div class="callout callout-style-simple callout-note callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -374,7 +378,7 @@ RPN에서의 FCN 언급
 <ol type="1">
 <li>가장 먼저 마지막 계층에 21채널의 <span class="math inline">\(1 \times 1\)</span> convolution 레이어를 붙이는데 이는 <a href="http://host.robots.ox.ac.uk/pascal/VOC/">PASCAL</a> 이라는 객체 검출 데이터셋과 형태를 맞추기 위함이었다.<br>
 </li>
-<li>32x<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a> upsample로 시작한다. <span class="math inline">\(1 \times 1\)</span> 형태의 pool5 layer를 32배 하는데 이때 upsample이 deconvolution 과정을 말한다. 이렇게 upsample 한 예측결과는 그대로 둔다.</li>
+<li>32x<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a> upsample로 시작한다. <span class="math inline">\(1 \times 1\)</span> 형태의 pool5 layer를 32배 하는데 이때 upsample이 deconvolution 과정을 말한다. 이렇게 upsample 한 예측결과는 그대로 둔다.</li>
 <li>16x upsample을 만든다.
 <ol type="1">
 <li>마지막 layer(pool5)의 마지막 conv layer를 2배 upsample 하고 이를 커널(<span class="math inline">\(14 \times 14\)</span>)과 곱한다</li>
@@ -448,28 +452,23 @@ RPN에서의 FCN 언급
 </div>
 </div>
 </div>
-<div class="no-row-height column-margin column-container"><div id="fn10"><p><sup>10</sup>&nbsp;stride 값이 32다. 16, 8 도 마찬가지다.</p></div></div></section>
+<div class="no-row-height column-margin column-container"><div id="fn9"><p><sup>9</sup>&nbsp;stride 값이 32다. 16, 8 도 마찬가지다.</p></div></div></section>
+</section>
 <section id="introduction" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<ul>
-<li>알아 둘 내용만 기록</li>
-</ul>
 <ol type="1">
 <li>인간 뇌에 영향을 미치는 brain tumors 는 120종류가 넘는다.</li>
-<li>뇌종양은 두가지로 분류되는데<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a> 원발성 뇌종양은 뇌에서 직접 발현하며<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a> 이차성/전이성 뇌종양은 다른 장기로부터 전이된다.<a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a>
+<li>뇌종양은 두가지로 분류되는데<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a> 원발성 뇌종양은 뇌에서 직접 발현하며<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a> 이차성/전이성 뇌종양은 다른 장기로부터 전이된다.<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a>
 <ul>
-<li>primary tumor: 대부분 신경아교세포<a href="#fn14" class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a>에서 비롯된 신경교종<a href="#fn15" class="footnote-ref" id="fnref15" role="doc-noteref"><sup>15</sup></a></li>
+<li>primary tumor: 대부분 신경아교세포<a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a>에서 비롯된 신경교종<a href="#fn14" class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a></li>
 </ul></li>
-<li>종양의 병리학적 단계에 따른 하위 분류: low grade gliomas(LGG)<a href="#fn16" class="footnote-ref" id="fnref16" role="doc-noteref"><sup>16</sup></a>, High grade gliomas(HGG)<a href="#fn17" class="footnote-ref" id="fnref17" role="doc-noteref"><sup>17</sup></a>
+<li>종양의 병리학적 단계에 따른 하위 분류: low grade gliomas(LGG)<a href="#fn15" class="footnote-ref" id="fnref15" role="doc-noteref"><sup>15</sup></a>, High grade gliomas(HGG)<a href="#fn16" class="footnote-ref" id="fnref16" role="doc-noteref"><sup>16</sup></a>
 <ul>
-<li>HGG: 악성<a href="#fn18" class="footnote-ref" id="fnref18" role="doc-noteref"><sup>18</sup></a>으로 빠르게 자라며 수술 또는 방사선 치료가 필요한 종양, 예후가 좋지 않다.</li>
+<li>HGG: 악성<a href="#fn17" class="footnote-ref" id="fnref17" role="doc-noteref"><sup>17</sup></a>으로 빠르게 자라며 수술 또는 방사선 치료가 필요한 종양, 예후가 좋지 않다.</li>
 <li><a href="https://www.snubh.org/dh/main/index.do?DP_CD=DCD4&amp;MENU_ID=004007007">참고: 분당서울대병원</a></li>
 </ul></li>
 <li>Magnetic Resonance Imaging (MRI)는 진단분석 도구로 쓰이며 모니터링, 분석, 수술계획 수립 등에서 사용된다.</li>
-<li>딥러닝 기반 이미지 분할(image segmentation) 기법은 (1) 정확하고 (2) 재현 가능한 방법을 제공하는데 두각을 드러낸다.
-<ul>
-<li>재현 가능한 방법이 중요한 이유는 수술 때문인가?</li>
-</ul></li>
+<li>딥러닝 기반 이미지 분할(image segmentation) 기법은 (1) 정확하고 (2) 재현 가능한 방법<a href="#fn18" class="footnote-ref" id="fnref18" role="doc-noteref"><sup>18</sup></a>을 제공하는데 두각을 드러낸다.</li>
 <li>CNN의 limited kernel size로 인한 long range dependencies 문제는 정확한 종양 segmentation에서 치명적이다; 종양이 다양한 크기나 모양으로 나타나기 때문</li>
 <li>본 논문에서 주목한 <strong>ViT</strong>의 장점
 <ul>
@@ -500,17 +499,151 @@ RPN에서의 FCN 언급
 <li>CNN based decoder</li>
 </ol></li>
 </ol>
-<div class="no-row-height column-margin column-container"><div id="fn11"><p><sup>11</sup>&nbsp;Brain tumors are categorized into primary and secondary tumor types</p></div><div id="fn12"><p><sup>12</sup>&nbsp;primary tumor type originate from brain cells</p></div><div id="fn13"><p><sup>13</sup>&nbsp;secondary tumors metastasize into the brain from other organs</p></div><div id="fn14"><p><sup>14</sup>&nbsp;glial cell</p></div><div id="fn15"><p><sup>15</sup>&nbsp;gliomas</p></div><div id="fn16"><p><sup>16</sup>&nbsp;WHO grade II</p></div><div id="fn17"><p><sup>17</sup>&nbsp;WHO grade III-IV</p></div><div id="fn18"><p><sup>18</sup>&nbsp;malignant</p></div><div id="fn19"><p><sup>19</sup>&nbsp;siamese network를 기반으로 발전함</p></div></div></section>
-<section id="related-work" class="level2">
-<h2 class="anchored" data-anchor-id="related-work">Related work</h2>
-<ul>
-<li>필요할때 돌아와서 읽고 찾아보는 형식으로 진행</li>
-</ul>
-</section>
-<section id="swin-unetr" class="level2">
+<div class="no-row-height column-margin column-container"><div id="fn10"><p><sup>10</sup>&nbsp;Brain tumors are categorized into primary and secondary tumor types</p></div><div id="fn11"><p><sup>11</sup>&nbsp;primary tumor type originate from brain cells</p></div><div id="fn12"><p><sup>12</sup>&nbsp;secondary tumors metastasize into the brain from other organs</p></div><div id="fn13"><p><sup>13</sup>&nbsp;glial cell</p></div><div id="fn14"><p><sup>14</sup>&nbsp;gliomas</p></div><div id="fn15"><p><sup>15</sup>&nbsp;WHO grade II</p></div><div id="fn16"><p><sup>16</sup>&nbsp;WHO grade III-IV</p></div><div id="fn17"><p><sup>17</sup>&nbsp;malignant</p></div><div id="fn18"><p><sup>18</sup>&nbsp;재현 가능한 방법이 중요하게 언급 된 이유는 수술 때문인가?</p></div><div id="fn19"><p><sup>19</sup>&nbsp;siamese network를 기반으로 발전함</p></div></div></section>
+<section id="swin-unetr" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="swin-unetr">Swin UNETR</h2>
-<section id="encoder" class="level3">
+<section id="encoder" class="level3 page-columns page-full">
 <h3 class="anchored" data-anchor-id="encoder">Encoder</h3>
+<section id="입력" class="level4 page-columns page-full">
+<h4 class="anchored" data-anchor-id="입력">입력</h4>
+<ul>
+<li><span class="math inline">\(\mathbb{R}^{H \times W \times D \times S}\)</span> 형태, 이때 <span class="math inline">\(S\)</span>는 샘플의 개수</li>
+<li>해상도는 <span class="math inline">\(H',W',D'\)</span>, 차원은 <span class="math inline">\(H \times W \times D \times S\)</span></li>
+<li>3D 입력을 균등하게 partition 하며 분해되어 만들어진 토큰의 크기는 레이어 <span class="math inline">\(l\)</span> 을 지날수록 작아짐
+<ul>
+<li>shifted window: <span class="math inline">\(M \times M \times M\)</span></li>
+<li>다음 과정: <span class="math inline">\([\frac{H}{M'}] \times [\frac{W}{M'}] \times [\frac{D}{M'}]\)</span></li>
+</ul></li>
+<li>분할된 토큰은 embedding space <span class="math inline">\(C\)</span>로 투영된다. <a href="#fn20" class="footnote-ref" id="fnref20" role="doc-noteref"><sup>20</sup></a></li>
+<li>연산의 효율성을 위해 non-overlapping windows 연산을 한다. (Swin Transformer의 원리)</li>
+</ul>
+<div class="no-row-height column-margin column-container"><div id="fn20"><p><sup>20</sup>&nbsp;embedding space</p></div></div><table class="table">
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><img src="https://github.com/dotpyo/archive/assets/60145951/e532621b-32de-4d46-a407-b8bd03e93b2f" class="img-fluid"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">입력과정</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Swin Transformer: 배경, Modality의 차이
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>ViT는 모든 patch 사이에 self attention 을 수행하나 몇가지 단점이 있다. 그 중 segmentation task와 관계있는 특징은 해상도<a href="#fn21" class="footnote-ref" id="fnref21" role="doc-noteref"><sup>21</sup></a>다. 자연어처리에서 transformer가 주로 풀었던 문제는 텍스트로, 이미지의 픽셀처럼 최소 단위의 세밀함을 필요로 하지 않는다. 하지만 이미지처리의 semantic segmentation 등 픽셀 단위에서의 조밀한 예측을 필요로 하는 task에서는 높은 해상도의 이미지가 필요하다. 그러나 self attention에 의해 컴퓨터의 연산량은 이미지 크기의 배로 늘어난다.<a href="#fn22" class="footnote-ref" id="fnref22" role="doc-noteref"><sup>22</sup></a></p>
+</div>
+</div>
+</div>
+<div class="no-row-height column-margin column-container"><div id="fn22"><p><sup>22</sup>&nbsp;Attention is all you need, 2017</p></div></div><div class="no-row-height column-margin column-container"><div id="fn21"><p><sup>21</sup>&nbsp;Another difference is the much higher resolution of pixels in images compared to words in passages of text.</p></div></div><div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Swin Transformer: 구조, shifted window
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>local window로 기존 ViT의 문제였던 time complexity를 줄이고, shifted window를 통한 patch merging으로 hierarchical architecture을 세운다. 그 결과 semantic segmentation이 가능해졌다.</p>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">local window</th>
+<th style="text-align: left;">patch merging</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><img src="https://github.com/dotpyo/archive/assets/60145951/56893e90-3449-476f-89f5-f018f0e097c1" class="img-fluid" alt="image"></td>
+<td style="text-align: left;"><img src="https://github.com/dotpyo/archive/assets/60145951/066581bf-9a8d-4bad-9401-6eda7eebbb20" class="img-fluid" alt="image"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">이미지와 같이 작은 패치들이 모델이 깊어질수록 병합되는 구조다. 이런 <code>hierarchical-representation</code> 이 조밀한 예측을 가능하게 하여 피라미드 구조의 네트워크인 FPN(Feature Pyramid Network), U-Net 등에서 backbone으로 편리하게 사용할 수 있다.</td>
+<td style="text-align: left;">Swin Transformer의 핵심인 <code>Shifted Window</code>는 Fig 2와 같다. 빨간색의 window 안에서 패치간 self-attention을 계산하여 병합한 후 인접한 window에서 또다시 attention을 계산하여 관계가 있을 경우 병합하는 방식이다.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="decoder" class="level3">
+<h3 class="anchored" data-anchor-id="decoder">Decoder</h3>
+<p>간단하게 Swin Transformer 과정에서 연산해두었던 각 단계의 feature map 과 그 단계에 해당하는 upsampling 과정의 데이터를 합산하여 해상도를 매 단계 당 두배씩 향상시킨다. 후에 <span class="math inline">\(1 \times 1 \times 1\)</span> convolution layer를 통과시킨 후 sigmoid 함수를 활성화 함수로 사용했다.</p>
+</section>
+<section id="architecture" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="architecture">Architecture</h3>
+<table class="table">
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><img src="https://github.com/dotpyo/archive/assets/60145951/bb9599e4-02dc-4bd1-9cd7-ea440a7f9f1c" class="img-fluid"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Architecture</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>W-MSA: Window Multi-head self Attention</li>
+<li>SW-MSA: Shifted Window Multi-head self Attention</li>
+</ul>
+<ol type="1">
+<li>형태에 맞게 데이터를 입력한다.</li>
+<li>shift window 방법을 이용해 연관있는 patch끼리 병합하는 과정을 거친다.
+<ul>
+<li>계층적 구조를 유지하기 위해 merging layer에서 해상도가 2배<a href="#fn23" class="footnote-ref" id="fnref23" role="doc-noteref"><sup>23</sup></a>씩 낮아진다.</li>
+</ul></li>
+<li>Swin Transformer block을 통과한 결과를 embedding space <span class="math inline">\(C\)</span>에 넘긴다.</li>
+<li>upsampling 해 해상도를 높인다.
+<ul>
+<li>deconvolution을 통해 해상도가 두배씩 늘어난다.</li>
+<li>인코딩 과정에서 연산한 feature를 skip connection을 통해 디코더로 전달한다.</li>
+</ul></li>
+<li>원상복귀된 voxel을 얻는다.</li>
+</ol>
+<div class="no-row-height column-margin column-container"><div id="fn23"><p><sup>23</sup>&nbsp;factor of two</p></div></div><blockquote class="blockquote">
+<p>구현 후에 보충</p>
+</blockquote>
+</section>
+<section id="참고" class="level3">
+<h3 class="anchored" data-anchor-id="참고">참고</h3>
+<ul>
+<li>Swin Transformer
+<ul>
+<li><a href="http://dsba.korea.ac.kr/seminar/?mod=document&amp;pageid=1&amp;keyword=swin%20transformer&amp;uid=1793">고려대학교 DSBA 연구실 발표</a></li>
+<li><a href="https://velog.io/@201820894/%EB%85%BC%EB%AC%B8%EB%A6%AC%EB%B7%B0-Swin-Transformer-Hierarchical-Vision-Transformer-using-Shifted-Windows#31-overall-architecture">201820894.log</a></li>
+</ul></li>
+</ul>
 
 
 </section>
